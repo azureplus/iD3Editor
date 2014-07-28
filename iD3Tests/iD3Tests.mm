@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "NSString_TLString.h"
+#import "Tag.h"
 
 @interface iD3Tests : XCTestCase
 
@@ -26,9 +28,10 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testTag
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    Tag * tag = [[Tag alloc] initWithFile:@"/tmp/sample.mp3"];
+    NSLog(@"--->%@", tag);
 }
 
 @end

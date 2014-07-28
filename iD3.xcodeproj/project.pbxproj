@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F76D68931986166700DB2E41 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76D68921986166700DB2E41 /* libz.dylib */; };
 		F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E994E61983418000DDE9B4 /* Cocoa.framework */; };
 		F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E994EF1983418000DDE9B4 /* InfoPlist.strings */; };
 		F7E994F31983418000DDE9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F21983418000DDE9B4 /* main.m */; };
@@ -17,7 +18,10 @@
 		F7E995061983418000DDE9B4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E995051983418000DDE9B4 /* XCTest.framework */; };
 		F7E995071983418000DDE9B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E994E61983418000DDE9B4 /* Cocoa.framework */; };
 		F7E9950F1983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E9950D1983418000DDE9B4 /* InfoPlist.strings */; };
-		F7E995111983418000DDE9B4 /* iD3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E995101983418000DDE9B4 /* iD3Tests.m */; };
+		F7E995111983418000DDE9B4 /* iD3Tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E995101983418000DDE9B4 /* iD3Tests.mm */; };
+		F7E9951C19853C6300DDE9B4 /* libtag.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E9951B19853C6300DDE9B4 /* libtag.a */; };
+		F7E9951F198543A200DDE9B4 /* Tag.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E9951E198543A200DDE9B4 /* Tag.mm */; };
+		F7E9952A198593D300DDE9B4 /* NSString_TLString.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E99529198593D300DDE9B4 /* NSString_TLString.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F76D68921986166700DB2E41 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F7E994E31983418000DDE9B4 /* iD3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iD3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -49,7 +54,12 @@
 		F7E995051983418000DDE9B4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F7E9950C1983418000DDE9B4 /* iD3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iD3Tests-Info.plist"; sourceTree = "<group>"; };
 		F7E9950E1983418000DDE9B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F7E995101983418000DDE9B4 /* iD3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iD3Tests.m; sourceTree = "<group>"; };
+		F7E995101983418000DDE9B4 /* iD3Tests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = iD3Tests.mm; sourceTree = "<group>"; };
+		F7E9951B19853C6300DDE9B4 /* libtag.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtag.a; path = ../../taglib/lib/libtag.a; sourceTree = "<group>"; };
+		F7E9951D198543A200DDE9B4 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tag.h; path = Taglib/Tag.h; sourceTree = "<group>"; };
+		F7E9951E198543A200DDE9B4 /* Tag.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Tag.mm; path = Taglib/Tag.mm; sourceTree = "<group>"; };
+		F7E99528198593D300DDE9B4 /* NSString_TLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_TLString.h; path = Taglib/NSString_TLString.h; sourceTree = "<group>"; };
+		F7E99529198593D300DDE9B4 /* NSString_TLString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSString_TLString.mm; path = Taglib/NSString_TLString.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F76D68931986166700DB2E41 /* libz.dylib in Frameworks */,
+				F7E9951C19853C6300DDE9B4 /* libtag.a in Frameworks */,
 				F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +88,7 @@
 		F7E994DA1983418000DDE9B4 = {
 			isa = PBXGroup;
 			children = (
+				F7E9951A19853C1500DDE9B4 /* Taglib */,
 				F7E994EC1983418000DDE9B4 /* iD3 */,
 				F7E9950A1983418000DDE9B4 /* iD3Tests */,
 				F7E994E51983418000DDE9B4 /* Frameworks */,
@@ -95,6 +108,8 @@
 		F7E994E51983418000DDE9B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F76D68921986166700DB2E41 /* libz.dylib */,
+				F7E9951B19853C6300DDE9B4 /* libtag.a */,
 				F7E994E61983418000DDE9B4 /* Cocoa.framework */,
 				F7E995051983418000DDE9B4 /* XCTest.framework */,
 				F7E994E81983418000DDE9B4 /* Other Frameworks */,
@@ -139,7 +154,7 @@
 		F7E9950A1983418000DDE9B4 /* iD3Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F7E995101983418000DDE9B4 /* iD3Tests.m */,
+				F7E995101983418000DDE9B4 /* iD3Tests.mm */,
 				F7E9950B1983418000DDE9B4 /* Supporting Files */,
 			);
 			path = iD3Tests;
@@ -152,6 +167,17 @@
 				F7E9950D1983418000DDE9B4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F7E9951A19853C1500DDE9B4 /* Taglib */ = {
+			isa = PBXGroup;
+			children = (
+				F7E9951D198543A200DDE9B4 /* Tag.h */,
+				F7E9951E198543A200DDE9B4 /* Tag.mm */,
+				F7E99528198593D300DDE9B4 /* NSString_TLString.h */,
+				F7E99529198593D300DDE9B4 /* NSString_TLString.mm */,
+			);
+			name = Taglib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7E9952A198593D300DDE9B4 /* NSString_TLString.mm in Sources */,
+				F7E9951F198543A200DDE9B4 /* Tag.mm in Sources */,
 				F7E994FA1983418000DDE9B4 /* AppDelegate.m in Sources */,
 				F7E994F31983418000DDE9B4 /* main.m in Sources */,
 			);
@@ -261,7 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7E995111983418000DDE9B4 /* iD3Tests.m in Sources */,
+				F7E995111983418000DDE9B4 /* iD3Tests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +374,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = /Volumes/Data/Users/qiang/taglib/include;
 			};
 			name = Debug;
 		};
@@ -378,6 +407,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = /Volumes/Data/Users/qiang/taglib/include;
 			};
 			name = Release;
 		};
@@ -385,10 +415,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libstdc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iD3/iD3-Prefix.pch";
 				INFOPLIST_FILE = "iD3/iD3-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Data/Users/qiang/taglib/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -398,10 +433,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libstdc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iD3/iD3-Prefix.pch";
 				INFOPLIST_FILE = "iD3/iD3-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Data/Users/qiang/taglib/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -466,6 +506,7 @@
 				F7E995161983418000DDE9B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7E995171983418000DDE9B4 /* Build configuration list for PBXNativeTarget "iD3Tests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +515,7 @@
 				F7E995191983418000DDE9B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
