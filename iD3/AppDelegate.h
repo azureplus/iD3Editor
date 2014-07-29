@@ -7,9 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TagSource.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, TagSource> {
+    NSMutableArray * _tags;
+}
 
+@property (readonly, nonatomic) NSArray * tags;
 @property (assign) IBOutlet NSWindow *window;
+
+-(IBAction) openFiles:(id)sender;
 
 @end

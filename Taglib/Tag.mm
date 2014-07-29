@@ -50,6 +50,10 @@
     [_properties setObject:[NSString stringWithFormat:@"%d", iValue] forKey:@"track"];
 }
 
+-(NSString *) getFrame:(NSString *) frameId {
+    return [_properties objectForKey:frameId];
+}
+
 -(NSString *) description {
     return [NSString stringWithFormat:@"\n\tartist: %@\n\talbum: %@\n\ttitle: %@\n\tcomment: %@\n\tgenre: %@\n\tyear: %@\n\ttrack: %@",
             [_properties valueForKey:@"artist"],

@@ -12,5 +12,9 @@
     NSMutableDictionary * _properties;
     NSString * _filename;
 }
+
+@property(nonatomic, readonly) NSString * filename;
+
 -(id) initWithFile: (NSString *) fileName;
+-(NSString *) getFrame:(NSString *) frameId;
 @end
