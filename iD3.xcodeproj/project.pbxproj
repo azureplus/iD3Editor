@@ -36,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		F76D68921986166700DB2E41 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		F77F88A11987433900B1B3CC /* iD3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iD3.entitlements; sourceTree = "<group>"; };
 		F7E994E31983418000DDE9B4 /* iD3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iD3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -130,6 +131,7 @@
 		F7E994EC1983418000DDE9B4 /* iD3 */ = {
 			isa = PBXGroup;
 			children = (
+				F77F88A11987433900B1B3CC /* iD3.entitlements */,
 				F7E994F81983418000DDE9B4 /* AppDelegate.h */,
 				F7E994F91983418000DDE9B4 /* AppDelegate.m */,
 				F7E994FB1983418000DDE9B4 /* MainMenu.xib */,
@@ -227,6 +229,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = xbox.com;
 				TargetAttributes = {
+					F7E994E21983418000DDE9B4 = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
 					F7E995031983418000DDE9B4 = {
 						TestTargetID = F7E994E21983418000DDE9B4;
 					};
@@ -416,6 +425,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CODE_SIGN_ENTITLEMENTS = iD3/iD3.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iD3/iD3-Prefix.pch";
@@ -434,6 +445,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CODE_SIGN_ENTITLEMENTS = iD3/iD3.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iD3/iD3-Prefix.pch";
