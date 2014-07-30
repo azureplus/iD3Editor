@@ -16,6 +16,13 @@
 @property (readonly, nonatomic) NSArray * tags;
 @property (assign) IBOutlet NSWindow *window;
 
+/// core data
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator * persistentStoreCoordinator;
+@property (readonly, strong, nonatomic) NSManagedObjectModel * managedObjectModel;
+@property (readonly, strong, nonatomic) NSManagedObjectContext * managedObjectContext;
+
+@property (weak, nonatomic) IBOutlet NSArrayController * tagArrayController;
+
 -(IBAction) openFiles:(id)sender;
 
 @end

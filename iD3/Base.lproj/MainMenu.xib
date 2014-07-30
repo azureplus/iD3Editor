@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="tagArrayController" destination="j1s-e0-8eb" id="ORO-bS-crS"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -22,6 +23,11 @@
                 <outlet property="tableView" destination="Gxo-e1-Vhj" id="g3x-C6-w3S"/>
             </connections>
         </customObject>
+        <arrayController mode="entity" entityName="Tag" id="j1s-e0-8eb" userLabel="Tags">
+            <connections>
+                <binding destination="Voe-Tx-rLC" name="managedObjectContext" keyPath="managedObjectContext" id="s3t-Sn-cpc"/>
+            </connections>
+        </arrayController>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="iD3" id="1Xt-HY-uBw">
@@ -692,17 +698,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="695" height="779"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="led-x4-soq">
-                                            <rect key="frame" x="1" y="17" width="693" height="746"/>
+                                            <rect key="frame" x="1" y="17" width="693" height="761"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="HOL-yM-LHF" id="Gxo-e1-Vhj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="840" height="746"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="693" height="761"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="filename" width="116" minWidth="40" maxWidth="1000" id="NxQ-yA-lsf">
+                                                        <tableColumn identifier="filename" width="100" maxWidth="2048" id="NxQ-yA-lsf">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="File Name">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -714,8 +720,11 @@
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                            <connections>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.filename" id="QUD-eu-wfz"/>
+                                                            </connections>
                                                         </tableColumn>
-                                                        <tableColumn identifier="title" width="571" minWidth="40" maxWidth="1000" id="Foa-bS-OTt">
+                                                        <tableColumn identifier="title" width="100" maxWidth="2048" id="Foa-bS-OTt">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Title">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -727,8 +736,11 @@
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                            <connections>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.title" id="E3i-hE-iqk"/>
+                                                            </connections>
                                                         </tableColumn>
-                                                        <tableColumn identifier="artist" width="10" minWidth="10" maxWidth="3.4028234663852886e+38" id="LZf-Qu-ZhJ">
+                                                        <tableColumn identifier="artist" width="100" maxWidth="2048" id="LZf-Qu-ZhJ">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Artist">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -740,8 +752,11 @@
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                            <connections>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.artist" id="vZ4-aR-CXG"/>
+                                                            </connections>
                                                         </tableColumn>
-                                                        <tableColumn identifier="album" width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="0J7-Gy-k4w">
+                                                        <tableColumn identifier="album" width="100" maxWidth="2048" id="0J7-Gy-k4w">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Album">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -753,8 +768,11 @@
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                            <connections>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.album" id="ZYy-Ji-3EG"/>
+                                                            </connections>
                                                         </tableColumn>
-                                                        <tableColumn identifier="track" width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="SUr-Ng-b3O">
+                                                        <tableColumn identifier="track" width="278" maxWidth="2048" id="SUr-Ng-b3O">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Track">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -768,14 +786,11 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         </tableColumn>
                                                     </tableColumns>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="tp1-mA-TA7" id="Gm6-2b-Hup"/>
-                                                    </connections>
                                                 </tableView>
                                             </subviews>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="fWv-rP-J80">
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="fWv-rP-J80">
                                             <rect key="frame" x="1" y="763" width="693" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -784,7 +799,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <tableHeaderView key="headerView" id="HOL-yM-LHF">
-                                            <rect key="frame" x="0.0" y="0.0" width="840" height="17"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="693" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
@@ -964,5 +979,6 @@
                 </defaultToolbarItems>
             </toolbar>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="zIm-2T-wMd"/>
     </objects>
 </document>
