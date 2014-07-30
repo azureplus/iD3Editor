@@ -108,9 +108,17 @@
 			name = DataModel;
 			sourceTree = "<group>";
 		};
+		F79BCE18198928A500CC5F02 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NSString;
+			sourceTree = "<group>";
+		};
 		F7E994DA1983418000DDE9B4 = {
 			isa = PBXGroup;
 			children = (
+				F79BCE18198928A500CC5F02 /* NSString */,
 				F77F88EA1987D47A00B1B3CC /* DataModel */,
 				F7E9951A19853C1500DDE9B4 /* Taglib */,
 				F7E994EC1983418000DDE9B4 /* iD3 */,

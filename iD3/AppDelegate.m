@@ -83,4 +83,13 @@
     [_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];    
 }
 
+
+//// test ///
+-(IBAction) convert:(id)sender {
+    NSString * str = [[_tagArrayController selectedObjects][0] valueForKey:@"title"];
+    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    str = [[NSString alloc] initWithData:[str dataUsingEncoding:NSISOLatin1StringEncoding] encoding:gbkEncoding];
+    NSLog(@"--->%@", str);
+}
+
 @end

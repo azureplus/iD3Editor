@@ -25,4 +25,7 @@
 
 -(IBAction) openFiles:(id)sender;
 
+/// test encoding conversion
+-(IBAction) convert:(id)sender;
+
 @end

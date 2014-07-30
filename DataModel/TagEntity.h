@@ -22,6 +22,6 @@
 @property (nonatomic, retain) NSString * track;
 @property (nonatomic, retain) NSString * year;
 
-@property (nonatomic, retain) Tag * tag;
+@property (nonatomic, weak) Tag * tag;
 
 @end
