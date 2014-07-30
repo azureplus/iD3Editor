@@ -12,4 +12,5 @@
 
 @interface NSString(TLString)
 + (NSString *) newStringFromTLString: (TagLib::String &) str;
+- (TagLib::String) toTLString;
 @end

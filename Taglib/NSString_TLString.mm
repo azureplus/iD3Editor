@@ -18,4 +18,8 @@
         return str;
     }
 }
+
+- (TagLib::String) toTLString {
+    return TagLib::String([self UTF8String], TagLib::String::Type::UTF8);
+}
 @end

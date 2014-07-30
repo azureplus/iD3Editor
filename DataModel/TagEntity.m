@@ -20,5 +20,14 @@
 @dynamic title;
 @dynamic track;
 @dynamic year;
+@synthesize tag = _tag;
+
+-(void)didChangeValueForKey:(NSString *)key {
+    if ([self isUpdated]) {
+        [_tag setFrame:key withValue:[self valueForKey:key]];
+        [_tag writeTag];
+    }
+    [super didChangeValueForKey:key];
+}
 
 @end

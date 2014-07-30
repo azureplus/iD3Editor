@@ -22,11 +22,14 @@
     return self;
 }
 
+-(void)dealloc {
+    delete _fileRef;
+}
 
 -(void) _readTag {
-    TagLib::FileRef fileRef([_filename UTF8String]);
-    TagLib::Tag * tag = fileRef.file()->tag();
-    
+    _fileRef = new TagLib::FileRef([_filename UTF8String]);
+    TagLib::Tag * tag = _fileRef->file()->tag();
+
     //
     TagLib::String value = tag->artist();
     [_properties setObject:[NSString newStringFromTLString: value] forKey:@"artist"];
@@ -50,9 +53,36 @@
     [_properties setObject:[NSString stringWithFormat:@"%d", iValue] forKey:@"track"];
 }
 
+-(void) writeTag {
+    _fileRef->save();
+}
+
 -(NSString *) getFrame:(NSString *) frameId {
     return [_properties objectForKey:frameId];
 }
+
+//TODO: validate int value
+-(void)setFrame:(NSString *) frameId withValue:(NSString *) value {
+    TagLib::Tag * tag = _fileRef->file()->tag();
+    TagLib::String v = [value toTLString];
+    
+    if ([frameId isEqualTo:@"artist"]) {
+        tag->setArtist(v);
+    } else if ([frameId isEqualTo:@"album"]) {
+        tag->setAlbum(v);
+    } else if ([frameId isEqualTo:@"title"]) {
+        tag->setTitle(v);
+    } else if ([frameId isEqualTo:@"comment"]) {
+        tag->setComment(v);
+    } else if ([frameId isEqualTo:@"genre"]) {
+        tag->setGenre(v);
+    } else if ([frameId isEqualTo:@"year"]) {
+        tag->setYear([value intValue]);
+    } else if ([frameId isEqualTo:@"track"]) {
+        tag->setTrack([value intValue]);
+    }
+}
+
 
 -(NSString *) description {
     return [NSString stringWithFormat:@"\n\tartist: %@\n\talbum: %@\n\ttitle: %@\n\tcomment: %@\n\tgenre: %@\n\tyear: %@\n\ttrack: %@",

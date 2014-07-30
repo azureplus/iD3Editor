@@ -32,6 +32,8 @@
     [_tags addObject:tag];
     NSEntityDescription * tagDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Tag"];
     TagEntity * tagEntity = [[TagEntity alloc] initWithEntity:tagDescription insertIntoManagedObjectContext:_managedObjectContext];
+    
+    tagEntity.tag = tag;
     tagEntity.filename = tag.filename;
     
     tagEntity.artist = [tag getFrame:@"artist"];

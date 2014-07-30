@@ -7,14 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#ifdef __cplusplus
+# include "taglib/fileref.h"
+#endif
 
 @interface Tag : NSObject {
     NSMutableDictionary * _properties;
-    NSString * _filename;
+#ifdef __cplusplus
+    TagLib::FileRef * _fileRef;
+#endif
 }
 
 @property(nonatomic, readonly) NSString * filename;
 
 -(id) initWithFile: (NSString *) fileName;
 -(NSString *) getFrame:(NSString *) frameId;
+-(void)setFrame:(NSString *) frameId withValue:(NSString *) value;
+-(void) writeTag;
 @end

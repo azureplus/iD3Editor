@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
+#import "Tag.h"
 
 @interface TagEntity : NSManagedObject
 
@@ -21,5 +21,7 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * track;
 @property (nonatomic, retain) NSString * year;
+
+@property (nonatomic, retain) Tag * tag;
 
 @end
