@@ -9,7 +9,7 @@
 #import "NSString_TLString.h"
 
 @implementation NSString(TLString)
-+ (NSString *) newStringFromTLString: (TagLib::String &) str {
++ (NSString *) newStringFromTLString: (const TagLib::String &) str {
     if (str == TagLib::String::null) {
         return @"";
     } else {

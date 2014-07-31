@@ -17,7 +17,7 @@
     if (self = [super init]) {
         _filename = filename;
         _properties = [NSMutableDictionary dictionaryWithCapacity: 7];
-        [self _readTag];
+        _fileRef = new TagLib::FileRef([_filename UTF8String]);
     }
     return self;
 }
@@ -26,42 +26,32 @@
     delete _fileRef;
 }
 
--(void) _readTag {
-    _fileRef = new TagLib::FileRef([_filename UTF8String]);
-    TagLib::Tag * tag = _fileRef->file()->tag();
-
-    //
-    TagLib::String value = tag->artist();
-    [_properties setObject:[NSString newStringFromTLString: value] forKey:@"artist"];
-    
-    value = tag->album();
-    [_properties setObject:[NSString newStringFromTLString: value] forKey:@"album"];
-    
-    value = tag->title();
-    [_properties setObject:[NSString newStringFromTLString: value] forKey:@"title"];
-    
-    value = tag->comment();
-    [_properties setObject:[NSString newStringFromTLString: value] forKey:@"comment"];
-    
-    value = tag->genre();
-    [_properties setObject:[NSString newStringFromTLString: value] forKey:@"genre"];
-    
-    uint iValue = tag->year();
-    [_properties setObject:[NSString stringWithFormat:@"%d", iValue] forKey:@"year"];
-    
-    iValue = tag->track();
-    [_properties setObject:[NSString stringWithFormat:@"%d", iValue] forKey:@"track"];
-}
-
 -(void) writeTag {
     _fileRef->save();
 }
 
 -(NSString *) getFrame:(NSString *) frameId {
-    return [_properties objectForKey:frameId];
+    TagLib::Tag * tag = _fileRef->file()->tag();
+    NSString * rv = @"";
+    if ([frameId isEqualTo:@"artist"]) {
+        rv = [NSString newStringFromTLString: tag->artist()];
+    } else if ([frameId isEqualTo:@"album"]) {
+        rv = [NSString newStringFromTLString: tag->album()];
+    } else if ([frameId isEqualTo:@"title"]) {
+        rv = [NSString newStringFromTLString: tag->title()];
+    } else if ([frameId isEqualTo:@"comment"]) {
+        rv = [NSString newStringFromTLString: tag->comment()];
+    } else if ([frameId isEqualTo:@"genre"]) {
+        rv = [NSString newStringFromTLString: tag->genre()];
+    } else if ([frameId isEqualTo:@"year"]) {
+        rv = [NSString stringWithFormat:@"%d", tag->year()];
+    } else if ([frameId isEqualTo:@"track"]) {
+        rv = [NSString stringWithFormat:@"%d", tag->track()];
+    }
+    
+    return rv;
 }
 
-//TODO: validate int value
 -(void)setFrame:(NSString *) frameId withValue:(NSString *) value {
     TagLib::Tag * tag = _fileRef->file()->tag();
     TagLib::String v = [value toTLString];
@@ -83,6 +73,33 @@
     }
 }
 
+-(NSString *)_frameEncodingConversionHelp: (const TagLib::String &) value{
+    if (value.isAscii() || value.isLatin1()) {
+        TagLib::ByteVector bv = value.data(TagLib::String::Type::Latin1);
+        NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        return [[NSString alloc] initWithData:[NSData dataWithBytes:bv.data() length:bv.size()] encoding:gbkEncoding];
+    } else {
+        return nil;
+    }
+}
+
+-(NSString *)frameEncodingConversion:(NSString *)frameId {
+    TagLib::Tag * tag = _fileRef->file()->tag();
+    NSString  * rv = nil;
+    if ([frameId isEqualTo:@"artist"]) {
+        rv = [self _frameEncodingConversionHelp: tag->artist()];
+    } else if ([frameId isEqualToString:@"album"]) {
+        rv = [self _frameEncodingConversionHelp: tag->album()];
+    } else if ([frameId isEqualToString:@"title"]) {
+        rv = [self _frameEncodingConversionHelp: tag->title()];
+    }else if ([frameId isEqualToString:@"comment"]) {
+        rv = [self _frameEncodingConversionHelp: tag->comment()];
+    } else if ([frameId isEqualToString:@"genre"]) {
+        rv = [self _frameEncodingConversionHelp: tag->genre()];
+    }
+    
+    return rv;
+}
 
 -(NSString *) description {
     return [NSString stringWithFormat:@"\n\tartist: %@\n\talbum: %@\n\ttitle: %@\n\tcomment: %@\n\tgenre: %@\n\tyear: %@\n\ttrack: %@",

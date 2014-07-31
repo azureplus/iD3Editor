@@ -12,6 +12,7 @@
 		F77F88E81987592C00B1B3CC /* ID3TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F77F88E71987592C00B1B3CC /* ID3TableViewDataSource.m */; };
 		F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */; };
 		F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE1619889BB500CC5F02 /* TagEntity.m */; };
+		F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F79BCE191989FD5900CC5F02 /* iD3.plist */; };
 		F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E994E61983418000DDE9B4 /* Cocoa.framework */; };
 		F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E994EF1983418000DDE9B4 /* InfoPlist.strings */; };
 		F7E994F31983418000DDE9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F21983418000DDE9B4 /* main.m */; };
@@ -49,6 +50,7 @@
 		F77F88EC1987D49C00B1B3CC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F79BCE1519889BB500CC5F02 /* TagEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagEntity.h; path = DataModel/TagEntity.h; sourceTree = "<group>"; };
 		F79BCE1619889BB500CC5F02 /* TagEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagEntity.m; path = DataModel/TagEntity.m; sourceTree = "<group>"; };
+		F79BCE191989FD5900CC5F02 /* iD3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iD3.plist; sourceTree = "<group>"; };
 		F7E994E31983418000DDE9B4 /* iD3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iD3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				F77F88A11987433900B1B3CC /* iD3.entitlements */,
+				F79BCE191989FD5900CC5F02 /* iD3.plist */,
 				F7E994F81983418000DDE9B4 /* AppDelegate.h */,
 				F7E994F91983418000DDE9B4 /* AppDelegate.m */,
 				F7E994FB1983418000DDE9B4 /* MainMenu.xib */,
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */,
+				F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */,
 				F7E994FF1983418000DDE9B4 /* Images.xcassets in Resources */,
 				F7E994F71983418000DDE9B4 /* Credits.rtf in Resources */,
 				F7E994FD1983418000DDE9B4 /* MainMenu.xib in Resources */,

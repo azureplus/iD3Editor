@@ -11,6 +11,6 @@
 #import "taglib/tstring.h"
 
 @interface NSString(TLString)
-+ (NSString *) newStringFromTLString: (TagLib::String &) str;
++ (NSString *) newStringFromTLString: (const TagLib::String &) str;
 - (TagLib::String) toTLString;
 @end

@@ -22,12 +22,19 @@
 @dynamic year;
 @synthesize tag = _tag;
 
--(void)didChangeValueForKey:(NSString *)key {
-    if ([self isUpdated]) {
-        [_tag setFrame:key withValue:[self valueForKey:key]];
-        [_tag writeTag];
-    }
-    [super didChangeValueForKey:key];
+-(void)setTag:(Tag *)tag {
+    _tag = tag;
+    [self resetValue];
 }
 
+-(void) resetValue {
+    self.filename = _tag.filename;
+    self.artist = [_tag getFrame:@"artist"];
+    self.album = [_tag getFrame:@"album"];
+    self.title = [_tag getFrame:@"title"];
+    self.comment = [_tag getFrame:@"comment"];
+    self.genre = [_tag getFrame:@"genre"];
+    self.year = [_tag getFrame:@"year"];
+    self.track = [_tag getFrame:@"track"];
+}
 @end

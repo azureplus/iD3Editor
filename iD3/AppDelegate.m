@@ -34,16 +34,6 @@
     TagEntity * tagEntity = [[TagEntity alloc] initWithEntity:tagDescription insertIntoManagedObjectContext:_managedObjectContext];
     
     tagEntity.tag = tag;
-    tagEntity.filename = tag.filename;
-    
-    tagEntity.artist = [tag getFrame:@"artist"];
-    tagEntity.album = [tag getFrame:@"album"];
-    tagEntity.title = [tag getFrame:@"title"];
-    tagEntity.year = [tag getFrame:@"year"];
-    tagEntity.track = [tag getFrame:@"track"];
-    tagEntity.comment = [tag getFrame:@"comment"];
-    tagEntity.genre = [tag getFrame:@"genre"];
-
     [_tagArrayController addObject:tagEntity];
 }
 
@@ -86,10 +76,14 @@
 
 //// test ///
 -(IBAction) convert:(id)sender {
-    NSString * str = [[_tagArrayController selectedObjects][0] valueForKey:@"title"];
-    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-    str = [[NSString alloc] initWithData:[str dataUsingEncoding:NSISOLatin1StringEncoding] encoding:gbkEncoding];
-    NSLog(@"--->%@", str);
+    Tag * tag = [(TagEntity *)([_tagArrayController selectedObjects][0]) tag];
+//    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+//    str = [[NSString alloc] initWithData:[str dataUsingEncoding:NSISOLatin1StringEncoding] encoding:gbkEncoding];
+    NSLog(@"--->%@", [tag frameEncodingConversion:@"artist"]);
+    NSLog(@"--->%@", [tag frameEncodingConversion:@"album"]);
+    NSLog(@"--->%@", [tag frameEncodingConversion:@"title"]);
+    NSLog(@"--->%@", [tag frameEncodingConversion:@"comment"]);
+    NSLog(@"--->%@", [tag frameEncodingConversion:@"genre"]);
 }
 
 @end
