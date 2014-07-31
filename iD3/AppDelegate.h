@@ -22,6 +22,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext * managedObjectContext;
 
 @property (weak, nonatomic) IBOutlet NSArrayController * tagArrayController;
+@property (weak, nonatomic) IBOutlet NSArrayController * encodingArrayController;
 
 -(IBAction) openFiles:(id)sender;
 

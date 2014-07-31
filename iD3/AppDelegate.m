@@ -9,12 +9,14 @@
 #import "AppDelegate.h"
 #import "Tag.h"
 #import "TagEntity.h"
+#import "EncodingEntity.h" // tag char encoding
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     _tags = [[NSMutableArray alloc] initWithCapacity:32];
     [self _initCoreData];
+    [self _initSupportedEncodings];
 }
 
 -(void)_addFile:(NSURL *)fileURL {
@@ -56,6 +58,32 @@
             }
         }
     }];
+}
+
+// suppored char encoding
+-(void)_initSupportedEncodings {
+    NSString *filePath   = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
+    NSDictionary * plist = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+    NSDictionary * encodings = plist[@"Encoding"];
+
+    NSEntityDescription * encodingDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Encoding"];
+    NSArray * regions = plist[@"Ordered Encoding Regions"];
+    
+    for (NSString * region in regions) {
+        NSDictionary * encoding = encodings[region];
+        for (NSString * name in encoding) {
+            NSString * code = encoding[name];
+            UInt intCode = 0;
+            NSScanner * scanner = [NSScanner scannerWithString:code];
+            [scanner setScanLocation:2]; //by pass 0x
+            [scanner scanHexInt: &intCode];
+            
+            EncodingEntity * encodingEntity = [[EncodingEntity alloc] initWithEntity:encodingDescription insertIntoManagedObjectContext:_managedObjectContext];
+            encodingEntity.name = [NSString stringWithFormat:@"%@(%@)", region, name];
+            encodingEntity.code = [NSNumber numberWithUnsignedInteger:intCode];
+            [_encodingArrayController addObject:encodingEntity];
+        }
+    }
 }
 
 //// core data ////
