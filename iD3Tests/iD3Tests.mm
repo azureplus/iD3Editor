@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "NSString_TLString.h"
+#import "NSString_Filename.h"
 #import "Tag.h"
 
 @interface iD3Tests : XCTestCase
@@ -28,10 +29,11 @@
     [super tearDown];
 }
 
-- (void)testTag
+- (void)testFileNameMatch
 {
-    Tag * tag = [[Tag alloc] initWithFile:@"/tmp/sample.mp3"];
-    NSLog(@"--->%@", tag);
+    NSString * filename = @"06.鬼迷心窍 - 李宗盛&周华健:";
+    NSString * pattern = @"- :a:";
+    [filename parseWithPattern:pattern];
 }
 
 @end
