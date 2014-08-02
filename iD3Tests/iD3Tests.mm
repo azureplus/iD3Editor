@@ -10,6 +10,7 @@
 #import "NSString_TLString.h"
 #import "NSString_Filename.h"
 #import "Tag.h"
+#import "TagEntity.h"
 
 @interface iD3Tests : XCTestCase
 
@@ -29,11 +30,16 @@
     [super tearDown];
 }
 
-- (void)testFileNameMatch
-{
-    NSString * filename = @"06.鬼迷心窍 - 李宗盛&周华健:";
-    NSString * pattern = @"- :a:";
-    [filename parseWithPattern:pattern];
+- (void)testFileNameMatch {
+    NSString * filename = @"06.鬼迷心窍 - 李宗盛&周华健 - 1998/";
+    NSString * pattern = @":T.:t - :a - :y/";
+    NSDictionary * dict = [filename tagFromFileNameWithPattern:pattern];
+    NSLog(@"artist--->%@", [dict objectForKey:@"artist"]);
+    NSLog(@"album--->%@", [dict objectForKey:@"album"]);
+    NSLog(@"title--->%@", [dict objectForKey:@"title"]);
+    NSLog(@"comment--->%@", [dict objectForKey:@"comment"]);
+    NSLog(@"genre--->%@", [dict objectForKey:@"genre"]);
+    NSLog(@"track--->%@", [dict objectForKey:@"track"]);
+    NSLog(@"year--->%@", [dict objectForKey:@"year"]);
 }
-
 @end

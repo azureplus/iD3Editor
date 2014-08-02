@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TagEntity.h"
 @interface NSString(FileName)
--(NSDictionary *) parseWithPattern:(NSString *)pattern;
+-(NSDictionary *) tagFromFileNameWithPattern:(NSString *)pattern;
++(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern;
 @end

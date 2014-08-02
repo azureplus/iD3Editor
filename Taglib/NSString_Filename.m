@@ -18,6 +18,7 @@
 #define COLON @"::"
 @implementation NSString(FileName)
 
+//
 //:A - album
 //:a - artist
 //:t - title
@@ -26,8 +27,61 @@
 //:T - track
 //:y - year
 //:: - : itself
--(NSDictionary *) parseWithPattern:(NSString *)pattern {
-    NSDictionary * dic = [self _parseWithPatternHelp:pattern];
+//
+
++(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern {
+    NSMutableString * rv = [NSMutableString stringWithCapacity:32];
+    NSUInteger pl = [pattern length];
+    NSUInteger index = 0;
+    
+    while (index < pl) {
+        unichar ch = [pattern characterAtIndex:index];
+        if (ch == ':' && index < pl - 1) {
+            ch = [pattern characterAtIndex:index + 1];
+            NSString * value = nil;
+            switch (ch) {
+                case 'a':
+                    value = tag.artist;
+                    break;
+                case 'A':
+                    value = tag.album;
+                    break;
+                case 't':
+                    value = tag.title;
+                    break;
+                case 'T':
+                    value = tag.track;
+                    break;
+                case 'c':
+                    value = tag.comment;
+                    break;
+                case 'g':
+                    value = tag.genre;
+                    break;
+                case 'y':
+                    value = tag.year;
+                    break;
+                case ':':
+                    value = @":";
+                    break;
+            }
+            
+            if (value) {
+                [rv appendString:value];
+            }
+            index += 2;
+        } else {
+            [rv appendString:[NSString stringWithCharacters:&ch length:1]];
+            index += 1;
+        }
+    }
+    
+    return rv;
+}
+
+
+-(NSDictionary *) tagFromFileNameWithPattern:(NSString *)pattern {
+    NSDictionary * dic = [self _parseWithPattern:pattern];
     NSMutableDictionary * rv = [NSMutableDictionary dictionaryWithCapacity:5];
     for (NSString * key in dic) {
         NSString * value = [dic objectForKey:key];
@@ -75,7 +129,7 @@
     return ch1 == ch2 ? 1 : -1;
 }
 
--(NSDictionary *) _parseWithPatternHelp:(NSString *)pattern {
+-(NSDictionary *) _parseWithPattern:(NSString *)pattern {
     NSMutableDictionary * tag = [NSMutableDictionary dictionaryWithCapacity:5];
     
     // find out matches with DP
