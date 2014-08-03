@@ -20,6 +20,7 @@
 @dynamic title;
 @dynamic track;
 @dynamic year;
+@dynamic pathDepth;
 @synthesize tag = _tag;
 
 -(void)setTag:(Tag *)tag {
@@ -28,7 +29,7 @@
 }
 
 -(void) resetValue {
-    self.filename = _tag.filename;
+    self.filename = [self _filename:_tag.filename withPathDepth:[self.pathDepth intValue]];
     self.artist = [_tag getFrame:@"artist"];
     self.album = [_tag getFrame:@"album"];
     self.title = [_tag getFrame:@"title"];
@@ -36,5 +37,24 @@
     self.genre = [_tag getFrame:@"genre"];
     self.year = [_tag getFrame:@"year"];
     self.track = [_tag getFrame:@"track"];
+}
+
+-(NSString *)_filename:(NSString *) filename withPathDepth:(int) depth {
+    NSArray * components = [filename pathComponents];
+    NSMutableString * rv = [NSMutableString stringWithCapacity:256];
+    
+    NSUInteger cc = components.count;
+    NSInteger start = cc - 1 - depth;
+    start = start >= 0 ? start : 0;
+    NSInteger index = start;
+    
+    while (index < cc) {
+        if (index > start && ![components[index - 1] isEqualToString:@"/"])
+            [rv appendString:@"/"];
+        [rv appendString:components[index]];
+        index++;
+    }
+    
+    return rv;
 }
 @end

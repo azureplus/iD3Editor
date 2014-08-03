@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic, assign) IBOutlet NSTabView * tabview;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tPattern;
 
 - (IBAction) cancel:(id)sender;
 - (IBAction) preview: (id)sender;

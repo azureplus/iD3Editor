@@ -80,10 +80,11 @@
 }
 
 
--(NSDictionary *) tagFromFileNameWithPattern:(NSString *)pattern {
+-(NSDictionary *) parse:(NSString *)pattern {
     NSDictionary * dic = [self _parseWithPattern:pattern];
     NSMutableDictionary * rv = [NSMutableDictionary dictionaryWithCapacity:5];
     for (NSString * key in dic) {
+        //value cannot be null using current algorithm
         NSString * value = [dic objectForKey:key];
         if ([key isEqualTo:ARTIST]) {
             [rv setObject:value forKey:@"artist"];

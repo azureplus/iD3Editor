@@ -22,7 +22,12 @@
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="F5c-vU-uYf" customClass="EncodingWindowDelegate"/>
-        <customObject id="UNB-Mf-rX9" customClass="TagAndFileNameWindowDelegate"/>
+        <customObject id="UNB-Mf-rX9" customClass="TagAndFileNameWindowDelegate">
+            <connections>
+                <outlet property="n2tPattern" destination="66P-Ew-vta" id="SXN-cp-QiZ"/>
+                <outlet property="tabview" destination="muX-aL-Ye1" id="Nzm-wj-0de"/>
+            </connections>
+        </customObject>
         <arrayController mode="entity" entityName="Tag" id="j1s-e0-8eb" userLabel="Tags">
             <connections>
                 <binding destination="Voe-Tx-rLC" name="managedObjectContext" keyPath="managedObjectContext" id="s3t-Sn-cpc"/>
@@ -1012,6 +1017,35 @@ IA
                                             </binding>
                                         </connections>
                                     </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5WX-wp-VzG">
+                                        <rect key="frame" x="20" y="405" width="70" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="File Name:" id="sNZ-0Z-T9d">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOi-Gi-6eV">
+                                        <rect key="frame" x="22" y="323" width="273" height="74"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" truncatesLastVisibleLine="YES" sendsActionOnEndEditing="YES" borderStyle="border" title="Multiline Label" id="J85-CM-9Sp">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="j1s-e0-8eb" name="value" keyPath="selection.filename" id="GBJ-vY-chK"/>
+                                        </connections>
+                                    </textField>
+                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jxN-9i-MmM">
+                                        <rect key="frame" x="198" y="403" width="91" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" title="Name Only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qYw-5z-ah9">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
                                 </subviews>
                             </customView>
                         </subviews>
@@ -1159,13 +1193,13 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
-                            <tabViewItem label="Tag To File Name" identifier="1" id="YtW-dZ-7Ei">
+                            <tabViewItem label="Tag To File Name" identifier="TAG_NAME" id="YtW-dZ-7Ei">
                                 <view key="view" ambiguous="YES" id="0GG-96-yDB">
-                                    <rect key="frame" x="10" y="33" width="131" height="0.0"/>
+                                    <rect key="frame" x="10" y="33" width="434" height="152"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoh-wL-wLB">
-                                            <rect key="frame" x="17" y="-135" width="400" height="22"/>
+                                            <rect key="frame" x="17" y="17" width="400" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="cE1-MS-1qm">
                                                 <font key="font" metaFont="system"/>
@@ -1176,7 +1210,7 @@ Gw
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="File Name To Tag" identifier="2" id="7t1-FB-zlJ">
+                            <tabViewItem label="File Name To Tag" identifier="NAME_TAG" id="7t1-FB-zlJ">
                                 <view key="view" id="I0w-jf-rxi">
                                     <rect key="frame" x="10" y="33" width="434" height="152"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

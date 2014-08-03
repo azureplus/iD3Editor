@@ -31,9 +31,9 @@
 }
 
 - (void)testFileNameMatch {
-    NSString * filename = @"06.鬼迷心窍 - 李宗盛&周华健 - 1998/";
-    NSString * pattern = @":T.:t - :a - :y/";
-    NSDictionary * dict = [filename tagFromFileNameWithPattern:pattern];
+    NSString * filename = @"-sS-";
+    NSString * pattern = @"-s:T-";
+    NSDictionary * dict = [filename parse:pattern];
     NSLog(@"artist--->%@", [dict objectForKey:@"artist"]);
     NSLog(@"album--->%@", [dict objectForKey:@"album"]);
     NSLog(@"title--->%@", [dict objectForKey:@"title"]);

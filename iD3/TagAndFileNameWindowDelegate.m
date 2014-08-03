@@ -7,6 +7,7 @@
 //
 
 #import "TagAndFileNameWindowDelegate.h"
+#import "AppDelegate.h"
 
 @implementation TagAndFileNameWindowDelegate
 -(void) windowWillClose:(NSNotification *)notification {
@@ -18,7 +19,15 @@
 }
 
 - (IBAction) preview: (id)sender {
-    
+    NSString * tabID = [[self.tabview selectedTabViewItem] identifier];
+    NSLog(@"--->%@", tabID);
+    if ([tabID isEqualToString:@"NAME_TAG"]) {
+        NSString * pattern = [self.n2tPattern stringValue];
+        NSLog(@"-->pattern %@ <<<<", pattern);
+        [(AppDelegate *)[NSApp delegate] filenameToTag:pattern];
+    } else if ([tabID isEqualTo:@"TAG_NAME"]){
+        
+    }
 }
 
 @end

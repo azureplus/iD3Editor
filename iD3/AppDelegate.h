@@ -29,4 +29,7 @@
 -(IBAction) openFiles:(id)sender;
 -(IBAction) showEncodingWindow:(id)sender;
 -(IBAction) showFileNameAndTagWindow:(id)sender;
+
+/// filename tag
+-(void) filenameToTag:(NSString *)pattern;
 @end

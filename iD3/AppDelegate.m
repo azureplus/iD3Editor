@@ -9,8 +9,13 @@
 #import "AppDelegate.h"
 #import "Tag.h"
 #import "TagEntity.h"
+
+// tag encodings
+#import "EncodingEntity.h"
 #import "TagEntity_Encoding.h"
-#import "EncodingEntity.h" // tag char encoding
+
+// conversion between tag and filename
+#import "TagEntity_Filename.h"
 
 @implementation AppDelegate
 
@@ -142,12 +147,12 @@
     
 }
 
-//-(IBAction) encodingWindowCancel:(id)sender {
-//    [NSApp stopModalWithCode:0];
-//}
-//
-//-(IBAction) toolWindowSave:(id)sender {
-//    [NSApp stopModalWithCode:1];
-//}
+// convert filename to tag
+-(void) filenameToTag:(NSString *)pattern {
+    NSArray * selectedTags = _tagArrayController.selectedObjects;
+    for (TagEntity * tag in selectedTags) {
+        [tag fromFilenameWithPattern:pattern];
+    }
+}
 
 @end
