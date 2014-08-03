@@ -121,12 +121,13 @@
     }];
 }
 
--(IBAction) showToolWindow:(id)sender {
+-(IBAction) showEncodingWindow:(id)sender {
     [_encodingArrayController setSelectedObjects:@[]];
-    NSUInteger toolCode = [NSApp runModalForWindow:self.toolWindow];
-    [self.toolWindow orderOut:nil];
+    NSUInteger windowCode = [NSApp runModalForWindow:self.encodingWindow];
+    [self.encodingWindow orderOut:nil];
+    
     for (TagEntity * entity in _tagArrayController.arrangedObjects) {
-        if (toolCode) {
+        if (windowCode) {
             //TODO write tag back to file
         } else {
             [entity resetValue];
@@ -134,12 +135,19 @@
     }
 }
 
--(IBAction) toolWindowCancel:(id)sender {
-    [NSApp stopModalWithCode:0];
+-(IBAction) showFileNameAndTagWindow:(id)sender {
+    NSUInteger windowCode = [NSApp runModalForWindow:self.filenameWindow];
+    [self.filenameWindow orderOut:nil];
+    
+    
 }
 
--(IBAction) toolWindowSave:(id)sender {
-    [NSApp stopModalWithCode:1];
-}
+//-(IBAction) encodingWindowCancel:(id)sender {
+//    [NSApp stopModalWithCode:0];
+//}
+//
+//-(IBAction) toolWindowSave:(id)sender {
+//    [NSApp stopModalWithCode:1];
+//}
 
 @end

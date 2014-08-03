@@ -7,15 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TagSource.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, TagSource> {
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSMutableArray * _tags;
 }
 
 @property (readonly, nonatomic) NSArray * tags;
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet NSWindow *toolWindow;
+@property (assign) IBOutlet NSWindow * window;
+@property (assign) IBOutlet NSWindow * encodingWindow;
+@property (assign) IBOutlet NSWindow * filenameWindow;
 
 /// core data
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator * persistentStoreCoordinator;
@@ -27,7 +27,6 @@
 
 /// actions
 -(IBAction) openFiles:(id)sender;
--(IBAction) showToolWindow:(id)sender;
--(IBAction) toolWindowCancel:(id)sender;
--(IBAction) toolWindowSave:(id)sender;
+-(IBAction) showEncodingWindow:(id)sender;
+-(IBAction) showFileNameAndTagWindow:(id)sender;
 @end
