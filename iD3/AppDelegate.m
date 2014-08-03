@@ -106,7 +106,7 @@
     [panel setCanChooseFiles:YES];
     [panel setAllowsMultipleSelection:YES];
     
-    [panel beginWithCompletionHandler:^(NSInteger result) {
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
             NSUInteger oldSize = [_tags count];
             NSArray * urls = [panel URLs];
