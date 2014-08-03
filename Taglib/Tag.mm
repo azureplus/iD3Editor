@@ -73,31 +73,34 @@
     }
 }
 
--(NSString *)_frameEncodingConversionHelp: (const TagLib::String &) value{
+-(NSString *)_convertTLString: (const TagLib::String &) value toEncoding: (unsigned int) encoding{
     if (value.isAscii() || value.isLatin1()) {
         TagLib::ByteVector bv = value.data(TagLib::String::Type::Latin1);
-        NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-        return [[NSString alloc] initWithData:[NSData dataWithBytes:bv.data() length:bv.size()] encoding:gbkEncoding];
+        NSStringEncoding target = CFStringConvertEncodingToNSStringEncoding(encoding);
+        NSString * result = [[NSString alloc] initWithData:[NSData dataWithBytes:bv.data() length:bv.size()] encoding:target];
+        return result;
     } else {
         return nil;
     }
 }
 
--(NSString *)frameEncodingConversion:(NSString *)frameId {
+//
+// returns nil if encoding conversion is not needed (e.g. the original encoding is already UTF)
+//
+-(NSString *) getFrame:(NSString *) frameId withEncoding:(unsigned int)encoding {
     TagLib::Tag * tag = _fileRef->file()->tag();
-    NSString  * rv = nil;
+    NSString * rv = nil;
     if ([frameId isEqualTo:@"artist"]) {
-        rv = [self _frameEncodingConversionHelp: tag->artist()];
+        rv = [self _convertTLString: tag->artist() toEncoding:encoding];
     } else if ([frameId isEqualToString:@"album"]) {
-        rv = [self _frameEncodingConversionHelp: tag->album()];
+        rv = [self _convertTLString: tag->album() toEncoding:encoding];
     } else if ([frameId isEqualToString:@"title"]) {
-        rv = [self _frameEncodingConversionHelp: tag->title()];
+        rv = [self _convertTLString: tag->title() toEncoding:encoding];
     }else if ([frameId isEqualToString:@"comment"]) {
-        rv = [self _frameEncodingConversionHelp: tag->comment()];
+        rv = [self _convertTLString: tag->comment() toEncoding:encoding];
     } else if ([frameId isEqualToString:@"genre"]) {
-        rv = [self _frameEncodingConversionHelp: tag->genre()];
+        rv = [self _convertTLString: tag->genre() toEncoding:encoding];
     }
-    
     return rv;
 }
 

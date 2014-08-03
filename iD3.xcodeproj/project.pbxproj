@@ -15,6 +15,8 @@
 		F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F79BCE191989FD5900CC5F02 /* iD3.plist */; };
 		F79BCE20198A7F5F00CC5F02 /* EncodingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE1F198A7F5F00CC5F02 /* EncodingEntity.m */; };
 		F79BCE24198A865900CC5F02 /* NSString_Filename.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE23198A865900CC5F02 /* NSString_Filename.m */; };
+		F79BCE28198D200C00CC5F02 /* TagEntity_Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE27198D200C00CC5F02 /* TagEntity_Encoding.m */; };
+		F79BCE2B198DE2F100CC5F02 /* ToolWindowDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE2A198DE2F100CC5F02 /* ToolWindowDelegate.m */; };
 		F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E994E61983418000DDE9B4 /* Cocoa.framework */; };
 		F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E994EF1983418000DDE9B4 /* InfoPlist.strings */; };
 		F7E994F31983418000DDE9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F21983418000DDE9B4 /* main.m */; };
@@ -57,6 +59,10 @@
 		F79BCE1F198A7F5F00CC5F02 /* EncodingEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EncodingEntity.m; path = DataModel/EncodingEntity.m; sourceTree = "<group>"; };
 		F79BCE22198A865900CC5F02 /* NSString_Filename.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_Filename.h; path = Taglib/NSString_Filename.h; sourceTree = "<group>"; };
 		F79BCE23198A865900CC5F02 /* NSString_Filename.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSString_Filename.m; path = Taglib/NSString_Filename.m; sourceTree = "<group>"; };
+		F79BCE26198D200C00CC5F02 /* TagEntity_Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagEntity_Encoding.h; path = DataModel/TagEntity_Encoding.h; sourceTree = "<group>"; };
+		F79BCE27198D200C00CC5F02 /* TagEntity_Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagEntity_Encoding.m; path = DataModel/TagEntity_Encoding.m; sourceTree = "<group>"; };
+		F79BCE29198DE2F100CC5F02 /* ToolWindowDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolWindowDelegate.h; sourceTree = "<group>"; };
+		F79BCE2A198DE2F100CC5F02 /* ToolWindowDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolWindowDelegate.m; sourceTree = "<group>"; };
 		F7E994E31983418000DDE9B4 /* iD3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iD3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -113,6 +119,8 @@
 				F79BCE1F198A7F5F00CC5F02 /* EncodingEntity.m */,
 				F79BCE1519889BB500CC5F02 /* TagEntity.h */,
 				F79BCE1619889BB500CC5F02 /* TagEntity.m */,
+				F79BCE26198D200C00CC5F02 /* TagEntity_Encoding.h */,
+				F79BCE27198D200C00CC5F02 /* TagEntity_Encoding.m */,
 				F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */,
 			);
 			name = DataModel;
@@ -180,6 +188,8 @@
 				F79BCE191989FD5900CC5F02 /* iD3.plist */,
 				F7E994F81983418000DDE9B4 /* AppDelegate.h */,
 				F7E994F91983418000DDE9B4 /* AppDelegate.m */,
+				F79BCE29198DE2F100CC5F02 /* ToolWindowDelegate.h */,
+				F79BCE2A198DE2F100CC5F02 /* ToolWindowDelegate.m */,
 				F7E994FB1983418000DDE9B4 /* MainMenu.xib */,
 				F77F88E3198758DC00B1B3CC /* ID3TableViewDelegate.h */,
 				F77F88E4198758DC00B1B3CC /* ID3TableViewDelegate.m */,
@@ -337,8 +347,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F79BCE2B198DE2F100CC5F02 /* ToolWindowDelegate.m in Sources */,
 				F7E9952A198593D300DDE9B4 /* NSString_TLString.mm in Sources */,
 				F7E9951F198543A200DDE9B4 /* Tag.mm in Sources */,
+				F79BCE28198D200C00CC5F02 /* TagEntity_Encoding.m in Sources */,
 				F7E994FA1983418000DDE9B4 /* AppDelegate.m in Sources */,
 				F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */,
 				F79BCE20198A7F5F00CC5F02 /* EncodingEntity.m in Sources */,

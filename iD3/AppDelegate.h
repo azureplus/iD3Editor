@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSArray * tags;
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSWindow *toolWindow;
 
 /// core data
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator * persistentStoreCoordinator;
@@ -24,9 +25,9 @@
 @property (weak, nonatomic) IBOutlet NSArrayController * tagArrayController;
 @property (weak, nonatomic) IBOutlet NSArrayController * encodingArrayController;
 
+/// actions
 -(IBAction) openFiles:(id)sender;
-
-/// test encoding conversion
--(IBAction) convert:(id)sender;
-
+-(IBAction) showToolWindow:(id)sender;
+-(IBAction) toolWindowCancel:(id)sender;
+-(IBAction) toolWindowSave:(id)sender;
 @end

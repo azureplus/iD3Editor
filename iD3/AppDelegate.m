@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Tag.h"
 #import "TagEntity.h"
+#import "TagEntity_Encoding.h"
 #import "EncodingEntity.h" // tag char encoding
 
 @implementation AppDelegate
@@ -17,6 +18,7 @@
     _tags = [[NSMutableArray alloc] initWithCapacity:32];
     [self _initCoreData];
     [self _initSupportedEncodings];
+    [_encodingArrayController addObserver:self forKeyPath:@"selection" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)  context:nil];
 }
 
 -(void)_addFile:(NSURL *)fileURL {
@@ -39,6 +41,65 @@
     [_tagArrayController addObject:tagEntity];
 }
 
+// suppored char encoding
+-(void)_initSupportedEncodings {
+    NSString *filePath   = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
+    NSDictionary * plist = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+    NSDictionary * encodings = plist[@"Encoding"];
+
+    NSEntityDescription * encodingDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Encoding"];
+    NSArray * regions = plist[@"Ordered Encoding Regions"];
+    
+    for (NSString * region in regions) {
+        NSDictionary * encoding = encodings[region];
+        for (NSString * name in encoding) {
+            NSString * code = encoding[name];
+            UInt intCode = 0;
+            NSScanner * scanner = [NSScanner scannerWithString:code];
+            [scanner scanHexInt: &intCode];
+            
+            EncodingEntity * encodingEntity = [[EncodingEntity alloc] initWithEntity:encodingDescription insertIntoManagedObjectContext:_managedObjectContext];
+            encodingEntity.name = [NSString stringWithFormat:@"%@(%@)", region, name];
+            encodingEntity.code = [NSNumber numberWithUnsignedInteger:intCode];
+            [_encodingArrayController addObject:encodingEntity];
+            [_encodingArrayController setSelectedObjects:@[]];
+        }
+    }
+}
+
+//// core data ////
+-(void) _initCoreData {
+    // the model definition file
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    
+    //
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
+    [_persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:nil];
+    
+    //
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    [_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];    
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    if (object == _encodingArrayController && [keyPath isEqualTo:@"selection"]) {
+        NSArray * selectedEncodings = _encodingArrayController.selectedObjects;
+        if (selectedEncodings.count >= 1) {
+            EncodingEntity * encodignEntity = selectedEncodings[0];
+            NSArray * selectedTags = _tagArrayController.selectedObjects;
+            for (TagEntity * tag in selectedTags) {
+                [tag convertFramestoEncoding:[encodignEntity.code unsignedIntValue]];
+            }
+        }
+        
+    }
+}
+
+/// actions
 -(IBAction) openFiles:(id)sender {
     NSOpenPanel * panel = [NSOpenPanel openPanel];
     [panel setCanChooseDirectories:NO];
@@ -60,58 +121,25 @@
     }];
 }
 
-// suppored char encoding
--(void)_initSupportedEncodings {
-    NSString *filePath   = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
-    NSDictionary * plist = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-    NSDictionary * encodings = plist[@"Encoding"];
-
-    NSEntityDescription * encodingDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Encoding"];
-    NSArray * regions = plist[@"Ordered Encoding Regions"];
-    
-    for (NSString * region in regions) {
-        NSDictionary * encoding = encodings[region];
-        for (NSString * name in encoding) {
-            NSString * code = encoding[name];
-            UInt intCode = 0;
-            NSScanner * scanner = [NSScanner scannerWithString:code];
-            [scanner setScanLocation:2]; //by pass 0x
-            [scanner scanHexInt: &intCode];
-            
-            EncodingEntity * encodingEntity = [[EncodingEntity alloc] initWithEntity:encodingDescription insertIntoManagedObjectContext:_managedObjectContext];
-            encodingEntity.name = [NSString stringWithFormat:@"%@(%@)", region, name];
-            encodingEntity.code = [NSNumber numberWithUnsignedInteger:intCode];
-            [_encodingArrayController addObject:encodingEntity];
+-(IBAction) showToolWindow:(id)sender {
+    [_encodingArrayController setSelectedObjects:@[]];
+    NSUInteger toolCode = [NSApp runModalForWindow:self.toolWindow];
+    [self.toolWindow orderOut:nil];
+    for (TagEntity * entity in _tagArrayController.arrangedObjects) {
+        if (toolCode) {
+            //TODO write tag back to file
+        } else {
+            [entity resetValue];
         }
     }
 }
 
-//// core data ////
--(void) _initCoreData {
-    // the model definition file
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    
-    //
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
-    [_persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:nil];
-    
-    //
-    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    [_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];    
+-(IBAction) toolWindowCancel:(id)sender {
+    [NSApp stopModalWithCode:0];
 }
 
-
-//// test ///
--(IBAction) convert:(id)sender {
-    Tag * tag = [(TagEntity *)([_tagArrayController selectedObjects][0]) tag];
-//    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-//    str = [[NSString alloc] initWithData:[str dataUsingEncoding:NSISOLatin1StringEncoding] encoding:gbkEncoding];
-    NSLog(@"--->%@", [tag frameEncodingConversion:@"artist"]);
-    NSLog(@"--->%@", [tag frameEncodingConversion:@"album"]);
-    NSLog(@"--->%@", [tag frameEncodingConversion:@"title"]);
-    NSLog(@"--->%@", [tag frameEncodingConversion:@"comment"]);
-    NSLog(@"--->%@", [tag frameEncodingConversion:@"genre"]);
+-(IBAction) toolWindowSave:(id)sender {
+    [NSApp stopModalWithCode:1];
 }
 
 @end

@@ -23,6 +23,6 @@
 -(id) initWithFile: (NSString *) fileName;
 -(NSString *) getFrame:(NSString *) frameId;
 -(void)setFrame:(NSString *) frameId withValue:(NSString *) value;
--(NSString *)frameEncodingConversion:(NSString *)frameId;
+-(NSString *) getFrame:(NSString *) frameId withEncoding:(unsigned int)encoding;
 -(void) writeTag;
 @end

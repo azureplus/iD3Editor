@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="encodingArrayController" destination="su6-ab-bjG" id="Poh-pf-sZi"/>
                 <outlet property="tagArrayController" destination="j1s-e0-8eb" id="ORO-bS-crS"/>
+                <outlet property="toolWindow" destination="9rE-sh-TII" id="IOF-g6-jYO"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -24,6 +25,7 @@
                 <outlet property="tableView" destination="Gxo-e1-Vhj" id="g3x-C6-w3S"/>
             </connections>
         </customObject>
+        <customObject id="QdA-sf-0Dc" customClass="ToolWindowDelegate"/>
         <arrayController mode="entity" entityName="Tag" id="j1s-e0-8eb" userLabel="Tags">
             <connections>
                 <binding destination="Voe-Tx-rLC" name="managedObjectContext" keyPath="managedObjectContext" id="s3t-Sn-cpc"/>
@@ -1052,6 +1054,12 @@ IA
                             <action selector="openFiles:" target="Voe-Tx-rLC" id="LuJ-Na-ezJ"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="1F34DC70-1C78-4B4E-91E2-F9408238AAB5" label="show tool" paletteLabel="show tool" tag="-1" autovalidates="NO" id="Z6X-Qd-jHX">
+                        <connections>
+                            <action selector="showToolWindow:" target="Voe-Tx-rLC" id="kc0-Nq-ovm"/>
+                            <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="ets-ze-J6J"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="uzR-2n-L4l"/>
@@ -1059,18 +1067,19 @@ IA
                     <toolbarItem reference="ocH-jt-LHv"/>
                     <toolbarItem reference="V4l-5A-y3c"/>
                     <toolbarItem reference="7sS-J5-nj1"/>
+                    <toolbarItem reference="Z6X-Qd-jHX"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="zIm-2T-wMd"/>
-        <window title="Tag Tools" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="9rE-sh-TII">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Tag Tools" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="9rE-sh-TII">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="535" height="388"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="W8j-g3-vU6">
                 <rect key="frame" x="0.0" y="0.0" width="535" height="388"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y2H-ct-w10">
                         <rect key="frame" x="13" y="48" width="509" height="334"/>
@@ -1107,6 +1116,9 @@ IA
 DQ
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="toolWindowSave:" target="Voe-Tx-rLC" id="iLL-ib-Yf9"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QqV-A9-Zkh">
                         <rect key="frame" x="338" y="20" width="82" height="32"/>
@@ -1118,6 +1130,9 @@ DQ
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="toolWindowCancel:" target="Voe-Tx-rLC" id="vDc-UH-stI"/>
+                        </connections>
                     </button>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PF-2j-zMF">
                         <rect key="frame" x="20" y="85" width="495" height="265"/>
@@ -1171,7 +1186,7 @@ Gw
                             <rect key="frame" x="-7" y="2" width="0.0" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" horizontal="NO" id="cNK-Ne-CKK">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="cNK-Ne-CKK">
                             <rect key="frame" x="-14" y="9" width="15" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -1182,6 +1197,9 @@ Gw
                     </scrollView>
                 </subviews>
             </view>
+            <connections>
+                <outlet property="delegate" destination="QdA-sf-0Dc" id="anf-no-LhI"/>
+            </connections>
         </window>
     </objects>
 </document>
