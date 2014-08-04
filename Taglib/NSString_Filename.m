@@ -30,6 +30,20 @@
 //
 
 +(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern {
+    NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:5];
+    frames[@"artist"] = tag.artist;
+    frames[@"album"] = tag.album;
+    frames[@"title"] = tag.title;
+    frames[@"comment"] = tag.comment;
+    frames[@"genre"] = tag.genre;
+    
+    frames[@"track"] = tag.track;
+    frames[@"year"] = tag.year;
+    
+    return [NSString fromFrames:frames withPattern:pattern];
+}
+
++(NSString *) fromFrames: (NSDictionary *)frames withPattern:(NSString *)pattern {
     NSMutableString * rv = [NSMutableString stringWithCapacity:32];
     NSUInteger pl = [pattern length];
     NSUInteger index = 0;
@@ -41,25 +55,25 @@
             NSString * value = nil;
             switch (ch) {
                 case 'a':
-                    value = tag.artist;
+                    value = frames[@"artist"];
                     break;
                 case 'A':
-                    value = tag.album;
+                    value = frames[@"album"];
                     break;
                 case 't':
-                    value = tag.title;
+                    value = frames[@"title"];
                     break;
                 case 'T':
-                    value = tag.track;
+                    value = frames[@"track"];
                     break;
                 case 'c':
-                    value = tag.comment;
+                    value = frames[@"comment"];
                     break;
                 case 'g':
-                    value = tag.genre;
+                    value = frames[@"genre"];
                     break;
                 case 'y':
-                    value = tag.year;
+                    value = frames[@"year"];
                     break;
                 case ':':
                     value = @":";
@@ -77,8 +91,8 @@
     }
     
     return rv;
+    
 }
-
 
 -(NSDictionary *) parse:(NSString *)pattern {
     NSDictionary * dic = [self _parseWithPattern:pattern];

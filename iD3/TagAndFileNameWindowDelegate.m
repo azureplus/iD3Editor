@@ -77,6 +77,17 @@
             
             [field setStringValue:tagFrames[key]];
         }
+    } else if (textField == _t2nPattern) {
+        NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:7];
+        frames[@"artist"] = [_t2nArtist stringValue];
+        frames[@"album"] = [_t2nAlbum stringValue];
+        frames[@"title"] = [_t2nTitle stringValue];
+        frames[@"comment"] = [_t2nComment stringValue];
+        frames[@"genre"] = [_t2nGenre stringValue];
+        frames[@"track"] = [_t2nTrack stringValue];
+        frames[@"year"] = [_t2nYear stringValue];
+        
+        [_t2nFilename setStringValue:[NSString fromFrames:frames withPattern:pattern]];
     }
 }
 

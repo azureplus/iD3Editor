@@ -11,4 +11,5 @@
 @interface NSString(FileName)
 -(NSDictionary *) parse:(NSString *)pattern;
 +(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern;
++(NSString *) fromFrames: (NSDictionary *)frames withPattern:(NSString *)pattern;
 @end
