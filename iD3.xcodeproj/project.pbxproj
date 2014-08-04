@@ -17,6 +17,7 @@
 		F79BCE2E198DF84200CC5F02 /* EncodingWindowDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE2D198DF84200CC5F02 /* EncodingWindowDelegate.m */; };
 		F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE30198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m */; };
 		F79BCE35198E74B300CC5F02 /* TagEntity_Filename.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE34198E74B300CC5F02 /* TagEntity_Filename.m */; };
+		F79BCE3E198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE3D198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m */; };
 		F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E994E61983418000DDE9B4 /* Cocoa.framework */; };
 		F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E994EF1983418000DDE9B4 /* InfoPlist.strings */; };
 		F7E994F31983418000DDE9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F21983418000DDE9B4 /* main.m */; };
@@ -62,6 +63,8 @@
 		F79BCE30198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagAndFileNameWindowDelegate.m; sourceTree = "<group>"; };
 		F79BCE33198E74B300CC5F02 /* TagEntity_Filename.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagEntity_Filename.h; path = DataModel/TagEntity_Filename.h; sourceTree = "<group>"; };
 		F79BCE34198E74B300CC5F02 /* TagEntity_Filename.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagEntity_Filename.m; path = DataModel/TagEntity_Filename.m; sourceTree = "<group>"; };
+		F79BCE3C198F27ED00CC5F02 /* FirstSelectedFileValueTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstSelectedFileValueTransform.h; path = DataModel/FirstSelectedFileValueTransform.h; sourceTree = "<group>"; };
+		F79BCE3D198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstSelectedFileValueTransform.m; path = DataModel/FirstSelectedFileValueTransform.m; sourceTree = "<group>"; };
 		F7E994E31983418000DDE9B4 /* iD3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iD3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -122,6 +125,8 @@
 				F79BCE27198D200C00CC5F02 /* TagEntity_Encoding.m */,
 				F79BCE33198E74B300CC5F02 /* TagEntity_Filename.h */,
 				F79BCE34198E74B300CC5F02 /* TagEntity_Filename.m */,
+				F79BCE3C198F27ED00CC5F02 /* FirstSelectedFileValueTransform.h */,
+				F79BCE3D198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m */,
 				F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */,
 			);
 			name = DataModel;
@@ -364,6 +369,7 @@
 				F79BCE35198E74B300CC5F02 /* TagEntity_Filename.m in Sources */,
 				F7E994F31983418000DDE9B4 /* main.m in Sources */,
 				F79BCE2E198DF84200CC5F02 /* EncodingWindowDelegate.m in Sources */,
+				F79BCE3E198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m in Sources */,
 				F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

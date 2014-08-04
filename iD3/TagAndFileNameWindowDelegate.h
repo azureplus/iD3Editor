@@ -13,7 +13,17 @@
 }
 
 @property (nonatomic, assign) IBOutlet NSTabView * tabview;
+
+// n2t tab
 @property (nonatomic, assign) IBOutlet NSTextField * n2tPattern;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tFilename;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tArtist;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tAlbum;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tTitle;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tTrack;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tComment;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tGenre;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tYear;
 
 - (IBAction) cancel:(id)sender;
 - (IBAction) preview: (id)sender;
