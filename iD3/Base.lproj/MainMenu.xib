@@ -24,6 +24,7 @@
         <customObject id="F5c-vU-uYf" customClass="EncodingWindowDelegate"/>
         <customObject id="UNB-Mf-rX9" customClass="TagAndFileNameWindowDelegate">
             <connections>
+                <outlet property="filenameOnly" destination="stw-fD-uoy" id="QXY-8C-xye"/>
                 <outlet property="n2tAlbum" destination="GMm-R5-QN5" id="0Ib-bc-N9k"/>
                 <outlet property="n2tArtist" destination="UPe-ht-pl1" id="Hgb-5j-N57"/>
                 <outlet property="n2tComment" destination="LMw-6t-1xR" id="t1J-qC-UUK"/>
@@ -1392,6 +1393,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="filenameOnlyClicked:" target="UNB-Mf-rX9" id="3TX-08-k8S"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>

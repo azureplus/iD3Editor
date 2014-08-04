@@ -12,6 +12,7 @@
     NSMutableArray * _tags;
 }
 
+// tag lib tags
 @property (readonly, nonatomic) NSArray * tags;
 @property (assign) IBOutlet NSWindow * window;
 @property (assign) IBOutlet NSWindow * encodingWindow;
@@ -32,4 +33,8 @@
 
 /// filename tag
 -(void) filenameToTag:(NSString *)pattern;
+
+/// filename path depth
+-(NSUInteger) pathDepth;
+-(void) setPathDepth: (NSUInteger) depth;
 @end

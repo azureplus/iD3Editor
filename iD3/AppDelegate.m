@@ -155,4 +155,22 @@
     }
 }
 
+// get path depth
+-(NSUInteger) pathDepth {
+    if ([_tagArrayController.arrangedObjects count] > 0) {
+        TagEntity * te = _tagArrayController.arrangedObjects[0];
+        return [te.pathDepth unsignedIntegerValue];
+    } else {
+        return 0;
+    }
+}
+
+
+// set path depth
+-(void) setPathDepth: (NSUInteger) depth {
+    for (TagEntity * te in _tagArrayController.arrangedObjects) {
+        te.pathDepth = [NSNumber numberWithUnsignedInteger:depth];
+    }
+}
+
 @end

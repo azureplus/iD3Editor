@@ -25,6 +25,9 @@
 @property (nonatomic, assign) IBOutlet NSTextField * n2tGenre;
 @property (nonatomic, assign) IBOutlet NSTextField * n2tYear;
 
+@property (nonatomic, assign) IBOutlet NSButton * filenameOnly;
+
 - (IBAction) cancel:(id)sender;
 - (IBAction) preview: (id)sender;
+- (IBAction) filenameOnlyClicked: (id)sender;
 @end

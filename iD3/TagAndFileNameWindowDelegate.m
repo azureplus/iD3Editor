@@ -15,6 +15,15 @@
     [NSApp stopModalWithCode:0];
 }
 
+- (void)windowDidBecomeMain:(NSNotification *)notification {
+     NSUInteger pathDepth = [(AppDelegate *) [NSApp delegate] pathDepth];
+    if (pathDepth == 0) {
+        [_filenameOnly setState:NSOnState];
+    } else {
+        [_filenameOnly setState:NSOffState];
+    }
+}
+
 - (IBAction) cancel:(id)sender {
     [NSApp stopModalWithCode:0];
 }
@@ -27,6 +36,16 @@
         [(AppDelegate *)[NSApp delegate] filenameToTag:pattern];
     } else if ([tabID isEqualTo:@"TAG_NAME"]){
         
+    }
+}
+
+- (IBAction) filenameOnlyClicked: (id)sender {
+    AppDelegate * delegate = [NSApp delegate];
+    NSButton * filenameOnlyCheckBox = sender;
+    if (filenameOnlyCheckBox.state == NSOnState) {
+        [delegate setPathDepth:0];
+    } else {
+        [delegate setPathDepth:1];
     }
 }
 

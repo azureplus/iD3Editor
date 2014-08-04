@@ -8,6 +8,9 @@
 
 #import "FirstSelectedFileValueTransform.h"
 
+// This value transform is being used in window "Tag and File Name".
+// In the window, there is a multi-line label showing a sample selected filename.
+// This multi-line label makes use of this transform to display the name of first selected files.
 // returns the first selected file name
 @implementation FirstSelectedFileValueTransform
 + (Class)transformedValueClass {
