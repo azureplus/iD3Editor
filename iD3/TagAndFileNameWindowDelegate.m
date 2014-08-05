@@ -28,14 +28,15 @@
     [NSApp stopModalWithCode:0];
 }
 
-- (IBAction) preview: (id)sender {
+- (IBAction) apply: (id)sender {
     NSString * tabID = [[self.tabview selectedTabViewItem] identifier];
 
     if ([tabID isEqualToString:@"NAME_TAG"]) {
         NSString * pattern = [self.n2tPattern stringValue];
         [(AppDelegate *)[NSApp delegate] filenameToTag:pattern];
     } else if ([tabID isEqualTo:@"TAG_NAME"]){
-        
+        NSString * pattern = [self.t2nPattern stringValue];
+        [(AppDelegate *)[NSApp delegate] tagToFilename:pattern];
     }
 }
 

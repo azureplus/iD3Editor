@@ -46,7 +46,7 @@
                 <outlet property="tabview" destination="muX-aL-Ye1" id="Nzm-wj-0de"/>
             </connections>
         </customObject>
-        <arrayController mode="entity" entityName="Tag" id="j1s-e0-8eb" userLabel="Tags">
+        <arrayController objectClassName="TagEntity" id="j1s-e0-8eb" userLabel="Tags">
             <connections>
                 <binding destination="Voe-Tx-rLC" name="managedObjectContext" keyPath="managedObjectContext" id="s3t-Sn-cpc"/>
             </connections>
@@ -737,7 +737,7 @@
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
                                                         <tableColumn identifier="filename" width="100" maxWidth="2048" id="NxQ-yA-lsf">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="File Name">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Title">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -749,11 +749,11 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <connections>
-                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.filename" id="QUD-eu-wfz"/>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.title" id="P8c-OH-tH0"/>
                                                             </connections>
                                                         </tableColumn>
                                                         <tableColumn identifier="title" width="100" maxWidth="2048" id="Foa-bS-OTt">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Title">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Artist">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -765,11 +765,11 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <connections>
-                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.title" id="E3i-hE-iqk"/>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.artist" id="69Q-qQ-cg1"/>
                                                             </connections>
                                                         </tableColumn>
                                                         <tableColumn identifier="artist" width="100" maxWidth="2048" id="LZf-Qu-ZhJ">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Artist">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Album">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -781,11 +781,11 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <connections>
-                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.artist" id="vZ4-aR-CXG"/>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.album" id="E7e-Mq-B17"/>
                                                             </connections>
                                                         </tableColumn>
                                                         <tableColumn identifier="album" width="100" maxWidth="2048" id="0J7-Gy-k4w">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Album">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Track">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -797,11 +797,11 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <connections>
-                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.album" id="ZYy-Ji-3EG"/>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.track" id="la3-tH-UO3"/>
                                                             </connections>
                                                         </tableColumn>
-                                                        <tableColumn identifier="track" width="278" maxWidth="2048" id="SUr-Ng-b3O">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Track">
+                                                        <tableColumn identifier="track" editable="NO" width="278" maxWidth="2048" id="SUr-Ng-b3O">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="File Name">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -813,7 +813,11 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <connections>
-                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.track" id="uOO-Yj-pEI"/>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.filename" id="yFo-9s-wBY">
+                                                                    <dictionary key="options">
+                                                                        <string key="NSValueTransformerName">FilenameValueTransform</string>
+                                                                    </dictionary>
+                                                                </binding>
                                                             </connections>
                                                         </tableColumn>
                                                     </tableColumns>
@@ -1177,11 +1181,11 @@ Gw
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="u34-Te-iGb">
-                            <rect key="frame" x="-7" y="2" width="0.0" height="15"/>
+                            <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="CMI-7k-HXd">
-                            <rect key="frame" x="-14" y="9" width="15" height="0.0"/>
+                            <rect key="frame" x="-14" y="-7" width="15" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -1293,6 +1297,9 @@ Gw
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.@first.title" id="qeh-Kq-aDn"/>
+                                            </connections>
                                         </textField>
                                         <textField identifier="album" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rPZ-9f-xyM">
                                             <rect key="frame" x="93" y="218" width="330" height="17"/>
@@ -1302,6 +1309,9 @@ Gw
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.@first.album" id="p2d-mM-ctf"/>
+                                            </connections>
                                         </textField>
                                         <textField identifier="artist" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eba-ol-E1X">
                                             <rect key="frame" x="93" y="191" width="330" height="17"/>
@@ -1311,6 +1321,9 @@ Gw
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.@first.artist" id="N24-sQ-78B"/>
+                                            </connections>
                                         </textField>
                                         <textField identifier="comment" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmW-DM-tqr">
                                             <rect key="frame" x="94" y="146" width="330" height="17"/>
@@ -1320,6 +1333,9 @@ Gw
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.@first.comment" id="toS-cG-1F8"/>
+                                            </connections>
                                         </textField>
                                         <textField identifier="track" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XpP-hB-1tq">
                                             <rect key="frame" x="67" y="171" width="64" height="17"/>
@@ -1329,6 +1345,9 @@ Gw
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.@first.track" id="gi9-hh-d79"/>
+                                            </connections>
                                         </textField>
                                         <textField identifier="year" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TV7-t2-1fA">
                                             <rect key="frame" x="189" y="171" width="64" height="17"/>
@@ -1338,6 +1357,9 @@ Gw
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.@first.year" id="NvQ-7n-KEl"/>
+                                            </connections>
                                         </textField>
                                         <textField identifier="genre" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-cS-InO">
                                             <rect key="frame" x="317" y="171" width="107" height="17"/>
@@ -1347,24 +1369,20 @@ Gw
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.@first.Genre" id="gOI-2N-YJ8"/>
+                                            </connections>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="of1-MR-GWo">
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="of1-MR-GWo">
                                             <rect key="frame" x="17" y="17" width="407" height="53"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="border" title="Multiline Label" id="Vdk-MP-Ufh">
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="border" id="Vdk-MP-Ufh">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
-                                            <connections>
-                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.filename" id="A4m-lS-pKs">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">FirstSelectedFileValueTransform</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5d-zR-yDg">
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5d-zR-yDg">
                                             <rect key="frame" x="19" y="296" width="404" height="57"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="border" title="Multiline Label" id="KbW-4p-0Ba">
@@ -1519,7 +1537,7 @@ Gw
                                                 <outlet property="delegate" destination="UNB-Mf-rX9" id="dlm-rv-fdC"/>
                                             </connections>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhC-1e-YOQ">
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhC-1e-YOQ">
                                             <rect key="frame" x="14" y="302" width="404" height="57"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="border" title="Multiline Label" id="raN-s7-dak">
@@ -1528,7 +1546,7 @@ Gw
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DLn-ak-5GI">
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DLn-ak-5GI">
                                             <rect key="frame" x="9" y="158" width="407" height="53"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="border" title="Multiline Label" id="nTh-ku-Irs">
@@ -1537,11 +1555,7 @@ Gw
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.filename" id="PbG-FN-oqs">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">FirstSelectedFileValueTransform</string>
-                                                    </dictionary>
-                                                </binding>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="selectedObjects.@first.filename" id="RmZ-Ca-hYd"/>
                                             </connections>
                                         </textField>
                                         <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="p25-23-rXg">
@@ -1589,7 +1603,7 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="preview:" target="UNB-Mf-rX9" id="IeF-IY-cTQ"/>
+                            <action selector="apply:" target="UNB-Mf-rX9" id="SMp-4S-sVB"/>
                         </connections>
                     </button>
                 </subviews>

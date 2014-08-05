@@ -31,8 +31,11 @@
 -(IBAction) showEncodingWindow:(id)sender;
 -(IBAction) showFileNameAndTagWindow:(id)sender;
 
-/// filename tag
+/// filename to tag
 -(void) filenameToTag:(NSString *)pattern;
+
+/// tag to filename (rename files)
+-(void) tagToFilename: (NSString *)pattern;
 
 /// filename path depth
 -(NSUInteger) pathDepth;

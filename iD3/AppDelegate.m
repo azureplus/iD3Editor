@@ -17,6 +17,8 @@
 // conversion between tag and filename
 #import "TagEntity_Filename.h"
 
+#import "NSString_Filename.h"
+
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -141,10 +143,8 @@
 }
 
 -(IBAction) showFileNameAndTagWindow:(id)sender {
-    NSUInteger windowCode = [NSApp runModalForWindow:self.filenameWindow];
+    [NSApp runModalForWindow:self.filenameWindow];
     [self.filenameWindow orderOut:nil];
-    
-    
 }
 
 // convert filename to tag
@@ -155,11 +155,42 @@
     }
 }
 
+// Tag to filename rename file
+-(void) tagToFilename: (NSString *)pattern {
+    if ([pattern length] == 0) {
+        return;
+    }
+    
+    NSMutableArray * tagsToRename = [NSMutableArray arrayWithCapacity:32];
+    for (TagEntity * tagEntity in _tagArrayController.selectedObjects) {
+        [tagsToRename addObject:tagEntity];
+    }
+    
+    for (TagEntity * tagEntity in tagsToRename) {
+        NSString * oldFilename = tagEntity.tag.filename;
+        
+        NSMutableArray * components = [NSMutableArray arrayWithArray:[oldFilename pathComponents]];
+        NSString * newFilename = [NSString fromTag:tagEntity withPattern:pattern];
+        components[components.count - 1] = [newFilename stringByAppendingPathExtension:[oldFilename pathExtension]];
+        newFilename = [NSString pathWithComponents:components];
+        
+        NSFileManager * fm = [[NSFileManager alloc] init];
+        BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
+        
+        if (result) {
+            [_tagArrayController removeObject:tagEntity];
+            [self _addFile:[NSURL fileURLWithPath:newFilename isDirectory:NO]];
+        }
+    }
+    
+    [_tagArrayController setSelectedObjects:@[]];
+}
+
 // get path depth
 -(NSUInteger) pathDepth {
     if ([_tagArrayController.arrangedObjects count] > 0) {
-        TagEntity * te = _tagArrayController.arrangedObjects[0];
-        return [te.pathDepth unsignedIntegerValue];
+        TagEntity * tagEntity = _tagArrayController.arrangedObjects[0];
+        return [tagEntity.pathDepth unsignedIntegerValue];
     } else {
         return 0;
     }

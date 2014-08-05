@@ -41,6 +41,6 @@
 @property (nonatomic, assign) IBOutlet NSButton * filenameOnly;
 
 - (IBAction) cancel:(id)sender;
-- (IBAction) preview: (id)sender;
+- (IBAction) apply: (id)sender;
 - (IBAction) filenameOnlyClicked: (id)sender;
 @end

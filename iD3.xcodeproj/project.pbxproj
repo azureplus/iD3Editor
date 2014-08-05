@@ -17,7 +17,8 @@
 		F79BCE2E198DF84200CC5F02 /* EncodingWindowDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE2D198DF84200CC5F02 /* EncodingWindowDelegate.m */; };
 		F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE30198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m */; };
 		F79BCE35198E74B300CC5F02 /* TagEntity_Filename.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE34198E74B300CC5F02 /* TagEntity_Filename.m */; };
-		F79BCE3E198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE3D198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m */; };
+		F79BCE44198FBFBC00CC5F02 /* FilenameValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */; };
+		F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */; };
 		F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E994E61983418000DDE9B4 /* Cocoa.framework */; };
 		F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E994EF1983418000DDE9B4 /* InfoPlist.strings */; };
 		F7E994F31983418000DDE9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F21983418000DDE9B4 /* main.m */; };
@@ -63,8 +64,10 @@
 		F79BCE30198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagAndFileNameWindowDelegate.m; sourceTree = "<group>"; };
 		F79BCE33198E74B300CC5F02 /* TagEntity_Filename.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagEntity_Filename.h; path = DataModel/TagEntity_Filename.h; sourceTree = "<group>"; };
 		F79BCE34198E74B300CC5F02 /* TagEntity_Filename.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagEntity_Filename.m; path = DataModel/TagEntity_Filename.m; sourceTree = "<group>"; };
-		F79BCE3C198F27ED00CC5F02 /* FirstSelectedFileValueTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstSelectedFileValueTransform.h; path = DataModel/FirstSelectedFileValueTransform.h; sourceTree = "<group>"; };
-		F79BCE3D198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstSelectedFileValueTransform.m; path = DataModel/FirstSelectedFileValueTransform.m; sourceTree = "<group>"; };
+		F79BCE42198FBFBC00CC5F02 /* FilenameValueTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilenameValueTransform.h; path = DataModel/FilenameValueTransform.h; sourceTree = "<group>"; };
+		F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilenameValueTransform.m; path = DataModel/FilenameValueTransform.m; sourceTree = "<group>"; };
+		F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArray_KVO.h; path = Taglib/NSArray_KVO.h; sourceTree = "<group>"; };
+		F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArray_KVO.m; path = Taglib/NSArray_KVO.m; sourceTree = "<group>"; };
 		F7E994E31983418000DDE9B4 /* iD3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iD3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -125,8 +128,8 @@
 				F79BCE27198D200C00CC5F02 /* TagEntity_Encoding.m */,
 				F79BCE33198E74B300CC5F02 /* TagEntity_Filename.h */,
 				F79BCE34198E74B300CC5F02 /* TagEntity_Filename.m */,
-				F79BCE3C198F27ED00CC5F02 /* FirstSelectedFileValueTransform.h */,
-				F79BCE3D198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m */,
+				F79BCE42198FBFBC00CC5F02 /* FilenameValueTransform.h */,
+				F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */,
 				F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */,
 			);
 			name = DataModel;
@@ -154,9 +157,19 @@
 			name = "Window Delegates";
 			sourceTree = "<group>";
 		};
+		F79BCE4519907A7400CC5F02 /* NSArray */ = {
+			isa = PBXGroup;
+			children = (
+				F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */,
+				F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */,
+			);
+			name = NSArray;
+			sourceTree = "<group>";
+		};
 		F7E994DA1983418000DDE9B4 = {
 			isa = PBXGroup;
 			children = (
+				F79BCE4519907A7400CC5F02 /* NSArray */,
 				F79BCE18198928A500CC5F02 /* NSString */,
 				F77F88EA1987D47A00B1B3CC /* DataModel */,
 				F7E9951A19853C1500DDE9B4 /* Taglib */,
@@ -367,10 +380,11 @@
 				F79BCE24198A865900CC5F02 /* NSString_Filename.m in Sources */,
 				F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */,
 				F79BCE35198E74B300CC5F02 /* TagEntity_Filename.m in Sources */,
+				F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */,
 				F7E994F31983418000DDE9B4 /* main.m in Sources */,
 				F79BCE2E198DF84200CC5F02 /* EncodingWindowDelegate.m in Sources */,
-				F79BCE3E198F27ED00CC5F02 /* FirstSelectedFileValueTransform.m in Sources */,
 				F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */,
+				F79BCE44198FBFBC00CC5F02 /* FilenameValueTransform.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
