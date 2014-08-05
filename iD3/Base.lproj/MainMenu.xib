@@ -1120,9 +1120,15 @@ IA
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="fLM-oQ-arQ"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="ocH-jt-LHv"/>
-                    <toolbarItem implicitItemIdentifier="DCFD97FC-198C-4B67-BF5F-6C9A470C86C4" label="Load Files" paletteLabel="Load Files" tag="-1" id="7sS-J5-nj1">
+                    <toolbarItem implicitItemIdentifier="DCFD97FC-198C-4B67-BF5F-6C9A470C86C4" label="Add Files" paletteLabel="Add Files" tag="-1" id="7sS-J5-nj1">
                         <connections>
                             <action selector="openFiles:" target="Voe-Tx-rLC" id="LuJ-Na-ezJ"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="83B6282C-8FAE-4391-A7A3-1702DC89B4DB" label="Clear List" paletteLabel="Clear List" tag="-1" id="0nb-Qu-q4c">
+                        <connections>
+                            <action selector="clearFileList:" target="Voe-Tx-rLC" id="dgW-iW-q4y"/>
+                            <binding destination="j1s-e0-8eb" name="enabled" keyPath="arrangedObjects.@count" id="Ywu-W3-9mI"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="1F34DC70-1C78-4B4E-91E2-F9408238AAB5" label="Encoding Fix" paletteLabel="Encoding Fix" tag="-1" autovalidates="NO" id="Z6X-Qd-jHX">
@@ -1140,6 +1146,7 @@ IA
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="7sS-J5-nj1"/>
+                    <toolbarItem reference="0nb-Qu-q4c"/>
                     <toolbarItem reference="ocH-jt-LHv"/>
                     <toolbarItem reference="Z6X-Qd-jHX"/>
                     <toolbarItem reference="vBP-ha-7jt"/>

@@ -151,6 +151,14 @@
     }
 }
 
+-(IBAction) clearFileList:(id)sender {
+    [self saveChanges:nil];
+    [_tags removeAllObjects];
+    [_tagArrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet
+                                                               indexSetWithIndexesInRange:NSMakeRange(0, [[_tagArrayController arrangedObjects]
+                                                                                                          count])]];
+}
+
 // convert filename to tag
 -(void) filenameToTag:(NSString *)pattern {
     NSArray * selectedTags = _tagArrayController.selectedObjects;
