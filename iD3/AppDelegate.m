@@ -130,21 +130,25 @@
 
 -(IBAction) showEncodingWindow:(id)sender {
     [_encodingArrayController setSelectedObjects:@[]];
-    NSUInteger windowCode = [NSApp runModalForWindow:self.encodingWindow];
+    [NSApp runModalForWindow:self.encodingWindow];
     [self.encodingWindow orderOut:nil];
-    
-    for (TagEntity * entity in _tagArrayController.arrangedObjects) {
-        if (windowCode) {
-            //TODO write tag back to file
-        } else {
-            [entity resetValue];
-        }
-    }
 }
 
 -(IBAction) showFileNameAndTagWindow:(id)sender {
     [NSApp runModalForWindow:self.filenameWindow];
     [self.filenameWindow orderOut:nil];
+}
+
+-(IBAction) saveChanges:(id)sender {
+    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+        [tag save];
+    }
+}
+
+-(IBAction) resetChanges:(id)sender {
+    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+        [tag save];
+    }
 }
 
 // convert filename to tag

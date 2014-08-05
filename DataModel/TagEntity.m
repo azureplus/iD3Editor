@@ -39,6 +39,20 @@
     self.track = [_tag getFrame:@"track"];
 }
 
+-(void) save {
+    if ([self isUpdated]) {
+        [_tag setFrame:@"artist" withValue:self.artist];
+        [_tag setFrame:@"album" withValue:self.album];
+        [_tag setFrame:@"title" withValue:self.title];
+        [_tag setFrame:@"comment" withValue:self.comment];
+        [_tag setFrame:@"genre" withValue:self.genre];
+        [_tag setFrame:@"track" withValue:self.track];
+        [_tag setFrame:@"year" withValue:self.year];
+        [_tag writeTag];
+    }
+}
+
+
 - (void)didChangeValueForKey:(NSString *)key {
     if ([key isEqualToString:@"pathDepth"]) {
         self.filename = [self _filename:_tag.filename withPathDepth:[self.pathDepth intValue]];

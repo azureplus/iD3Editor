@@ -26,5 +26,5 @@
 @property (nonatomic, weak) Tag * tag;
 
 -(void) resetValue;
-
+-(void) save;
 @end

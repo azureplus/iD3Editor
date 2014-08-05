@@ -38,6 +38,8 @@
         NSString * pattern = [self.t2nPattern stringValue];
         [(AppDelegate *)[NSApp delegate] tagToFilename:pattern];
     }
+    
+    [(AppDelegate *)[NSApp delegate] saveChanges:nil];
 }
 
 - (IBAction) filenameOnlyClicked: (id)sender {
@@ -50,6 +52,7 @@
     }
 }
 
+// instant pattern recognition
 - (void) controlTextDidChange: (NSNotification *)notice {
     NSTextField * textField = [notice object];
     NSString * pattern = [textField stringValue];

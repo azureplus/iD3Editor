@@ -30,6 +30,8 @@
 -(IBAction) openFiles:(id)sender;
 -(IBAction) showEncodingWindow:(id)sender;
 -(IBAction) showFileNameAndTagWindow:(id)sender;
+-(IBAction) saveChanges:(id)sender;
+-(IBAction) resetChanges:(id)sender;
 
 /// filename to tag
 -(void) filenameToTag:(NSString *)pattern;
