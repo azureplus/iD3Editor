@@ -17,6 +17,9 @@
 @property (assign) IBOutlet NSWindow * window;
 @property (assign) IBOutlet NSWindow * encodingWindow;
 @property (assign) IBOutlet NSWindow * filenameWindow;
+@property (assign) IBOutlet NSTextField * album;
+@property (assign) IBOutlet NSTextField * artist;
+@property (assign) IBOutlet NSTextField * genre;
 
 /// core data
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator * persistentStoreCoordinator;
@@ -33,6 +36,9 @@
 -(IBAction) saveChanges:(id)sender;
 -(IBAction) resetChanges:(id)sender;
 -(IBAction) clearFileList:(id)sender;
+-(IBAction) setAlbumToAll:(id)sender;
+-(IBAction) setArtistToAll:(id)sender;
+-(IBAction) setGenreToAll:(id)sender;
 
 /// filename to tag
 -(void) filenameToTag:(NSString *)pattern;

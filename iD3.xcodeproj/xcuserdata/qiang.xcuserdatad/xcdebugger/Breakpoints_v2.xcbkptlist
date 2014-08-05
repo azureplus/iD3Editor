@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iD3/AppDelegate.m"
-            timestampString = "428908853.813675"
+            timestampString = "428939847.945543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-tagToFilename:"
             landmarkType = "5">
          </BreakpointContent>

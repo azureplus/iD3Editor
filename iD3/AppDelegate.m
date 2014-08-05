@@ -28,24 +28,34 @@
     [_encodingArrayController addObserver:self forKeyPath:@"selection" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)  context:nil];
 }
 
--(void)_addFile:(NSURL *)fileURL {
+-(void) windowWillClose:(NSNotification *)notification {
+    [self saveChanges:nil];
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+    return YES;
+}
+
+-(TagEntity *)_addFile:(NSURL *)fileURL {
     NSString * filename = [fileURL path];
     
     for (Tag * tag in _tags) {
         if ([[tag filename] isEqualToString:filename])
-            return;
+            return nil;
     }
     
-    [self _addTag:[[Tag alloc] initWithFile:filename]];
+    return [self _addTag:[[Tag alloc] initWithFile:filename]];
 }
 
--(void)_addTag: (Tag *) tag {
+-(TagEntity *)_addTag: (Tag *) tag {
     [_tags addObject:tag];
     NSEntityDescription * tagDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Tag"];
     TagEntity * tagEntity = [[TagEntity alloc] initWithEntity:tagDescription insertIntoManagedObjectContext:_managedObjectContext];
     
     tagEntity.tag = tag;
     [_tagArrayController addObject:tagEntity];
+    
+    return tagEntity;
 }
 
 // suppored char encoding
@@ -159,6 +169,34 @@
                                                                                                           count])]];
 }
 
+-(IBAction) setAlbumToAll:(id)sender {
+    NSString * album = [_album stringValue];
+    if ([[_tagArrayController selectedObjects] count] <= 1 || [album length] != 0) {
+        for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+            tag.album = album;
+        }
+    }
+}
+
+
+-(IBAction) setArtistToAll:(id)sender {
+    NSString * artist = [_artist stringValue];
+    if ([[_tagArrayController selectedObjects] count] <= 1 || [artist length] != 0) {
+        for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+            tag.artist = artist;
+        }
+    }
+}
+
+-(IBAction) setGenreToAll:(id)sender {
+    NSString * genre = [_genre stringValue];
+    if ([[_tagArrayController selectedObjects] count] <= 1 || [genre length] != 0) {
+        for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+            tag.genre = genre;
+        }
+    }
+}
+
 // convert filename to tag
 -(void) filenameToTag:(NSString *)pattern {
     NSArray * selectedTags = _tagArrayController.selectedObjects;
@@ -195,6 +233,8 @@
     }
     
     NSMutableArray * tagsToRename = [NSMutableArray arrayWithCapacity:32];
+    NSMutableArray * tagsNewlyAdded = [NSMutableArray arrayWithCapacity:32];
+    
     for (TagEntity * tagEntity in _tagArrayController.selectedObjects) {
         [tagsToRename addObject:tagEntity];
     }
@@ -213,11 +253,12 @@
         
         if (result) {
             [_tagArrayController removeObject:tagEntity];
-            [self _addFile:[NSURL fileURLWithPath:newFilename isDirectory:NO]];
+            TagEntity * newTag = [self _addFile:[NSURL fileURLWithPath:newFilename isDirectory:NO]];
+            [tagsNewlyAdded addObject:newTag];
         }
     }
     
-    [_tagArrayController setSelectedObjects:@[]];
+    [_tagArrayController setSelectedObjects:tagsNewlyAdded];
 }
 
 // get path depth
