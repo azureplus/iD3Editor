@@ -726,11 +726,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="695" height="779"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="led-x4-soq">
-                                            <rect key="frame" x="1" y="17" width="693" height="761"/>
+                                            <rect key="frame" x="1" y="17" width="693" height="746"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveColumns="NO" headerView="HOL-yM-LHF" id="Gxo-e1-Vhj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="693" height="761"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="718" height="746"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -784,7 +784,7 @@
                                                                 <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.album" id="E7e-Mq-B17"/>
                                                             </connections>
                                                         </tableColumn>
-                                                        <tableColumn identifier="album" width="100" maxWidth="2048" id="0J7-Gy-k4w">
+                                                        <tableColumn identifier="album" width="44.9609375" maxWidth="2048" id="0J7-Gy-k4w">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Track">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -798,6 +798,22 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <connections>
                                                                 <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.track" id="la3-tH-UO3"/>
+                                                            </connections>
+                                                        </tableColumn>
+                                                        <tableColumn width="77.07421875" minWidth="10" maxWidth="3.4028234663852886e+38" id="4Xl-2i-8bU">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Genre">
+                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                            </tableHeaderCell>
+                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="0aP-qO-Z3R">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                            <connections>
+                                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.genre" id="i25-OR-T2H"/>
                                                             </connections>
                                                         </tableColumn>
                                                         <tableColumn identifier="track" editable="NO" width="278" maxWidth="2048" id="SUr-Ng-b3O">
@@ -825,7 +841,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="fWv-rP-J80">
+                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="fWv-rP-J80">
                                             <rect key="frame" x="1" y="763" width="693" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -834,7 +850,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <tableHeaderView key="headerView" id="HOL-yM-LHF">
-                                            <rect key="frame" x="0.0" y="0.0" width="693" height="17"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="718" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>

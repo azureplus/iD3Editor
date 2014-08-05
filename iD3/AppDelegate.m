@@ -159,6 +159,27 @@
     }
 }
 
+-(NSUInteger)_getTrackSize:(TagEntity *)tag {
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setIncludesSubentities:YES];
+    [request setEntity:[NSEntityDescription entityForName:@"Tag" inManagedObjectContext:_managedObjectContext]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"album = '%@'", tag.album]];
+    [request setPredicate:predicate];
+    
+    NSUInteger count = [_managedObjectContext countForFetchRequest:request error:nil];
+    if(count == NSNotFound) {
+        return 0;
+    } else {
+        int size = 1;
+        while (count >= 10) {
+            count = count/10;
+            size++;
+        }
+        return size;
+    }
+}
+
 // Tag to filename rename file
 -(void) tagToFilename: (NSString *)pattern {
     if ([pattern length] == 0) {
@@ -174,7 +195,8 @@
         NSString * oldFilename = tagEntity.tag.filename;
         
         NSMutableArray * components = [NSMutableArray arrayWithArray:[oldFilename pathComponents]];
-        NSString * newFilename = [NSString fromTag:tagEntity withPattern:pattern];
+        NSUInteger trackSize = [self _getTrackSize: tagEntity];
+        NSString * newFilename = [NSString fromTag:tagEntity withPattern:pattern andTrackSize:trackSize];
         components[components.count - 1] = [newFilename stringByAppendingPathExtension:[oldFilename pathExtension]];
         newFilename = [NSString pathWithComponents:components];
         

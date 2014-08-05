@@ -91,7 +91,7 @@
         frames[@"track"] = [_t2nTrack stringValue];
         frames[@"year"] = [_t2nYear stringValue];
         
-        [_t2nFilename setStringValue:[NSString fromFrames:frames withPattern:pattern]];
+        [_t2nFilename setStringValue:[NSString fromFrames:frames withPattern:pattern andTrackSize:0]];
     }
 }
 

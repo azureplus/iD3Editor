@@ -10,6 +10,6 @@
 #import "TagEntity.h"
 @interface NSString(FileName)
 -(NSDictionary *) parse:(NSString *)pattern;
-+(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern;
-+(NSString *) fromFrames: (NSDictionary *)frames withPattern:(NSString *)pattern;
++(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern andTrackSize:(NSUInteger)trackSize;
++(NSString *) fromFrames: (NSDictionary *)frames withPattern:(NSString *)pattern andTrackSize:(NSUInteger)trackSize;
 @end

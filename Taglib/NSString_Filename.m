@@ -29,7 +29,7 @@
 //:: - : itself
 //
 
-+(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern {
++(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern andTrackSize:(NSUInteger)trackSize {
     NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:5];
     frames[@"artist"] = tag.artist;
     frames[@"album"] = tag.album;
@@ -40,10 +40,10 @@
     frames[@"track"] = tag.track;
     frames[@"year"] = tag.year;
     
-    return [NSString fromFrames:frames withPattern:pattern];
+    return [NSString fromFrames:frames withPattern:pattern andTrackSize:trackSize];
 }
 
-+(NSString *) fromFrames: (NSDictionary *)frames withPattern:(NSString *)pattern {
++(NSString *) fromFrames: (NSDictionary *)frames withPattern:(NSString *)pattern andTrackSize:(NSUInteger)trackSize {
     NSMutableString * rv = [NSMutableString stringWithCapacity:32];
     NSUInteger pl = [pattern length];
     NSUInteger index = 0;
@@ -64,7 +64,15 @@
                     value = frames[@"title"];
                     break;
                 case 'T':
-                    value = frames[@"track"];
+                    if (trackSize == 0) {
+                        value = frames[@"track"];
+                    } else {
+                        NSMutableString * tmpValue = [NSMutableString stringWithString:frames[@"track"]];
+                        for (NSUInteger i = trackSize - tmpValue.length; i > 0; i--) {
+                            [tmpValue insertString:@"0" atIndex:0];
+                        }
+                        value = tmpValue;
+                    }
                     break;
                 case 'c':
                     value = frames[@"comment"];
