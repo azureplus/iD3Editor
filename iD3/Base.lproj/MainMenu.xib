@@ -1125,7 +1125,7 @@ IA
                             <action selector="openFiles:" target="Voe-Tx-rLC" id="LuJ-Na-ezJ"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="83B6282C-8FAE-4391-A7A3-1702DC89B4DB" label="Clear List" paletteLabel="Clear List" tag="-1" id="0nb-Qu-q4c">
+                    <toolbarItem implicitItemIdentifier="83B6282C-8FAE-4391-A7A3-1702DC89B4DB" label="Clear List" paletteLabel="Clear List" tag="-1" autovalidates="NO" id="0nb-Qu-q4c">
                         <connections>
                             <action selector="clearFileList:" target="Voe-Tx-rLC" id="dgW-iW-q4y"/>
                             <binding destination="j1s-e0-8eb" name="enabled" keyPath="arrangedObjects.@count" id="Ywu-W3-9mI"/>
