@@ -15,12 +15,12 @@
 }
 
 - (IBAction) cancel:(id)sender {
-    [(AppDelegate *)[NSApp delegate] saveChanges:nil];
+    [(AppDelegate *)[NSApp delegate] resetChanges:nil];
     [NSApp stopModalWithCode:0];
 }
 
 - (IBAction) ok: (id)sender {
-    [(AppDelegate *)[NSApp delegate] resetChanges:nil];
+    [(AppDelegate *)[NSApp delegate] saveChanges:nil];
     [NSApp stopModalWithCode:1];
 }
 @end
