@@ -53,6 +53,10 @@
 }
 
 -(void)setFrame:(NSString *) frameId withValue:(NSString *) value {
+    if (!value) {
+        value = @"";
+    }
+    
     TagLib::Tag * tag = _fileRef->file()->tag();
     TagLib::String v = [value toTLString];
     

@@ -34,6 +34,7 @@
 		F7E9951F198543A200DDE9B4 /* Tag.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E9951E198543A200DDE9B4 /* Tag.mm */; };
 		F7E9952A198593D300DDE9B4 /* NSString_TLString.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E99529198593D300DDE9B4 /* NSString_TLString.mm */; };
 		F7FB46BC19920C7D00C72AFF /* OpenPanelAccessory.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46BB19920C7D00C72AFF /* OpenPanelAccessory.xib */; };
+		F7FB46C11992742400C72AFF /* NullValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB46C01992742400C72AFF /* NullValueTransform.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,8 @@
 		F7E99528198593D300DDE9B4 /* NSString_TLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_TLString.h; path = Taglib/NSString_TLString.h; sourceTree = "<group>"; };
 		F7E99529198593D300DDE9B4 /* NSString_TLString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSString_TLString.mm; path = Taglib/NSString_TLString.mm; sourceTree = "<group>"; };
 		F7FB46BB19920C7D00C72AFF /* OpenPanelAccessory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenPanelAccessory.xib; sourceTree = "<group>"; };
+		F7FB46BF1992742400C72AFF /* NullValueTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NullValueTransform.h; path = DataModel/NullValueTransform.h; sourceTree = "<group>"; };
+		F7FB46C01992742400C72AFF /* NullValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullValueTransform.m; path = DataModel/NullValueTransform.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				F79BCE34198E74B300CC5F02 /* TagEntity_Filename.m */,
 				F79BCE42198FBFBC00CC5F02 /* FilenameValueTransform.h */,
 				F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */,
+				F7FB46BF1992742400C72AFF /* NullValueTransform.h */,
+				F7FB46C01992742400C72AFF /* NullValueTransform.m */,
 				F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */,
 			);
 			name = DataModel;
@@ -382,6 +387,7 @@
 				F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */,
 				F79BCE20198A7F5F00CC5F02 /* EncodingEntity.m in Sources */,
 				F79BCE24198A865900CC5F02 /* NSString_Filename.m in Sources */,
+				F7FB46C11992742400C72AFF /* NullValueTransform.m in Sources */,
 				F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */,
 				F79BCE35198E74B300CC5F02 /* TagEntity_Filename.m in Sources */,
 				F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */,
