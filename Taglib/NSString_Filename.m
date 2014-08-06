@@ -228,7 +228,7 @@
     }
     
     NSUInteger prevC = c;
-    NSUInteger prevR = r;
+//    NSUInteger prevR = r;
     while (c>0 && r>0) {
         if (matches[r][c]) {
             if (track[r][c] == 1) {
@@ -237,7 +237,7 @@
                 r = r - 1;
                 c = c - 1;
                 prevC = c;
-                prevR = r;
+//                prevR = r;
             } else {
                 NSRange rangeC = NSMakeRange(c - 1, prevC - c + 1);
                 NSString * value = [self substringWithRange:rangeC];
@@ -248,11 +248,11 @@
                 r = r - 2;
                 c = c - 1;
                 prevC = c;
-                prevR = r;
+//                prevR = r;
             }
         } else if (r == 1 || [pattern characterAtIndex:r - 2] != ':') {
                 r = r - 1;
-                prevR = r;
+//                prevR = r;
         } else {
                 NSRange rangeC = NSMakeRange(c, prevC - c);
                 NSString * value = [self substringWithRange:rangeC];
@@ -261,7 +261,7 @@
                 [tag setObject:value forKey:key];
                 // NSLog(@"%@--->%@", key, value);
                 r = r - 2;
-                prevR = r;
+//                prevR = r;
         }
     }
     
