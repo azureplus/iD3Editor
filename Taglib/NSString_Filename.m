@@ -68,8 +68,10 @@
                         value = frames[@"track"];
                     } else {
                         NSMutableString * tmpValue = [NSMutableString stringWithString:frames[@"track"]];
-                        for (NSUInteger i = trackSize - tmpValue.length; i > 0; i--) {
-                            [tmpValue insertString:@"0" atIndex:0];
+                        if (trackSize > tmpValue.length) {
+                            for (NSUInteger i = trackSize - tmpValue.length; i > 0; i--) {
+                                [tmpValue insertString:@"0" atIndex:0];
+                            }
                         }
                         value = tmpValue;
                     }

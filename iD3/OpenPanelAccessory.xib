@@ -21,7 +21,7 @@
                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Note: Renaming music files using tags only works for files under the Music folder." id="nCN-b6-jxo">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
