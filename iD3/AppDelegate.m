@@ -67,6 +67,8 @@
 -(void) _removeTagEntity: (TagEntity *) tagEntity {
     [_tagArrayController removeObject:tagEntity];
     [_tags removeObject:tagEntity.tag];
+    // WARNING!
+    // dont forget deleting the object from the managed object context
     [_managedObjectContext deleteObject:tagEntity];
 }
 
