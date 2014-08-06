@@ -33,7 +33,6 @@
 		F7E9951C19853C6300DDE9B4 /* libtag.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E9951B19853C6300DDE9B4 /* libtag.a */; };
 		F7E9951F198543A200DDE9B4 /* Tag.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E9951E198543A200DDE9B4 /* Tag.mm */; };
 		F7E9952A198593D300DDE9B4 /* NSString_TLString.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E99529198593D300DDE9B4 /* NSString_TLString.mm */; };
-		F7FB46BC19920C7D00C72AFF /* OpenPanelAccessory.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46BB19920C7D00C72AFF /* OpenPanelAccessory.xib */; };
 		F7FB46C11992742400C72AFF /* NullValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB46C01992742400C72AFF /* NullValueTransform.m */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +93,6 @@
 		F7E9951E198543A200DDE9B4 /* Tag.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Tag.mm; path = Taglib/Tag.mm; sourceTree = "<group>"; };
 		F7E99528198593D300DDE9B4 /* NSString_TLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_TLString.h; path = Taglib/NSString_TLString.h; sourceTree = "<group>"; };
 		F7E99529198593D300DDE9B4 /* NSString_TLString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSString_TLString.mm; path = Taglib/NSString_TLString.mm; sourceTree = "<group>"; };
-		F7FB46BB19920C7D00C72AFF /* OpenPanelAccessory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenPanelAccessory.xib; sourceTree = "<group>"; };
 		F7FB46BF1992742400C72AFF /* NullValueTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NullValueTransform.h; path = DataModel/NullValueTransform.h; sourceTree = "<group>"; };
 		F7FB46C01992742400C72AFF /* NullValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullValueTransform.m; path = DataModel/NullValueTransform.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,7 +223,6 @@
 				F77F88A11987433900B1B3CC /* iD3.entitlements */,
 				F79BCE191989FD5900CC5F02 /* iD3.plist */,
 				F7E994FB1983418000DDE9B4 /* MainMenu.xib */,
-				F7FB46BB19920C7D00C72AFF /* OpenPanelAccessory.xib */,
 				F7E994F81983418000DDE9B4 /* AppDelegate.h */,
 				F7E994F91983418000DDE9B4 /* AppDelegate.m */,
 				F7E994FE1983418000DDE9B4 /* Images.xcassets */,
@@ -360,7 +357,6 @@
 				F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */,
 				F7E994FF1983418000DDE9B4 /* Images.xcassets in Resources */,
 				F7E994F71983418000DDE9B4 /* Credits.rtf in Resources */,
-				F7FB46BC19920C7D00C72AFF /* OpenPanelAccessory.xib in Resources */,
 				F7E994FD1983418000DDE9B4 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

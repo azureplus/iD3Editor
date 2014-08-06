@@ -29,8 +29,6 @@
 @property (weak, nonatomic) IBOutlet NSArrayController * tagArrayController;
 @property (weak, nonatomic) IBOutlet NSArrayController * encodingArrayController;
 
-@property (weak, nonatomic) IBOutlet NSView * fileOpenPanelAccessoryView;
-
 /// actions
 -(IBAction) openFiles:(id)sender;
 -(IBAction) showEncodingWindow:(id)sender;
