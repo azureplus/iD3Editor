@@ -112,7 +112,7 @@
                                     <action selector="openFiles:" target="Voe-Tx-rLC" id="q9X-L8-FB1"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Clear" keyEquivalent="c" id="pJe-Z2-j59">
+                            <menuItem title="Clear" keyEquivalent="x" id="pJe-Z2-j59">
                                 <connections>
                                     <action selector="clearFileList:" target="Voe-Tx-rLC" id="JHo-8F-sRe"/>
                                     <binding destination="j1s-e0-8eb" name="enabled" keyPath="arrangedObjects.@count" id="9iS-5K-bBF"/>
@@ -935,7 +935,7 @@ Gw
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="of1-MR-GWo">
                                             <rect key="frame" x="21" y="11" width="404" height="53"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="Please tell me how to rename selected music files. A sample new file name will be generated." id="Vdk-MP-Ufh">
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="* File renaming only works for music files under Music folder" id="Vdk-MP-Ufh">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

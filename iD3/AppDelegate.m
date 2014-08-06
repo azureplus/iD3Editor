@@ -137,6 +137,15 @@
     [panel setCanChooseFiles:YES];
     [panel setAllowsMultipleSelection:YES];
     
+    //
+    // music folder
+    //
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSMusicDirectory, NSUserDomainMask, YES);
+    NSString *musicPath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    [panel setDirectoryURL:[NSURL fileURLWithPath:musicPath]];
+    //
+    //
+    
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
             NSArray * urls = [panel URLs];
