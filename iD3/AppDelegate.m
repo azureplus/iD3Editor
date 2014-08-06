@@ -49,13 +49,25 @@
 
 -(TagEntity *)_addTag: (Tag *) tag {
     [_tags addObject:tag];
+    
+    NSNumber * pathDepth = [NSNumber numberWithInt:0];
+    if ([_tagArrayController.arrangedObjects count]) {
+        pathDepth = ((TagEntity *)[_tagArrayController.arrangedObjects objectAtIndex:0]).pathDepth;
+    }
+    
     NSEntityDescription * tagDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Tag"];
     TagEntity * tagEntity = [[TagEntity alloc] initWithEntity:tagDescription insertIntoManagedObjectContext:_managedObjectContext];
-    
+    tagEntity.pathDepth = pathDepth;    
     tagEntity.tag = tag;
     [_tagArrayController addObject:tagEntity];
     
     return tagEntity;
+}
+
+-(void) _removeTagEntity: (TagEntity *) tagEntity {
+    [_tagArrayController removeObject:tagEntity];
+    [_tags removeObject:tagEntity.tag];
+    [_managedObjectContext deleteObject:tagEntity];
 }
 
 // suppored char encoding
@@ -125,14 +137,9 @@
     
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
-            NSUInteger oldSize = [_tags count];
             NSArray * urls = [panel URLs];
             for (NSURL * url in urls) {
                 [self _addFile:url];
-            }
-            NSRange range = NSMakeRange(oldSize, [_tags count] - oldSize);
-            if (range.length > 0) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"NEWTAGS" object:[_tags subarrayWithRange:range]];
             }
         }
     }];
@@ -241,20 +248,22 @@
     
     for (TagEntity * tagEntity in tagsToRename) {
         NSString * oldFilename = tagEntity.tag.filename;
-        
+       
         NSMutableArray * components = [NSMutableArray arrayWithArray:[oldFilename pathComponents]];
         NSUInteger trackSize = [self _getTrackSize: tagEntity];
         NSString * newFilename = [NSString fromTag:tagEntity withPattern:pattern andTrackSize:trackSize];
         components[components.count - 1] = [newFilename stringByAppendingPathExtension:[oldFilename pathExtension]];
         newFilename = [NSString pathWithComponents:components];
-        
+                
         NSFileManager * fm = [[NSFileManager alloc] init];
         BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
         
         if (result) {
-            [_tagArrayController removeObject:tagEntity];
+            [self _removeTagEntity:tagEntity];
             TagEntity * newTag = [self _addFile:[NSURL fileURLWithPath:newFilename isDirectory:NO]];
             [tagsNewlyAdded addObject:newTag];
+        } else {
+            [tagsNewlyAdded addObject:tagEntity];
         }
     }
     
