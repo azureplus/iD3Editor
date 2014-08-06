@@ -48,6 +48,10 @@
 }
 
 -(TagEntity *)_addTag: (Tag *) tag {
+    if (![tag isValid]) {
+        return nil;
+    }
+    
     [_tags addObject:tag];
     
     NSNumber * pathDepth = [NSNumber numberWithInt:0];
@@ -145,6 +149,7 @@
     [panel setDirectoryURL:[NSURL fileURLWithPath:musicPath]];
     //
     //
+    [panel setAllowedFileTypes:@[@"public.mp3"]];
     
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
