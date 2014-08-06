@@ -935,7 +935,7 @@ Gw
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="of1-MR-GWo">
                                             <rect key="frame" x="21" y="11" width="404" height="53"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="* File renaming only works for music files under Music folder" id="Vdk-MP-Ufh">
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="New file name" id="Vdk-MP-Ufh">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

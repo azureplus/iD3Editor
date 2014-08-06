@@ -144,8 +144,12 @@
     NSString *musicPath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     [panel setDirectoryURL:[NSURL fileURLWithPath:musicPath]];
     //
-    //
+    // mp3 file type
     [panel setAllowedFileTypes:@[@"public.mp3"]];
+    
+    if ([[NSBundle mainBundle] loadNibNamed:@"OpenPanelAccessory" owner:self topLevelObjects:nil]) {
+        [panel setAccessoryView:self.fileOpenPanelAccessoryView];
+    }
     
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
