@@ -30,10 +30,6 @@
     _fileRef->save();
 }
 
--(BOOL) isValid {
-    return _fileRef->isNull();
-}
-
 -(NSString *) getFrame:(NSString *) frameId {
     TagLib::Tag * tag = _fileRef->file()->tag();
     NSString * rv = @"";

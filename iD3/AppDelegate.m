@@ -48,10 +48,6 @@
 }
 
 -(TagEntity *)_addTag: (Tag *) tag {
-    if (![tag isValid]) {
-        return nil;
-    }
-    
     [_tags addObject:tag];
     
     NSNumber * pathDepth = [NSNumber numberWithInt:0];

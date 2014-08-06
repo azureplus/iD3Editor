@@ -21,7 +21,6 @@
 @property(nonatomic, readonly) NSString * filename;
 
 -(id) initWithFile: (NSString *) fileName;
--(BOOL) isValid;
 -(NSString *) getFrame:(NSString *) frameId;
 -(void)setFrame:(NSString *) frameId withValue:(NSString *) value;
 -(NSString *) getFrame:(NSString *) frameId withEncoding:(unsigned int)encoding;
