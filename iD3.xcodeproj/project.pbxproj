@@ -34,6 +34,10 @@
 		F7E9951F198543A200DDE9B4 /* Tag.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E9951E198543A200DDE9B4 /* Tag.mm */; };
 		F7E9952A198593D300DDE9B4 /* NSString_TLString.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E99529198593D300DDE9B4 /* NSString_TLString.mm */; };
 		F7FB46C11992742400C72AFF /* NullValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB46C01992742400C72AFF /* NullValueTransform.m */; };
+		F7FB46C4199330A300C72AFF /* TagFilename.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46C3199330A300C72AFF /* TagFilename.pdf */; };
+		F7FB46D8199334ED00C72AFF /* AddFile.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46D7199334ED00C72AFF /* AddFile.pdf */; };
+		F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46DB199335F400C72AFF /* TagFix.pdf */; };
+		F7FB46DE1993362F00C72AFF /* Clear.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46DD1993362F00C72AFF /* Clear.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +99,10 @@
 		F7E99529198593D300DDE9B4 /* NSString_TLString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSString_TLString.mm; path = Taglib/NSString_TLString.mm; sourceTree = "<group>"; };
 		F7FB46BF1992742400C72AFF /* NullValueTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NullValueTransform.h; path = DataModel/NullValueTransform.h; sourceTree = "<group>"; };
 		F7FB46C01992742400C72AFF /* NullValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullValueTransform.m; path = DataModel/NullValueTransform.m; sourceTree = "<group>"; };
+		F7FB46C3199330A300C72AFF /* TagFilename.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TagFilename.pdf; sourceTree = "<group>"; };
+		F7FB46D7199334ED00C72AFF /* AddFile.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AddFile.pdf; sourceTree = "<group>"; };
+		F7FB46DB199335F400C72AFF /* TagFix.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TagFix.pdf; sourceTree = "<group>"; };
+		F7FB46DD1993362F00C72AFF /* Clear.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Clear.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +182,7 @@
 		F7E994DA1983418000DDE9B4 = {
 			isa = PBXGroup;
 			children = (
+				F7FB46C21993309100C72AFF /* Resources */,
 				F79BCE4519907A7400CC5F02 /* NSArray */,
 				F79BCE18198928A500CC5F02 /* NSString */,
 				F77F88EA1987D47A00B1B3CC /* DataModel */,
@@ -270,6 +279,17 @@
 			name = Taglib;
 			sourceTree = "<group>";
 		};
+		F7FB46C21993309100C72AFF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F7FB46DD1993362F00C72AFF /* Clear.pdf */,
+				F7FB46DB199335F400C72AFF /* TagFix.pdf */,
+				F7FB46D7199334ED00C72AFF /* AddFile.pdf */,
+				F7FB46C3199330A300C72AFF /* TagFilename.pdf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -353,8 +373,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7FB46DE1993362F00C72AFF /* Clear.pdf in Resources */,
 				F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */,
+				F7FB46C4199330A300C72AFF /* TagFilename.pdf in Resources */,
+				F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */,
 				F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */,
+				F7FB46D8199334ED00C72AFF /* AddFile.pdf in Resources */,
 				F7E994FF1983418000DDE9B4 /* Images.xcassets in Resources */,
 				F7E994F71983418000DDE9B4 /* Credits.rtf in Resources */,
 				F7E994FD1983418000DDE9B4 /* MainMenu.xib in Resources */,

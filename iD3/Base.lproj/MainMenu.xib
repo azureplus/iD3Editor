@@ -219,7 +219,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="iD3" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="iD3 Tag Editor" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="837" y="354" width="1024" height="768"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
@@ -670,28 +670,28 @@ IA
                     <constraint firstItem="SA2-Dt-g5c" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="bDb-OC-nQD"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="71F54B90-8D08-42EF-83A8-F3D8172ED3EB" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="3vU-ek-Yeh">
+            <toolbar key="toolbar" implicitIdentifier="71F54B90-8D08-42EF-83A8-F3D8172ED3EB" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="3vU-ek-Yeh">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="fLM-oQ-arQ"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="ocH-jt-LHv"/>
-                    <toolbarItem implicitItemIdentifier="DCFD97FC-198C-4B67-BF5F-6C9A470C86C4" label="Add Files" paletteLabel="Add Files" tag="-1" id="7sS-J5-nj1">
+                    <toolbarItem implicitItemIdentifier="DCFD97FC-198C-4B67-BF5F-6C9A470C86C4" label="Add Files" paletteLabel="Add Files" tag="-1" image="AddFile" id="7sS-J5-nj1">
                         <connections>
                             <action selector="openFiles:" target="Voe-Tx-rLC" id="LuJ-Na-ezJ"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="83B6282C-8FAE-4391-A7A3-1702DC89B4DB" label="Clear List" paletteLabel="Clear List" tag="-1" autovalidates="NO" id="0nb-Qu-q4c">
+                    <toolbarItem implicitItemIdentifier="83B6282C-8FAE-4391-A7A3-1702DC89B4DB" label="Clear Files" paletteLabel="Clear Files" tag="-1" image="Clear" autovalidates="NO" id="0nb-Qu-q4c">
                         <connections>
                             <action selector="clearFileList:" target="Voe-Tx-rLC" id="dgW-iW-q4y"/>
                             <binding destination="j1s-e0-8eb" name="enabled" keyPath="arrangedObjects.@count" id="Ywu-W3-9mI"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="1F34DC70-1C78-4B4E-91E2-F9408238AAB5" label="Encoding Fix" paletteLabel="Encoding Fix" tag="-1" autovalidates="NO" id="Z6X-Qd-jHX">
+                    <toolbarItem implicitItemIdentifier="1F34DC70-1C78-4B4E-91E2-F9408238AAB5" label="Fix Tags" paletteLabel="Fix Tags" tag="-1" image="TagFix" autovalidates="NO" id="Z6X-Qd-jHX">
                         <connections>
                             <action selector="showEncodingWindow:" target="Voe-Tx-rLC" id="hyd-NS-W9F"/>
                             <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="2vc-Wq-zr1"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="1B9DE22F-F761-483C-A15B-B8539FFB1EC0" label="Name &amp; Tag" paletteLabel="Name &amp; Tag" tag="-1" autovalidates="NO" id="vBP-ha-7jt">
+                    <toolbarItem implicitItemIdentifier="1B9DE22F-F761-483C-A15B-B8539FFB1EC0" label="Tag Tools" paletteLabel="Tag Tools" tag="-1" image="TagFilename" autovalidates="NO" id="vBP-ha-7jt">
                         <connections>
                             <action selector="showFileNameAndTagWindow:" target="Voe-Tx-rLC" id="MGO-aD-tTm"/>
                             <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="liQ-Qu-xFg"/>
@@ -701,7 +701,7 @@ IA
                 <defaultToolbarItems>
                     <toolbarItem reference="7sS-J5-nj1"/>
                     <toolbarItem reference="0nb-Qu-q4c"/>
-                    <toolbarItem reference="ocH-jt-LHv"/>
+                    <toolbarItem reference="fLM-oQ-arQ"/>
                     <toolbarItem reference="Z6X-Qd-jHX"/>
                     <toolbarItem reference="vBP-ha-7jt"/>
                     <toolbarItem reference="ocH-jt-LHv"/>
@@ -795,7 +795,7 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zeL-dl-ukK">
                         <rect key="frame" x="10" y="379" width="378" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select a language to fix your MP3 tags:" id="uH1-o0-O4v">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select a language to fix the tag encoding:" id="uH1-o0-O4v">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -822,11 +822,11 @@ Gw
                         <tabViewItems>
                             <tabViewItem label="Tag To File Name" identifier="TAG_NAME" id="YtW-dZ-7Ei">
                                 <view key="view" ambiguous="YES" id="0GG-96-yDB">
-                                    <rect key="frame" x="10" y="33" width="434" height="298"/>
+                                    <rect key="frame" x="10" y="33" width="131" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoh-wL-wLB">
-                                            <rect key="frame" x="24" y="72" width="398" height="22"/>
+                                            <rect key="frame" x="24" y="-226" width="398" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString=":T.:a:-:t-:A-:y" drawsBackground="YES" id="cE1-MS-1qm">
                                                 <font key="font" metaFont="system"/>
@@ -838,7 +838,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48s-qA-JHd">
-                                            <rect key="frame" x="43" y="262" width="36" height="17"/>
+                                            <rect key="frame" x="43" y="-36" width="36" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Title:" id="eBl-td-Ff6">
                                                 <font key="font" metaFont="system"/>
@@ -847,7 +847,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4Y-dv-fGy">
-                                            <rect key="frame" x="29" y="230" width="50" height="17"/>
+                                            <rect key="frame" x="29" y="-68" width="50" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Album:" id="46q-eT-MEH">
                                                 <font key="font" metaFont="system"/>
@@ -856,7 +856,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ox7-B5-8vo">
-                                            <rect key="frame" x="37" y="200" width="42" height="17"/>
+                                            <rect key="frame" x="37" y="-98" width="42" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Artist:" id="AHZ-C9-KVf">
                                                 <font key="font" metaFont="system"/>
@@ -865,7 +865,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxq-1E-jJ4">
-                                            <rect key="frame" x="36" y="170" width="43" height="17"/>
+                                            <rect key="frame" x="36" y="-128" width="43" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Track:" id="o0S-DO-7wE">
                                                 <font key="font" metaFont="system"/>
@@ -874,7 +874,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aw2-T6-dom">
-                                            <rect key="frame" x="154" y="170" width="36" height="17"/>
+                                            <rect key="frame" x="154" y="-128" width="36" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Year:" id="7mO-o8-UlT">
                                                 <font key="font" metaFont="system"/>
@@ -883,7 +883,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fpj-P9-KcZ">
-                                            <rect key="frame" x="280" y="170" width="46" height="17"/>
+                                            <rect key="frame" x="280" y="-128" width="46" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Genre:" id="VrD-PK-95c">
                                                 <font key="font" metaFont="system"/>
@@ -892,7 +892,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b4y-hV-S89">
-                                            <rect key="frame" x="10" y="137" width="70" height="17"/>
+                                            <rect key="frame" x="10" y="-161" width="70" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Comment:" id="DgT-gN-Rtx">
                                                 <font key="font" metaFont="system"/>
@@ -901,7 +901,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bnG-6T-2P1">
-                                            <rect key="frame" x="85" y="262" width="339" height="17"/>
+                                            <rect key="frame" x="85" y="-36" width="339" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sleepless Night" id="Ddn-oB-3HM">
                                                 <font key="font" metaFont="systemBold"/>
@@ -918,7 +918,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rPZ-9f-xyM">
-                                            <rect key="frame" x="85" y="230" width="339" height="17"/>
+                                            <rect key="frame" x="85" y="-68" width="339" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Summer Romance 87" id="gZV-lJ-rvB">
                                                 <font key="font" metaFont="systemBold"/>
@@ -935,7 +935,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eba-ol-E1X">
-                                            <rect key="frame" x="85" y="200" width="339" height="17"/>
+                                            <rect key="frame" x="85" y="-98" width="339" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Leslie Cheung" id="RIh-kC-n2c">
                                                 <font key="font" metaFont="systemBold"/>
@@ -952,7 +952,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmW-DM-tqr">
-                                            <rect key="frame" x="85" y="137" width="339" height="17"/>
+                                            <rect key="frame" x="85" y="-161" width="339" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Top 10 Gold Songs" placeholderString="" id="m4b-ZZ-EIx">
                                                 <font key="font" metaFont="systemBold"/>
@@ -969,7 +969,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XpP-hB-1tq">
-                                            <rect key="frame" x="85" y="170" width="45" height="17"/>
+                                            <rect key="frame" x="85" y="-128" width="45" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="02" id="tFX-jV-fcZ">
                                                 <font key="font" metaFont="systemBold"/>
@@ -986,7 +986,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TV7-t2-1fA">
-                                            <rect key="frame" x="194" y="170" width="64" height="17"/>
+                                            <rect key="frame" x="194" y="-128" width="64" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1987" id="1s1-no-Bgo">
                                                 <font key="font" metaFont="systemBold"/>
@@ -1003,7 +1003,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-cS-InO">
-                                            <rect key="frame" x="330" y="170" width="94" height="17"/>
+                                            <rect key="frame" x="330" y="-128" width="94" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pop" id="tdX-m3-ke1">
                                                 <font key="font" metaFont="systemBold"/>
@@ -1020,7 +1020,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="of1-MR-GWo">
-                                            <rect key="frame" x="21" y="11" width="404" height="53"/>
+                                            <rect key="frame" x="21" y="-287" width="404" height="53"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="New file name" id="Vdk-MP-Ufh">
                                                 <font key="font" metaFont="system"/>
@@ -1234,4 +1234,10 @@ Gw
             </connections>
         </window>
     </objects>
+    <resources>
+        <image name="AddFile" width="512" height="512"/>
+        <image name="Clear" width="512" height="512"/>
+        <image name="TagFilename" width="512" height="512"/>
+        <image name="TagFix" width="512" height="512"/>
+    </resources>
 </document>
