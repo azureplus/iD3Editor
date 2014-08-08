@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generated-by" content="Markdown PRO, http://markdownpro.com"/>
+<meta name="AppleTitle" content="iD3 Tag Editor Help" />
+<meta name="AppleIcon" content="iD3Help/icon16.png" />
+<title></title>
+</head>
+<body>
+<h1 id="toc_0">Welcome to iD3 Tag Editor</h1>
+
+<p>Thank you for choosing <strong>iD3 Tag Editor</strong>. This is a tool that helps you:</p>
+
+<ol>
+<li>Batch editing music files;</li>
+<li>Quickly fix tags that are incorrectly encoded;</li>
+<li>Rename music files using tags;</li>
+<li>Fetch tags from names of music files;</li>
+</ol>
+
+<p>I really hope you will find it useful.</p>
+
+<h2 id="toc_1">Batch Editing Music Files</h2>
+
+<p>Below is the main window of <strong>iD3 Tag Editor</strong>. To edit a group of music files, simply highlight these files and enter new tag values in the text fields on the right side of the window.</p>
+
+<p>Button &quot;To All&quot;, allows you to apply an existing tag value (i.e. <em>album</em>, <em>artist</em>, or <em>genre</em>) to all music files. That may be useful under certain situations.</p>
+
+<p><img src="mainwin.png" alt="main window"/></p>
+
+<h2 id="toc_2">Fix Language Encoding Of Tags</h2>
+
+<p>Sometimes, you may have music files in your collection that have incorrect character encodings. To fix the encoding:</p>
+
+<ol>
+<li>Highlight these music files;</li>
+<li>Click the toolbar button &quot;Fix Tags&quot;;</li>
+<li>Select a language encoding used by the tags of your music files;</li>
+</ol>
+
+<p><img src="encoding.png" alt="Encoding Fix"/></p>
+
+<p>If a correct language has been selected, your tags would be fixed automatically.</p>
+
+<h2 id="toc_3">Automatically Rename Music Files Using Tags</h2>
+
+<p>Suppose you have a group of music files, and they are not properly named. As an example, assume one music file named &quot;2.mp3&quot; has following tag values:</p>
+
+<ul>
+<li><strong>Album:</strong> <em>Affirmation</em></li>
+<li><strong>Artist:</strong> <em>Savage Garden</em></li>
+<li><strong>Track:</strong> <em>1</em></li>
+<li><strong>Title:</strong> <em>Affirmation</em></li>
+</ul>
+
+<p>If you want to rename this file to <em>Affirmation-Savage Garden.mp3</em>, and you want other music files to be renamed similarly, simply:</p>
+
+<ol>
+<li>Highlight these music files;</li>
+<li>Click the toolbar button &quot;Tag Tools&quot;;</li>
+<li>Make sure tab &quot;Tag To File Name&quot; is selected;</li>
+<li>In the text field, enter <font color="red"><strong>:t-:a</strong></font>;</li>
+<li>In the label below, you will see an example of new file names;</li>
+<li>Click &quot;Apply&quot; to rename music files;</li>
+</ol>
+
+<p><img src="t2n.png" alt="From Tag To File Name"/></p>
+
+<p>The input text <font color="red"><strong>:t-:a</strong></font> tells <strong>Tag Editor</strong> that we want new filename starts with mp3 title (<strong>:t</strong>), followed by a dash (-), and ends with the artist (<strong>:a</strong>). In addition to <strong>:t</strong> and <strong>:a</strong>, You can refer to other tag values in new file names as well. Table below lists all symbols you can use to make references:</p>
+
+<table><thead>
+<tr>
+<th>Symbol</th>
+<th>Tags values referred to</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:a</td>
+<td>artist</td>
+</tr>
+<tr>
+<td>:A</td>
+<td>album</td>
+</tr>
+<tr>
+<td>:g</td>
+<td>genre</td>
+</tr>
+<tr>
+<td>:t</td>
+<td>title</td>
+</tr>
+<tr>
+<td>:T</td>
+<td>track</td>
+</tr>
+<tr>
+<td>:y</td>
+<td>year</td>
+</tr>
+</tbody></table>
+
+<p>Following are two more examples:</p>
+
+<ol>
+<li>renaming files to <strong><em>track.title</em></strong>: 
+
+<ul>
+<li>:T.:t</li>
+</ul></li>
+<li>renaming files to <strong><em>track.title-album-artist-year</em></strong>:
+
+<ul>
+<li>:T.:t-:A-:a-:y</li>
+</ul></li>
+</ol>
+
+<p><font color="red"><strong>Limitation:</strong></font> Renaming music files only works for music files saved under the Music folder  of your home directory. If you need to rename music files in other folders, please copy them into your Music folder first.</p>
+
+<h2 id="toc_4">Fetch Tags From Music File Names</h2>
+
+<p>Different from the story above, sometimes you might encounter music files missing certain tag values. If missing tag values can be found in file names, <strong>iD3 Tag Editor</strong> can be very useful to restore those tag values. Here is an example. Assume you have an mp3 file named <em>-example.com-Affirmation-Savage Garden-.mp3</em>. This file doesn&#39;t have tag values of song title and the artist. Luckily, these two values can be found in the file name -- <em>&quot;Affirmation&quot;</em> and <em>&quot;Savage Garden&quot;</em> respectively. To restore those tag values, </p>
+
+<ol>
+<li>Highlight these music files;</li>
+<li>Click the toolbar button &quot;Tag Tools&quot;;</li>
+<li>Make sure tab &quot;File Name To Tag&quot; is selected;</li>
+<li>In the text field, enter <font color="red">com-:t-:a-.mp3</font>;</li>
+<li>Titles and artists of highlighted music files are correctly fetched out of file names;</li>
+<li>Click &quot;Apply&quot; to restore tag values;</li>
+</ol>
+
+<p><img src="n2t.png" alt="From File Name to Tag"/></p>
+
+<p>The input text <font color="red">com-:t-:a-.mp3</font> means </p>
+
+<ol>
+<li>Title (<strong>:t</strong>) follows text <em>&quot;com-&quot;</em> in the file name; </li>
+<li>After the title, there is a single <em>&quot;-&quot;</em>;</li>
+<li><em>&quot;-&quot;</em> is followed by artist (<strong>:a</strong>);</li>
+<li>Artist precedes text <em>&quot;-.mp3&quot;</em>;</li>
+</ol>
+
+<p>In addition to <strong>:t</strong> and <strong>:a</strong>, there are sever other symbols you can use to fetch tag values from file names. The complete list is below (this table is same as the symbol table above):</p>
+
+<table><thead>
+<tr>
+<th>Symbol</th>
+<th>Tags values to fetch</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:a</td>
+<td>artist</td>
+</tr>
+<tr>
+<td>:A</td>
+<td>album</td>
+</tr>
+<tr>
+<td>:g</td>
+<td>genre</td>
+</tr>
+<tr>
+<td>:t</td>
+<td>title</td>
+</tr>
+<tr>
+<td>:T</td>
+<td>track</td>
+</tr>
+<tr>
+<td>:y</td>
+<td>year</td>
+</tr>
+</tbody></table>
+
+<p><font color="red"><strong>Hint:</strong></font> When the missing tag value cannot be found in the file name, but in the folder name, uncheck the check box &quot;File Name Only&quot; will allow you to fetch the tag value from the folder name.</p>
+
+</body>
+</html>

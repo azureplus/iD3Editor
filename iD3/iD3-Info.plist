@@ -30,5 +30,9 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+    <key>CFBundleHelpBookFolder</key>
+    <string>iD3Help</string>
+    <key>CFBundleHelpBookName</key>
+    <string>iD3 Tag Editor Help</string>
 </dict>
 </plist>

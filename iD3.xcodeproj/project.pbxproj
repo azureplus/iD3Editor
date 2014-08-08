@@ -38,6 +38,7 @@
 		F7FB46D8199334ED00C72AFF /* AddFile.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46D7199334ED00C72AFF /* AddFile.pdf */; };
 		F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46DB199335F400C72AFF /* TagFix.pdf */; };
 		F7FB46DE1993362F00C72AFF /* Clear.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46DD1993362F00C72AFF /* Clear.pdf */; };
+		F7FB46E01993C11A00C72AFF /* iD3Help in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46DF1993C11A00C72AFF /* iD3Help */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		F7FB46D7199334ED00C72AFF /* AddFile.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AddFile.pdf; sourceTree = "<group>"; };
 		F7FB46DB199335F400C72AFF /* TagFix.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TagFix.pdf; sourceTree = "<group>"; };
 		F7FB46DD1993362F00C72AFF /* Clear.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Clear.pdf; sourceTree = "<group>"; };
+		F7FB46DF1993C11A00C72AFF /* iD3Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iD3Help; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 		F7FB46C21993309100C72AFF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F7FB46DF1993C11A00C72AFF /* iD3Help */,
 				F7FB46DD1993362F00C72AFF /* Clear.pdf */,
 				F7FB46DB199335F400C72AFF /* TagFix.pdf */,
 				F7FB46D7199334ED00C72AFF /* AddFile.pdf */,
@@ -373,6 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7FB46E01993C11A00C72AFF /* iD3Help in Resources */,
 				F7FB46DE1993362F00C72AFF /* Clear.pdf in Resources */,
 				F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */,
 				F7FB46C4199330A300C72AFF /* TagFilename.pdf in Resources */,
@@ -504,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = /Volumes/Data/Users/qiang/taglib/include;
@@ -538,7 +542,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = /Volumes/Data/Users/qiang/taglib/include;
 			};
