@@ -19,15 +19,15 @@
 }
 
 -(void)convertFramestoEncoding:(unsigned int)encoding {
-    [self convertFrame:@"ARTIST" toEncoding:encoding];
-    [self convertFrame:@"ALBUM" toEncoding:encoding];
-    [self convertFrame:@"COMMENT" toEncoding:encoding];
-    [self convertFrame:@"TITLE" toEncoding:encoding];
-    [self convertFrame:@"GENRE" toEncoding:encoding];
-    [self convertFrame:@"DATE" toEncoding:encoding];
-    [self convertFrame:@"TRACKNUMBER" toEncoding:encoding];
-    [self convertFrame:@"PERFORMER" toEncoding:encoding];
-    [self convertFrame:@"COMPOSER" toEncoding:encoding];
-    [self convertFrame:@"COPYRIGHT" toEncoding:encoding];
+    [self convertFrame:@"artist" toEncoding:encoding];
+    [self convertFrame:@"album" toEncoding:encoding];
+    [self convertFrame:@"comment" toEncoding:encoding];
+    [self convertFrame:@"title" toEncoding:encoding];
+    [self convertFrame:@"genre" toEncoding:encoding];
+    [self convertFrame:@"year" toEncoding:encoding];
+    [self convertFrame:@"track" toEncoding:encoding];
+    [self convertFrame:@"performer" toEncoding:encoding];
+    [self convertFrame:@"composer" toEncoding:encoding];
+    [self convertFrame:@"copyright" toEncoding:encoding];
 }
 @end
