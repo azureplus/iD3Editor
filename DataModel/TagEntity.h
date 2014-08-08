@@ -25,6 +25,8 @@
 @property (nonatomic, retain) NSString * copyright;
 @property (nonatomic, retain) NSNumber * pathDepth;
 
+@property (nonatomic, assign) BOOL tagUpdated;
+
 @property (nonatomic, weak) Tag * tag;
 
 -(void) resetValue;

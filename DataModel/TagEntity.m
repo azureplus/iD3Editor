@@ -23,11 +23,14 @@
 @dynamic year;
 @dynamic copyright;
 @dynamic pathDepth;
+
+@synthesize tagUpdated = _tagUpdated;
 @synthesize tag = _tag;
 
 -(void)setTag:(Tag *)tag {
     _tag = tag;
     [self resetValue];
+    _tagUpdated = NO;
 }
 
 -(void) resetValue {
@@ -44,22 +47,36 @@
     self.copyright = [_tag getFrame:@"COPYRIGHT"];
 }
 
+-(void) _setValue: (NSString *)value forKey:(NSString *)key ofDictionary:(NSMutableDictionary *) dict {
+    if (value.length == 0) {
+        dict[key] = @"";
+    } else {
+        dict[key] = value;
+    }
+}
+
 -(void) save {
-    [_tag setFrame:@"ARTIST" withValue:self.artist];
-    [_tag setFrame:@"ALBUM" withValue:self.album];
-    [_tag setFrame:@"TITLE" withValue:self.title];
-    [_tag setFrame:@"COMMENT" withValue:self.comment];
-    [_tag setFrame:@"GENRE" withValue:self.genre];
-    [_tag setFrame:@"TRACKNUMBER" withValue:self.track];
-    [_tag setFrame:@"DATE" withValue:self.year];
-    [_tag setFrame:@"PERFORMER" withValue:self.performer];
-    [_tag setFrame:@"COMPOSER" withValue:self.composer];
-    [_tag setFrame:@"COPYRIGHT" withValue:self.copyright];
-    [_tag writeTag];
+    if (_tagUpdated) {
+        NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:12];
+        [self _setValue:self.artist forKey:@"ARTIST" ofDictionary:dict];
+        [self _setValue:self.album forKey:@"ALBUM" ofDictionary:dict];
+        [self _setValue:self.title forKey:@"TITLE" ofDictionary:dict];
+        [self _setValue:self.comment forKey:@"COMMENT" ofDictionary:dict];
+        [self _setValue:self.genre forKey:@"GENRE" ofDictionary:dict];
+        [self _setValue:self.track forKey:@"TRACKNUMBER" ofDictionary:dict];
+        [self _setValue:self.year forKey:@"DATE" ofDictionary:dict];
+        [self _setValue:self.performer forKey:@"PERFORMER" ofDictionary:dict];
+        [self _setValue:self.composer forKey:@"COMPOSER" ofDictionary:dict];
+        [self _setValue:self.copyright forKey:@"COPYRIGHT" ofDictionary:dict];
+    
+        [_tag setFrames:dict];
+        [_tag writeTag];
+    }
 }
 
 
 - (void)didChangeValueForKey:(NSString *)key {
+    _tagUpdated = YES;
     if ([key isEqualToString:@"pathDepth"]) {
         self.filename = [self _filename:_tag.filename withPathDepth:[self.pathDepth intValue]];
     }

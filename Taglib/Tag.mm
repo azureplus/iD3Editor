@@ -27,7 +27,7 @@
 }
 
 -(void) writeTag {
-    _fileRef->save();
+    _fileRef->file()->save();
 }
 
 -(NSString *) getFrame:(NSString *) frameId {
@@ -37,6 +37,7 @@
 
 -(TagLib::String) _getFrame:(NSString *)frameId {
     TagLib::PropertyMap  propertyMap = _fileRef->file()->properties();
+        
     TagLib::PropertyMap::Iterator itor = propertyMap.find([frameId toTLString]);
     
     if (itor != propertyMap.end()) {
@@ -49,24 +50,26 @@
     return "";
 }
 
--(void)setFrame:(NSString *) frameId withValue:(NSString *) value {
-    if (!value) {
-        value = @"";
+-(void)setFrames:(NSDictionary *)frames {
+    TagLib::PropertyMap propertyMap;
+    
+    for (NSString * key in frames) {
+        TagLib::StringList attrs;
+        attrs.insert(attrs.begin(), [frames[key] toTLString]);
+        propertyMap.insert([key toTLString], attrs);
     }
     
-    TagLib::String v = [value toTLString];
-    TagLib::String fid = [frameId toTLString];
-
-    TagLib::PropertyMap  propertyMap = _fileRef->file()->properties();
-    TagLib::PropertyMap::Iterator itor = propertyMap.find(fid);
+    TagLib::PropertyMap existing = _fileRef->file()->properties();
+    TagLib::PropertyMap::Iterator it = existing.begin();
     
-    if (itor != propertyMap.end()) {
-        TagLib::StringList stringList = itor->second;
-        stringList[0] = v;
-    } else {
-        propertyMap[fid] = TagLib::StringList();
-        (propertyMap[fid])[0] = v;
+    while (it != existing.end()) {
+        if (!propertyMap.contains(it->first)) {
+            propertyMap[it->first] = it->second;
+        }
+        ++it;
     }
+        
+    _fileRef->file()->setProperties(propertyMap);
 }
 
 -(NSString *)_convertTLString: (const TagLib::String &) value toEncoding: (unsigned int) encoding{
