@@ -50,51 +50,63 @@
     } else {
         [delegate setPathDepth:1];
     }
+    
+    [self _n2tPatternUpdated];
+}
+
+-(void) _n2tPatternUpdated {
+    [self _clearN2TFields];
+    NSString * filename = [_n2tFilename stringValue];
+    NSString * pattern = [_n2tPattern stringValue];
+    
+    NSDictionary * tagFrames = [filename parse:pattern];
+    for (NSString * key in tagFrames) {
+        NSTextField * field = nil;
+        if ([key isEqualToString:@"artist"]) {
+            field = _n2tArtist;
+        } else if ([key isEqualToString:@"album"]) {
+            field = _n2tAlbum;
+        } else if ([key isEqualToString:@"title"]) {
+            field = _n2tTitle;
+        } else if ([key isEqualToString:@"track"]) {
+            field = _n2tTrack;
+        } else if ([key isEqualToString:@"composer"]) {
+            field = _n2tComposer;
+        } else if ([key isEqualToString:@"performer"]) {
+            field = _n2tPerformer;
+        } else if ([key isEqualToString:@"genre"]) {
+            field = _n2tGenre;
+        } else if ([key isEqualToString:@"year"]) {
+            field = _n2tYear;
+        }
+        
+        [field setStringValue:tagFrames[key]];
+    }
+}
+
+-(void) _t2nPatternUpdated {
+    NSString * pattern = [_t2nPattern stringValue];
+    
+    NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:7];
+    frames[@"artist"] = [_t2nArtist stringValue];
+    frames[@"album"] = [_t2nAlbum stringValue];
+    frames[@"title"] = [_t2nTitle stringValue];
+    frames[@"composer"] = [_t2nComposer stringValue];
+    frames[@"performer"] = [_t2nPerformer stringValue];
+    frames[@"genre"] = [_t2nGenre stringValue];
+    frames[@"track"] = [_t2nTrack stringValue];
+    frames[@"year"] = [_t2nYear stringValue];
+    
+    [_t2nFilename setStringValue:[NSString fromFrames:frames withPattern:pattern andTrackSize:0]];
 }
 
 // instant pattern recognition
 - (void) controlTextDidChange: (NSNotification *)notice {
     NSTextField * textField = [notice object];
-    NSString * pattern = [textField stringValue];
-    
     if (textField == _n2tPattern) {
-        [self _clearN2TFields];
-        NSString * filename = [_n2tFilename stringValue];
-        NSDictionary * tagFrames = [filename parse:pattern];
-        for (NSString * key in tagFrames) {
-            NSTextField * field = nil;
-            if ([key isEqualToString:@"artist"]) {
-                field = _n2tArtist;
-            } else if ([key isEqualToString:@"album"]) {
-                field = _n2tAlbum;
-            } else if ([key isEqualToString:@"title"]) {
-                field = _n2tTitle;
-            } else if ([key isEqualToString:@"track"]) {
-                field = _n2tTrack;
-            } else if ([key isEqualToString:@"composer"]) {
-                field = _n2tComposer;
-            } else if ([key isEqualToString:@"performer"]) {
-                field = _n2tPerformer;
-            } else if ([key isEqualToString:@"genre"]) {
-                field = _n2tGenre;
-            } else if ([key isEqualToString:@"year"]) {
-                field = _n2tYear;
-            }
-            
-            [field setStringValue:tagFrames[key]];
-        }
+        [self _n2tPatternUpdated];
     } else if (textField == _t2nPattern) {
-        NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:7];
-        frames[@"artist"] = [_t2nArtist stringValue];
-        frames[@"album"] = [_t2nAlbum stringValue];
-        frames[@"title"] = [_t2nTitle stringValue];
-        frames[@"composer"] = [_t2nComposer stringValue];
-        frames[@"performer"] = [_t2nPerformer stringValue];
-        frames[@"genre"] = [_t2nGenre stringValue];
-        frames[@"track"] = [_t2nTrack stringValue];
-        frames[@"year"] = [_t2nYear stringValue];
-        
-        [_t2nFilename setStringValue:[NSString fromFrames:frames withPattern:pattern andTrackSize:0]];
+        [self _t2nPatternUpdated];
     }
 }
 
@@ -108,5 +120,4 @@
     [_n2tYear setStringValue:@""];
     [_n2tGenre setStringValue:@""];
 }
-
 @end
