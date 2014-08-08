@@ -21,7 +21,8 @@
 @property (nonatomic, assign) IBOutlet NSTextField * n2tAlbum;
 @property (nonatomic, assign) IBOutlet NSTextField * n2tTitle;
 @property (nonatomic, assign) IBOutlet NSTextField * n2tTrack;
-@property (nonatomic, assign) IBOutlet NSTextField * n2tComment;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tComposer;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tPerformer;
 @property (nonatomic, assign) IBOutlet NSTextField * n2tGenre;
 @property (nonatomic, assign) IBOutlet NSTextField * n2tYear;
 
@@ -33,7 +34,8 @@
 @property (nonatomic, assign) IBOutlet NSTextField * t2nAlbum;
 @property (nonatomic, assign) IBOutlet NSTextField * t2nTitle;
 @property (nonatomic, assign) IBOutlet NSTextField * t2nTrack;
-@property (nonatomic, assign) IBOutlet NSTextField * t2nComment;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nComposer;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nPerformer;
 @property (nonatomic, assign) IBOutlet NSTextField * t2nGenre;
 @property (nonatomic, assign) IBOutlet NSTextField * t2nYear;
 

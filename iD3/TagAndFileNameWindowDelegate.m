@@ -71,8 +71,10 @@
                 field = _n2tTitle;
             } else if ([key isEqualToString:@"track"]) {
                 field = _n2tTrack;
-            } else if ([key isEqualToString:@"comment"]) {
-                field = _n2tComment;
+            } else if ([key isEqualToString:@"composer"]) {
+                field = _n2tComposer;
+            } else if ([key isEqualToString:@"performer"]) {
+                field = _n2tPerformer;
             } else if ([key isEqualToString:@"genre"]) {
                 field = _n2tGenre;
             } else if ([key isEqualToString:@"year"]) {
@@ -86,7 +88,8 @@
         frames[@"artist"] = [_t2nArtist stringValue];
         frames[@"album"] = [_t2nAlbum stringValue];
         frames[@"title"] = [_t2nTitle stringValue];
-        frames[@"comment"] = [_t2nComment stringValue];
+        frames[@"composer"] = [_t2nComposer stringValue];
+        frames[@"performer"] = [_t2nPerformer stringValue];
         frames[@"genre"] = [_t2nGenre stringValue];
         frames[@"track"] = [_t2nTrack stringValue];
         frames[@"year"] = [_t2nYear stringValue];
@@ -100,7 +103,8 @@
     [_n2tAlbum setStringValue:@""];
     [_n2tTitle setStringValue:@""];
     [_n2tTrack setStringValue:@""];
-    [_n2tComment setStringValue:@""];
+    [_n2tComposer setStringValue:@""];
+    [_n2tPerformer setStringValue:@""];
     [_n2tYear setStringValue:@""];
     [_n2tGenre setStringValue:@""];
 }

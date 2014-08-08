@@ -11,7 +11,8 @@
 #define ARTIST @":a"
 #define ALBUM @":A"
 #define TITLE @":t"
-#define COMMENT @":c"
+#define COMPOSER @":c"
+#define PERFORMER @":p"
 #define GENRE @":g"
 #define TRACK @":T"
 #define YEAR @":y"
@@ -22,23 +23,26 @@
 //:A - album
 //:a - artist
 //:t - title
-//:c - comment
+//:c - composer
+//:p - performer
 //:g - genre
 //:T - track
 //:y - year
 //:: - : itself
 //
-
 +(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern andTrackSize:(NSUInteger)trackSize {
-    NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:5];
+    NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:8];
     frames[@"artist"] = tag.artist;
     frames[@"album"] = tag.album;
     frames[@"title"] = tag.title;
-    frames[@"comment"] = tag.comment;
+    frames[@"composer"] = tag.composer;
+    frames[@"performer"] = tag.performer;
     frames[@"genre"] = tag.genre;
     
     frames[@"track"] = tag.track;
     frames[@"year"] = tag.year;
+    
+    NSLog(@"--->%@", frames);
     
     return [NSString fromFrames:frames withPattern:pattern andTrackSize:trackSize];
 }
@@ -77,7 +81,10 @@
                     }
                     break;
                 case 'c':
-                    value = frames[@"comment"];
+                    value = frames[@"composer"];
+                    break;
+                case 'p':
+                    value = frames[@"performer"];
                     break;
                 case 'g':
                     value = frames[@"genre"];
@@ -106,7 +113,7 @@
 
 -(NSDictionary *) parse:(NSString *)pattern {
     NSDictionary * dic = [self _parseWithPattern:pattern];
-    NSMutableDictionary * rv = [NSMutableDictionary dictionaryWithCapacity:5];
+    NSMutableDictionary * rv = [NSMutableDictionary dictionaryWithCapacity:8];
     for (NSString * key in dic) {
         //value cannot be null using current algorithm
         NSString * value = [dic objectForKey:key];
@@ -116,8 +123,10 @@
             [rv setObject:value forKey:@"album"];
         } else if ([key isEqualTo:TITLE]) {
             [rv setObject:value forKey:@"title"];
-        } else if ([key isEqualTo:COMMENT]) {
-            [rv setObject:value forKey:@"comment"];
+        } else if ([key isEqualTo:COMPOSER]) {
+            [rv setObject:value forKey:@"composer"];
+        } else if ([key isEqualToString:PERFORMER]) {
+            [rv setObject:value forKey:@"performer"];
         } else if ([key isEqualTo:GENRE]) {
             [rv setObject:value forKey:@"genre"];
         } else if ([key isEqualTo:TRACK]) {
@@ -228,7 +237,6 @@
     }
     
     NSUInteger prevC = c;
-//    NSUInteger prevR = r;
     while (c>0 && r>0) {
         if (matches[r][c]) {
             if (track[r][c] == 1) {
@@ -237,31 +245,25 @@
                 r = r - 1;
                 c = c - 1;
                 prevC = c;
-//                prevR = r;
             } else {
                 NSRange rangeC = NSMakeRange(c - 1, prevC - c + 1);
                 NSString * value = [self substringWithRange:rangeC];
                 NSRange rangeR = NSMakeRange(r - 2, 2);
                 NSString * key = [pattern substringWithRange:rangeR];
                 [tag setObject:value forKey:key];
-                // NSLog(@"%@--->%@", key, value);
                 r = r - 2;
                 c = c - 1;
                 prevC = c;
-//                prevR = r;
             }
         } else if (r == 1 || [pattern characterAtIndex:r - 2] != ':') {
                 r = r - 1;
-//                prevR = r;
         } else {
                 NSRange rangeC = NSMakeRange(c, prevC - c);
                 NSString * value = [self substringWithRange:rangeC];
                 NSRange rangeR = NSMakeRange(r - 2, 2);
                 NSString * key = [pattern substringWithRange:rangeR];
                 [tag setObject:value forKey:key];
-                // NSLog(@"%@--->%@", key, value);
                 r = r - 2;
-//                prevR = r;
         }
     }
     
