@@ -12,7 +12,6 @@
 #endif
 
 @interface Tag : NSObject {
-    NSMutableDictionary * _properties;
 #ifdef __cplusplus
     TagLib::FileRef * _fileRef;
 #endif
@@ -23,6 +22,6 @@
 -(id) initWithFile: (NSString *) fileName;
 -(NSString *) getFrame:(NSString *) frameId;
 -(void)setFrame:(NSString *) frameId withValue:(NSString *) value;
--(NSString *) getFrame:(NSString *) frameId withEncoding:(unsigned int)encoding;
+-(NSString *) getFrame:(NSString *) frameId withCharEncoding:(unsigned int)encoding;
 -(void) writeTag;
 @end

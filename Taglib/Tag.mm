@@ -9,6 +9,7 @@
 #import "Tag.h"
 #import "taglib/tag.h"
 #import "taglib/fileref.h"
+#import "taglib/tpropertymap.h"
 #import "NSString_TLString.h"
 
 @implementation Tag
@@ -16,7 +17,6 @@
 -(id) initWithFile: (NSString *) filename {
     if (self = [super init]) {
         _filename = filename;
-        _properties = [NSMutableDictionary dictionaryWithCapacity: 7];
         _fileRef = new TagLib::FileRef([_filename UTF8String]);
     }
     return self;
@@ -31,25 +31,22 @@
 }
 
 -(NSString *) getFrame:(NSString *) frameId {
-    TagLib::Tag * tag = _fileRef->file()->tag();
-    NSString * rv = @"";
-    if ([frameId isEqualTo:@"artist"]) {
-        rv = [NSString newStringFromTLString: tag->artist()];
-    } else if ([frameId isEqualTo:@"album"]) {
-        rv = [NSString newStringFromTLString: tag->album()];
-    } else if ([frameId isEqualTo:@"title"]) {
-        rv = [NSString newStringFromTLString: tag->title()];
-    } else if ([frameId isEqualTo:@"comment"]) {
-        rv = [NSString newStringFromTLString: tag->comment()];
-    } else if ([frameId isEqualTo:@"genre"]) {
-        rv = [NSString newStringFromTLString: tag->genre()];
-    } else if ([frameId isEqualTo:@"year"]) {
-        rv = [NSString stringWithFormat:@"%d", tag->year()];
-    } else if ([frameId isEqualTo:@"track"]) {
-        rv = [NSString stringWithFormat:@"%d", tag->track()];
+    TagLib::String rv = [self _getFrame:frameId];
+    return [NSString newStringFromTLString:rv];
+}
+
+-(TagLib::String) _getFrame:(NSString *)frameId {
+    TagLib::PropertyMap  propertyMap = _fileRef->file()->properties();
+    TagLib::PropertyMap::Iterator itor = propertyMap.find([frameId toTLString]);
+    
+    if (itor != propertyMap.end()) {
+        TagLib::StringList stringList = itor->second;
+        if (!stringList.isEmpty()) {
+            return stringList.front();
+        }
     }
     
-    return rv;
+    return "";
 }
 
 -(void)setFrame:(NSString *) frameId withValue:(NSString *) value {
@@ -57,23 +54,18 @@
         value = @"";
     }
     
-    TagLib::Tag * tag = _fileRef->file()->tag();
     TagLib::String v = [value toTLString];
+    TagLib::String fid = [frameId toTLString];
+
+    TagLib::PropertyMap  propertyMap = _fileRef->file()->properties();
+    TagLib::PropertyMap::Iterator itor = propertyMap.find(fid);
     
-    if ([frameId isEqualTo:@"artist"]) {
-        tag->setArtist(v);
-    } else if ([frameId isEqualTo:@"album"]) {
-        tag->setAlbum(v);
-    } else if ([frameId isEqualTo:@"title"]) {
-        tag->setTitle(v);
-    } else if ([frameId isEqualTo:@"comment"]) {
-        tag->setComment(v);
-    } else if ([frameId isEqualTo:@"genre"]) {
-        tag->setGenre(v);
-    } else if ([frameId isEqualTo:@"year"]) {
-        tag->setYear([value intValue]);
-    } else if ([frameId isEqualTo:@"track"]) {
-        tag->setTrack([value intValue]);
+    if (itor != propertyMap.end()) {
+        TagLib::StringList stringList = itor->second;
+        stringList[0] = v;
+    } else {
+        propertyMap[fid] = TagLib::StringList();
+        (propertyMap[fid])[0] = v;
     }
 }
 
@@ -91,31 +83,8 @@
 //
 // returns nil if encoding conversion is not needed (e.g. the original encoding is already UTF)
 //
--(NSString *) getFrame:(NSString *) frameId withEncoding:(unsigned int)encoding {
-    TagLib::Tag * tag = _fileRef->file()->tag();
-    NSString * rv = nil;
-    if ([frameId isEqualTo:@"artist"]) {
-        rv = [self _convertTLString: tag->artist() toEncoding:encoding];
-    } else if ([frameId isEqualToString:@"album"]) {
-        rv = [self _convertTLString: tag->album() toEncoding:encoding];
-    } else if ([frameId isEqualToString:@"title"]) {
-        rv = [self _convertTLString: tag->title() toEncoding:encoding];
-    }else if ([frameId isEqualToString:@"comment"]) {
-        rv = [self _convertTLString: tag->comment() toEncoding:encoding];
-    } else if ([frameId isEqualToString:@"genre"]) {
-        rv = [self _convertTLString: tag->genre() toEncoding:encoding];
-    }
-    return rv;
-}
-
--(NSString *) description {
-    return [NSString stringWithFormat:@"\n\tartist: %@\n\talbum: %@\n\ttitle: %@\n\tcomment: %@\n\tgenre: %@\n\tyear: %@\n\ttrack: %@",
-            [_properties valueForKey:@"artist"],
-            [_properties valueForKey:@"album"],
-            [_properties valueForKey:@"title"],
-            [_properties valueForKey:@"comment"],
-            [_properties valueForKey:@"genre"],
-            [_properties valueForKey:@"year"],
-            [_properties valueForKey:@"track"]];
+-(NSString *) getFrame:(NSString *) frameId withCharEncoding:(unsigned int)encoding {
+    TagLib::String rv = [self _getFrame:frameId];
+    return [self _convertTLString:rv toEncoding:encoding];
 }
 @end

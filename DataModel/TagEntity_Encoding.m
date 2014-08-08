@@ -12,17 +12,22 @@
 @implementation TagEntity(Encoding)
 
 -(void)convertFrame:(NSString *)frame toEncoding:(unsigned int)encoding {
-    NSString * value = [self.tag getFrame:frame withEncoding:encoding];
+    NSString * value = [self.tag getFrame:frame withCharEncoding:encoding];
     if (value) {
         [self setValue:value forKey:frame];
     }
 }
 
 -(void)convertFramestoEncoding:(unsigned int)encoding {
-    [self convertFrame:@"artist" toEncoding:encoding];
-    [self convertFrame:@"album" toEncoding:encoding];
-    [self convertFrame:@"comment" toEncoding:encoding];
-    [self convertFrame:@"title" toEncoding:encoding];
-    [self convertFrame:@"genre" toEncoding:encoding];
+    [self convertFrame:@"ARTIST" toEncoding:encoding];
+    [self convertFrame:@"ALBUM" toEncoding:encoding];
+    [self convertFrame:@"COMMENT" toEncoding:encoding];
+    [self convertFrame:@"TITLE" toEncoding:encoding];
+    [self convertFrame:@"GENRE" toEncoding:encoding];
+    [self convertFrame:@"DATE" toEncoding:encoding];
+    [self convertFrame:@"TRACKNUMBER" toEncoding:encoding];
+    [self convertFrame:@"PERFORMER" toEncoding:encoding];
+    [self convertFrame:@"COMPOSER" toEncoding:encoding];
+    [self convertFrame:@"COPYRIGHT" toEncoding:encoding];
 }
 @end
