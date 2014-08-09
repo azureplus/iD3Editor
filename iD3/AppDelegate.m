@@ -107,7 +107,13 @@
 -(void)_initSupportedFileTypes {
     NSString *filePath   = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
     NSDictionary * plist = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-    _supportedFileTypes = [NSArray arrayWithArray: plist[@"Supported Files"]];
+    _supportedFileTypes = [NSMutableArray arrayWithCapacity:12];
+    
+    for (NSString * type in plist[@"Supported Files"]) {
+        if (![type hasPrefix:@"--"]) {
+            [_supportedFileTypes addObject:type];
+        }
+    }
 }
 
 //// core data ////

@@ -7,7 +7,9 @@
 //
 
 #import "Tag.h"
+#import "taglib/apefile.h"
+#import "taglib/apetag.h"
 
 @interface Tag(APE)
--(void)setAPEFrames:(NSDictionary *)frames;
+-(void)setAPEFrames:(NSDictionary *)frames withTag:(TagLib::APE::Tag *) tag;
 @end

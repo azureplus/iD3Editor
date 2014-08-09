@@ -11,6 +11,7 @@
 #import "taglib/fileref.h"
 #import "taglib/tpropertymap.h"
 #import "NSString_TLString.h"
+#import "Tag_FileTypeResolver.h"
 
 @implementation Tag
 
@@ -50,10 +51,7 @@
 }
 
 -(void)setFrames:(NSDictionary *)frames {
-    NSString * extension = [self->_filename pathExtension];
-//    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@Frames:", [extension uppercaseString]]);
-    SEL selector = NSSelectorFromString(@"setID3V2Frames:");
-    [self performSelector:selector withObject:frames];
+    [self resolveSetFrames:frames];
 }
 
 -(NSString *)_convertTLString: (const TagLib::String &) value toEncoding: (unsigned int) encoding{

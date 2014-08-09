@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet NSArrayController * tagArrayController;
 @property (weak, nonatomic) IBOutlet NSArrayController * encodingArrayController;
 
-@property (readonly, nonatomic) NSArray * supportedFileTypes;
+@property (readonly, nonatomic) NSMutableArray * supportedFileTypes;
 
 /// actions
 -(IBAction) openFiles:(id)sender;

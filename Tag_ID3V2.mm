@@ -9,23 +9,11 @@
 #import "Tag_ID3V2.h"
 #import "Tag.h"
 #import "taglib/tag.h"
-#import "taglib/fileref.h"
-#import "taglib/mpegfile.h"
-#import "taglib/id3v2tag.h"
-#import "taglib/id3v2framefactory.h"
-#import "taglib/textidentificationframe.h"
 
 #import "NSString_TLString.h"
 
 @implementation Tag(ID3V2)
--(void)setID3V2Frames:(NSDictionary *)frames {
-    TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(_fileRef->file());
-    
-    if (!file)  {
-        return;
-    }
-    
-    TagLib::ID3v2::Tag * id3v2Tag = file->ID3v2Tag(true);
+-(void)setID3V2Frames:(NSDictionary *)frames withTag:(TagLib::ID3v2::Tag *) id3v2Tag {
     for (NSString * key in frames) {
         TagLib::String value = [frames[key] toTLString];
         if ([key isEqualToString:@"ARTIST"]) {

@@ -7,6 +7,8 @@
 //
 
 #import "Tag.h"
+#import "taglib/xiphcomment.h"
+
 @interface Tag(XIPHComment)
--(void)setXIPHCOMMENTFrames:(NSDictionary *)frames;
+-(void)setXIPHCOMMENTFrames:(NSDictionary *)frames withTag:(TagLib::Ogg::XiphComment *)tag;
 @end

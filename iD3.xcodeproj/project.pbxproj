@@ -10,6 +10,7 @@
 		F76021F81995D0E9002DFE01 /* Tag_APE.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76021F71995D0E9002DFE01 /* Tag_APE.mm */; };
 		F76021FB1995D232002DFE01 /* Tag_ID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76021FA1995D232002DFE01 /* Tag_ID3V2.mm */; };
 		F76021FE1995EEA6002DFE01 /* Tag_XIPHComment.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76021FD1995EEA6002DFE01 /* Tag_XIPHComment.mm */; };
+		F7602201199656BA002DFE01 /* Tag_FileTypeResolver.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7602200199656BA002DFE01 /* Tag_FileTypeResolver.mm */; };
 		F76D68931986166700DB2E41 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76D68921986166700DB2E41 /* libz.dylib */; };
 		F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */; };
 		F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE1619889BB500CC5F02 /* TagEntity.m */; };
@@ -61,6 +62,8 @@
 		F76021FA1995D232002DFE01 /* Tag_ID3V2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Tag_ID3V2.mm; sourceTree = "<group>"; };
 		F76021FC1995EEA6002DFE01 /* Tag_XIPHComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag_XIPHComment.h; sourceTree = "<group>"; };
 		F76021FD1995EEA6002DFE01 /* Tag_XIPHComment.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Tag_XIPHComment.mm; sourceTree = "<group>"; };
+		F76021FF199656BA002DFE01 /* Tag_FileTypeResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag_FileTypeResolver.h; sourceTree = "<group>"; };
+		F7602200199656BA002DFE01 /* Tag_FileTypeResolver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Tag_FileTypeResolver.mm; sourceTree = "<group>"; };
 		F76D68921986166700DB2E41 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F77F88A11987433900B1B3CC /* iD3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iD3.entitlements; sourceTree = "<group>"; };
 		F77F88EC1987D49C00B1B3CC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -292,6 +295,8 @@
 				F76021FA1995D232002DFE01 /* Tag_ID3V2.mm */,
 				F76021FC1995EEA6002DFE01 /* Tag_XIPHComment.h */,
 				F76021FD1995EEA6002DFE01 /* Tag_XIPHComment.mm */,
+				F76021FF199656BA002DFE01 /* Tag_FileTypeResolver.h */,
+				F7602200199656BA002DFE01 /* Tag_FileTypeResolver.mm */,
 			);
 			name = Taglib;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				F79BCE24198A865900CC5F02 /* NSString_Filename.m in Sources */,
 				F7FB46C11992742400C72AFF /* NullValueTransform.m in Sources */,
 				F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */,
+				F7602201199656BA002DFE01 /* Tag_FileTypeResolver.mm in Sources */,
 				F79BCE35198E74B300CC5F02 /* TagEntity_Filename.m in Sources */,
 				F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */,
 				F7E994F31983418000DDE9B4 /* main.m in Sources */,
