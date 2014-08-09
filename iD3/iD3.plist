@@ -2,22 +2,52 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Supported Files</key>
+	<array>
+		<string>mp3</string>
+        <string>ogg</string>
+        <string>flac</string>
+        <string>oga</string>
+        <string>mpc</string> 
+        <string>wv</string>
+        <string>spx</string>
+        <string>tta</string>
+        <string>m4a</string>
+        <string>m4r</string>                                
+        <string>m4b</string>
+        <string>m4p</string>
+        <string>3g2</string>
+        <string>mp4</string>
+        <string>wma</string> 
+        <string>asf</string>
+        <string>aif</string>
+        <string>aiff</string>
+        <string>wav</string>
+        <string>ape</string>                                
+        <string>mod</string>
+        <string>module</string>                                                                       
+        <string>nst</string>
+        <string>wow</string>                                
+        <string>s3m</string>
+        <string>it</string>                                                                       
+        <string>xm</string>                                                                               
+	</array>
 	<key>Ordered Encoding Regions</key>
 	<array>
 		<string>Western</string>
 		<string>Simplified Chinese</string>
 		<string>Traditional Chinese</string>
 		<string>Japanese</string>
-        <string>Korea</string>
-        <string>Arabic</string>        
-        <string>Hebrew</string>        
-        <string>Greek</string> 
-        <string>Cyrillic</string>                      
-        <string>Thai</string>
-        <string>Central European</string>
-        <string>Vietnamese</string>                                          
-        <string>Turkish</string>
-        <string>Baltic</string>                
+		<string>Korea</string>
+		<string>Arabic</string>
+		<string>Hebrew</string>
+		<string>Greek</string>
+		<string>Cyrillic</string>
+		<string>Thai</string>
+		<string>Central European</string>
+		<string>Vietnamese</string>
+		<string>Turkish</string>
+		<string>Baltic</string>
 	</array>
 	<key>Encoding</key>
 	<dict>
@@ -59,82 +89,82 @@
 			<key>GBK</key>
 			<string>0x0631</string>
 		</dict>
-        <key>Korea</key>
-        <dict>
-            <key>ISO 2022-KR</key>
-            <string>0x0840</string>
-            <key>Mac OS</key>
-            <string>0x0003</string>
-            <key>Windows, DOS</key>
-            <string>0x0422</string>
-        </dict>
-        <key>Arabic</key>
-        <dict>
-            <key>ISO 8859-6</key>
-            <string>0x0206</string>
-            <key>Windows</key>
-            <string>0x0506</string>
-        </dict>
-        <key>Hebrew</key>
-        <dict>
-            <key>ISO 8859-8</key>
-            <string>0x0208</string>
-            <key>Windows</key>
-            <string>0x0505</string>
-        </dict>
-        <key>Greek</key>
-        <dict>
-            <key>ISO 8859-7</key>
-            <string>0x0207</string>
-            <key>Windows</key>
-            <string>0x0503</string>
-        </dict>
-        <key>Cyrillic</key>
-        <dict>
-            <key>ISO 8859-5</key>
-            <string>0x0205</string>
-            <key>Mac OS</key>
-            <string>0x0007</string>
-            <key>KOI8-R, Russia</key>
-            <string>0x0A02</string>
-            <key>KOI8-U, Ukrainian</key>
-            <string>0x0A08</string>
-            <key>Windows</key>
-            <string>0x0502</string>
-        </dict>
-        <key>Thai</key>
-        <dict>
-            <key>Windows, DOS</key>
-            <string>0x041D</string>
-        </dict>     
-        <key>Central European</key>
-        <dict>
-            <key>ISO Latin 2</key>
-            <string>0x0202</string>
-            <key>Windows Latin 2</key>
-            <string>0x0501</string>
-        </dict>           
-        <key>Vietnamese</key>
-        <dict>
-            <key>Windows</key>
-            <string>0x0508</string>
-        </dict>     
-        <key>Turkish</key>
-        <dict>
-            <key>ISO Latin 5</key>
-            <string>0x0209</string>
-            <key>Windows Latin 5</key>
-            <string>0x0504</string>
-        </dict>
-        <key>Baltic</key>
-        <dict>
-            <key>ISO Latin 4</key>
-            <string>0x0204</string>            
-            <key>ISO Latin 7</key>
-            <string>0x020D</string>            
-            <key>Windows</key>
-            <string>0x0507</string>
-        </dict>
+		<key>Korea</key>
+		<dict>
+			<key>ISO 2022-KR</key>
+			<string>0x0840</string>
+			<key>Mac OS</key>
+			<string>0x0003</string>
+			<key>Windows, DOS</key>
+			<string>0x0422</string>
+		</dict>
+		<key>Arabic</key>
+		<dict>
+			<key>ISO 8859-6</key>
+			<string>0x0206</string>
+			<key>Windows</key>
+			<string>0x0506</string>
+		</dict>
+		<key>Hebrew</key>
+		<dict>
+			<key>ISO 8859-8</key>
+			<string>0x0208</string>
+			<key>Windows</key>
+			<string>0x0505</string>
+		</dict>
+		<key>Greek</key>
+		<dict>
+			<key>ISO 8859-7</key>
+			<string>0x0207</string>
+			<key>Windows</key>
+			<string>0x0503</string>
+		</dict>
+		<key>Cyrillic</key>
+		<dict>
+			<key>ISO 8859-5</key>
+			<string>0x0205</string>
+			<key>Mac OS</key>
+			<string>0x0007</string>
+			<key>KOI8-R, Russia</key>
+			<string>0x0A02</string>
+			<key>KOI8-U, Ukrainian</key>
+			<string>0x0A08</string>
+			<key>Windows</key>
+			<string>0x0502</string>
+		</dict>
+		<key>Thai</key>
+		<dict>
+			<key>Windows, DOS</key>
+			<string>0x041D</string>
+		</dict>
+		<key>Central European</key>
+		<dict>
+			<key>ISO Latin 2</key>
+			<string>0x0202</string>
+			<key>Windows Latin 2</key>
+			<string>0x0501</string>
+		</dict>
+		<key>Vietnamese</key>
+		<dict>
+			<key>Windows</key>
+			<string>0x0508</string>
+		</dict>
+		<key>Turkish</key>
+		<dict>
+			<key>ISO Latin 5</key>
+			<string>0x0209</string>
+			<key>Windows Latin 5</key>
+			<string>0x0504</string>
+		</dict>
+		<key>Baltic</key>
+		<dict>
+			<key>ISO Latin 4</key>
+			<string>0x0204</string>
+			<key>ISO Latin 7</key>
+			<string>0x020D</string>
+			<key>Windows</key>
+			<string>0x0507</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

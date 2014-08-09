@@ -27,7 +27,7 @@
 }
 
 -(void) writeTag {
-    _fileRef->file()->save();
+    _fileRef->save();
 }
 
 -(NSString *) getFrame:(NSString *) frameId {
@@ -37,7 +37,6 @@
 
 -(TagLib::String) _getFrame:(NSString *)frameId {
     TagLib::PropertyMap  propertyMap = _fileRef->file()->properties();
-        
     TagLib::PropertyMap::Iterator itor = propertyMap.find([frameId toTLString]);
     
     if (itor != propertyMap.end()) {
@@ -51,25 +50,10 @@
 }
 
 -(void)setFrames:(NSDictionary *)frames {
-    TagLib::PropertyMap propertyMap;
-    
-    for (NSString * key in frames) {
-        TagLib::StringList attrs;
-        attrs.insert(attrs.begin(), [frames[key] toTLString]);
-        propertyMap.insert([key toTLString], attrs);
-    }
-    
-    TagLib::PropertyMap existing = _fileRef->file()->properties();
-    TagLib::PropertyMap::Iterator it = existing.begin();
-    
-    while (it != existing.end()) {
-        if (!propertyMap.contains(it->first)) {
-            propertyMap[it->first] = it->second;
-        }
-        ++it;
-    }
-        
-    _fileRef->file()->setProperties(propertyMap);
+    NSString * extension = [self->_filename pathExtension];
+//    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@Frames:", [extension uppercaseString]]);
+    SEL selector = NSSelectorFromString(@"setID3V2Frames:");
+    [self performSelector:selector withObject:frames];
 }
 
 -(NSString *)_convertTLString: (const TagLib::String &) value toEncoding: (unsigned int) encoding{
@@ -90,4 +74,5 @@
     TagLib::String rv = [self _getFrame:frameId];
     return [self _convertTLString:rv toEncoding:encoding];
 }
+
 @end

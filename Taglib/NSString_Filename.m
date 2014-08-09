@@ -12,7 +12,6 @@
 #define ALBUM @":A"
 #define TITLE @":t"
 #define COMPOSER @":c"
-#define PERFORMER @":p"
 #define GENRE @":g"
 #define TRACK @":T"
 #define YEAR @":y"
@@ -24,7 +23,6 @@
 //:a - artist
 //:t - title
 //:c - composer
-//:p - performer
 //:g - genre
 //:T - track
 //:y - year
@@ -36,7 +34,6 @@
     frames[@"album"] = tag.album;
     frames[@"title"] = tag.title;
     frames[@"composer"] = tag.composer;
-    frames[@"performer"] = tag.performer;
     frames[@"genre"] = tag.genre;
     
     frames[@"track"] = tag.track;
@@ -83,9 +80,6 @@
                 case 'c':
                     value = frames[@"composer"];
                     break;
-                case 'p':
-                    value = frames[@"performer"];
-                    break;
                 case 'g':
                     value = frames[@"genre"];
                     break;
@@ -125,8 +119,6 @@
             [rv setObject:value forKey:@"title"];
         } else if ([key isEqualTo:COMPOSER]) {
             [rv setObject:value forKey:@"composer"];
-        } else if ([key isEqualToString:PERFORMER]) {
-            [rv setObject:value forKey:@"performer"];
         } else if ([key isEqualTo:GENRE]) {
             [rv setObject:value forKey:@"genre"];
         } else if ([key isEqualTo:TRACK]) {

@@ -13,13 +13,12 @@
         <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pathDepth" optional="YES" attributeType="Integer 16" defaultValueString="YES" syncable="YES"/>
-        <attribute name="performer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="track" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Encoding" positionX="-63" positionY="54" width="128" height="75"/>
-        <element name="Tag" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="Tag" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>

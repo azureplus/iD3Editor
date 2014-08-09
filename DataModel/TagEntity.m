@@ -13,7 +13,6 @@
 
 @dynamic album;
 @dynamic artist;
-@dynamic performer;
 @dynamic composer;
 @dynamic comment;
 @dynamic filename;
@@ -42,16 +41,15 @@
     self.genre = [_tag getFrame:@"GENRE"];
     self.year = [_tag getFrame:@"DATE"];
     self.track = [_tag getFrame:@"TRACKNUMBER"];
-    self.performer = [_tag getFrame:@"PERFORMER"];
     self.composer = [_tag getFrame:@"COMPOSER"];
     self.copyright = [_tag getFrame:@"COPYRIGHT"];
 }
 
 -(void) _setValue: (NSString *)value forKey:(NSString *)key ofDictionary:(NSMutableDictionary *) dict {
-    if (value.length == 0) {
-        dict[key] = @"";
-    } else {
+    if (value.length != 0) {
         dict[key] = value;
+    } else {
+        dict[key] = @"";
     }
 }
 
@@ -65,12 +63,12 @@
         [self _setValue:self.genre forKey:@"GENRE" ofDictionary:dict];
         [self _setValue:self.track forKey:@"TRACKNUMBER" ofDictionary:dict];
         [self _setValue:self.year forKey:@"DATE" ofDictionary:dict];
-        [self _setValue:self.performer forKey:@"PERFORMER" ofDictionary:dict];
         [self _setValue:self.composer forKey:@"COMPOSER" ofDictionary:dict];
         [self _setValue:self.copyright forKey:@"COPYRIGHT" ofDictionary:dict];
     
         [_tag setFrames:dict];
         [_tag writeTag];
+        _tagUpdated = NO;
     }
 }
 

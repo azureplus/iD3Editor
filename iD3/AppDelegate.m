@@ -25,6 +25,7 @@
     _tags = [[NSMutableArray alloc] initWithCapacity:32];
     [self _initCoreData];
     [self _initSupportedEncodings];
+    [self _initSupportedFileTypes];
     [_encodingArrayController addObserver:self forKeyPath:@"selection" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)  context:nil];
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstTimeReminder"]) {
@@ -103,6 +104,12 @@
     }
 }
 
+-(void)_initSupportedFileTypes {
+    NSString *filePath   = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
+    NSDictionary * plist = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+    _supportedFileTypes = [NSArray arrayWithArray: plist[@"Supported Files"]];
+}
+
 //// core data ////
 -(void) _initCoreData {
     // the model definition file
@@ -149,8 +156,8 @@
     NSString *musicPath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     [panel setDirectoryURL:[NSURL fileURLWithPath:musicPath]];
     //
-    // mp3 file type
-    [panel setAllowedFileTypes:@[@"public.mp3"]];
+    
+    [panel setAllowedFileTypes:_supportedFileTypes];
     
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
