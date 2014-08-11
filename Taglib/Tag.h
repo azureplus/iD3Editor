@@ -13,19 +13,15 @@
 #endif
 
 @interface Tag : NSObject {
-#ifdef __cplusplus
-    TagLib::FileRef * _fileRef;
-#endif
 }
 
 @property(nonatomic, readonly) NSString * filename;
 
 -(id) initWithFile: (NSString *) fileName;
--(void)setFrames:(NSDictionary *)frames;
+-(void)saveFrames:(NSDictionary *)frames;
 #ifdef __cplusplus
 -(NSString *) convertTLString: (const TagLib::String &) value toEncoding: (unsigned int) encoding;
 -(NSMutableDictionary *)getStandardFramesWithTag:(TagLib::Tag *)tag;
 -(NSMutableDictionary *)getStandardFramesWithTag:(TagLib::Tag *)tag andCharEncoding:(unsigned int)encoding;
 #endif
--(void) writeTag;
 @end

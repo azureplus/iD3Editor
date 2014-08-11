@@ -18,23 +18,20 @@
 -(id) initWithFile: (NSString *) filename {
     if (self = [super init]) {
         _filename = filename;
-        _fileRef = new TagLib::FileRef([_filename UTF8String]);
     }
     return self;
 }
 
--(void)dealloc {
-    delete _fileRef;
-}
-
--(void) writeTag {
-    _fileRef->save();
-}
-
 -(NSDictionary *)getStandardFramesWithTag:(TagLib::Tag *)tag {
     NSMutableDictionary * dict = [[NSMutableDictionary alloc] initWithCapacity:12];
-    dict[@"DATE"] = [NSString stringWithFormat:@"%d", tag->year()];
-    dict[@"TRACKNUMBER"] = [NSString stringWithFormat:@"%d", tag->track()];
+    if (tag->year() > 0) {
+        dict[@"DATE"] = [NSString stringWithFormat:@"%d", tag->year()];
+    }
+    
+    if (tag->track() > 0) {
+        dict[@"TRACKNUMBER"] = [NSString stringWithFormat:@"%d", tag->track()];
+    }
+    
     dict[@"ARTIST"] = [NSString newStringFromTLString:tag->artist()];
     dict[@"ALBUM"] = [NSString newStringFromTLString:tag->album()];
     dict[@"COMMENT"] = [NSString newStringFromTLString:tag->comment()];
@@ -76,7 +73,7 @@
     return dict;
 }
 
--(void)setFrames:(NSDictionary *)frames {
+-(void)saveFrames:(NSDictionary *)frames {
     [self resolveSetFrames:frames];
 }
 

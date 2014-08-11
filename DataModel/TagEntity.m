@@ -70,9 +70,6 @@
     }
 }
 
-//
-// TODO need to update
-//
 -(void) save {
     if (_tagUpdated) {
         NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:12];
@@ -86,8 +83,7 @@
         [self _setValue:self.composer forKey:@"COMPOSER" ofDictionary:dict];
         [self _setValue:self.copyright forKey:@"COPYRIGHT" ofDictionary:dict];
     
-        [_tag setFrames:dict];
-        [_tag writeTag];
+        [_tag saveFrames:dict];
         _tagUpdated = NO;
     }
 }
