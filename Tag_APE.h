@@ -12,4 +12,6 @@
 
 @interface Tag(APE)
 -(void)setAPEFrames:(NSDictionary *)frames withTag:(TagLib::APE::Tag *) tag;
+-(NSDictionary *)getAPEFramesWithTag:(TagLib::APE::Tag *)tag;
+-(NSDictionary *)getAPEFramesWithTag:(TagLib::APE::Tag *)tag andCharEncoding:(unsigned int)encoding;
 @end

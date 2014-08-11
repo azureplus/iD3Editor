@@ -30,4 +30,5 @@
 
 -(void) resetValue;
 -(void) save;
+-(NSString *)F2f: (NSString *)F;
 @end

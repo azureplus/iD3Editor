@@ -20,6 +20,116 @@
 #import "taglib/wavfile.h"
 
 @implementation Tag(FileTypeResolver)
+-(NSDictionary *)resolveGetFrames {
+    return [self resolveGetFramesWithEncoding:0xFFFFFFFF];
+}
+
+-(NSDictionary *)resolveGetFramesWithEncoding:(unsigned int)encoding {
+    NSString * extension = [[self.filename pathExtension] uppercaseString];
+    
+    if ([extension isEqualToString:@"APE"]) {
+        TagLib::APE::File * file = dynamic_cast<TagLib::APE::File *>(_fileRef->file());
+        if (!file || !file->isValid()) {
+            return @{};
+        }
+        
+        TagLib::APE::Tag * tag = file->APETag();
+        
+        if (encoding == 0xFFFFFFFF) {
+            return [self getAPEFramesWithTag:tag];
+        } else {
+            return [self getAPEFramesWithTag:tag andCharEncoding:encoding];
+        }
+        
+    } else if ([extension isEqualToString:@"OGG"]) {
+        TagLib::Ogg::Vorbis::File * file = dynamic_cast<TagLib::Ogg::Vorbis::File *>(_fileRef->file());
+        if (!file || !file->isValid()) {
+            return @{};
+        }
+        
+        TagLib::Ogg::XiphComment * tag = file->tag();
+        
+        if (encoding == 0xFFFFFFFF) {
+            return [self getXIPHCOMMENTFramesWithTag:tag];
+        } else {
+            return [self getXIPHCOMMENTFramesWithTag:tag andCharEncoding:encoding];
+        }
+    } else if ([extension isEqualToString:@"FLAC"]) {
+        TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(_fileRef->file());
+        if (!file || !file->isValid()) {
+            return @{};
+        }
+        
+        TagLib::Ogg::XiphComment * tag = file->xiphComment();
+        
+        if (encoding == 0xFFFFFFFF) {
+            return [self getXIPHCOMMENTFramesWithTag:tag];
+        } else {
+            return [self getXIPHCOMMENTFramesWithTag:tag andCharEncoding:encoding];
+        }
+    } else if ([extension isEqualToString:@"MP3"]) {
+        TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(_fileRef->file());
+        if (!file || !file->isValid()) {
+            return @{};
+        }
+        
+        TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
+        
+        if (encoding == 0xFFFFFFFF) {
+            return [self getID3V2FramesWithTag:tag];
+        } else {
+            return [self getID3V2FramesWithTag:tag andCharEncoding:encoding];
+        }
+    } else if ([extension isEqualToString:@"OGA"]) {
+        TagLib::Ogg::Vorbis::File  * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(_fileRef->file());
+        TagLib::FLAC::File * flac = dynamic_cast<TagLib::FLAC::File *>(_fileRef->file());
+        
+        TagLib::Ogg::XiphComment * tag = nil;
+        
+        if (vorbis && vorbis->isValid()) {
+            tag = vorbis->tag();
+        } else if (flac && flac->isValid()) {
+            tag = flac->xiphComment();
+        }
+        
+        if (encoding == 0xFFFFFFFF) {
+            return [self getXIPHCOMMENTFramesWithTag:tag];
+        } else {
+            return [self getXIPHCOMMENTFramesWithTag:tag andCharEncoding:encoding];
+        }
+    } else if ([extension isEqualToString:@"SPX"]) {
+        TagLib::Ogg::Speex::File * file = dynamic_cast<TagLib::Ogg::Speex::File *>(_fileRef->file());
+        
+        if (!file || !file->isValid()) {
+            return @{};
+        }
+        
+        TagLib::Ogg::XiphComment * tag = file->tag();
+        
+        if (encoding == 0xFFFFFFFF) {
+            return [self getXIPHCOMMENTFramesWithTag:tag];
+        } else {
+            return [self getXIPHCOMMENTFramesWithTag:tag andCharEncoding:encoding];
+        }
+    } else if ([extension isEqualToString:@"WAV"]) {
+        TagLib::RIFF::WAV::File * file = dynamic_cast<TagLib::RIFF::WAV::File *>(_fileRef->file());
+           
+        if (!file || !file->isValid()) {
+            return @{};
+        }
+        
+        TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
+        
+        if (encoding == 0xFFFFFFFF) {
+            return [self getID3V2FramesWithTag:tag];
+        } else {
+            return [self getID3V2FramesWithTag:tag andCharEncoding:encoding];
+        }
+    }
+    
+    return @{};
+}
+
 -(void)resolveSetFrames: (NSDictionary *) frames {
     NSString * extension = [[self.filename pathExtension] uppercaseString];
     
@@ -29,7 +139,7 @@
             return;
         }
         
-        [self setAPEFrames:frames withTag:file->APETag()];
+        [self setAPEFrames:frames withTag:file->APETag(true)];
     } else if ([extension isEqualToString:@"OGG"]) {
         TagLib::Ogg::Vorbis::File * file = dynamic_cast<TagLib::Ogg::Vorbis::File *>(_fileRef->file());
         if (!file || !file->isValid()) {
@@ -43,7 +153,7 @@
             return;
         }
         
-        [self setXIPHCOMMENTFrames:frames withTag:file->xiphComment()];
+        [self setXIPHCOMMENTFrames:frames withTag:file->xiphComment(true)];
         
     } else if ([extension isEqualToString:@"MP3"]) {
         TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(_fileRef->file());
@@ -51,7 +161,7 @@
             return;
         }
         
-        [self setID3V2Frames:frames withTag:file->ID3v2Tag()];
+        [self setID3V2Frames:frames withTag:file->ID3v2Tag(true)];
     } else if ([extension isEqualToString:@"OGA"]) {
         TagLib::Ogg::Vorbis::File  * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(_fileRef->file());
         TagLib::FLAC::File * flac = dynamic_cast<TagLib::FLAC::File *>(_fileRef->file());
@@ -69,15 +179,7 @@
         }
         
         [self setXIPHCOMMENTFrames:frames withTag:file->tag()];
-    } /*else if ([extension isEqualToString:@"OPUS"]) {
-        TagLib::Ogg::Opus::File * file = dynamic_cast<TagLib::Ogg::Opus::File *>(_fileRef->file());
-        
-        if (!file || !file->isValid()) {
-            return;
-        }
-        
-        [self setXIPHCOMMENTFrames:frames withTag:file->tag()];
-    } */else if ([extension isEqualToString:@"WAV"]) {
+    } else if ([extension isEqualToString:@"WAV"]) {
         TagLib::RIFF::WAV::File * file = dynamic_cast<TagLib::RIFF::WAV::File *>(_fileRef->file());
         
         if (!file || !file->isValid()) {

@@ -10,6 +10,5 @@
 #import "TagEntity.h"
 
 @interface TagEntity(Encoding)
--(void)convertFrame:(NSString *)frame toEncoding:(unsigned int)encoding;
 -(void)convertFramestoEncoding:(unsigned int)encoding;
 @end

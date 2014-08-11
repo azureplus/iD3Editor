@@ -31,31 +31,66 @@
     _fileRef->save();
 }
 
--(NSString *) getFrame:(NSString *) frameId {
-    TagLib::String rv = [self _getFrame:frameId];
-    return [NSString newStringFromTLString:rv];
+-(NSDictionary *)getStandardFramesWithTag:(TagLib::Tag *)tag {
+    NSMutableDictionary * dict = [[NSMutableDictionary alloc] initWithCapacity:12];
+    dict[@"DATE"] = [NSString stringWithFormat:@"%d", tag->year()];
+    dict[@"TRACKNUMBER"] = [NSString stringWithFormat:@"%d", tag->track()];
+    dict[@"ARTIST"] = [NSString newStringFromTLString:tag->artist()];
+    dict[@"ALBUM"] = [NSString newStringFromTLString:tag->album()];
+    dict[@"COMMENT"] = [NSString newStringFromTLString:tag->comment()];
+    dict[@"TITLE"] = [NSString newStringFromTLString:tag->title()];
+    dict[@"GENRE"] = [NSString newStringFromTLString:tag->genre()];
+    return dict;
 }
 
--(TagLib::String) _getFrame:(NSString *)frameId {
-    TagLib::PropertyMap  propertyMap = _fileRef->file()->properties();
-    TagLib::PropertyMap::Iterator itor = propertyMap.find([frameId toTLString]);
+//
+// the dictionary returned doesnt include tags that dont need conversion. For example, tags already in UTF-8
+//
+-(NSDictionary *)getStandardFramesWithTag:(TagLib::Tag *)tag andCharEncoding:(unsigned int)encoding {
+    NSMutableDictionary * dict = [[NSMutableDictionary alloc] initWithCapacity:12];
     
-    if (itor != propertyMap.end()) {
-        TagLib::StringList stringList = itor->second;
-        if (!stringList.isEmpty()) {
-            return stringList.front();
-        }
+    NSString * value = [self convertTLString:tag->artist() toEncoding:encoding];
+    if (value) {
+        dict[@"ARTIST"] = value;
     }
     
-    return "";
+    value = [self convertTLString:tag->album() toEncoding:encoding];
+    if (value) {
+        dict[@"ALBUM"] = value;
+    }
+
+    value = [self convertTLString:tag->comment() toEncoding:encoding];
+    if (value) {
+        dict[@"COMMENT"] = value;
+    }
+
+    value = [self convertTLString:tag->title() toEncoding:encoding];
+    if (value) {
+        dict[@"TITLE"] = value;
+    }
+
+    value = [self convertTLString:tag->genre() toEncoding:encoding];
+    if (value) {
+        dict[@"GENRE"] = value;
+    }
+    return dict;
 }
 
 -(void)setFrames:(NSDictionary *)frames {
     [self resolveSetFrames:frames];
 }
 
--(NSString *)_convertTLString: (const TagLib::String &) value toEncoding: (unsigned int) encoding{
-    if (value.isAscii() || value.isLatin1()) {
+-(NSDictionary *)getFrames {
+    return [self resolveGetFrames];
+}
+
+//
+// return null if stirng is already UTF-8
+//
+-(NSString *)convertTLString: (const TagLib::String &) value toEncoding: (unsigned int) encoding{
+    if (value == TagLib::String::null) {
+        return nil;
+    } else if (value.isAscii() || value.isLatin1()) {
         TagLib::ByteVector bv = value.data(TagLib::String::Type::Latin1);
         NSStringEncoding target = CFStringConvertEncodingToNSStringEncoding(encoding);
         NSString * result = [[NSString alloc] initWithData:[NSData dataWithBytes:bv.data() length:bv.size()] encoding:target];
@@ -64,13 +99,4 @@
         return nil;
     }
 }
-
-//
-// returns nil if encoding conversion is not needed (e.g. the original encoding is already UTF)
-//
--(NSString *) getFrame:(NSString *) frameId withCharEncoding:(unsigned int)encoding {
-    TagLib::String rv = [self _getFrame:frameId];
-    return [self _convertTLString:rv toEncoding:encoding];
-}
-
 @end

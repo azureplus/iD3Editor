@@ -7,7 +7,7 @@
 //
 
 #import "TagEntity.h"
-
+#import "Tag_FileTypeResolver.h"
 
 @implementation TagEntity
 
@@ -32,17 +32,34 @@
     _tagUpdated = NO;
 }
 
+-(NSString *)F2f: (NSString *)F {
+    static NSDictionary * F2f  = nil;
+    static dispatch_once_t once;
+    
+    dispatch_once(&once, ^{
+        F2f = @{@"ARTIST": @"artist",
+                @"ALBUM":@"album",
+                @"TITLE":@"title",
+                @"DATE":@"year",
+                @"TRACKNUMBER":@"track",
+                @"COMPOSER":@"composer",
+                @"COPYRIGHT":@"copyright",
+                @"GENRE":@"genre",
+                @"COMMENT":@"comment"
+                };
+    });
+    
+    return F2f[F];
+}
+
 -(void) resetValue {
     self.filename = [self _filename:_tag.filename withPathDepth:[self.pathDepth intValue]];
-    self.artist = [_tag getFrame:@"ARTIST"];
-    self.album = [_tag getFrame:@"ALBUM"];
-    self.title = [_tag getFrame:@"TITLE"];
-    self.comment = [_tag getFrame:@"COMMENT"];
-    self.genre = [_tag getFrame:@"GENRE"];
-    self.year = [_tag getFrame:@"DATE"];
-    self.track = [_tag getFrame:@"TRACKNUMBER"];
-    self.composer = [_tag getFrame:@"COMPOSER"];
-    self.copyright = [_tag getFrame:@"COPYRIGHT"];
+    NSDictionary * frames = [_tag resolveGetFrames];
+    
+    for (NSString * key in frames) {
+        NSString * frame = [self F2f:key];
+        [self setValue:frames[key] forKey:frame];
+    }
 }
 
 -(void) _setValue: (NSString *)value forKey:(NSString *)key ofDictionary:(NSMutableDictionary *) dict {
@@ -53,6 +70,9 @@
     }
 }
 
+//
+// TODO need to update
+//
 -(void) save {
     if (_tagUpdated) {
         NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:12];

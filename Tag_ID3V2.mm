@@ -37,4 +37,53 @@
         }
     }
 }
+
+-(NSDictionary *)getID3V2FramesWithTag:(TagLib::ID3v2::Tag *)tag {
+    NSMutableDictionary * dict = [self getStandardFramesWithTag:tag];
+
+    const TagLib::ID3v2::FrameList & tcomFrameList = tag->frameList("TCOM");
+    if (!tcomFrameList.isEmpty()) {
+        dict[@"COMPOSER"] = [NSString newStringFromTLString:tcomFrameList[0]->toString()];
+    } else {
+        dict[@"COMPOSER"] = @"";
+    }
+
+    const TagLib::ID3v2::FrameList & tcopFrameList = tag->frameList("TCOP");
+    if (!tcopFrameList.isEmpty()) {
+        dict[@"COPYRIGHT"] = [NSString newStringFromTLString:tcopFrameList[0]->toString()];
+    } else {
+        dict[@"COPYRIGHT"] = @"";
+    }
+    
+    return dict;
+}
+
+-(NSDictionary *)getID3V2FramesWithTag:(TagLib::ID3v2::Tag *)tag andCharEncoding:(unsigned int)encoding {
+    NSMutableDictionary * dict = [self getStandardFramesWithTag:tag andCharEncoding:encoding];
+    
+    const TagLib::ID3v2::FrameList & tcomFrameList = tag->frameList("TCOM");
+    if (!tcomFrameList.isEmpty()) {
+        TagLib::String text = tcomFrameList[0]->toString();
+        NSString * value = [self convertTLString:text toEncoding:encoding];
+        if (value) {
+            dict[@"COMPOSER"] = value;
+        }
+    } else {
+        dict[@"COMPOSER"] = @"";
+    }
+    
+    const TagLib::ID3v2::FrameList & tcopFrameList = tag->frameList("TCOP");
+    if (!tcopFrameList.isEmpty()) {
+        TagLib::String text = tcopFrameList[0]->toString();
+        NSString * value = [self convertTLString:text toEncoding:encoding];
+        if (value) {
+            dict[@"COPYRIGHT"] = value;
+        }
+    } else {
+        dict[@"COPYRIGHT"] = @"";
+    }
+    
+    return dict;
+}
+
 @end

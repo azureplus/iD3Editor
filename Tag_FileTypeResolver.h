@@ -9,4 +9,6 @@
 
 @interface Tag(FileTypeResolver)
 -(void)resolveSetFrames: (NSDictionary *) frames;
+-(NSDictionary *)resolveGetFramesWithEncoding:(unsigned int)encoding;
+-(NSDictionary *)resolveGetFrames;
 @end

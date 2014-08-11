@@ -9,4 +9,6 @@
 #import "taglib/id3v2tag.h"
 @interface Tag(ID3V2)
 -(void)setID3V2Frames:(NSDictionary *)frames withTag:(TagLib::ID3v2::Tag *) tag;
+-(NSDictionary *)getID3V2FramesWithTag:(TagLib::ID3v2::Tag *)tag;
+-(NSDictionary *)getID3V2FramesWithTag:(TagLib::ID3v2::Tag *)tag andCharEncoding:(unsigned int)encoding;
 @end

@@ -10,7 +10,7 @@
 
 @implementation NSString(TLString)
 + (NSString *) newStringFromTLString: (const TagLib::String &) str {
-    if (str == TagLib::String::null) {
+    if (str == TagLib::String::null || str.isEmpty()) {
         return @"";
     } else {
         TagLib::ByteVector bv = str.data(TagLib::String::Type::UTF16BE);

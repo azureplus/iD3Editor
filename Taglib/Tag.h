@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #ifdef __cplusplus
 # include "taglib/fileref.h"
+# include "taglib/tag.h"
 #endif
 
 @interface Tag : NSObject {
@@ -20,8 +21,11 @@
 @property(nonatomic, readonly) NSString * filename;
 
 -(id) initWithFile: (NSString *) fileName;
--(NSString *) getFrame:(NSString *) frameId;
 -(void)setFrames:(NSDictionary *)frames;
--(NSString *) getFrame:(NSString *) frameId withCharEncoding:(unsigned int)encoding;
+#ifdef __cplusplus
+-(NSString *) convertTLString: (const TagLib::String &) value toEncoding: (unsigned int) encoding;
+-(NSMutableDictionary *)getStandardFramesWithTag:(TagLib::Tag *)tag;
+-(NSMutableDictionary *)getStandardFramesWithTag:(TagLib::Tag *)tag andCharEncoding:(unsigned int)encoding;
+#endif
 -(void) writeTag;
 @end

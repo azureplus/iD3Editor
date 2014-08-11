@@ -11,4 +11,6 @@
 
 @interface Tag(XIPHComment)
 -(void)setXIPHCOMMENTFrames:(NSDictionary *)frames withTag:(TagLib::Ogg::XiphComment *)tag;
+-(NSDictionary *)getXIPHCOMMENTFramesWithTag:(TagLib::Ogg::XiphComment *)tag;
+-(NSDictionary *)getXIPHCOMMENTFramesWithTag:(TagLib::Ogg::XiphComment *)tag andCharEncoding:(unsigned int)encoding;
 @end
