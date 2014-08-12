@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TagEntity.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSMutableArray * _tags;
@@ -51,4 +52,7 @@
 /// filename path depth
 -(NSUInteger) pathDepth;
 -(void) setPathDepth: (NSUInteger) depth;
+
+//
+-(void) removeTagEntity: (TagEntity *) tagEntity;
 @end

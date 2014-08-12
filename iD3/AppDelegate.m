@@ -70,7 +70,7 @@
     return tagEntity;
 }
 
--(void) _removeTagEntity: (TagEntity *) tagEntity {
+-(void) removeTagEntity: (TagEntity *) tagEntity {
     [_tagArrayController removeObject:tagEntity];
     [_tags removeObject:tagEntity.tag];
     // WARNING!
@@ -205,7 +205,7 @@
     NSArray * tags = [NSArray arrayWithArray:[_tagArrayController arrangedObjects]];
     
     for (TagEntity * tag in tags) {
-        [self _removeTagEntity:tag];
+        [self removeTagEntity:tag];
     }
 }
 
@@ -292,7 +292,7 @@
         BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
         
         if (result) {
-            [self _removeTagEntity:tagEntity];
+            [self removeTagEntity:tagEntity];
             TagEntity * newTag = [self _addFile:[NSURL fileURLWithPath:newFilename isDirectory:NO]];
             [tagsNewlyAdded addObject:newTag];
         } else {
