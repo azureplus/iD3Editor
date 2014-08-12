@@ -55,4 +55,5 @@
 
 //
 -(void) removeTagEntity: (TagEntity *) tagEntity;
+-(void) removeSelectedTags;
 @end

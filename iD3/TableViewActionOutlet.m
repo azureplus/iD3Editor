@@ -33,8 +33,6 @@
 
 -(IBAction) removeSelectedTags:(id)sender {
     AppDelegate * delegate = (AppDelegate *)[NSApp delegate];
-    for (id obj in [_tagArrayController selectedObjects]) {
-        [delegate removeTagEntity:obj];
-    }
+    [delegate removeSelectedTags];
 }
 @end

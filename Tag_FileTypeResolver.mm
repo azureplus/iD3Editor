@@ -34,7 +34,7 @@
             return @{};
         }
         
-        TagLib::APE::Tag * tag = file->APETag();
+        TagLib::APE::Tag * tag = file->APETag(true);
         
         if (encoding == 0xFFFFFFFF) {
             return [self getAPEFramesWithTag:tag];
@@ -61,7 +61,7 @@
             return @{};
         }
         
-        TagLib::Ogg::XiphComment * tag = file->xiphComment();
+        TagLib::Ogg::XiphComment * tag = file->xiphComment(true);
         
         if (encoding == 0xFFFFFFFF) {
             return [self getXIPHCOMMENTFramesWithTag:tag];
@@ -74,7 +74,7 @@
             return @{};
         }
         
-        TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
+        TagLib::ID3v2::Tag * tag = file->ID3v2Tag(true);
         
         if (encoding == 0xFFFFFFFF) {
             return [self getID3V2FramesWithTag:tag];
@@ -90,7 +90,7 @@
         if (vorbis && vorbis->isValid()) {
             tag = vorbis->tag();
         } else if (flac && flac->isValid()) {
-            tag = flac->xiphComment();
+            tag = flac->xiphComment(true);
         }
         
         if (encoding == 0xFFFFFFFF) {

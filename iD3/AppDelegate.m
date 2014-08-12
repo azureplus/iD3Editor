@@ -78,6 +78,12 @@
     [_managedObjectContext deleteObject:tagEntity];
 }
 
+-(void) removeSelectedTags {
+    for (id obj in [_tagArrayController selectedObjects]) {
+        [self removeTagEntity:obj];
+    }
+}
+
 // suppored char encoding
 -(void)_initSupportedEncodings {
     NSString *filePath   = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
