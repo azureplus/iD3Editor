@@ -26,6 +26,10 @@
 @synthesize tagUpdated = _tagUpdated;
 @synthesize tag = _tag;
 
+-(void)didTurnIntoFault {
+    [self save];
+}
+
 -(void)setTag:(Tag *)tag {
     _tag = tag;
     [self resetValue];
@@ -60,6 +64,8 @@
         NSString * frame = [self F2f:key];
         [self setValue:frames[key] forKey:frame];
     }
+    
+    _tagUpdated = NO;
 }
 
 -(void) _setValue: (NSString *)value forKey:(NSString *)key ofDictionary:(NSMutableDictionary *) dict {

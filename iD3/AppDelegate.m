@@ -200,10 +200,13 @@
 
 -(IBAction) clearFileList:(id)sender {
     [self saveChanges:nil];
+    
     [_tags removeAllObjects];
-    [_tagArrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet
-                                                               indexSetWithIndexesInRange:NSMakeRange(0, [[_tagArrayController arrangedObjects]
-                                                                                                          count])]];
+    NSArray * tags = [NSArray arrayWithArray:[_tagArrayController arrangedObjects]];
+    
+    for (TagEntity * tag in tags) {
+        [self _removeTagEntity:tag];
+    }
 }
 
 -(IBAction) setAlbumToAll:(id)sender {

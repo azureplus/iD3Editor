@@ -26,7 +26,7 @@
             id3v2Tag->setTrack([frames[key] intValue]);
         } else if ([key isEqualToString:@"DATE"]) {
             id3v2Tag->setYear([frames[key] intValue]);
-        } else if ([key isEqualToString:@"GRENER"]) {
+        } else if ([key isEqualToString:@"GENRE"]) {
             id3v2Tag->setGenre(value);
         } else if ([key isEqualToString:@"TITLE"]) {
             id3v2Tag->setTitle(value);

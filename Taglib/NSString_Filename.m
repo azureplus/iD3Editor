@@ -38,9 +38,6 @@
     
     frames[@"track"] = tag.track;
     frames[@"year"] = tag.year;
-    
-    NSLog(@"--->%@", frames);
-    
     return [NSString fromFrames:frames withPattern:pattern andTrackSize:trackSize];
 }
 
