@@ -40,7 +40,7 @@
 
 @property (nonatomic, assign) IBOutlet NSButton * filenameOnly;
 
-- (IBAction) cancel:(id)sender;
+- (IBAction) close:(id)sender;
 - (IBAction) apply: (id)sender;
 - (IBAction) filenameOnlyClicked: (id)sender;
 @end

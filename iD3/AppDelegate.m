@@ -278,6 +278,8 @@
         return;
     }
     
+    [self saveChanges:nil];
+    
     NSMutableArray * tagsToRename = [NSMutableArray arrayWithCapacity:32];
     NSMutableArray * tagsNewlyAdded = [NSMutableArray arrayWithCapacity:32];
     

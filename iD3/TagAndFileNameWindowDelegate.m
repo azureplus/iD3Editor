@@ -24,7 +24,7 @@
     }
 }
 
-- (IBAction) cancel:(id)sender {
+- (IBAction) close:(id)sender {
     [NSApp stopModalWithCode:0];
 }
 
@@ -39,7 +39,7 @@
         [(AppDelegate *)[NSApp delegate] tagToFilename:pattern];
     }
     
-    [(AppDelegate *)[NSApp delegate] saveChanges:nil];
+//    [(AppDelegate *)[NSApp delegate] saveChanges:nil];
 }
 
 - (IBAction) filenameOnlyClicked: (id)sender {

@@ -20,7 +20,7 @@
 }
 
 - (IBAction) ok: (id)sender {
-    [(AppDelegate *)[NSApp delegate] saveChanges:nil];
+//    [(AppDelegate *)[NSApp delegate] saveChanges:nil];
     [NSApp stopModalWithCode:1];
 }
 @end
