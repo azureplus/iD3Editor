@@ -8,8 +8,10 @@
 
 #import "Tag_FileTypeResolver.h"
 #import "Tag_APE.h"
+#import "Tag_ID3V1.h"
 #import "Tag_ID3V2.h"
 #import "Tag_XIPHComment.h"
+#import "Tag_Info.h"
 #import "taglib/fileref.h"
 #import "taglib/apefile.h"
 #import "taglib/flacfile.h"
@@ -18,6 +20,14 @@
 #import "taglib/speexfile.h"
 #import "taglib/opusfile.h"
 #import "taglib/wavfile.h"
+
+#define GET_TAG_FRAMES(TAG, TYPE, ENCODING, DICT) \
+    if (encoding == ENCODING) { \
+        DICT = [self get##TYPE##FramesWithTag:TAG]; \
+    } else {    \
+        DICT = [self get##TYPE##FramesWithTag:TAG]; \
+    }
+
 
 @implementation Tag(FileTypeResolver)
 -(NSDictionary *)resolveGetFrames {
@@ -28,19 +38,28 @@
     NSString * extension = [[self.filename pathExtension] uppercaseString];
     TagLib::FileRef fileRef = TagLib::FileRef([self.filename UTF8String]);
     
+    NSMutableDictionary * rv = nil;
+    
     if ([extension isEqualToString:@"APE"]) {
         TagLib::APE::File * file = dynamic_cast<TagLib::APE::File *>(fileRef.file());
         if (!file || !file->isValid()) {
             return @{};
         }
         
-        TagLib::APE::Tag * tag = file->APETag(true);
-        
-        if (encoding == 0xFFFFFFFF) {
-            return [self getAPEFramesWithTag:tag];
-        } else {
-            return [self getAPEFramesWithTag:tag andCharEncoding:encoding];
+        NSDictionary * id3v1 = @{};
+        if (file->hasID3v1Tag()) {
+            TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
+            GET_TAG_FRAMES(tag, ID3V1, encoding, id3v1);
         }
+        
+        NSDictionary * ape = @{};
+        if (file->hasAPETag()) {
+            TagLib::APE::Tag * tag = file->APETag();
+            GET_TAG_FRAMES(tag, APE, encoding, ape);
+        }
+
+        rv = [NSMutableDictionary dictionaryWithDictionary:id3v1];
+        [rv addEntriesFromDictionary:ape];
         
     } else if ([extension isEqualToString:@"OGG"]) {
         TagLib::Ogg::Vorbis::File * file = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
@@ -49,38 +68,64 @@
         }
         
         TagLib::Ogg::XiphComment * tag = file->tag();
-        
-        if (encoding == 0xFFFFFFFF) {
-            return [self getXIPHCOMMENTFramesWithTag:tag];
-        } else {
-            return [self getXIPHCOMMENTFramesWithTag:tag andCharEncoding:encoding];
-        }
+        NSDictionary * xiphComment = @{};
+        GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
+        [rv addEntriesFromDictionary:xiphComment];
     } else if ([extension isEqualToString:@"FLAC"]) {
         TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());
         if (!file || !file->isValid()) {
             return @{};
         }
         
-        TagLib::Ogg::XiphComment * tag = file->xiphComment(true);
         
-        if (encoding == 0xFFFFFFFF) {
-            return [self getXIPHCOMMENTFramesWithTag:tag];
-        } else {
-            return [self getXIPHCOMMENTFramesWithTag:tag andCharEncoding:encoding];
+        NSDictionary * id3v1 = @{};
+        if (file->hasID3v1Tag()) {
+            TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
+            GET_TAG_FRAMES(tag, ID3V1, encoding, id3v1);
         }
+        
+        NSDictionary * id3v2 = @{};
+        if (file->hasID3v2Tag()) {
+            TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
+            GET_TAG_FRAMES(tag, ID3V2, encoding, id3v2);
+        }
+        
+        NSDictionary * xiphComment = @{};
+        if (file->hasXiphComment()) {
+            TagLib::Ogg::XiphComment * tag = file->xiphComment();
+            GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
+        }
+        
+        rv = [NSMutableDictionary dictionaryWithDictionary:id3v1];
+        [rv addEntriesFromDictionary:id3v2];
+        [rv addEntriesFromDictionary:xiphComment];
     } else if ([extension isEqualToString:@"MP3"]) {
         TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file());
         if (!file || !file->isValid()) {
             return @{};
         }
         
-        TagLib::ID3v2::Tag * tag = file->ID3v2Tag(true);
-        
-        if (encoding == 0xFFFFFFFF) {
-            return [self getID3V2FramesWithTag:tag];
-        } else {
-            return [self getID3V2FramesWithTag:tag andCharEncoding:encoding];
+        NSDictionary * id3v1 = @{};
+        if (file->hasID3v1Tag()) {
+            TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
+            GET_TAG_FRAMES(tag, ID3V1, encoding, id3v1);
         }
+        
+        NSDictionary * id3v2 = @{};
+        if (file->hasID3v2Tag()) {
+            TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
+            GET_TAG_FRAMES(tag, ID3V2, encoding, id3v2);
+        }
+        
+        NSDictionary * ape = @{};
+        if (file->hasAPETag()) {
+            TagLib::APE::Tag * tag = file->APETag();
+            GET_TAG_FRAMES(tag, APE, encoding, ape);
+        }
+        
+        rv = [NSMutableDictionary dictionaryWithDictionary:id3v1];
+        [rv addEntriesFromDictionary:id3v2];
+        [rv addEntriesFromDictionary:ape];
     } else if ([extension isEqualToString:@"OGA"]) {
         TagLib::Ogg::Vorbis::File  * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         TagLib::FLAC::File * flac = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());
@@ -89,14 +134,31 @@
         
         if (vorbis && vorbis->isValid()) {
             tag = vorbis->tag();
+            NSDictionary * xiphComment = @{};
+            GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
+            [rv addEntriesFromDictionary:xiphComment];
         } else if (flac && flac->isValid()) {
-            tag = flac->xiphComment(true);
-        }
-        
-        if (encoding == 0xFFFFFFFF) {
-            return [self getXIPHCOMMENTFramesWithTag:tag];
-        } else {
-            return [self getXIPHCOMMENTFramesWithTag:tag andCharEncoding:encoding];
+            NSDictionary * id3v1 = @{};
+            if (flac->hasID3v1Tag()) {
+                TagLib::ID3v1::Tag * tag = flac->ID3v1Tag();
+                GET_TAG_FRAMES(tag, ID3V1, encoding, id3v1);
+            }
+            
+            NSDictionary * id3v2 = @{};
+            if (flac->hasID3v2Tag()) {
+                TagLib::ID3v2::Tag * tag = flac->ID3v2Tag();
+                GET_TAG_FRAMES(tag, ID3V2, encoding, id3v2);
+            }
+            
+            NSDictionary * xiphComment = @{};
+            if (flac->hasXiphComment()) {
+                TagLib::Ogg::XiphComment * tag = flac->xiphComment();
+                GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
+            }
+            
+            rv = [NSMutableDictionary dictionaryWithDictionary:id3v1];
+            [rv addEntriesFromDictionary:id3v2];
+            [rv addEntriesFromDictionary:xiphComment];
         }
     } else if ([extension isEqualToString:@"SPX"]) {
         TagLib::Ogg::Speex::File * file = dynamic_cast<TagLib::Ogg::Speex::File *>(fileRef.file());
@@ -106,29 +168,34 @@
         }
         
         TagLib::Ogg::XiphComment * tag = file->tag();
-        
-        if (encoding == 0xFFFFFFFF) {
-            return [self getXIPHCOMMENTFramesWithTag:tag];
-        } else {
-            return [self getXIPHCOMMENTFramesWithTag:tag andCharEncoding:encoding];
-        }
+        NSDictionary * xiphComment = @{};
+        GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
+        [rv addEntriesFromDictionary:xiphComment];
     } else if ([extension isEqualToString:@"WAV"]) {
         TagLib::RIFF::WAV::File * file = dynamic_cast<TagLib::RIFF::WAV::File *>(fileRef.file());
            
         if (!file || !file->isValid()) {
             return @{};
         }
-        
-        TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
-        
-        if (encoding == 0xFFFFFFFF) {
-            return [self getID3V2FramesWithTag:tag];
-        } else {
-            return [self getID3V2FramesWithTag:tag andCharEncoding:encoding];
+   
+        NSDictionary * id3v2 = @{};
+        if (file->hasID3v2Tag()) {
+            TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
+            GET_TAG_FRAMES(tag, ID3V2, encoding, id3v2);
         }
+        
+        NSDictionary * info = @{};
+        if (file->hasInfoTag()) {
+            TagLib::RIFF::Info::Tag * tag = file->InfoTag();
+            GET_TAG_FRAMES(tag, INFO, encoding, info);
+        }
+        
+        rv = [NSMutableDictionary dictionaryWithDictionary:id3v2];
+        [rv addEntriesFromDictionary:id3v2];
+        [rv addEntriesFromDictionary:info];
     }
     
-    return @{};
+    return rv;
 }
 
 -(void)resolveSetFrames: (NSDictionary *) frames {
@@ -142,6 +209,11 @@
         }
         
         [self setAPEFrames:frames withTag:file->APETag(true)];
+        
+        if (file->hasID3v1Tag()) {
+            [self setID3V1Frames:frames withTag:file->ID3v1Tag()];
+        }
+        
     } else if ([extension isEqualToString:@"OGG"]) {
         TagLib::Ogg::Vorbis::File * file = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         if (!file || !file->isValid()) {
@@ -155,15 +227,48 @@
             return;
         }
         
-        [self setXIPHCOMMENTFrames:frames withTag:file->xiphComment(true)];
+        BOOL written = NO;
+        if (file->hasXiphComment()) {
+            written = YES;
+            [self setXIPHCOMMENTFrames:frames withTag:file->xiphComment()];
+        }
         
+        if (file->hasID3v2Tag()) {
+            written = YES;
+            [self setID3V2Frames:frames withTag:file->ID3v2Tag()];
+        }
+        
+        if (!written) {
+            [self setXIPHCOMMENTFrames:frames withTag:file->xiphComment(true)];
+        }
+        
+        if (file->hasID3v1Tag()) {
+            [self setID3V1Frames:frames withTag:file->ID3v1Tag()];
+        }
     } else if ([extension isEqualToString:@"MP3"]) {
         TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file());
         if (!file || !file->isValid()) {
             return;
         }
         
-        [self setID3V2Frames:frames withTag:file->ID3v2Tag(true)];
+        BOOL written = NO;
+        if (file->hasAPETag()) {
+            written = YES;
+            [self setAPEFrames:frames withTag:file->APETag()];
+        }
+        
+        if (file->hasID3v2Tag()) {
+            written = YES;
+            [self setID3V2Frames:frames withTag:file->ID3v2Tag()];
+        }
+        
+        if (!written) {
+            [self setAPEFrames:frames withTag:file->APETag(true)];
+        }
+        
+        if (file->hasID3v1Tag()) {
+            [self setID3V1Frames:frames withTag:file->ID3v1Tag()];
+        }
     } else if ([extension isEqualToString:@"OGA"]) {
         TagLib::Ogg::Vorbis::File  * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         TagLib::FLAC::File * flac = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());
@@ -171,7 +276,24 @@
         if (vorbis && vorbis->isValid()) {
             [self setXIPHCOMMENTFrames:frames withTag:vorbis->tag()];
         } else if (flac && flac->isValid()) {
-            [self setXIPHCOMMENTFrames:frames withTag:flac->xiphComment()];
+            BOOL written = NO;
+            if (flac->hasXiphComment()) {
+                written = YES;
+                [self setXIPHCOMMENTFrames:frames withTag:flac->xiphComment()];
+            }
+            
+            if (flac->hasID3v2Tag()) {
+                written = YES;
+                [self setID3V2Frames:frames withTag:flac->ID3v2Tag()];
+            }
+            
+            if (!written) {
+                [self setXIPHCOMMENTFrames:frames withTag:flac->xiphComment(true)];
+            }
+            
+            if (flac->hasID3v1Tag()) {
+                [self setID3V1Frames:frames withTag:flac->ID3v1Tag()];
+            }
         }
     } else if ([extension isEqualToString:@"SPX"]) {
         TagLib::Ogg::Speex::File * file = dynamic_cast<TagLib::Ogg::Speex::File *>(fileRef.file());
@@ -179,7 +301,6 @@
         if (!file || !file->isValid()) {
             return;
         }
-        
         [self setXIPHCOMMENTFrames:frames withTag:file->tag()];
     } else if ([extension isEqualToString:@"WAV"]) {
         TagLib::RIFF::WAV::File * file = dynamic_cast<TagLib::RIFF::WAV::File *>(fileRef.file());
@@ -188,7 +309,16 @@
             return;
         }
         
-        [self setID3V2Frames:frames withTag:file->ID3v2Tag()];
+        BOOL written = NO;
+        if (file->hasInfoTag()) {
+            written = YES;
+            [self setINFOFrames:frames withTag:file->InfoTag()];
+        }
+        
+        if (file->hasID3v2Tag()) {
+            written = YES;
+            [self setID3V2Frames:frames withTag:file->ID3v2Tag()];
+        }
     }
     
     fileRef.save();
