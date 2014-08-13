@@ -22,10 +22,10 @@
 #import "taglib/wavfile.h"
 
 #define GET_TAG_FRAMES(TAG, TYPE, ENCODING, DICT) \
-    if (encoding == ENCODING) { \
+    if (ENCODING == 0xFFFFFFFF) { \
         DICT = [self get##TYPE##FramesWithTag:TAG]; \
     } else {    \
-        DICT = [self get##TYPE##FramesWithTag:TAG]; \
+        DICT = [self get##TYPE##FramesWithTag:TAG andCharEncoding:ENCODING]; \
     }
 
 
