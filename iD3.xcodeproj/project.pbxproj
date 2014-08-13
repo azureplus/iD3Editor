@@ -192,20 +192,20 @@
 			name = "Window Delegates";
 			sourceTree = "<group>";
 		};
-		F79BCE4519907A7400CC5F02 /* NSArray */ = {
+		F79BCE4519907A7400CC5F02 /* NSExtension */ = {
 			isa = PBXGroup;
 			children = (
 				F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */,
 				F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */,
 			);
-			name = NSArray;
+			name = NSExtension;
 			sourceTree = "<group>";
 		};
 		F7E994DA1983418000DDE9B4 = {
 			isa = PBXGroup;
 			children = (
 				F7FB46C21993309100C72AFF /* Resources */,
-				F79BCE4519907A7400CC5F02 /* NSArray */,
+				F79BCE4519907A7400CC5F02 /* NSExtension */,
 				F79BCE18198928A500CC5F02 /* NSString */,
 				F77F88EA1987D47A00B1B3CC /* DataModel */,
 				F7E9951A19853C1500DDE9B4 /* Taglib */,

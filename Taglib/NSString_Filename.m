@@ -30,14 +30,33 @@
 //
 +(NSString *) fromTag:(TagEntity *)tag withPattern:(NSString *)pattern andTrackSize:(NSUInteger)trackSize {
     NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:8];
-    frames[@"artist"] = tag.artist;
-    frames[@"album"] = tag.album;
-    frames[@"title"] = tag.title;
-    frames[@"composer"] = tag.composer;
-    frames[@"genre"] = tag.genre;
+    if (tag.artist) {
+        frames[@"artist"] = tag.artist;
+    }
     
-    frames[@"track"] = tag.track;
-    frames[@"year"] = tag.year;
+    if (tag.album) {
+        frames[@"album"] = tag.album;
+    }
+    
+    if (tag.title) {
+        frames[@"title"] = tag.title;
+    }
+    
+    if (tag.composer) {
+        frames[@"composer"] = tag.composer;
+    }
+    
+    if (tag.genre) {
+        frames[@"genre"] = tag.genre;
+    }
+    
+    if (tag.track) {
+        frames[@"track"] = tag.track;
+    }
+    
+    if (tag.year) {
+        frames[@"year"] = tag.year;
+    }
     return [NSString fromFrames:frames withPattern:pattern andTrackSize:trackSize];
 }
 
