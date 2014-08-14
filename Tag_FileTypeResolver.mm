@@ -34,6 +34,14 @@
     return [self resolveGetFramesWithEncoding:0xFFFFFFFF];
 }
 
+-(void) _mergeDictionary:(NSMutableDictionary *)rv with:(NSDictionary *)dict {
+    for (NSString * key in dict) {
+        if ([dict[key] length]) {
+            rv[key] = dict[key];
+        }
+    }
+}
+
 -(NSDictionary *)resolveGetFramesWithEncoding:(unsigned int)encoding {
     NSString * extension = [[self.filename pathExtension] uppercaseString];
     TagLib::FileRef fileRef = TagLib::FileRef([self.filename UTF8String]);
@@ -58,9 +66,8 @@
             GET_TAG_FRAMES(tag, APE, encoding, ape);
         }
 
-        rv = [NSMutableDictionary dictionaryWithDictionary:id3v1];
-        [rv addEntriesFromDictionary:ape];
-        
+        rv = [NSMutableDictionary dictionaryWithDictionary:ape];
+        [self _mergeDictionary:rv with:id3v1];
     } else if ([extension isEqualToString:@"OGG"]) {
         TagLib::Ogg::Vorbis::File * file = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         if (!file || !file->isValid()) {
@@ -70,7 +77,7 @@
         TagLib::Ogg::XiphComment * tag = file->tag();
         NSDictionary * xiphComment = @{};
         GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
-        [rv addEntriesFromDictionary:xiphComment];
+        rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
     } else if ([extension isEqualToString:@"FLAC"]) {
         TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());
         if (!file || !file->isValid()) {
@@ -96,9 +103,9 @@
             GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
         }
         
-        rv = [NSMutableDictionary dictionaryWithDictionary:id3v1];
-        [rv addEntriesFromDictionary:id3v2];
-        [rv addEntriesFromDictionary:xiphComment];
+        rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
+        [self _mergeDictionary:rv with:id3v2];
+        [self _mergeDictionary:rv with:id3v1];
     } else if ([extension isEqualToString:@"MP3"]) {
         TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file());
         if (!file || !file->isValid()) {
@@ -123,9 +130,9 @@
             GET_TAG_FRAMES(tag, APE, encoding, ape);
         }
         
-        rv = [NSMutableDictionary dictionaryWithDictionary:id3v1];
-        [rv addEntriesFromDictionary:id3v2];
-        [rv addEntriesFromDictionary:ape];
+        rv = [NSMutableDictionary dictionaryWithDictionary:ape];
+        [self _mergeDictionary:rv with:id3v2];
+        [self _mergeDictionary:rv with:id3v1];
     } else if ([extension isEqualToString:@"OGA"]) {
         TagLib::Ogg::Vorbis::File  * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         TagLib::FLAC::File * flac = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());
@@ -136,7 +143,7 @@
             tag = vorbis->tag();
             NSDictionary * xiphComment = @{};
             GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
-            [rv addEntriesFromDictionary:xiphComment];
+            rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
         } else if (flac && flac->isValid()) {
             NSDictionary * id3v1 = @{};
             if (flac->hasID3v1Tag()) {
@@ -156,9 +163,9 @@
                 GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
             }
             
-            rv = [NSMutableDictionary dictionaryWithDictionary:id3v1];
-            [rv addEntriesFromDictionary:id3v2];
-            [rv addEntriesFromDictionary:xiphComment];
+            rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
+            [self _mergeDictionary:rv with:id3v2];
+            [self _mergeDictionary:rv with:id3v1];
         }
     } else if ([extension isEqualToString:@"SPX"]) {
         TagLib::Ogg::Speex::File * file = dynamic_cast<TagLib::Ogg::Speex::File *>(fileRef.file());
@@ -170,7 +177,7 @@
         TagLib::Ogg::XiphComment * tag = file->tag();
         NSDictionary * xiphComment = @{};
         GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
-        [rv addEntriesFromDictionary:xiphComment];
+        rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
     } else if ([extension isEqualToString:@"WAV"]) {
         TagLib::RIFF::WAV::File * file = dynamic_cast<TagLib::RIFF::WAV::File *>(fileRef.file());
            
@@ -191,8 +198,7 @@
         }
         
         rv = [NSMutableDictionary dictionaryWithDictionary:id3v2];
-        [rv addEntriesFromDictionary:id3v2];
-        [rv addEntriesFromDictionary:info];
+        [self _mergeDictionary:rv with:info];
     }
     
     return rv;
