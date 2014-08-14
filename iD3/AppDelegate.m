@@ -193,10 +193,32 @@
     [self.filenameWindow orderOut:nil];
 }
 
--(IBAction) saveChanges:(id)sender {
+-(void) _saveChangesHelp {
     for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+        [_fileBeingSaved performSelectorOnMainThread:@selector(setStringValue:) withObject:tag.tag.filename waitUntilDone:NO];
         [tag save];
     }
+    [NSApp stopModalWithCode:0];
+}
+
+-(IBAction) saveChanges:(id)sender {
+    BOOL saveNeeded = NO;
+    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+        if (tag.tagUpdated) {
+            saveNeeded = YES;
+            break;
+        }
+    }
+
+    if (!saveNeeded) {
+        return;
+    }
+    
+    [_progressIndicator startAnimation:nil];
+    [self performSelectorInBackground:@selector(_saveChangesHelp) withObject:nil];
+    [NSApp runModalForWindow:self.progressWindow];
+    [_progressIndicator stopAnimation:nil];
+    [self.progressWindow orderOut:nil];
 }
 
 -(IBAction) resetChanges:(id)sender {

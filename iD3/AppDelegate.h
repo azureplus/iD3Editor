@@ -22,6 +22,11 @@
 @property (assign) IBOutlet NSTextField * artist;
 @property (assign) IBOutlet NSTextField * genre;
 
+// saving progress window
+@property (assign) IBOutlet NSWindow * progressWindow;
+@property (assign) IBOutlet NSProgressIndicator * progressIndicator;
+@property (assign) IBOutlet NSTextField * fileBeingSaved;
+
 /// core data
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator * persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel * managedObjectModel;

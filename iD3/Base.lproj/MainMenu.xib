@@ -18,8 +18,11 @@
                 <outlet property="artist" destination="OyI-dW-Tli" id="gXG-VA-VRg"/>
                 <outlet property="encodingArrayController" destination="su6-ab-bjG" id="Poh-pf-sZi"/>
                 <outlet property="encodingWindow" destination="9rE-sh-TII" id="8uJ-np-Rcl"/>
+                <outlet property="fileBeingSaved" destination="uBz-eT-SdY" id="uSO-Ep-OMJ"/>
                 <outlet property="filenameWindow" destination="aNU-2N-OHg" id="qk2-KB-Fn1"/>
                 <outlet property="genre" destination="n7u-yb-Kw3" id="I7Z-Ir-4xw"/>
+                <outlet property="progressIndicator" destination="Y8g-iH-TQ9" id="6y3-po-D2S"/>
+                <outlet property="progressWindow" destination="tbz-y0-fz4" id="OQJ-JY-b01"/>
                 <outlet property="tagArrayController" destination="j1s-e0-8eb" id="ORO-bS-crS"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -1275,6 +1278,31 @@ DQ
             <connections>
                 <outlet property="delegate" destination="UNB-Mf-rX9" id="2GP-5r-499"/>
             </connections>
+        </window>
+        <window title="Saving..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="tbz-y0-fz4">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="527" height="112"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="cmB-2p-eI2">
+                <rect key="frame" x="0.0" y="0.0" width="527" height="112"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <progressIndicator fixedFrame="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Y8g-iH-TQ9">
+                        <rect key="frame" x="20" y="19" width="487" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </progressIndicator>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBz-eT-SdY">
+                        <rect key="frame" x="18" y="46" width="491" height="46"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="48R-nu-6O2">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
         </window>
         <menu id="8I8-p7-AEc">
             <items>

@@ -291,13 +291,13 @@
             [self setAPEFrames:frames withTag:file->APETag()];
         }
         
-        if (file->hasID3v2Tag()) {
+//        if (file->hasID3v2Tag()) {
             written = YES;
-            [self setID3V2Frames:frames withTag:file->ID3v2Tag()];
-        }
+            [self setID3V2Frames:frames withTag:file->ID3v2Tag(true)];
+//        }
         
         if (!written) {
-            [self setAPEFrames:frames withTag:file->APETag(true)];
+            [self setID3V2Frames:frames withTag:file->ID3v2Tag(true)];
         }
         
         if (file->hasID3v1Tag()) {
