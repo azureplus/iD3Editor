@@ -68,6 +68,10 @@
 
         rv = [NSMutableDictionary dictionaryWithDictionary:ape];
         [self _mergeDictionary:rv with:id3v1];
+        
+        DEBUGLOG(@"-----------------------------");
+        DEBUGLOG(@"APE tags: \n%@", ape);
+        DEBUGLOG(@"ID3V1 tags: \n%@", id3v1);
     } else if ([extension isEqualToString:@"OGG"]) {
         TagLib::Ogg::Vorbis::File * file = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         if (!file || !file->isValid()) {
@@ -78,6 +82,9 @@
         NSDictionary * xiphComment = @{};
         GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
         rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
+        
+        DEBUGLOG(@"-----------------------------");
+        DEBUGLOG(@"XIPHComment tags: \n%@", xiphComment);
     } else if ([extension isEqualToString:@"FLAC"]) {
         TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());
         if (!file || !file->isValid()) {
@@ -106,6 +113,11 @@
         rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
         [self _mergeDictionary:rv with:id3v2];
         [self _mergeDictionary:rv with:id3v1];
+
+        DEBUGLOG(@"-----------------------------");
+        DEBUGLOG(@"XIPHComment tags: \n%@", xiphComment);
+        DEBUGLOG(@"ID3V2 tags: \n%@", id3v2);
+        DEBUGLOG(@"ID3V1 tags: \n%@", id3v1);
     } else if ([extension isEqualToString:@"MP3"]) {
         TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file());
         if (!file || !file->isValid()) {
@@ -133,6 +145,11 @@
         rv = [NSMutableDictionary dictionaryWithDictionary:ape];
         [self _mergeDictionary:rv with:id3v2];
         [self _mergeDictionary:rv with:id3v1];
+
+        DEBUGLOG(@"-----------------------------");
+        DEBUGLOG(@"APE tags: \n%@", ape);
+        DEBUGLOG(@"ID3V2 tags: \n%@", id3v2);
+        DEBUGLOG(@"ID3V1 tags: \n%@", id3v1);
     } else if ([extension isEqualToString:@"OGA"]) {
         TagLib::Ogg::Vorbis::File  * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         TagLib::FLAC::File * flac = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());
@@ -144,6 +161,8 @@
             NSDictionary * xiphComment = @{};
             GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
             rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
+            DEBUGLOG(@"-----------------------------");
+            DEBUGLOG(@"XIPHComment tags: \n%@", xiphComment);
         } else if (flac && flac->isValid()) {
             NSDictionary * id3v1 = @{};
             if (flac->hasID3v1Tag()) {
@@ -166,6 +185,10 @@
             rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
             [self _mergeDictionary:rv with:id3v2];
             [self _mergeDictionary:rv with:id3v1];
+            DEBUGLOG(@"-----------------------------");
+            DEBUGLOG(@"XIPHComment tags: \n%@", xiphComment);
+            DEBUGLOG(@"ID3V2 tags: \n%@", id3v2);
+            DEBUGLOG(@"ID3V1 tags: \n%@", id3v1);
         }
     } else if ([extension isEqualToString:@"SPX"]) {
         TagLib::Ogg::Speex::File * file = dynamic_cast<TagLib::Ogg::Speex::File *>(fileRef.file());
@@ -178,6 +201,8 @@
         NSDictionary * xiphComment = @{};
         GET_TAG_FRAMES(tag, XIPHCOMMENT, encoding, xiphComment);
         rv = [NSMutableDictionary dictionaryWithDictionary:xiphComment];
+        DEBUGLOG(@"-----------------------------");
+        DEBUGLOG(@"XIPHComment tags: \n%@", xiphComment);
     } else if ([extension isEqualToString:@"WAV"]) {
         TagLib::RIFF::WAV::File * file = dynamic_cast<TagLib::RIFF::WAV::File *>(fileRef.file());
            
@@ -199,6 +224,9 @@
         
         rv = [NSMutableDictionary dictionaryWithDictionary:id3v2];
         [self _mergeDictionary:rv with:info];
+        DEBUGLOG(@"-----------------------------");
+        DEBUGLOG(@"InfoComment tags: \n%@", info);
+        DEBUGLOG(@"ID3V2 tags: \n%@", id3v2);
     }
     
     return rv;
