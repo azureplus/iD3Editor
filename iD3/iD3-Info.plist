@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>xbox.com.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>xboxng.com.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -30,9 +30,9 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-    <key>CFBundleHelpBookFolder</key>
-    <string>iD3Help</string>
-    <key>CFBundleHelpBookName</key>
-    <string>iD3 Tag Editor Help</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>iD3Help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>iD3 Tag Editor Help</string>
 </dict>
 </plist>

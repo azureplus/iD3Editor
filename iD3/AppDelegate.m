@@ -27,6 +27,11 @@
     [self _initSupportedEncodings];
     [self _initSupportedFileTypes];
     [_encodingArrayController addObserver:self forKeyPath:@"selection" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)  context:nil];
+    
+    // register default preferences
+    [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"DefaultPreferences" ofType:@"plist"]]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
 }
 
 -(void) windowWillClose:(NSNotification *)notification {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F7005C69199DAA4900197432 /* TabViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7005C68199DAA4900197432 /* TabViewDelegate.m */; };
+		F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */; };
 		F76021F81995D0E9002DFE01 /* Tag_APE.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76021F71995D0E9002DFE01 /* Tag_APE.mm */; };
 		F76021FB1995D232002DFE01 /* Tag_ID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76021FA1995D232002DFE01 /* Tag_ID3V2.mm */; };
 		F76021FE1995EEA6002DFE01 /* Tag_XIPHComment.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76021FD1995EEA6002DFE01 /* Tag_XIPHComment.mm */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		F7005C67199DAA4900197432 /* TabViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewDelegate.h; sourceTree = "<group>"; };
 		F7005C68199DAA4900197432 /* TabViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabViewDelegate.m; sourceTree = "<group>"; };
+		F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		F76021F61995D0E9002DFE01 /* Tag_APE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag_APE.h; sourceTree = "<group>"; };
 		F76021F71995D0E9002DFE01 /* Tag_APE.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Tag_APE.mm; sourceTree = "<group>"; };
 		F76021F91995D232002DFE01 /* Tag_ID3V2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag_ID3V2.h; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				F79BCE32198DF89100CC5F02 /* Window Delegates */,
 				F77F88A11987433900B1B3CC /* iD3.entitlements */,
 				F79BCE191989FD5900CC5F02 /* iD3.plist */,
+				F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */,
 				F7E994FB1983418000DDE9B4 /* MainMenu.xib */,
 				F7E994F81983418000DDE9B4 /* AppDelegate.h */,
 				F7E994F91983418000DDE9B4 /* AppDelegate.m */,
@@ -423,6 +426,7 @@
 			files = (
 				F7FB46E01993C11A00C72AFF /* iD3Help in Resources */,
 				F7FB46DE1993362F00C72AFF /* Clear.pdf in Resources */,
+				F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */,
 				F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */,
 				F7FB46C4199330A300C72AFF /* TagFilename.pdf in Resources */,
 				F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */,

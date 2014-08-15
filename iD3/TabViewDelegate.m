@@ -14,7 +14,8 @@
         NSString * tabIdentifier = tabViewItem.identifier;
         if ([tabIdentifier isEqualToString:@"TAG_NAME"]) {
             [self _showFirstTimeMessage];
-            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"FirstTimeReminder"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstTimeReminder"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }
 }
