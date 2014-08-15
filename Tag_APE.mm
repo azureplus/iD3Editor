@@ -14,6 +14,10 @@
 
 @implementation Tag(APE)
 -(void)setAPEFrames:(NSDictionary *)frames withTag:(TagLib::APE::Tag *) apeTag {
+    if (apeTag == nil) {
+        return;
+    }
+    
     for (NSString * key in frames) {
         NSString * value = frames[key];
         if ([key isEqualToString:@"DATE"]) {

@@ -11,6 +11,10 @@
 
 @implementation Tag(Info)
 -(void)setINFOFrames:(NSDictionary *)frames withTag:(TagLib::RIFF::Info::Tag *) tag {
+    if (tag == nil) {
+        return;
+    }
+
     for (NSString * key in frames) {
         NSString * value = frames[key];
         

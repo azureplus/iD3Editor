@@ -14,6 +14,10 @@
 
 @implementation Tag(ID3V2)
 -(void)setID3V2Frames:(NSDictionary *)frames withTag:(TagLib::ID3v2::Tag *) id3v2Tag {
+    if (id3v2Tag == nil) {
+        return;
+    }
+    
     for (NSString * key in frames) {
         TagLib::String value = [frames[key] toTLString];
         if ([key isEqualToString:@"ARTIST"]) {

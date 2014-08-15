@@ -11,6 +11,10 @@
 
 @implementation Tag(XIPHComment)
 -(void)setXIPHCOMMENTFrames:(NSDictionary *)frames withTag:(TagLib::Ogg::XiphComment *)xiph {
+    if (xiph == nil) {
+        return;
+    }
+    
     for (NSString * key in frames) {
         NSString * value = frames[key];
                 

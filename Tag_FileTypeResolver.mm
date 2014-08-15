@@ -225,7 +225,7 @@
         rv = [NSMutableDictionary dictionaryWithDictionary:id3v2];
         [self _mergeDictionary:rv with:info];
         DEBUGLOG(@"-----------------------------");
-        DEBUGLOG(@"InfoComment tags: \n%@", info);
+        DEBUGLOG(@"Info tags: \n%@", info);
         DEBUGLOG(@"ID3V2 tags: \n%@", id3v2);
     }
     
@@ -344,15 +344,11 @@
         }
         
         BOOL written = NO;
-        if (file->hasInfoTag()) {
-            written = YES;
-            [self setINFOFrames:frames withTag:file->InfoTag()];
-        }
+        written = YES;
+        [self setID3V2Frames:frames withTag:file->ID3v2Tag()];
         
-        if (file->hasID3v2Tag()) {
-            written = YES;
-            [self setID3V2Frames:frames withTag:file->ID3v2Tag()];
-        }
+        written = YES;
+        [self setINFOFrames:frames withTag:file->InfoTag()];
     }
     
     fileRef.save();
