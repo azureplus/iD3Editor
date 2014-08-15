@@ -27,11 +27,6 @@
     [self _initSupportedEncodings];
     [self _initSupportedFileTypes];
     [_encodingArrayController addObserver:self forKeyPath:@"selection" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)  context:nil];
-
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstTimeReminder"]) {
-        [self _showFirstTimeMessage];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"FirstTimeReminder"];
-    }
 }
 
 -(void) windowWillClose:(NSNotification *)notification {
@@ -351,23 +346,4 @@
         te.pathDepth = [NSNumber numberWithUnsignedInteger:depth];
     }
 }
-
-//
--(void) _showFirstTimeMessage {
-    ////
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSMusicDirectory, NSUserDomainMask, YES);
-    NSString * musicPath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    musicPath = [musicPath stringByResolvingSymlinksInPath];
-    NSString * message = [NSString stringWithFormat:@"This tool can help you rename music files using their tags. But this functionality is only available for music files under folder %@.\n", musicPath];
-    
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:@"OK"];
-    [alert setMessageText:@"Reminder"];
-    [alert setInformativeText:message];
-    [alert setAlertStyle:NSInformationalAlertStyle];
-    ////
-    
-    [alert beginSheetModalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil];
-}
-
 @end
