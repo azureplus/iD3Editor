@@ -344,9 +344,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F7E994E21983418000DDE9B4 /* iD3 */ = {
+		F7E994E21983418000DDE9B4 /* iD3 Editor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F7E995141983418000DDE9B4 /* Build configuration list for PBXNativeTarget "iD3" */;
+			buildConfigurationList = F7E995141983418000DDE9B4 /* Build configuration list for PBXNativeTarget "iD3 Editor" */;
 			buildPhases = (
 				F7E994DF1983418000DDE9B4 /* Sources */,
 				F7E994E01983418000DDE9B4 /* Frameworks */,
@@ -356,7 +356,7 @@
 			);
 			dependencies = (
 			);
-			name = iD3;
+			name = "iD3 Editor";
 			productName = iD3;
 			productReference = F7E994E31983418000DDE9B4 /* iD3.app */;
 			productType = "com.apple.product-type.application";
@@ -413,7 +413,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F7E994E21983418000DDE9B4 /* iD3 */,
+				F7E994E21983418000DDE9B4 /* iD3 Editor */,
 				F7E995031983418000DDE9B4 /* iD3Tests */,
 			);
 		};
@@ -493,7 +493,7 @@
 /* Begin PBXTargetDependency section */
 		F7E995091983418000DDE9B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F7E994E21983418000DDE9B4 /* iD3 */;
+			target = F7E994E21983418000DDE9B4 /* iD3 Editor */;
 			targetProxy = F7E995081983418000DDE9B4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -698,7 +698,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F7E995141983418000DDE9B4 /* Build configuration list for PBXNativeTarget "iD3" */ = {
+		F7E995141983418000DDE9B4 /* Build configuration list for PBXNativeTarget "iD3 Editor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F7E995151983418000DDE9B4 /* Debug */,
