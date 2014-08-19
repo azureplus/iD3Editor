@@ -26,7 +26,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSMusicDirectory, NSUserDomainMask, YES);
     NSString * musicPath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     musicPath = [musicPath stringByResolvingSymlinksInPath];
-    NSString * message = [NSString stringWithFormat:@"This tool can help you rename music files using their tags. But this functionality is only available for music files under folder %@.\n", musicPath];
+    NSString * message = [NSString stringWithFormat:@"This tool can help you rename music files using their tags. But this feature is only available for music files under folder %@.\n", musicPath];
     
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"OK"];
