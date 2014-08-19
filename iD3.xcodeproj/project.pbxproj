@@ -103,7 +103,7 @@
 		F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilenameValueTransform.m; path = DataModel/FilenameValueTransform.m; sourceTree = "<group>"; };
 		F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArray_KVO.h; path = Taglib/NSArray_KVO.h; sourceTree = "<group>"; };
 		F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArray_KVO.m; path = Taglib/NSArray_KVO.m; sourceTree = "<group>"; };
-		F7E994E31983418000DDE9B4 /* iD3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iD3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7E994E31983418000DDE9B4 /* iD3 Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iD3 Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		F7E994EA1983418000DDE9B4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -232,7 +232,7 @@
 		F7E994E41983418000DDE9B4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F7E994E31983418000DDE9B4 /* iD3.app */,
+				F7E994E31983418000DDE9B4 /* iD3 Editor.app */,
 				F7E995041983418000DDE9B4 /* iD3Tests.xctest */,
 			);
 			name = Products;
@@ -358,7 +358,7 @@
 			);
 			name = "iD3 Editor";
 			productName = iD3;
-			productReference = F7E994E31983418000DDE9B4 /* iD3.app */;
+			productReference = F7E994E31983418000DDE9B4 /* iD3 Editor.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F7E995031983418000DDE9B4 /* iD3Tests */ = {
@@ -621,6 +621,7 @@
 					"$(inherited)",
 					/Volumes/Data/Users/qiang/taglib/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -641,6 +642,7 @@
 					"$(inherited)",
 					/Volumes/Data/Users/qiang/taglib/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

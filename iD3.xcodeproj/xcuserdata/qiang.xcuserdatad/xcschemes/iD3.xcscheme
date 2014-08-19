@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F7E994E21983418000DDE9B4"
-               BuildableName = "iD3.app"
+               BuildableName = "iD3 Editor.app"
                BlueprintName = "iD3 Editor"
                ReferencedContainer = "container:iD3.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F7E994E21983418000DDE9B4"
-            BuildableName = "iD3.app"
+            BuildableName = "iD3 Editor.app"
             BlueprintName = "iD3 Editor"
             ReferencedContainer = "container:iD3.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F7E994E21983418000DDE9B4"
-            BuildableName = "iD3.app"
+            BuildableName = "iD3 Editor.app"
             BlueprintName = "iD3 Editor"
             ReferencedContainer = "container:iD3.xcodeproj">
          </BuildableReference>
@@ -87,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F7E994E21983418000DDE9B4"
-            BuildableName = "iD3.app"
+            BuildableName = "iD3 Editor.app"
             BlueprintName = "iD3 Editor"
             ReferencedContainer = "container:iD3.xcodeproj">
          </BuildableReference>

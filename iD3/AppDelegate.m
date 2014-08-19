@@ -31,7 +31,6 @@
     // register default preferences
     [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"DefaultPreferences" ofType:@"plist"]]];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
 }
 
 -(void) windowWillClose:(NSNotification *)notification {

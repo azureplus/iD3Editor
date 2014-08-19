@@ -22,6 +22,10 @@
     } else {
         [_filenameOnly setState:NSOffState];
     }
+    
+    //
+    [_t2nPattern setToolTip:@":a artist\n:A alnum\n:g genre\n:t Title\n:T track\n:y year"];
+    [_n2tPattern setToolTip:@":a artist\n:A alnum\n:g genre\n:t Title\n:T track\n:y year"];
 }
 
 - (IBAction) close:(id)sender {
