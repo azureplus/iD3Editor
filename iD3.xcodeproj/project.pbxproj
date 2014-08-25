@@ -103,6 +103,7 @@
 		F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilenameValueTransform.m; path = DataModel/FilenameValueTransform.m; sourceTree = "<group>"; };
 		F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArray_KVO.h; path = Taglib/NSArray_KVO.h; sourceTree = "<group>"; };
 		F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArray_KVO.m; path = Taglib/NSArray_KVO.m; sourceTree = "<group>"; };
+		F79CDF2519AADD4D0002FC59 /* iD3 Editor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "iD3 Editor.entitlements"; sourceTree = "<group>"; };
 		F7E994E31983418000DDE9B4 /* iD3 Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iD3 Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -217,6 +218,7 @@
 		F7E994DA1983418000DDE9B4 = {
 			isa = PBXGroup;
 			children = (
+				F79CDF2519AADD4D0002FC59 /* iD3 Editor.entitlements */,
 				F7FB46C21993309100C72AFF /* Resources */,
 				F79BCE4519907A7400CC5F02 /* NSExtension */,
 				F79BCE18198928A500CC5F02 /* NSString */,
@@ -612,7 +614,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_ENTITLEMENTS = iD3/iD3.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "iD3 Editor.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -633,7 +635,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_ENTITLEMENTS = iD3/iD3.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "iD3 Editor.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
