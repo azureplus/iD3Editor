@@ -161,16 +161,6 @@
     [panel setCanChooseFiles:NO];
     [panel setAllowsMultipleSelection:YES];
     
-//    //
-//    // music folder
-//    //
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSMusicDirectory, NSUserDomainMask, YES);
-//    NSString *musicPath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-//    [panel setDirectoryURL:[NSURL fileURLWithPath:musicPath]];
-//    //
-//    
-//    [panel setAllowedFileTypes:_supportedFileTypes];
-    
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
             NSArray * urls = [panel URLs];
@@ -183,13 +173,10 @@
                     if ([_supportedFileTypes containsObject:[file pathExtension]]) {
                         BOOL fileExists = [fileManager fileExistsAtPath:[file path]  isDirectory:&isDirectory];
                         if (fileExists && !isDirectory) {
-                            NSLog(@"--->%@", file);
                             [self _addFile:file];
                         }
                     }
                 }
-                
-//                [self _addFile:url];
             }
         }
     }];

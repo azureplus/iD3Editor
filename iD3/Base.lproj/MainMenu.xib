@@ -55,11 +55,6 @@
                 <outlet property="tabview" destination="muX-aL-Ye1" id="Nzm-wj-0de"/>
             </connections>
         </customObject>
-        <customObject id="D9G-ra-q1j" customClass="TabViewDelegate">
-            <connections>
-                <outlet property="tagFileNameWindow" destination="aNU-2N-OHg" id="L6a-mM-BsX"/>
-            </connections>
-        </customObject>
         <customObject id="G7o-9T-o0n" customClass="TableViewActionOutlet">
             <connections>
                 <outlet property="tagArrayController" destination="j1s-e0-8eb" id="mx8-Iu-546"/>
@@ -1249,9 +1244,6 @@ Gw
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
-                        <connections>
-                            <outlet property="delegate" destination="D9G-ra-q1j" id="hn1-5v-g3W"/>
-                        </connections>
                     </tabView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCm-RW-D5e">
                         <rect key="frame" x="308" y="13" width="82" height="32"/>

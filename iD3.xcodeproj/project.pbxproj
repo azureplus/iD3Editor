@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F7005C69199DAA4900197432 /* TabViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7005C68199DAA4900197432 /* TabViewDelegate.m */; };
 		F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */; };
 		F76021F81995D0E9002DFE01 /* Tag_APE.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76021F71995D0E9002DFE01 /* Tag_APE.mm */; };
 		F76021FB1995D232002DFE01 /* Tag_ID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76021FA1995D232002DFE01 /* Tag_ID3V2.mm */; };
@@ -62,8 +61,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F7005C67199DAA4900197432 /* TabViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewDelegate.h; sourceTree = "<group>"; };
-		F7005C68199DAA4900197432 /* TabViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabViewDelegate.m; sourceTree = "<group>"; };
 		F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		F76021F61995D0E9002DFE01 /* Tag_APE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag_APE.h; sourceTree = "<group>"; };
 		F76021F71995D0E9002DFE01 /* Tag_APE.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Tag_APE.mm; sourceTree = "<group>"; };
@@ -200,8 +197,6 @@
 				F79BCE30198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m */,
 				F76022081999CFED002DFE01 /* TableViewActionOutlet.h */,
 				F76022091999CFED002DFE01 /* TableViewActionOutlet.m */,
-				F7005C67199DAA4900197432 /* TabViewDelegate.h */,
-				F7005C68199DAA4900197432 /* TabViewDelegate.m */,
 			);
 			name = "Window Delegates";
 			sourceTree = "<group>";
@@ -473,7 +468,6 @@
 				F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */,
 				F7602213199B2519002DFE01 /* Tag_ID3V1.mm in Sources */,
 				F7602201199656BA002DFE01 /* Tag_FileTypeResolver.mm in Sources */,
-				F7005C69199DAA4900197432 /* TabViewDelegate.m in Sources */,
 				F79BCE35198E74B300CC5F02 /* TagEntity_Filename.m in Sources */,
 				F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */,
 				F7E994F31983418000DDE9B4 /* main.m in Sources */,

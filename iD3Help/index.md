@@ -86,12 +86,6 @@ Below are two more examples:
   * :t-:A-:a
 
 
-```
-NOTE: Renaming music files only works for music files saved under the Music folder  of 	your home directory. 
-```
-
-
-
 
 
 
