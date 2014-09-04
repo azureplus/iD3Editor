@@ -154,7 +154,36 @@
     }
 }
 
+-(void) _addFilesInFolders:(NSArray *)urls {
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    for (NSURL * url in urls) {
+        NSArray * files = [fileManager contentsOfDirectoryAtURL:url includingPropertiesForKeys:@[NSURLIsWritableKey] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
+        BOOL isDirectory = NO;
+        for(NSURL * file in files) {
+            if ([_supportedFileTypes containsObject:[file pathExtension]]) {
+                BOOL fileExists = [fileManager fileExistsAtPath:[file path]  isDirectory:&isDirectory];
+                if (fileExists && !isDirectory) {
+                    [_fileBeingSaved performSelectorOnMainThread:@selector(setStringValue:) withObject:[file path] waitUntilDone:YES];
+                    [self performSelectorOnMainThread:@selector(_addFile:) withObject:file waitUntilDone:YES];
+                }
+            }
+        }
+    }
+    
+    [NSApp stopModalWithCode:0];    
+}
+
 /// actions
+-(void) _afterFileOpenPanelClose:(NSArray *) urls {
+    [_progressIndicator startAnimation:nil];
+    [self performSelectorInBackground:@selector(_addFilesInFolders:) withObject:urls];
+    self.progressWindow.title = @"Opening Files";
+    [NSApp runModalForWindow:self.progressWindow];
+    [_progressIndicator stopAnimation:nil];
+    [self.progressWindow orderOut:nil];
+}
+
+
 -(IBAction) openFiles:(id)sender {
     NSOpenPanel * panel = [NSOpenPanel openPanel];
     [panel setCanChooseDirectories:YES];
@@ -164,20 +193,7 @@
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
             NSArray * urls = [panel URLs];
-            
-            NSFileManager * fileManager = [NSFileManager defaultManager];
-            for (NSURL * url in urls) {
-                NSArray * files = [fileManager contentsOfDirectoryAtURL:url includingPropertiesForKeys:@[NSURLIsWritableKey] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
-                BOOL isDirectory = NO;
-                for(NSURL * file in files) {
-                    if ([_supportedFileTypes containsObject:[file pathExtension]]) {
-                        BOOL fileExists = [fileManager fileExistsAtPath:[file path]  isDirectory:&isDirectory];
-                        if (fileExists && !isDirectory) {
-                            [self _addFile:file];
-                        }
-                    }
-                }
-            }
+            [self performSelectorOnMainThread:@selector(_afterFileOpenPanelClose:) withObject:urls waitUntilDone:NO];
         }
     }];
 }
@@ -216,6 +232,7 @@
     
     [_progressIndicator startAnimation:nil];
     [self performSelectorInBackground:@selector(_saveChangesHelp) withObject:nil];
+    self.progressWindow.title = @"Saving Files";
     [NSApp runModalForWindow:self.progressWindow];
     [_progressIndicator stopAnimation:nil];
     [self.progressWindow orderOut:nil];
@@ -279,7 +296,8 @@
     [request setIncludesSubentities:YES];
     [request setEntity:[NSEntityDescription entityForName:@"Tag" inManagedObjectContext:_managedObjectContext]];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"album = '%@'", tag.album]];
+    NSString * album = [tag.album stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"album = '%@'", album]];
     [request setPredicate:predicate];
     
     NSUInteger count = [_managedObjectContext countForFetchRequest:request error:nil];
