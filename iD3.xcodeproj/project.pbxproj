@@ -28,6 +28,12 @@
 		F79BCE35198E74B300CC5F02 /* TagEntity_Filename.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE34198E74B300CC5F02 /* TagEntity_Filename.m */; };
 		F79BCE44198FBFBC00CC5F02 /* FilenameValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */; };
 		F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */; };
+		F7E33CAF19C63238003BE071 /* TagBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CAE19C63238003BE071 /* TagBase.mm */; };
+		F7E33CB219C63F6A003BE071 /* TagApe.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CB119C63F6A003BE071 /* TagApe.mm */; };
+		F7E33CB519C657A0003BE071 /* TagInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CB419C657A0003BE071 /* TagInfo.mm */; };
+		F7E33CB819C65B2E003BE071 /* TagID3V1.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CB719C65B2E003BE071 /* TagID3V1.mm */; };
+		F7E33CBB19C65D5C003BE071 /* TagID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CBA19C65D5C003BE071 /* TagID3V2.mm */; };
+		F7E33CBE19C65EF6003BE071 /* TagXIPH.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CBD19C65EF6003BE071 /* TagXIPH.mm */; };
 		F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E994E61983418000DDE9B4 /* Cocoa.framework */; };
 		F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E994EF1983418000DDE9B4 /* InfoPlist.strings */; };
 		F7E994F31983418000DDE9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F21983418000DDE9B4 /* main.m */; };
@@ -101,6 +107,19 @@
 		F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArray_KVO.h; path = Taglib/NSArray_KVO.h; sourceTree = "<group>"; };
 		F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArray_KVO.m; path = Taglib/NSArray_KVO.m; sourceTree = "<group>"; };
 		F79CDF2519AADD4D0002FC59 /* iD3 Editor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "iD3 Editor.entitlements"; sourceTree = "<group>"; };
+		F7E33CAC19C6077A003BE071 /* TagProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagProtocol.h; sourceTree = "<group>"; };
+		F7E33CAD19C63238003BE071 /* TagBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagBase.h; sourceTree = "<group>"; };
+		F7E33CAE19C63238003BE071 /* TagBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagBase.mm; sourceTree = "<group>"; };
+		F7E33CB019C63F6A003BE071 /* TagApe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagApe.h; sourceTree = "<group>"; };
+		F7E33CB119C63F6A003BE071 /* TagApe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagApe.mm; sourceTree = "<group>"; };
+		F7E33CB319C657A0003BE071 /* TagInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagInfo.h; sourceTree = "<group>"; };
+		F7E33CB419C657A0003BE071 /* TagInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagInfo.mm; sourceTree = "<group>"; };
+		F7E33CB619C65B2E003BE071 /* TagID3V1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagID3V1.h; sourceTree = "<group>"; };
+		F7E33CB719C65B2E003BE071 /* TagID3V1.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagID3V1.mm; sourceTree = "<group>"; };
+		F7E33CB919C65D5C003BE071 /* TagID3V2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagID3V2.h; sourceTree = "<group>"; };
+		F7E33CBA19C65D5C003BE071 /* TagID3V2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagID3V2.mm; sourceTree = "<group>"; };
+		F7E33CBC19C65EF6003BE071 /* TagXIPH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagXIPH.h; sourceTree = "<group>"; };
+		F7E33CBD19C65EF6003BE071 /* TagXIPH.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagXIPH.mm; sourceTree = "<group>"; };
 		F7E994E31983418000DDE9B4 /* iD3 Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iD3 Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -210,9 +229,30 @@
 			name = NSExtension;
 			sourceTree = "<group>";
 		};
+		F7E33CAB19C60525003BE071 /* TagLibWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				F7E33CAC19C6077A003BE071 /* TagProtocol.h */,
+				F7E33CAD19C63238003BE071 /* TagBase.h */,
+				F7E33CAE19C63238003BE071 /* TagBase.mm */,
+				F7E33CB019C63F6A003BE071 /* TagApe.h */,
+				F7E33CB119C63F6A003BE071 /* TagApe.mm */,
+				F7E33CB319C657A0003BE071 /* TagInfo.h */,
+				F7E33CB419C657A0003BE071 /* TagInfo.mm */,
+				F7E33CB619C65B2E003BE071 /* TagID3V1.h */,
+				F7E33CB719C65B2E003BE071 /* TagID3V1.mm */,
+				F7E33CB919C65D5C003BE071 /* TagID3V2.h */,
+				F7E33CBA19C65D5C003BE071 /* TagID3V2.mm */,
+				F7E33CBC19C65EF6003BE071 /* TagXIPH.h */,
+				F7E33CBD19C65EF6003BE071 /* TagXIPH.mm */,
+			);
+			name = TagLibWrapper;
+			sourceTree = "<group>";
+		};
 		F7E994DA1983418000DDE9B4 = {
 			isa = PBXGroup;
 			children = (
+				F7E33CAB19C60525003BE071 /* TagLibWrapper */,
 				F79CDF2519AADD4D0002FC59 /* iD3 Editor.entitlements */,
 				F7FB46C21993309100C72AFF /* Resources */,
 				F79BCE4519907A7400CC5F02 /* NSExtension */,
@@ -467,11 +507,17 @@
 				F7FB46C11992742400C72AFF /* NullValueTransform.m in Sources */,
 				F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */,
 				F7602213199B2519002DFE01 /* Tag_ID3V1.mm in Sources */,
+				F7E33CB219C63F6A003BE071 /* TagApe.mm in Sources */,
+				F7E33CB819C65B2E003BE071 /* TagID3V1.mm in Sources */,
 				F7602201199656BA002DFE01 /* Tag_FileTypeResolver.mm in Sources */,
+				F7E33CB519C657A0003BE071 /* TagInfo.mm in Sources */,
 				F79BCE35198E74B300CC5F02 /* TagEntity_Filename.m in Sources */,
 				F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */,
+				F7E33CBE19C65EF6003BE071 /* TagXIPH.mm in Sources */,
 				F7E994F31983418000DDE9B4 /* main.m in Sources */,
 				F79BCE2E198DF84200CC5F02 /* EncodingWindowDelegate.m in Sources */,
+				F7E33CAF19C63238003BE071 /* TagBase.mm in Sources */,
+				F7E33CBB19C65D5C003BE071 /* TagID3V2.mm in Sources */,
 				F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */,
 				F79BCE44198FBFBC00CC5F02 /* FilenameValueTransform.m in Sources */,
 			);

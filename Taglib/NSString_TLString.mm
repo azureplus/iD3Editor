@@ -9,11 +9,20 @@
 #import "NSString_TLString.h"
 
 @implementation NSString(TLString)
-+ (NSString *) newStringFromTLString: (const TagLib::String &) str {
-    if (str == TagLib::String::null || str.isEmpty()) {
++ (NSString *) newStringFromTLString: (const TagLib::String &) value {
+    return [self newStringFromTLString:value withEncoding:DEFAULT_ENCODING];
+}
+
++ (NSString *) newStringFromTLString:(const TagLib::String &)value withEncoding: (unsigned int) encoding {
+    if (value == TagLib::String::null || value.isEmpty()) {
         return @"";
+    } else if (encoding != DEFAULT_ENCODING && (value.isAscii() || value.isLatin1())) {
+        TagLib::ByteVector bv = value.data(TagLib::String::Type::Latin1);
+        NSStringEncoding target = CFStringConvertEncodingToNSStringEncoding(encoding);
+        NSString * result = [[NSString alloc] initWithData:[NSData dataWithBytes:bv.data() length:bv.size()] encoding:target];
+        return result;
     } else {
-        TagLib::ByteVector bv = str.data(TagLib::String::Type::UTF16BE);
+        TagLib::ByteVector bv = value.data(TagLib::String::Type::UTF16BE);
         NSString * str = [[NSString alloc] initWithBytes:bv.data() length:bv.size() encoding:NSUTF16BigEndianStringEncoding];
         return str;
     }
