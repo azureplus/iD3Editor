@@ -11,9 +11,6 @@
 
 # include "taglib/tag.h"
 
-#define COMPOSER "COMPOSER"
-#define COPYRIGHT "COPYRIGHT"
-
 @interface TagBase : NSObject<TagProtocol>
 -(id) initWithTag: (TagLib::Tag *) tag;
 

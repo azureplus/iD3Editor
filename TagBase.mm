@@ -69,17 +69,6 @@ DECL_GETTER(composer)
            _genre || _copyright || _track || _year;
 }
 
--(void) writeFramesToTag:(TagLib::Tag *) tag {
-    tag->setArtist([self.artist toTLString]);
-    tag->setAlbum([self.album toTLString]);
-    tag->setTitle([self.title toTLString]);
-    tag->setGenre([self.genre toTLString]);
-    tag->setComment([self.comment toTLString]);
-
-    tag->setYear([self.year unsignedIntValue]);
-    tag->setTrack([self.track unsignedIntValue]);
-}
-
 -(void)discardChanges {
     _artist = _album = _title = _composer = _comment = _genre = _copyright = nil;
     _track = _year = nil;
