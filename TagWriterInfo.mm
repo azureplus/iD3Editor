@@ -12,6 +12,10 @@
 
 @implementation TagWriterInfo
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {
+    if (taglib == nil) {
+        return;
+    }
+    
     [super write:tag toTaglib:taglib];
     
     TagLib::RIFF::Info::Tag * infoTag = dynamic_cast<TagLib::RIFF::Info::Tag *>(taglib);

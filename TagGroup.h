@@ -11,5 +11,5 @@
 #import "TagBase.h"
 
 @interface TagGroup : NSObject<TagProtocol>
--(void)addTag: (TagBase *) tag;
+-(void)addTagLib: (TagLib::Tag *) tag;
 @end

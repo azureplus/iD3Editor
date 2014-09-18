@@ -12,6 +12,10 @@
 
 @implementation TagWriterApe
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {
+    if (taglib == nil) {
+        return;
+    }
+
     [super write:tag toTaglib:taglib];
 
     TagLib::APE::Tag * apeTag = dynamic_cast<TagLib::APE::Tag *>(taglib);

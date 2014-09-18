@@ -146,7 +146,6 @@
             EncodingEntity * encodignEntity = selectedEncodings[0];
             NSArray * selectedTags = _tagArrayController.selectedObjects;
             for (TagEntity * tag in selectedTags) {
-                NSLog(@"here2");
                 [tag convertFramestoEncoding:[encodignEntity.code unsignedIntValue]];
             }
         }

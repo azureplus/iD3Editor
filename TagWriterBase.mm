@@ -11,6 +11,10 @@
 
 @implementation TagWriterBase
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {
+    if (taglib == nil) {
+        return;
+    }
+        
     taglib->setArtist([tag.artist toTLString]);
     taglib->setAlbum([tag.album toTLString]);
     taglib->setTitle([tag.title toTLString]);

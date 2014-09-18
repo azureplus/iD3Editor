@@ -8,6 +8,6 @@
 
 #import "TagWriterBase.h"
 
-@interface tagWriterXIPH : TagWriterBase
+@interface TagWriterXIPH : TagWriterBase
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TagGroup.h"
+#import "TagReaderWriterFactory.h"
 
 #define DECL_GETTER_1(FRAME)\
 -(NSString *) FRAME { \
@@ -38,6 +39,11 @@
         self.tags = [NSMutableArray arrayWithCapacity:3];
     }
     return self;
+}
+
+-(void)addTagLib: (TagLib::Tag *) tag {
+    id<TagReader> tagReader = [TagReaderWriterFactory getReader:tag];
+    [_tags addObject:[tagReader readTaglib:tag]];
 }
 
 DECL_GETTER_1(artist);
@@ -89,6 +95,12 @@ DECL_SETTER_1(Copyright);
 -(void)setTrack:(NSNumber *)value {
     for (id<TagProtocol> tag : _tags) {
         [tag setTrack:value];
+    }
+}
+
+-(void) setCharEncoding: (unsigned int) encoding {
+    for (id<TagProtocol> tag : _tags) {
+        [tag setCharEncoding:encoding];
     }
 }
 

@@ -12,6 +12,10 @@
 
 @implementation TagWriterID3V2
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {
+    if (taglib == nil) {
+        return;
+    }
+    
     [super write:tag toTaglib:taglib];
     
     TagLib::ID3v2::Tag * id3Tag = dynamic_cast<TagLib::ID3v2::Tag *>(taglib);

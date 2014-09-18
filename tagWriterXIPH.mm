@@ -11,8 +11,12 @@
 #import "NSString_TLString.h"
 
 
-@implementation tagWriterXIPH
+@implementation TagWriterXIPH
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {
+    if (taglib == nil) {
+        return;
+    }
+        
     [super write:tag toTaglib:taglib];
     
     TagLib::Ogg::XiphComment * xiphTag = dynamic_cast<TagLib::Ogg::XiphComment *>(taglib);

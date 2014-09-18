@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Tag.h"
+#import "TagProtocol.h"
 
 @interface TagEntity : NSManagedObject
 
@@ -24,11 +24,5 @@
 @property (nonatomic, retain) NSString * copyright;
 @property (nonatomic, retain) NSNumber * pathDepth;
 
-@property (nonatomic, assign) BOOL tagUpdated;
-
-@property (nonatomic, weak) Tag * tag;
-
--(void) resetValue;
--(void) save;
--(NSString *)F2f: (NSString *)F;
+@property (nonatomic, strong) id<TagProtocol> tag;
 @end
