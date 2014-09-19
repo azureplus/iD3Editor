@@ -73,4 +73,18 @@ DECL_GETTER(composer)
     _artist = _album = _title = _composer = _comment = _genre = _copyright = nil;
     _track = _year = nil;
 }
+
+-(NSString *) description {
+    NSString * description = [NSString stringWithFormat:@"\tTitle: %@ \
+                              \n\tArtist: %@ \
+                              \n\tAlbum: %@ \
+                              \n\tGenre: %@ \
+                              \n\tYear: %@ \
+                              \n\tTrack: %@ \
+                              \n\tComposer: %@ \
+                              \n\tComment: %@ \
+                              \n\tCopyright: %@", self.title, self.artist, self.album,
+                              self.genre, self.year, self.track, self.composer, self.comment, self.copyright];
+    return description;
+}
 @end
