@@ -26,5 +26,6 @@
 @property (nonatomic, strong) id<TagProtocol> tag;
 
 -(void) setCharEncoding: (unsigned int) charEncoding;
+-(BOOL) updated;
 -(void) resetValue;
 @end

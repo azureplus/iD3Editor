@@ -94,6 +94,10 @@ DECL_SETTER_1(Copyright);
     }
 }
 
+-(BOOL) updated {
+    return [_tag updated];
+}
+
 /*
 -(NSString *)_filename:(NSString *) filename withPathDepth:(int) depth {
     NSArray * components = [filename pathComponents];

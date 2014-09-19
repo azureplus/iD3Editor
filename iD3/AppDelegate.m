@@ -16,10 +16,13 @@
 
 @implementation AppDelegate
 
+//
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self _initCoreData];
     [self _initSupportedEncodings];
     [self _initSupportedFileTypes];
+    
+    // observes char encoding changes
     [_encodingArrayController addObserver:self forKeyPath:@"selection" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)  context:nil];
     
     // register default preferences
@@ -46,7 +49,6 @@
     
     return [self _addTag:filename];
 }
-
 
 // add a tag into (managed) tag entity array
 -(TagEntity *)_addTag: (NSString *) filename {
@@ -145,8 +147,6 @@
     }
 }
 
-
-
 -(void) _addFilesInFolders:(NSArray *)urls {
     NSFileManager * fileManager = [NSFileManager defaultManager];
     for (NSURL * url in urls) {
@@ -166,7 +166,7 @@
     [NSApp stopModalWithCode:0];    
 }
 
-/// actions
+//// actions
 -(void) _afterFileOpenPanelClose:(NSArray *) urls {
     [_progressIndicator startAnimation:nil];
     [self performSelectorInBackground:@selector(_addFilesInFolders:) withObject:urls];
@@ -175,7 +175,6 @@
     [_progressIndicator stopAnimation:nil];
     [self.progressWindow orderOut:nil];
 }
-
 
 -(IBAction) openFiles:(id)sender {
     NSOpenPanel * panel = [NSOpenPanel openPanel];
@@ -204,32 +203,36 @@
 
 
 -(void) _saveChangesHelp {
-//    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
-//        [_fileBeingSaved performSelectorOnMainThread:@selector(setStringValue:) withObject:tag.tag.filename waitUntilDone:NO];
-//        [tag save];
-//    }
-//    [NSApp stopModalWithCode:0];
+    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+        if ([tag updated]) {
+            [_fileBeingSaved performSelectorOnMainThread:@selector(setStringValue:) withObject:tag.filename waitUntilDone:NO];
+            [FileResolver writeTag:tag.tag to:tag.filename];
+        }
+    }
+    
+    // stop the progress window
+    [NSApp stopModalWithCode:0];
 }
 
 -(IBAction) saveChanges:(id)sender {
-//    BOOL saveNeeded = NO;
-//    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
-//        if (tag.tagUpdated) {
-//            saveNeeded = YES;
-//            break;
-//        }
-//    }
-//
-//    if (!saveNeeded) {
-//        return;
-//    }
-//    
-//    [_progressIndicator startAnimation:nil];
-//    [self performSelectorInBackground:@selector(_saveChangesHelp) withObject:nil];
-//    self.progressWindow.title = @"Saving Files";
-//    [NSApp runModalForWindow:self.progressWindow];
-//    [_progressIndicator stopAnimation:nil];
-//    [self.progressWindow orderOut:nil];
+    BOOL saveNeeded = NO;
+    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+        if ([tag updated]) {
+            saveNeeded = YES;
+            break;
+        }
+    }
+
+    if (!saveNeeded) {
+        return;
+    }
+    
+    [_progressIndicator startAnimation:nil];
+    [self performSelectorInBackground:@selector(_saveChangesHelp) withObject:nil];
+    self.progressWindow.title = @"Saving Files";
+    [NSApp runModalForWindow:self.progressWindow];
+    [_progressIndicator stopAnimation:nil];
+    [self.progressWindow orderOut:nil];
 }
 
 
@@ -240,13 +243,13 @@
 }
 
 -(IBAction) clearFileList:(id)sender {
-//    [self saveChanges:nil];
-//    
-//    NSArray * tags = [NSArray arrayWithArray:[_tagArrayController arrangedObjects]];
-//    
-//    for (TagEntity * tag in tags) {
-//        [self removeTagEntity:tag];
-//    }
+    [self saveChanges:nil];
+    
+    NSArray * tags = [NSArray arrayWithArray:[_tagArrayController arrangedObjects]];
+    
+    for (TagEntity * tag in tags) {
+        [self removeTagEntity:tag];
+    }
 }
 
 -(IBAction) setAlbumToAll:(id)sender {
