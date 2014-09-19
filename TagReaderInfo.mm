@@ -17,12 +17,12 @@
     TagLib::RIFF::Info::Tag * infoTag = dynamic_cast<TagLib::RIFF::Info::Tag *>(taglib);
     if (infoTag) {
         const TagLib::RIFF::Info::FieldListMap & fieldMap = infoTag->fieldListMap();
-        if (!fieldMap[COMPOSER].isEmpty()) {
-            tag.composerTL = fieldMap[COMPOSER];
+        if (!fieldMap[COMPOSER_FRAME].isEmpty()) {
+            tag.composerTL = fieldMap[COMPOSER_FRAME];
         }
         
-        if (!fieldMap[COPYRIGHT].isEmpty()) {
-            tag.copyrightTL = fieldMap[COPYRIGHT];
+        if (!fieldMap[COPYRIGHT_FRAME].isEmpty()) {
+            tag.copyrightTL = fieldMap[COPYRIGHT_FRAME];
         }
     }
     

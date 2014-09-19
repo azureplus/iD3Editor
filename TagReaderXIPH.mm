@@ -17,12 +17,12 @@
     TagLib::Ogg::XiphComment * xiphTag = dynamic_cast<TagLib::Ogg::XiphComment *>(taglib);
     if (xiphTag) {
         const TagLib::Ogg::FieldListMap & fieldMap = xiphTag->fieldListMap();
-        if (!fieldMap[COMPOSER].isEmpty()) {
-            tag.composerTL = fieldMap[COMPOSER].front();
+        if (!fieldMap[COMPOSER_FRAME].isEmpty()) {
+            tag.composerTL = fieldMap[COMPOSER_FRAME].front();
         }
     
-        if (!fieldMap[COPYRIGHT].isEmpty()) {
-            tag.copyrightTL = fieldMap[COPYRIGHT].front();
+        if (!fieldMap[COPYRIGHT_FRAME].isEmpty()) {
+            tag.copyrightTL = fieldMap[COPYRIGHT_FRAME].front();
         }
     }
     

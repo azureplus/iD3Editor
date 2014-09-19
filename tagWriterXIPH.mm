@@ -22,8 +22,8 @@
     TagLib::Ogg::XiphComment * xiphTag = dynamic_cast<TagLib::Ogg::XiphComment *>(taglib);
     
     if (xiphTag) {
-        xiphTag->addField(COMPOSER, [tag.composer toTLString]);
-        xiphTag->addField(COPYRIGHT, [tag.copyright toTLString]);
+        xiphTag->addField(COMPOSER_FRAME, [tag.composer toTLString]);
+        xiphTag->addField(COPYRIGHT_FRAME, [tag.copyright toTLString]);
     }
 }
 @end

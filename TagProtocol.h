@@ -12,8 +12,8 @@
 # include "taglib/tag.h"
 #endif
 
-#define COMPOSER "COMPOSER"
-#define COPYRIGHT "COPYRIGHT"
+#define COMPOSER_FRAME "COMPOSER"
+#define COPYRIGHT_FRAME "COPYRIGHT"
 
 @protocol TagProtocol <NSObject>
 -(NSString *) artist;

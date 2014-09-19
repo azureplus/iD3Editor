@@ -8,14 +8,14 @@
 
 #import "NSString_Filename.h"
 
-#define ARTIST @":a"
-#define ALBUM @":A"
-#define TITLE @":t"
-#define COMPOSER @":c"
-#define GENRE @":g"
-#define TRACK @":T"
-#define YEAR @":y"
-#define COLON @"::"
+#define TAG_ARTIST @":a"
+#define TAG_ALBUM @":A"
+#define TAG_TITLE @":t"
+#define TAG_COMPOSER @":c"
+#define TAG_GENRE @":g"
+#define TAG_TRACK @":T"
+#define TAG_YEAR @":y"
+#define TAG_COLON @"::"
 @implementation NSString(FileName)
 
 //
@@ -127,19 +127,19 @@
     for (NSString * key in dic) {
         //value cannot be null using current algorithm
         NSString * value = [dic objectForKey:key];
-        if ([key isEqualTo:ARTIST]) {
+        if ([key isEqualTo:TAG_ARTIST]) {
             [rv setObject:value forKey:@"artist"];
-        } else if ([key isEqualTo:ALBUM]) {
+        } else if ([key isEqualTo:TAG_ALBUM]) {
             [rv setObject:value forKey:@"album"];
-        } else if ([key isEqualTo:TITLE]) {
+        } else if ([key isEqualTo:TAG_TITLE]) {
             [rv setObject:value forKey:@"title"];
-        } else if ([key isEqualTo:COMPOSER]) {
+        } else if ([key isEqualTo:TAG_COMPOSER]) {
             [rv setObject:value forKey:@"composer"];
-        } else if ([key isEqualTo:GENRE]) {
+        } else if ([key isEqualTo:TAG_GENRE]) {
             [rv setObject:value forKey:@"genre"];
-        } else if ([key isEqualTo:TRACK]) {
+        } else if ([key isEqualTo:TAG_TRACK]) {
             [rv setObject:value forKey:@"track"];
-        } else if ([key isEqualTo:YEAR]) {
+        } else if ([key isEqualTo:TAG_YEAR]) {
             [rv setObject:value forKey:@"year"];
         }
     }

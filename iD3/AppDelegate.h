@@ -10,8 +10,7 @@
 #import "TagEntity.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> 
-// tag lib tags
-@property (readonly, nonatomic) NSArray * tags;
+
 @property (assign) IBOutlet NSWindow * window;
 @property (assign) IBOutlet NSWindow * encodingWindow;
 @property (assign) IBOutlet NSWindow * filenameWindow;

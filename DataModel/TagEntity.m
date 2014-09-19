@@ -15,7 +15,10 @@
 
 #define DECL_SETTER_1(FRAME) \
 -(void) set##FRAME:(NSString *)value { \
+    NSString * frame = [@#FRAME lowercaseString]; \
+    [self willChangeValueForKey:frame]; \
     [self.tag set##FRAME:value]; \
+    [self didChangeValueForKey:frame]; \
 }
 
 @implementation TagEntity
@@ -30,7 +33,6 @@
 @dynamic track;
 @dynamic year;
 @dynamic copyright;
-@dynamic pathDepth;
 
 @synthesize tag = _tag;
 
@@ -70,13 +72,29 @@ DECL_SETTER_1(Composer);
 DECL_SETTER_1(Copyright);
 
 -(void)setYear:(NSString *)value {
+    [self willChangeValueForKey:@"year"];
     [self.tag setYear:[NSNumber numberWithInt:[value intValue]]];
+    [self didChangeValueForKey:@"year"];
 }
 
 -(void)setTrack:(NSString *)value {
+    [self willChangeValueForKey:@"track"];
     [self.tag setTrack:[NSNumber numberWithInt:[value intValue]]];
+    [self didChangeValueForKey:@"track"];
 }
 
+-(void) setCharEncoding: (unsigned int) charEncoding {
+    NSArray * frames = @[@"artist", @"album", @"title", @"genre", @"comment", @"composer", @"copyright"];
+    for (NSString * frame in frames) {
+        [self willChangeValueForKey:frame];
+    }
+    [self.tag setCharEncoding:charEncoding];
+    for (NSString * frame in frames) {
+        [self didChangeValueForKey:frame];
+    }
+}
+
+/*
 -(NSString *)_filename:(NSString *) filename withPathDepth:(int) depth {
     NSArray * components = [filename pathComponents];
     NSMutableString * rv = [NSMutableString stringWithCapacity:256];
@@ -95,4 +113,5 @@ DECL_SETTER_1(Copyright);
     
     return rv;
 }
+ */
 @end

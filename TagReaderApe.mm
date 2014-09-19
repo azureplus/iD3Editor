@@ -18,12 +18,12 @@
     if (apeTag) {
         const TagLib::APE::ItemListMap & itemMap = apeTag->itemListMap();
         
-        if (!itemMap[COMPOSER].isEmpty()){
-            tag.composerTL = itemMap[COMPOSER].toString();
+        if (!itemMap[COMPOSER_FRAME].isEmpty()){
+            tag.composerTL = itemMap[COMPOSER_FRAME].toString();
         }
         
-        if (!itemMap[COPYRIGHT].isEmpty()){
-            tag.copyrightTL = itemMap[COPYRIGHT].toString();
+        if (!itemMap[COPYRIGHT_FRAME].isEmpty()){
+            tag.copyrightTL = itemMap[COPYRIGHT_FRAME].toString();
         }
     }
     

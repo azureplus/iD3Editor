@@ -9,7 +9,6 @@
 #import <XCTest/XCTest.h>
 #import "NSString_TLString.h"
 #import "NSString_Filename.h"
-#import "Tag.h"
 #import "TagEntity.h"
 
 @interface iD3Tests : XCTestCase

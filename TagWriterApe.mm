@@ -20,8 +20,8 @@
 
     TagLib::APE::Tag * apeTag = dynamic_cast<TagLib::APE::Tag *>(taglib);
     if (apeTag) {
-        apeTag->addValue(COMPOSER, [tag.composer toTLString], true);
-        apeTag->addValue(COPYRIGHT, [tag.copyright toTLString], true);
+        apeTag->addValue(COMPOSER_FRAME, [tag.composer toTLString], true);
+        apeTag->addValue(COPYRIGHT_FRAME, [tag.copyright toTLString], true);
     }
 }
 @end

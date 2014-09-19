@@ -22,8 +22,9 @@
 @property (nonatomic, retain) NSString * track;
 @property (nonatomic, retain) NSString * year;
 @property (nonatomic, retain) NSString * copyright;
-@property (nonatomic, retain) NSNumber * pathDepth;
 
 @property (nonatomic, strong) id<TagProtocol> tag;
+
+-(void) setCharEncoding: (unsigned int) charEncoding;
 -(void) resetValue;
 @end

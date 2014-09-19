@@ -17,7 +17,6 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    _tags = [[NSMutableArray alloc] initWithCapacity:32];
     [self _initCoreData];
     [self _initSupportedEncodings];
     [self _initSupportedFileTypes];
@@ -36,34 +35,31 @@
     return YES;
 }
 
+// add a file
 -(TagEntity *)_addFile:(NSURL *)fileURL {
     NSString * filename = [fileURL path];
     
-//    for (TagEntity * tag in _tags) {
-//        if ([[tag filename] isEqualToString:filename])
-//            return nil;
-//    }
+    for (TagEntity * tag in [self.tagArrayController arrangedObjects]) {
+        if ([[tag filename] isEqualToString:filename])
+            return nil;
+    }
     
     return [self _addTag:filename];
 }
 
 
-
+// add a tag into (managed) tag entity array
 -(TagEntity *)_addTag: (NSString *) filename {
-    NSNumber * pathDepth = [NSNumber numberWithInt:0];
-    if ([_tagArrayController.arrangedObjects count]) {
-        pathDepth = ((TagEntity *)[_tagArrayController.arrangedObjects objectAtIndex:0]).pathDepth;
-    }
-    
     NSEntityDescription * tagDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Tag"];
     TagEntity * tagEntity = [[TagEntity alloc] initWithEntity:tagDescription insertIntoManagedObjectContext:_managedObjectContext];
-    tagEntity.pathDepth = pathDepth;
     tagEntity.tag = [FileResolver read:filename];
+    tagEntity.filename = filename;
     [_tagArrayController addObject:tagEntity];
     
     return tagEntity;
 }
 
+// remove a managed tag entity
 -(void) removeTagEntity: (TagEntity *) tagEntity {
     [_tagArrayController removeObject:tagEntity];
     // WARNING!
@@ -71,13 +67,15 @@
     [_managedObjectContext deleteObject:tagEntity];
 }
 
+// remove selected tag entities
 -(void) removeSelectedTags {
-    for (id obj in [_tagArrayController selectedObjects]) {
+    NSArray * selectedTags = [NSArray arrayWithArray:[_tagArrayController selectedObjects]];
+    for (id obj in selectedTags) {
         [self removeTagEntity:obj];
     }
 }
 
-// suppored char encoding
+// init supported char encoding
 -(void)_initSupportedEncodings {
     NSString *filePath   = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
     NSDictionary * plist = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
@@ -103,6 +101,7 @@
     }
 }
 
+// init supported file types
 -(void)_initSupportedFileTypes {
     NSString *filePath   = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
     NSDictionary * plist = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
@@ -134,16 +133,16 @@
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-//    if (object == _encodingArrayController && [keyPath isEqualTo:@"selection"]) {
-//        NSArray * selectedEncodings = _encodingArrayController.selectedObjects;
-//        if (selectedEncodings.count >= 1) {
-//            EncodingEntity * encodignEntity = selectedEncodings[0];
-//            NSArray * selectedTags = _tagArrayController.selectedObjects;
-//            for (TagEntity * tag in selectedTags) {
-//                [tag convertFramestoEncoding:[encodignEntity.code unsignedIntValue]];
-//            }
-//        }
-//    }
+    if (object == _encodingArrayController && [keyPath isEqualTo:@"selection"]) {
+        NSArray * selectedEncodings = _encodingArrayController.selectedObjects;
+        if (selectedEncodings.count >= 1) {
+            EncodingEntity * encodignEntity = selectedEncodings[0];
+            NSArray * selectedTags = _tagArrayController.selectedObjects;
+            for (TagEntity * tag in selectedTags) {
+                [tag setCharEncoding:[encodignEntity.code intValue]];
+            }
+        }
+    }
 }
 
 
@@ -349,19 +348,10 @@
 
 // get path depth
 -(NSUInteger) pathDepth {
-    if ([_tagArrayController.arrangedObjects count] > 0) {
-        TagEntity * tagEntity = _tagArrayController.arrangedObjects[0];
-        return [tagEntity.pathDepth unsignedIntegerValue];
-    } else {
-        return 0;
-    }
+    return 0;
 }
-
 
 // set path depth
 -(void) setPathDepth: (NSUInteger) depth {
-    for (TagEntity * te in _tagArrayController.arrangedObjects) {
-        te.pathDepth = [NSNumber numberWithUnsignedInteger:depth];
-    }
 }
 @end

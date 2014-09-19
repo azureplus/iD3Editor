@@ -70,12 +70,12 @@ DECL_GETTER_1(copyright);
     id<TagProtocol> selected = nil;
     for (id<TagProtocol> tag : _tags) {
         selected = tag;
-        if ([selected year] && [[selected year] intValue] > 0) {
+        if ([selected track] && [[selected track] intValue] > 0) {
             break;
         }
     }
     
-    return [selected year];
+    return [selected track];
 }
 
 DECL_SETTER_1(Artist);
