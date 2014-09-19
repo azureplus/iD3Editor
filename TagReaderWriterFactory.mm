@@ -52,7 +52,7 @@ static NSArray * writers = nil;
                     [[TagWriterInfo alloc] init],
                     [[TagWriterID3V1 alloc] init],
                     [[TagWriterID3V2 alloc] init],
-                    [[tagWriterXIPH alloc] init]];
+                    [[TagWriterXIPH alloc] init]];
     }
 }
 

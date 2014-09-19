@@ -25,4 +25,5 @@
 @property (nonatomic, retain) NSNumber * pathDepth;
 
 @property (nonatomic, strong) id<TagProtocol> tag;
+-(void) resetValue;
 @end

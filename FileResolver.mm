@@ -9,11 +9,6 @@
 #import "FileResolver.h"
 #import "TagGroup.h"
 
-#import "Tag_APE.h"
-#import "Tag_ID3V1.h"
-#import "Tag_ID3V2.h"
-#import "Tag_XIPHComment.h"
-#import "Tag_Info.h"
 #import "taglib/fileref.h"
 #import "taglib/apefile.h"
 #import "taglib/flacfile.h"
@@ -22,6 +17,13 @@
 #import "taglib/speexfile.h"
 #import "taglib/opusfile.h"
 #import "taglib/wavfile.h"
+
+#import "taglib/tag.h"
+#import "taglib/apetag.h"
+#import "taglib/infotag.h"
+#import "taglib/id3v1tag.h"
+#import "taglib/id3v2tag.h"
+#import "taglib/xiphcomment.h"
 
 #import "TagWriterApe.h"
 #import "TagWriterInfo.h"

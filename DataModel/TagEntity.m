@@ -7,7 +7,6 @@
 //
 
 #import "TagEntity.h"
-#import "Tag_FileTypeResolver.h"
 
 #define DECL_GETTER_1(FRAME) \
 -(NSString *) FRAME { \
@@ -42,10 +41,6 @@
 -(void) save {
 }
 
--(void)setTag:(id<TagProtocol>)tag {
-    self.tag = tag;
-}
-
 -(void) resetValue {
     [self.tag discardChanges];
 }
@@ -64,11 +59,6 @@ DECL_GETTER_1(copyright);
 
 -(NSString *) track {
     return [[self.tag track] stringValue];
-}
-
--(NSString *)filename {
-    NSString * name = [self valueForKey:@"filename"];
-    return [self _filename:name withPathDepth:[self.pathDepth intValue]];
 }
 
 DECL_SETTER_1(Artist);

@@ -9,10 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TagEntity.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
-    NSMutableArray * _tags;
-}
-
+@interface AppDelegate : NSObject <NSApplicationDelegate> 
 // tag lib tags
 @property (readonly, nonatomic) NSArray * tags;
 @property (assign) IBOutlet NSWindow * window;

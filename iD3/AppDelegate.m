@@ -7,16 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "Tag.h"
 #import "TagEntity.h"
+#import "FileResolver.h"
 
 // tag encodings
 #import "EncodingEntity.h"
-#import "TagEntity_Encoding.h"
-
-// conversion between tag and filename
-#import "TagEntity_Filename.h"
-
 #import "NSString_Filename.h"
 
 @implementation AppDelegate
@@ -44,17 +39,17 @@
 -(TagEntity *)_addFile:(NSURL *)fileURL {
     NSString * filename = [fileURL path];
     
-    for (Tag * tag in _tags) {
-        if ([[tag filename] isEqualToString:filename])
-            return nil;
-    }
+//    for (TagEntity * tag in _tags) {
+//        if ([[tag filename] isEqualToString:filename])
+//            return nil;
+//    }
     
-    return [self _addTag:[[Tag alloc] initWithFile:filename]];
+    return [self _addTag:filename];
 }
 
--(TagEntity *)_addTag: (Tag *) tag {
-    [_tags addObject:tag];
-    
+
+
+-(TagEntity *)_addTag: (NSString *) filename {
     NSNumber * pathDepth = [NSNumber numberWithInt:0];
     if ([_tagArrayController.arrangedObjects count]) {
         pathDepth = ((TagEntity *)[_tagArrayController.arrangedObjects objectAtIndex:0]).pathDepth;
@@ -62,8 +57,8 @@
     
     NSEntityDescription * tagDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Tag"];
     TagEntity * tagEntity = [[TagEntity alloc] initWithEntity:tagDescription insertIntoManagedObjectContext:_managedObjectContext];
-    tagEntity.pathDepth = pathDepth;    
-    tagEntity.tag = tag;
+    tagEntity.pathDepth = pathDepth;
+    tagEntity.tag = [FileResolver read:filename];
     [_tagArrayController addObject:tagEntity];
     
     return tagEntity;
@@ -71,7 +66,6 @@
 
 -(void) removeTagEntity: (TagEntity *) tagEntity {
     [_tagArrayController removeObject:tagEntity];
-    [_tags removeObject:tagEntity.tag];
     // WARNING!
     // dont forget deleting the object from the managed object context
     [_managedObjectContext deleteObject:tagEntity];
@@ -140,18 +134,19 @@
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    if (object == _encodingArrayController && [keyPath isEqualTo:@"selection"]) {
-        NSArray * selectedEncodings = _encodingArrayController.selectedObjects;
-        if (selectedEncodings.count >= 1) {
-            EncodingEntity * encodignEntity = selectedEncodings[0];
-            NSArray * selectedTags = _tagArrayController.selectedObjects;
-            for (TagEntity * tag in selectedTags) {
-                [tag convertFramestoEncoding:[encodignEntity.code unsignedIntValue]];
-            }
-        }
-        
-    }
+//    if (object == _encodingArrayController && [keyPath isEqualTo:@"selection"]) {
+//        NSArray * selectedEncodings = _encodingArrayController.selectedObjects;
+//        if (selectedEncodings.count >= 1) {
+//            EncodingEntity * encodignEntity = selectedEncodings[0];
+//            NSArray * selectedTags = _tagArrayController.selectedObjects;
+//            for (TagEntity * tag in selectedTags) {
+//                [tag convertFramestoEncoding:[encodignEntity.code unsignedIntValue]];
+//            }
+//        }
+//    }
 }
+
+
 
 -(void) _addFilesInFolders:(NSArray *)urls {
     NSFileManager * fileManager = [NSFileManager defaultManager];
@@ -208,34 +203,36 @@
     [self.filenameWindow orderOut:nil];
 }
 
+
 -(void) _saveChangesHelp {
-    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
-        [_fileBeingSaved performSelectorOnMainThread:@selector(setStringValue:) withObject:tag.tag.filename waitUntilDone:NO];
-        [tag save];
-    }
-    [NSApp stopModalWithCode:0];
+//    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+//        [_fileBeingSaved performSelectorOnMainThread:@selector(setStringValue:) withObject:tag.tag.filename waitUntilDone:NO];
+//        [tag save];
+//    }
+//    [NSApp stopModalWithCode:0];
 }
 
 -(IBAction) saveChanges:(id)sender {
-    BOOL saveNeeded = NO;
-    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
-        if (tag.tagUpdated) {
-            saveNeeded = YES;
-            break;
-        }
-    }
-
-    if (!saveNeeded) {
-        return;
-    }
-    
-    [_progressIndicator startAnimation:nil];
-    [self performSelectorInBackground:@selector(_saveChangesHelp) withObject:nil];
-    self.progressWindow.title = @"Saving Files";
-    [NSApp runModalForWindow:self.progressWindow];
-    [_progressIndicator stopAnimation:nil];
-    [self.progressWindow orderOut:nil];
+//    BOOL saveNeeded = NO;
+//    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+//        if (tag.tagUpdated) {
+//            saveNeeded = YES;
+//            break;
+//        }
+//    }
+//
+//    if (!saveNeeded) {
+//        return;
+//    }
+//    
+//    [_progressIndicator startAnimation:nil];
+//    [self performSelectorInBackground:@selector(_saveChangesHelp) withObject:nil];
+//    self.progressWindow.title = @"Saving Files";
+//    [NSApp runModalForWindow:self.progressWindow];
+//    [_progressIndicator stopAnimation:nil];
+//    [self.progressWindow orderOut:nil];
 }
+
 
 -(IBAction) resetChanges:(id)sender {
     for (TagEntity * tag in _tagArrayController.arrangedObjects) {
@@ -244,14 +241,13 @@
 }
 
 -(IBAction) clearFileList:(id)sender {
-    [self saveChanges:nil];
-    
-    [_tags removeAllObjects];
-    NSArray * tags = [NSArray arrayWithArray:[_tagArrayController arrangedObjects]];
-    
-    for (TagEntity * tag in tags) {
-        [self removeTagEntity:tag];
-    }
+//    [self saveChanges:nil];
+//    
+//    NSArray * tags = [NSArray arrayWithArray:[_tagArrayController arrangedObjects]];
+//    
+//    for (TagEntity * tag in tags) {
+//        [self removeTagEntity:tag];
+//    }
 }
 
 -(IBAction) setAlbumToAll:(id)sender {
@@ -284,10 +280,10 @@
 
 // convert filename to tag
 -(void) filenameToTag:(NSString *)pattern {
-    NSArray * selectedTags = _tagArrayController.selectedObjects;
-    for (TagEntity * tag in selectedTags) {
-        [tag fromFilenameWithPattern:pattern];
-    }
+//    NSArray * selectedTags = _tagArrayController.selectedObjects;
+//    for (TagEntity * tag in selectedTags) {
+//        [tag fromFilenameWithPattern:pattern];
+//    }
 }
 
 -(NSUInteger)_getTrackSize:(TagEntity *)tag {
@@ -314,41 +310,41 @@
 
 // Tag to filename rename file
 -(void) tagToFilename: (NSString *)pattern {
-    if ([pattern length] == 0) {
-        return;
-    }
-    
-    [self saveChanges:nil];
-    
-    NSMutableArray * tagsToRename = [NSMutableArray arrayWithCapacity:32];
-    NSMutableArray * tagsNewlyAdded = [NSMutableArray arrayWithCapacity:32];
-    
-    for (TagEntity * tagEntity in _tagArrayController.selectedObjects) {
-        [tagsToRename addObject:tagEntity];
-    }
-    
-    for (TagEntity * tagEntity in tagsToRename) {
-        NSString * oldFilename = tagEntity.tag.filename;
-       
-        NSMutableArray * components = [NSMutableArray arrayWithArray:[oldFilename pathComponents]];
-        NSUInteger trackSize = [self _getTrackSize: tagEntity];
-        NSString * newFilename = [NSString fromTag:tagEntity withPattern:pattern andTrackSize:trackSize];
-        components[components.count - 1] = [newFilename stringByAppendingPathExtension:[oldFilename pathExtension]];
-        newFilename = [NSString pathWithComponents:components];
-                
-        NSFileManager * fm = [[NSFileManager alloc] init];
-        BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
-        
-        if (result) {
-            [self removeTagEntity:tagEntity];
-            TagEntity * newTag = [self _addFile:[NSURL fileURLWithPath:newFilename isDirectory:NO]];
-            [tagsNewlyAdded addObject:newTag];
-        } else {
-            [tagsNewlyAdded addObject:tagEntity];
-        }
-    }
-    
-    [_tagArrayController setSelectedObjects:tagsNewlyAdded];
+//    if ([pattern length] == 0) {
+//        return;
+//    }
+//    
+//    [self saveChanges:nil];
+//    
+//    NSMutableArray * tagsToRename = [NSMutableArray arrayWithCapacity:32];
+//    NSMutableArray * tagsNewlyAdded = [NSMutableArray arrayWithCapacity:32];
+//    
+//    for (TagEntity * tagEntity in _tagArrayController.selectedObjects) {
+//        [tagsToRename addObject:tagEntity];
+//    }
+//    
+//    for (TagEntity * tagEntity in tagsToRename) {
+//        NSString * oldFilename = tagEntity.tag.filename;
+//       
+//        NSMutableArray * components = [NSMutableArray arrayWithArray:[oldFilename pathComponents]];
+//        NSUInteger trackSize = [self _getTrackSize: tagEntity];
+//        NSString * newFilename = [NSString fromTag:tagEntity withPattern:pattern andTrackSize:trackSize];
+//        components[components.count - 1] = [newFilename stringByAppendingPathExtension:[oldFilename pathExtension]];
+//        newFilename = [NSString pathWithComponents:components];
+//                
+//        NSFileManager * fm = [[NSFileManager alloc] init];
+//        BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
+//        
+//        if (result) {
+//            [self removeTagEntity:tagEntity];
+//            TagEntity * newTag = [self _addFile:[NSURL fileURLWithPath:newFilename isDirectory:NO]];
+//            [tagsNewlyAdded addObject:newTag];
+//        } else {
+//            [tagsNewlyAdded addObject:tagEntity];
+//        }
+//    }
+//    
+//    [_tagArrayController setSelectedObjects:tagsNewlyAdded];
 }
 
 // get path depth
