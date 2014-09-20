@@ -8,6 +8,7 @@
 
 #import "TagAndFileNameWindowDelegate.h"
 #import "AppDelegate.h"
+#import "AppDelegate_Filename.h"
 #import "NSString_Filename.h"
 
 @implementation TagAndFileNameWindowDelegate

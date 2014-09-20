@@ -44,16 +44,6 @@
 -(IBAction) setArtistToAll:(id)sender;
 -(IBAction) setGenreToAll:(id)sender;
 
-/// filename to tag
--(void) filenameToTag:(NSString *)pattern;
-
-/// tag to filename (rename files)
--(void) tagToFilename: (NSString *)pattern;
-
-///
--(void) setPathDepth:(unsigned int) depth;
--(unsigned int) pathDepth;
-
 ///
 -(void) removeTagEntity: (TagEntity *) tagEntity;
 -(void) removeSelectedTags;
