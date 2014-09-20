@@ -120,4 +120,10 @@ DECL_SETTER_1(Copyright);
         [tag discardChanges];
     }
 }
+
+-(void) savedChanges {
+    for (id<TagProtocol> tag : _tags) {
+        [tag savedChanges];
+    }
+}
 @end

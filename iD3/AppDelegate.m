@@ -206,6 +206,7 @@
         if ([tag updated]) {
             [_fileBeingSaved performSelectorOnMainThread:@selector(setStringValue:) withObject:tag.filename waitUntilDone:NO];
             [FileResolver writeTag:tag.tag to:tag.filename];
+            [tag.tag savedChanges];
         }
     }
     

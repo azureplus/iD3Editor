@@ -18,6 +18,13 @@
     } \
 }
 
+#define SAVE_FRAME(FRAME)\
+if (_##FRAME) { \
+    _##FRAME##TL = [_##FRAME toTLString]; \
+} else if (_charEncoding) { \
+    _##FRAME##TL = [[NSString newStringFromTLString:_##FRAME##TL withEncoding:_charEncoding] toTLString]; \
+}
+
 @implementation TagBase
 -(id) initWithTag: (TagLib::Tag *) tag {
     if (self = [super init]) {
@@ -73,6 +80,26 @@ DECL_GETTER(composer)
     _artist = _album = _title = _composer = _comment = _genre = _copyright = nil;
     _track = _year = nil;
     _charEncoding = DEFAULT_ENCODING;
+}
+
+-(void) savedChanges {
+    SAVE_FRAME(artist);
+    SAVE_FRAME(album);
+    SAVE_FRAME(title);
+    SAVE_FRAME(composer);
+    SAVE_FRAME(comment);
+    SAVE_FRAME(genre);
+    SAVE_FRAME(copyright);
+    
+    if (_year) {
+        _yearTL = [_year unsignedIntegerValue];
+    }
+    
+    if (_track) {
+        _trackTL = [_track unsignedIntegerValue];
+    }
+    
+    [self discardChanges];
 }
 
 -(NSString *) description {

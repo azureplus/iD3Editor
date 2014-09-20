@@ -39,4 +39,5 @@
 -(void) setCharEncoding: (unsigned int) encoding;
 -(BOOL) updated;
 -(void) discardChanges;
+-(void) savedChanges;
 @end
