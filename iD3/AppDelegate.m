@@ -278,27 +278,4 @@
         }
     }
 }
-
--(NSUInteger)_getTrackSize:(TagEntity *)tag {
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setIncludesSubentities:YES];
-    [request setEntity:[NSEntityDescription entityForName:@"Tag" inManagedObjectContext:_managedObjectContext]];
-    
-    NSString * album = [tag.album stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"album = '%@'", album]];
-    [request setPredicate:predicate];
-    
-    NSUInteger count = [_managedObjectContext countForFetchRequest:request error:nil];
-    if(count == NSNotFound) {
-        return 0;
-    } else {
-        int size = 1;
-        while (count >= 10) {
-            count = count/10;
-            size++;
-        }
-        return size;
-    }
-}
-
 @end

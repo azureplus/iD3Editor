@@ -55,43 +55,50 @@
     }
 }
 
+-(NSUInteger)_getTrackSize:(TagEntity *)tag {
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setIncludesSubentities:YES];
+    [request setEntity:[NSEntityDescription entityForName:@"Tag" inManagedObjectContext:self.managedObjectContext]];
+    
+    NSString * album = [tag.album stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"album = '%@'", album]];
+    [request setPredicate:predicate];
+    
+    NSUInteger count = [self.managedObjectContext countForFetchRequest:request error:nil];
+    if(count == NSNotFound) {
+        return 0;
+    } else {
+        int size = 1;
+        while (count >= 10) {
+            count = count/10;
+            size++;
+        }
+        return size;
+    }
+}
+
 // Tag to filename rename file
 -(void) tagToFilename: (NSString *)pattern {
-    //    if ([pattern length] == 0) {
-    //        return;
-    //    }
-    //
-    //    [self saveChanges:nil];
-    //
-    //    NSMutableArray * tagsToRename = [NSMutableArray arrayWithCapacity:32];
-    //    NSMutableArray * tagsNewlyAdded = [NSMutableArray arrayWithCapacity:32];
-    //
-    //    for (TagEntity * tagEntity in _tagArrayController.selectedObjects) {
-    //        [tagsToRename addObject:tagEntity];
-    //    }
-    //
-    //    for (TagEntity * tagEntity in tagsToRename) {
-    //        NSString * oldFilename = tagEntity.tag.filename;
-    //
-    //        NSMutableArray * components = [NSMutableArray arrayWithArray:[oldFilename pathComponents]];
-    //        NSUInteger trackSize = [self _getTrackSize: tagEntity];
-    //        NSString * newFilename = [NSString fromTag:tagEntity withPattern:pattern andTrackSize:trackSize];
-    //        components[components.count - 1] = [newFilename stringByAppendingPathExtension:[oldFilename pathExtension]];
-    //        newFilename = [NSString pathWithComponents:components];
-    //
-    //        NSFileManager * fm = [[NSFileManager alloc] init];
-    //        BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
-    //
-    //        if (result) {
-    //            [self removeTagEntity:tagEntity];
-    //            TagEntity * newTag = [self _addFile:[NSURL fileURLWithPath:newFilename isDirectory:NO]];
-    //            [tagsNewlyAdded addObject:newTag];
-    //        } else {
-    //            [tagsNewlyAdded addObject:tagEntity];
-    //        }
-    //    }
-    //    
-    //    [_tagArrayController setSelectedObjects:tagsNewlyAdded];
+    if ([pattern length] == 0) {
+        return;
+    }
+
+    for (TagEntity * tagEntity in self.tagArrayController.selectedObjects) {
+        NSString * oldFilename = tagEntity.filename;
+        
+        NSMutableArray * components = [NSMutableArray arrayWithArray:[oldFilename pathComponents]];
+        NSUInteger trackSize = [self _getTrackSize: tagEntity];
+        NSString * newFilename = [NSString fromTag:tagEntity withPattern:pattern andTrackSize:trackSize];
+        components[components.count - 1] = [newFilename stringByAppendingPathExtension:[oldFilename pathExtension]];
+        newFilename = [NSString pathWithComponents:components];
+        
+        NSFileManager * fm = [[NSFileManager alloc] init];
+        BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
+        
+        if (result) {
+            tagEntity.filename = newFilename;
+        }
+    }
 }
 
 @end
