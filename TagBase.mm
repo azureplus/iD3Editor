@@ -72,6 +72,7 @@ DECL_GETTER(composer)
 -(void)discardChanges {
     _artist = _album = _title = _composer = _comment = _genre = _copyright = nil;
     _track = _year = nil;
+    _charEncoding = DEFAULT_ENCODING;
 }
 
 -(NSString *) description {

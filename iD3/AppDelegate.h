@@ -38,7 +38,7 @@
 -(IBAction) showEncodingWindow:(id)sender;
 -(IBAction) showFileNameAndTagWindow:(id)sender;
 -(IBAction) saveChanges:(id)sender;
--(IBAction) resetChanges:(id)sender;
+-(IBAction) resetValues:(id)sender;
 -(IBAction) clearFileList:(id)sender;
 -(IBAction) setAlbumToAll:(id)sender;
 -(IBAction) setArtistToAll:(id)sender;
@@ -50,11 +50,11 @@
 /// tag to filename (rename files)
 -(void) tagToFilename: (NSString *)pattern;
 
-/// filename path depth
--(NSUInteger) pathDepth;
--(void) setPathDepth: (NSUInteger) depth;
+///
+-(void) setPathDepth:(unsigned int) depth;
+-(unsigned int) pathDepth;
 
-//
+///
 -(void) removeTagEntity: (TagEntity *) tagEntity;
 -(void) removeSelectedTags;
 @end

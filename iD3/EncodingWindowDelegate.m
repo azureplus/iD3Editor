@@ -15,7 +15,7 @@
 }
 
 - (IBAction) cancel:(id)sender {
-    [(AppDelegate *)[NSApp delegate] resetChanges:nil];
+    [(AppDelegate *)[NSApp delegate] resetValues:nil];
     [NSApp stopModalWithCode:0];
 }
 

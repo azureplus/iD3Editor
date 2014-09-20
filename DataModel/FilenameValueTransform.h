@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// transform filename to be displayed in file list table view
 @interface FilenameValueTransform : NSValueTransformer
 
 @end

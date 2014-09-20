@@ -36,6 +36,7 @@
 		F7E33CF519C94306003BE071 /* TagReaderWriterFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF419C94306003BE071 /* TagReaderWriterFactory.mm */; };
 		F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF719C94E3A003BE071 /* TagGroup.mm */; };
 		F7E33CFB19CA9A97003BE071 /* FileResolver.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CFA19CA9A97003BE071 /* FileResolver.mm */; };
+		F7E33CFF19CD281A003BE071 /* FilenameValueTransform2.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CFE19CD281A003BE071 /* FilenameValueTransform2.m */; };
 		F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E994E61983418000DDE9B4 /* Cocoa.framework */; };
 		F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E994EF1983418000DDE9B4 /* InfoPlist.strings */; };
 		F7E994F31983418000DDE9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F21983418000DDE9B4 /* main.m */; };
@@ -127,6 +128,8 @@
 		F7E33CF719C94E3A003BE071 /* TagGroup.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagGroup.mm; sourceTree = "<group>"; };
 		F7E33CF919CA9A97003BE071 /* FileResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileResolver.h; sourceTree = "<group>"; };
 		F7E33CFA19CA9A97003BE071 /* FileResolver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FileResolver.mm; sourceTree = "<group>"; };
+		F7E33CFD19CD281A003BE071 /* FilenameValueTransform2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilenameValueTransform2.h; sourceTree = "<group>"; };
+		F7E33CFE19CD281A003BE071 /* FilenameValueTransform2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilenameValueTransform2.m; sourceTree = "<group>"; };
 		F7E994E31983418000DDE9B4 /* iD3 Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iD3 Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -188,10 +191,6 @@
 				F79BCE1F198A7F5F00CC5F02 /* EncodingEntity.m */,
 				F79BCE1519889BB500CC5F02 /* TagEntity.h */,
 				F79BCE1619889BB500CC5F02 /* TagEntity.m */,
-				F79BCE42198FBFBC00CC5F02 /* FilenameValueTransform.h */,
-				F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */,
-				F7FB46BF1992742400C72AFF /* NullValueTransform.h */,
-				F7FB46C01992742400C72AFF /* NullValueTransform.m */,
 				F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */,
 			);
 			name = DataModel;
@@ -296,6 +295,19 @@
 			name = ReaderWriterImpl;
 			sourceTree = "<group>";
 		};
+		F7E33CFC19CD2772003BE071 /* ValueTransformers */ = {
+			isa = PBXGroup;
+			children = (
+				F79BCE42198FBFBC00CC5F02 /* FilenameValueTransform.h */,
+				F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */,
+				F7E33CFD19CD281A003BE071 /* FilenameValueTransform2.h */,
+				F7E33CFE19CD281A003BE071 /* FilenameValueTransform2.m */,
+				F7FB46BF1992742400C72AFF /* NullValueTransform.h */,
+				F7FB46C01992742400C72AFF /* NullValueTransform.m */,
+			);
+			name = ValueTransformers;
+			sourceTree = "<group>";
+		};
 		F7E994DA1983418000DDE9B4 = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +317,7 @@
 				F79BCE4519907A7400CC5F02 /* NSExtension */,
 				F79BCE18198928A500CC5F02 /* NSString */,
 				F77F88EA1987D47A00B1B3CC /* DataModel */,
+				F7E33CFC19CD2772003BE071 /* ValueTransformers */,
 				F7E994EC1983418000DDE9B4 /* iD3 */,
 				F7E9950A1983418000DDE9B4 /* iD3Tests */,
 				F7E994E51983418000DDE9B4 /* Frameworks */,
@@ -529,6 +542,7 @@
 				F7E994FA1983418000DDE9B4 /* AppDelegate.m in Sources */,
 				F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */,
 				F7E33CEE19C94117003BE071 /* TagWriterID3V2.mm in Sources */,
+				F7E33CFF19CD281A003BE071 /* FilenameValueTransform2.m in Sources */,
 				F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */,
 				F76022101999DB22002DFE01 /* TagTableView.m in Sources */,
 				F79BCE20198A7F5F00CC5F02 /* EncodingEntity.m in Sources */,

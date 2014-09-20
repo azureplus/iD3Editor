@@ -16,7 +16,7 @@
 }
 
 - (void)windowDidBecomeMain:(NSNotification *)notification {
-     NSUInteger pathDepth = [(AppDelegate *) [NSApp delegate] pathDepth];
+     unsigned int pathDepth = [(AppDelegate *)[NSApp delegate] pathDepth];
     if (pathDepth == 0) {
         [_filenameOnly setState:NSOnState];
     } else {
@@ -42,19 +42,15 @@
         NSString * pattern = [self.t2nPattern stringValue];
         [(AppDelegate *)[NSApp delegate] tagToFilename:pattern];
     }
-    
-//    [(AppDelegate *)[NSApp delegate] saveChanges:nil];
 }
 
 - (IBAction) filenameOnlyClicked: (id)sender {
-    AppDelegate * delegate = [NSApp delegate];
     NSButton * filenameOnlyCheckBox = sender;
     if (filenameOnlyCheckBox.state == NSOnState) {
-        [delegate setPathDepth:0];
+        [(AppDelegate *)[NSApp delegate] setPathDepth:0];
     } else {
-        [delegate setPathDepth:1];
+        [(AppDelegate *)[NSApp delegate] setPathDepth:1];
     }
-    
     [self _n2tPatternUpdated];
 }
 

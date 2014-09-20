@@ -44,7 +44,16 @@
 }
 
 -(void) resetValue {
+    NSArray * frames = @[@"artist", @"album", @"title",
+                         @"genre", @"comment", @"composer",
+                         @"copyright", @"year", @"track"];
+    for (NSString * frame in frames) {
+        [self willChangeValueForKey:frame];
+    }
     [self.tag discardChanges];
+    for (NSString * frame in frames) {
+        [self didChangeValueForKey:frame];
+    }
 }
 
 DECL_GETTER_1(artist);
@@ -84,7 +93,9 @@ DECL_SETTER_1(Copyright);
 }
 
 -(void) setCharEncoding: (unsigned int) charEncoding {
-    NSArray * frames = @[@"artist", @"album", @"title", @"genre", @"comment", @"composer", @"copyright"];
+    NSArray * frames = @[@"artist", @"album", @"title",
+                         @"genre", @"comment", @"composer",
+                         @"copyright", @"year", @"track"];
     for (NSString * frame in frames) {
         [self willChangeValueForKey:frame];
     }
@@ -97,25 +108,4 @@ DECL_SETTER_1(Copyright);
 -(BOOL) updated {
     return [_tag updated];
 }
-
-/*
--(NSString *)_filename:(NSString *) filename withPathDepth:(int) depth {
-    NSArray * components = [filename pathComponents];
-    NSMutableString * rv = [NSMutableString stringWithCapacity:256];
-    
-    NSUInteger cc = components.count;
-    NSInteger start = cc - 1 - depth;
-    start = start >= 0 ? start : 0;
-    NSInteger index = start;
-    
-    while (index < cc) {
-        if (index > start && ![components[index - 1] isEqualToString:@"/"])
-            [rv appendString:@"/"];
-        [rv appendString:components[index]];
-        index++;
-    }
-    
-    return rv;
-}
- */
 @end

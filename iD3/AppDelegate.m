@@ -14,6 +14,8 @@
 #import "EncodingEntity.h"
 #import "NSString_Filename.h"
 
+#import "FilenameValueTransform2.h"
+
 @implementation AppDelegate
 
 //
@@ -236,7 +238,7 @@
 }
 
 
--(IBAction) resetChanges:(id)sender {
+-(IBAction) resetValues:(id)sender {
     for (TagEntity * tag in _tagArrayController.arrangedObjects) {
         [tag resetValue];
     }
@@ -310,6 +312,22 @@
     }
 }
 
+-(void) setPathDepth:(unsigned int) depth{
+    for (TagEntity * tagEntity in _tagArrayController.arrangedObjects) {
+        [tagEntity willChangeValueForKey:@"filename"];
+    }
+    
+    [FilenameValueTransform2 setPathDepth:depth];
+    
+    for (TagEntity * tagEntity in _tagArrayController.arrangedObjects) {
+        [tagEntity didChangeValueForKey:@"filename"];
+    }
+}
+
+-(unsigned int) pathDepth {
+    return [FilenameValueTransform2 pathDepth];
+}
+
 // Tag to filename rename file
 -(void) tagToFilename: (NSString *)pattern {
 //    if ([pattern length] == 0) {
@@ -347,14 +365,5 @@
 //    }
 //    
 //    [_tagArrayController setSelectedObjects:tagsNewlyAdded];
-}
-
-// get path depth
--(NSUInteger) pathDepth {
-    return 0;
-}
-
-// set path depth
--(void) setPathDepth: (NSUInteger) depth {
 }
 @end
