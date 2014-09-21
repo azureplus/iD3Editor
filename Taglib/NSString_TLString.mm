@@ -28,7 +28,12 @@
     }
 }
 
-- (TagLib::String) toTLString {
-    return TagLib::String([self UTF8String], TagLib::String::Type::UTF8);
++ (TagLib::String) TLStringFromString: (NSString *)str {
+    if (str) {
+        return TagLib::String([str UTF8String], TagLib::String::Type::UTF8);
+    } else {
+        return TagLib::String::null;
+    }
 }
+
 @end

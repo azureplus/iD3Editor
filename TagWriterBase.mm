@@ -15,11 +15,11 @@
         return;
     }
         
-    taglib->setArtist([tag.artist toTLString]);
-    taglib->setAlbum([tag.album toTLString]);
-    taglib->setTitle([tag.title toTLString]);
-    taglib->setGenre([tag.genre toTLString]);
-    taglib->setComment([tag.comment toTLString]);
+    taglib->setArtist([NSString TLStringFromString:tag.artist]);
+    taglib->setAlbum([NSString TLStringFromString:tag.album]);
+    taglib->setTitle([NSString TLStringFromString:tag.title]);
+    taglib->setGenre([NSString TLStringFromString:tag.genre]);
+    taglib->setComment([NSString TLStringFromString:tag.comment]);
     
     taglib->setYear([tag.year unsignedIntValue]);
     taglib->setTrack([tag.track unsignedIntValue]);

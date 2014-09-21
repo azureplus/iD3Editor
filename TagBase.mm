@@ -20,9 +20,10 @@
 
 #define SAVE_FRAME(FRAME)\
 if (_##FRAME) { \
-    _##FRAME##TL = [_##FRAME toTLString]; \
+    _##FRAME##TL = [NSString TLStringFromString:_##FRAME]; \
 } else if (_charEncoding) { \
-    _##FRAME##TL = [[NSString newStringFromTLString:_##FRAME##TL withEncoding:_charEncoding] toTLString]; \
+    NSString * v = [NSString newStringFromTLString:_##FRAME##TL withEncoding:_charEncoding]; \
+    _##FRAME##TL = [NSString TLStringFromString:v]; \
 }
 
 @implementation TagBase

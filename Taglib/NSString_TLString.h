@@ -15,5 +15,5 @@
 @interface NSString(TLString)
 + (NSString *) newStringFromTLString: (const TagLib::String &) value;
 + (NSString *) newStringFromTLString:(const TagLib::String &)value withEncoding: (unsigned int) encoding;
-- (TagLib::String) toTLString;
++ (TagLib::String) TLStringFromString: (NSString *)str;
 @end

@@ -21,8 +21,8 @@
     TagLib::ID3v2::Tag * id3Tag = dynamic_cast<TagLib::ID3v2::Tag *>(taglib);
     
     if (id3Tag != nil) {
-        id3Tag->setTextFrame("TCOM", [tag.composer toTLString]);
-        id3Tag->setTextFrame("TCOP", [tag.copyright toTLString]);
+        id3Tag->setTextFrame("TCOM", [NSString TLStringFromString:tag.composer]);
+        id3Tag->setTextFrame("TCOP", [NSString TLStringFromString:tag.copyright]);
     }
 }
 @end

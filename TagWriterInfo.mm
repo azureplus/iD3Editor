@@ -21,8 +21,8 @@
     TagLib::RIFF::Info::Tag * infoTag = dynamic_cast<TagLib::RIFF::Info::Tag *>(taglib);
     
     if (infoTag != nil) {
-        infoTag->setFieldText(COMPOSER_FRAME, [tag.composer toTLString]);
-        infoTag->setFieldText(COPYRIGHT_FRAME, [tag.copyright toTLString]);
+        infoTag->setFieldText(COMPOSER_FRAME, [NSString TLStringFromString:tag.composer]);
+        infoTag->setFieldText(COPYRIGHT_FRAME, [NSString TLStringFromString:tag.copyright]);
     }
 }
 @end
