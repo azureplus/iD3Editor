@@ -146,8 +146,14 @@
     }
 }
 
--(void) _addFilesInFolders:(NSArray *)urls {
+
+-(void) _afterFileOpenPanelClose:(NSArray *) urls {
     NSFileManager * fileManager = [NSFileManager defaultManager];
+    self.progressWindow.title = @"Opening Files";
+    [_progressIndicator startAnimation:nil];
+    [_filenameField setStringValue:@""];
+
+    NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
     for (NSURL * url in urls) {
         NSArray * files = [fileManager contentsOfDirectoryAtURL:url includingPropertiesForKeys:@[NSURLIsWritableKey] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
         BOOL isDirectory = NO;
@@ -155,24 +161,20 @@
             if ([_supportedFileTypes containsObject:[file pathExtension]]) {
                 BOOL fileExists = [fileManager fileExistsAtPath:[file path]  isDirectory:&isDirectory];
                 if (fileExists && !isDirectory) {
-                    [_fileBeingSaved performSelectorOnMainThread:@selector(setStringValue:) withObject:[file path] waitUntilDone:YES];
-                    [self performSelectorOnMainThread:@selector(_addFile:) withObject:file waitUntilDone:YES];
+                    [_filenameField setStringValue:[file path]];
+                    if ([NSApp runModalSession:session] != NSModalResponseContinue)
+                        break;
+                    [NSThread sleepForTimeInterval:0.3];
+                    [self _addFile:file];
                 }
             }
         }
     }
-    
-    [NSApp stopModalWithCode:0];    
-}
 
-//// actions
--(void) _afterFileOpenPanelClose:(NSArray *) urls {
+    [NSApp stopModal];
     [_progressIndicator startAnimation:nil];
-    [self performSelectorInBackground:@selector(_addFilesInFolders:) withObject:urls];
-    self.progressWindow.title = @"Opening Files";
-    [NSApp runModalForWindow:self.progressWindow];
-    [_progressIndicator stopAnimation:nil];
     [self.progressWindow orderOut:nil];
+    [NSApp endModalSession:session];
 }
 
 -(IBAction) openFiles:(id)sender {
@@ -200,20 +202,6 @@
     [self.filenameWindow orderOut:nil];
 }
 
-
--(void) _saveChangesHelp {
-    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
-        if ([tag updated]) {
-            [_fileBeingSaved performSelectorOnMainThread:@selector(setStringValue:) withObject:tag.filename waitUntilDone:NO];
-            [FileResolver writeTag:tag.tag to:tag.filename];
-            [tag.tag savedChanges];
-        }
-    }
-    
-    // stop the progress window
-    [NSApp stopModalWithCode:0];
-}
-
 -(IBAction) saveChanges:(id)sender {
     BOOL saveNeeded = NO;
     for (TagEntity * tag in _tagArrayController.arrangedObjects) {
@@ -227,12 +215,27 @@
         return;
     }
     
-    [_progressIndicator startAnimation:nil];
-    [self performSelectorInBackground:@selector(_saveChangesHelp) withObject:nil];
     self.progressWindow.title = @"Saving Files";
-    [NSApp runModalForWindow:self.progressWindow];
-    [_progressIndicator stopAnimation:nil];
+    [_progressIndicator startAnimation:nil];
+    [_filenameField setStringValue:@""];
+    
+    NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
+    
+    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+        if ([NSApp runModalSession:session] != NSModalResponseContinue)
+            break;
+        if ([tag updated]) {
+            [_filenameField setStringValue:tag.filename];
+            [NSThread sleepForTimeInterval:0.3];
+            [FileResolver writeTag:tag.tag to:tag.filename];
+            [tag.tag savedChanges];
+        }
+    }
+    
+    [NSApp stopModal];
+    [_progressIndicator startAnimation:nil];
     [self.progressWindow orderOut:nil];
+    [NSApp endModalSession:session];
 }
 
 

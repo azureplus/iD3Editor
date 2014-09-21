@@ -21,7 +21,7 @@
 // saving progress window
 @property (assign) IBOutlet NSWindow * progressWindow;
 @property (assign) IBOutlet NSProgressIndicator * progressIndicator;
-@property (assign) IBOutlet NSTextField * fileBeingSaved;
+@property (assign) IBOutlet NSTextField * filenameField;
 
 /// core data
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator * persistentStoreCoordinator;
