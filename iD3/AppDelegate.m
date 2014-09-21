@@ -71,6 +71,7 @@
 // remove selected tag entities
 -(void) removeSelectedTags {
     NSArray * selectedTags = [NSArray arrayWithArray:[_tagArrayController selectedObjects]];
+    [self _saveHelp:selectedTags];
     for (id obj in selectedTags) {
         [self removeTagEntity:obj];
     }
@@ -151,7 +152,7 @@
     NSFileManager * fileManager = [NSFileManager defaultManager];
     self.progressWindow.title = @"Opening Files";
     [_progressIndicator startAnimation:nil];
-    [_filenameField setStringValue:@""];
+    [_filenameField setStringValue:@"opening files..."];
 
     NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
     for (NSURL * url in urls) {
@@ -202,26 +203,15 @@
     [self.filenameWindow orderOut:nil];
 }
 
--(IBAction) saveChanges:(id)sender {
-    BOOL saveNeeded = NO;
-    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
-        if ([tag updated]) {
-            saveNeeded = YES;
-            break;
-        }
-    }
 
-    if (!saveNeeded) {
-        return;
-    }
-    
+-(void)_saveHelp:(NSArray *)tagEntitiesToSave {
     self.progressWindow.title = @"Saving Files";
     [_progressIndicator startAnimation:nil];
-    [_filenameField setStringValue:@""];
+    [_filenameField setStringValue:@"saving files..."];
     
     NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
     
-    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+    for (TagEntity * tag in tagEntitiesToSave) {
         if ([NSApp runModalSession:session] != NSModalResponseContinue)
             break;
         if ([tag updated]) {
@@ -236,6 +226,23 @@
     [_progressIndicator startAnimation:nil];
     [self.progressWindow orderOut:nil];
     [NSApp endModalSession:session];
+}
+
+-(IBAction) saveChanges:(id)sender {
+    BOOL saveNeeded = NO;
+    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+        if ([tag updated]) {
+            saveNeeded = YES;
+            break;
+        }
+    }
+
+    if (!saveNeeded) {
+        return;
+    }
+    
+    [self _saveHelp:[_tagArrayController arrangedObjects]];
+    
 }
 
 

@@ -44,13 +44,6 @@
 
 @synthesize tag = _tag;
 
--(void)didTurnIntoFault {
-    [self save];
-}
-
--(void) save {
-}
-
 -(void) resetValue {
     NSArray * frames = @[@"artist", @"album", @"title",
                          @"genre", @"comment", @"composer",
