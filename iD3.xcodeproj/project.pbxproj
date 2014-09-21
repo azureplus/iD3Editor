@@ -39,10 +39,10 @@
 		F7E33CFF19CD281A003BE071 /* FilenameValueTransform2.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CFE19CD281A003BE071 /* FilenameValueTransform2.m */; };
 		F7E33D0319CD33C0003BE071 /* AppDelegate_Filename.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E33D0219CD33C0003BE071 /* AppDelegate_Filename.m */; };
 		F7E33D0A19CE8DA1003BE071 /* Clear.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7E33D0919CE8DA1003BE071 /* Clear.pdf */; };
-		F7E33D0E19CE919D003BE071 /* Encoding.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7E33D0D19CE919D003BE071 /* Encoding.pdf */; };
 		F7E33D1019CE925E003BE071 /* Reset.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7E33D0F19CE925E003BE071 /* Reset.pdf */; };
 		F7E33D1419CE94E6003BE071 /* Save.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7E33D1319CE94E6003BE071 /* Save.pdf */; };
-		F7E33D1A19CE95F6003BE071 /* AddFile.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7E33D1919CE95F6003BE071 /* AddFile.pdf */; };
+		F7E33D1C19CF3797003BE071 /* Encoding.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7E33D1B19CF3797003BE071 /* Encoding.pdf */; };
+		F7E33D1E19CF3827003BE071 /* AddFile.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7E33D1D19CF3827003BE071 /* AddFile.pdf */; };
 		F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E994E61983418000DDE9B4 /* Cocoa.framework */; };
 		F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E994EF1983418000DDE9B4 /* InfoPlist.strings */; };
 		F7E994F31983418000DDE9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F21983418000DDE9B4 /* main.m */; };
@@ -137,10 +137,10 @@
 		F7E33D0119CD33C0003BE071 /* AppDelegate_Filename.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_Filename.h; sourceTree = "<group>"; };
 		F7E33D0219CD33C0003BE071 /* AppDelegate_Filename.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_Filename.m; sourceTree = "<group>"; };
 		F7E33D0919CE8DA1003BE071 /* Clear.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Clear.pdf; sourceTree = "<group>"; };
-		F7E33D0D19CE919D003BE071 /* Encoding.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Encoding.pdf; sourceTree = "<group>"; };
 		F7E33D0F19CE925E003BE071 /* Reset.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Reset.pdf; sourceTree = "<group>"; };
 		F7E33D1319CE94E6003BE071 /* Save.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Save.pdf; sourceTree = "<group>"; };
-		F7E33D1919CE95F6003BE071 /* AddFile.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AddFile.pdf; sourceTree = "<group>"; };
+		F7E33D1B19CF3797003BE071 /* Encoding.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Encoding.pdf; sourceTree = "<group>"; };
+		F7E33D1D19CF3827003BE071 /* AddFile.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AddFile.pdf; sourceTree = "<group>"; };
 		F7E994E31983418000DDE9B4 /* iD3 Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iD3 Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E994E61983418000DDE9B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7E994E91983418000DDE9B4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -419,8 +419,8 @@
 			isa = PBXGroup;
 			children = (
 				F7FB46DF1993C11A00C72AFF /* iD3Help */,
-				F7E33D0D19CE919D003BE071 /* Encoding.pdf */,
-				F7E33D1919CE95F6003BE071 /* AddFile.pdf */,
+				F7E33D1B19CF3797003BE071 /* Encoding.pdf */,
+				F7E33D1D19CF3827003BE071 /* AddFile.pdf */,
 				F7E33D1319CE94E6003BE071 /* Save.pdf */,
 				F7E33D0F19CE925E003BE071 /* Reset.pdf */,
 				F7E33D0919CE8DA1003BE071 /* Clear.pdf */,
@@ -515,16 +515,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7E33D0A19CE8DA1003BE071 /* Clear.pdf in Resources */,
+				F7E33D1C19CF3797003BE071 /* Encoding.pdf in Resources */,
 				F7FB46E01993C11A00C72AFF /* iD3Help in Resources */,
-				F7E33D1A19CE95F6003BE071 /* AddFile.pdf in Resources */,
 				F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */,
 				F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */,
 				F7E33D1019CE925E003BE071 /* Reset.pdf in Resources */,
+				F7E33D1E19CF3827003BE071 /* AddFile.pdf in Resources */,
 				F7FB46C4199330A300C72AFF /* TagFilename.pdf in Resources */,
 				F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */,
 				F7E33D1419CE94E6003BE071 /* Save.pdf in Resources */,
 				F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */,
-				F7E33D0E19CE919D003BE071 /* Encoding.pdf in Resources */,
 				F7E994FF1983418000DDE9B4 /* Images.xcassets in Resources */,
 				F7E994F71983418000DDE9B4 /* Credits.rtf in Resources */,
 				F7E994FD1983418000DDE9B4 /* MainMenu.xib in Resources */,

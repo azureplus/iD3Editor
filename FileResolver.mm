@@ -97,22 +97,25 @@ static TagWriterXIPH * tagWriterXIPH;
         }
     } else if ([extension isEqualToString:@"MP3"]) {
         TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file());
+
         
         if (file && file->isValid()) {
             if (file->hasAPETag()) {
                 TagLib::APE::Tag * tag = file->APETag();
                 [tagGroup addTagLib:tag];
             }
-        
+
+         
             if (file->hasID3v2Tag()) {
                 TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
                 [tagGroup addTagLib:tag];
             }
-
+         
             if (file->hasID3v1Tag()) {
                 TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
                 [tagGroup addTagLib:tag];
             }
+         
         }
     } else if ([extension isEqualToString:@"OGA"]) {
         TagLib::Ogg::Vorbis::File  * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
@@ -222,7 +225,7 @@ static TagWriterXIPH * tagWriterXIPH;
             if (file->hasID3v1Tag()) {
                 [tagWriterID3V1 write:tag toTaglib:file->ID3v1Tag()];
             }
-    }
+        }
     } else if ([extension isEqualToString:@"OGA"]) {
         TagLib::Ogg::Vorbis::File  * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         TagLib::FLAC::File * flac = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());

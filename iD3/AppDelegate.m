@@ -141,7 +141,7 @@
             EncodingEntity * encodignEntity = selectedEncodings[0];
             NSArray * selectedTags = _tagArrayController.selectedObjects;
             for (TagEntity * tag in selectedTags) {
-                [tag setCharEncoding:[encodignEntity.code intValue]];
+                [tag setCharEncoding:[encodignEntity.code unsignedIntValue]];
             }
         }
     }
