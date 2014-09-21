@@ -714,7 +714,7 @@ IA
                     <constraint firstItem="SA2-Dt-g5c" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="bDb-OC-nQD"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="71F54B90-8D08-42EF-83A8-F3D8172ED3EB" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="3vU-ek-Yeh">
+            <toolbar key="toolbar" implicitIdentifier="71F54B90-8D08-42EF-83A8-F3D8172ED3EB" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="small" id="3vU-ek-Yeh">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="fLM-oQ-arQ"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="ocH-jt-LHv"/>
@@ -729,7 +729,7 @@ IA
                             <binding destination="j1s-e0-8eb" name="enabled" keyPath="arrangedObjects.@count" id="Ywu-W3-9mI"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="1F34DC70-1C78-4B4E-91E2-F9408238AAB5" label="Fix Tags" paletteLabel="Fix Tags" tag="-1" image="TagFix" autovalidates="NO" id="Z6X-Qd-jHX">
+                    <toolbarItem implicitItemIdentifier="1F34DC70-1C78-4B4E-91E2-F9408238AAB5" label="Encoding" paletteLabel="Encoding" tag="-1" image="Encoding" autovalidates="NO" id="Z6X-Qd-jHX">
                         <connections>
                             <action selector="showEncodingWindow:" target="Voe-Tx-rLC" id="hyd-NS-W9F"/>
                             <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="2vc-Wq-zr1"/>
@@ -741,9 +741,24 @@ IA
                             <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="liQ-Qu-xFg"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="F96EA00D-6522-4950-86C8-879434B99E84" label="Reset" paletteLabel="Reset" tag="-1" image="Reset" autovalidates="NO" id="gBM-9z-fVN">
+                        <connections>
+                            <action selector="resetValues:" target="Voe-Tx-rLC" id="zfy-Je-1rV"/>
+                            <binding destination="j1s-e0-8eb" name="enabled" keyPath="arrangedObjects.@count" id="z9U-ed-VrF"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A762FA55-51AD-4A96-A8C9-07713F865524" label="Save" paletteLabel="Save" tag="-1" image="Save" autovalidates="NO" id="OEB-7u-XLy">
+                        <connections>
+                            <action selector="saveChanges:" target="Voe-Tx-rLC" id="TG3-lR-TuD"/>
+                            <binding destination="j1s-e0-8eb" name="enabled" keyPath="arrangedObjects.@count" id="lFN-4o-HvR"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="7sS-J5-nj1"/>
+                    <toolbarItem reference="OEB-7u-XLy"/>
+                    <toolbarItem reference="fLM-oQ-arQ"/>
+                    <toolbarItem reference="gBM-9z-fVN"/>
                     <toolbarItem reference="0nb-Qu-q4c"/>
                     <toolbarItem reference="fLM-oQ-arQ"/>
                     <toolbarItem reference="Z6X-Qd-jHX"/>
@@ -1343,7 +1358,9 @@ DQ
     <resources>
         <image name="AddFile" width="512" height="512"/>
         <image name="Clear" width="512" height="512"/>
+        <image name="Encoding" width="512" height="512"/>
+        <image name="Reset" width="512" height="512"/>
+        <image name="Save" width="512" height="512"/>
         <image name="TagFilename" width="512" height="512"/>
-        <image name="TagFix" width="512" height="512"/>
     </resources>
 </document>
