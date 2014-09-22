@@ -289,4 +289,61 @@
         }
     }
 }
+
+-(NSString *) _formatString:(NSString *)value withFormat:(NSInteger)format {
+    if (format == 0) {
+        return [value lowercaseStringWithLocale:[NSLocale currentLocale]];
+    } else if (format == 1) {
+        return [value uppercaseStringWithLocale:[NSLocale currentLocale]];
+    } else if (format == 2) {
+        return [value capitalizedStringWithLocale:[NSLocale currentLocale]];
+    } else {
+        return value;
+    }
+}
+
+-(IBAction) formatTags:(id)sender {
+    NSInteger format = [self.cbFormat indexOfSelectedItem];
+    BOOL formatArtist = [self.chkArtist state] == NSOnState;
+    BOOL formatTitle = [self.chkTitle state] == NSOnState;
+    BOOL formatAlbum = [self.chkAlbum state] == NSOnState;
+    BOOL formatGenre = [self.chkGenre state] == NSOnState;
+    BOOL formatComment = [self.chkComment state] == NSOnState;
+    BOOL formatComposer = [self.chkComposer state] == NSOnState;
+    BOOL formatCopyright = [self.chkCopyright state] == NSOnState;
+    
+    if (format < 0) {
+        return;
+    }
+    
+    for (TagEntity * tag in _tagArrayController.selectedObjects) {
+        if (formatArtist) {
+            tag.artist = [self _formatString:tag.artist withFormat:format];
+        }
+        
+        if (formatTitle) {
+            tag.title = [self _formatString:tag.title withFormat:format];
+        }
+
+        if (formatAlbum) {
+            tag.album = [self _formatString:tag.album withFormat:format];
+        }
+
+        if (formatGenre) {
+            tag.genre = [self _formatString:tag.genre withFormat:format];
+        }
+
+        if (formatComment) {
+            tag.comment = [self _formatString:tag.comment withFormat:format];
+        }
+
+        if (formatComposer) {
+            tag.composer = [self _formatString:tag.composer withFormat:format];
+        }
+
+        if (formatCopyright) {
+            tag.copyright = [self _formatString:tag.copyright withFormat:format];
+        }
+    }
+}
 @end

@@ -97,7 +97,6 @@ static TagWriterXIPH * tagWriterXIPH;
         }
     } else if ([extension isEqualToString:@"MP3"]) {
         TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file());
-
         
         if (file && file->isValid()) {
             if (file->hasAPETag()) {

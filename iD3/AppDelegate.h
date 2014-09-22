@@ -23,6 +23,18 @@
 @property (assign) IBOutlet NSProgressIndicator * progressIndicator;
 @property (assign) IBOutlet NSTextField * filenameField;
 
+// frame checkboxs
+@property (assign) IBOutlet NSButton * chkTitle;
+@property (assign) IBOutlet NSButton * chkAlbum;
+@property (assign) IBOutlet NSButton * chkArtist;
+@property (assign) IBOutlet NSButton * chkGenre;
+@property (assign) IBOutlet NSButton * chkComment;
+@property (assign) IBOutlet NSButton * chkComposer;
+@property (assign) IBOutlet NSButton * chkCopyright;
+
+// format tag
+@property (assign) IBOutlet NSComboBox * cbFormat;
+
 /// core data
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator * persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel * managedObjectModel;
@@ -43,6 +55,7 @@
 -(IBAction) setAlbumToAll:(id)sender;
 -(IBAction) setArtistToAll:(id)sender;
 -(IBAction) setGenreToAll:(id)sender;
+-(IBAction) formatTags:(id)sender;
 
 ///
 -(void) removeTagEntity: (TagEntity *) tagEntity;
