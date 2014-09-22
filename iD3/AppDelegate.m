@@ -247,7 +247,7 @@
 
 
 -(IBAction) resetValues:(id)sender {
-    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
+    for (TagEntity * tag in _tagArrayController.selectedObjects) {
         [tag resetValue];
     }
 }

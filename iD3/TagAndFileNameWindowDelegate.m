@@ -100,7 +100,7 @@
 
 // instant pattern recognition
 - (void) controlTextDidChange: (NSNotification *)notice {
-    NSTextField * textField = [notice object];
+    NSComboBox * textField = [notice object];
     if (textField == _n2tPattern) {
         [self _n2tPatternUpdated];
     } else if (textField == _t2nPattern) {
