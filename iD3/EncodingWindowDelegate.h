@@ -9,6 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface EncodingWindowDelegate : NSObject<NSWindowDelegate>
-- (IBAction) cancel:(id)sender;
 - (IBAction) ok: (id)sender;
 @end
