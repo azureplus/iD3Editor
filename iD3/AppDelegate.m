@@ -15,9 +15,12 @@
 
 @implementation AppDelegate
 
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize managedObjectContext = _managedObjectContext;
+
 //
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [self _initCoreData];
     [self _initSupportedEncodings];
     [self _initSupportedFileTypes];
     
@@ -105,7 +108,7 @@
 
 // init supported file types
 -(void)_initSupportedFileTypes {
-    NSString *filePath   = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"iD3" ofType:@"plist"];
     NSDictionary * plist = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
     _supportedFileTypes = [NSMutableArray arrayWithCapacity:12];
     
@@ -116,7 +119,37 @@
     }
 }
 
+- (NSURL *)applicationDocumentsDirectory {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+    return [appSupportURL URLByAppendingPathComponent:@"com.id3editor.editor"];
+}
+
 //// core data ////
+- (NSManagedObjectModel *)managedObjectModel{
+    if (!_managedObjectModel) {
+        [self _initCoreData];
+    }
+    
+    return _managedObjectModel;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    if (!_persistentStoreCoordinator) {
+        [self _initCoreData];
+    }
+    
+    return _persistentStoreCoordinator;
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    if (!_managedObjectContext) {
+        [self _initCoreData];
+    }
+    
+    return _managedObjectContext;
+}
+
 -(void) _initCoreData {
     // the model definition file
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
@@ -124,7 +157,45 @@
     
     //
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
-    [_persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:nil];
+    [_persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:@"Tag" URL:nil options:nil error:nil];
+    
+    /*--- COREDATA CODE COPY BEGIN ---*/
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *applicationDocumentsDirectory = [self applicationDocumentsDirectory];
+    BOOL shouldFail = NO;
+    NSError *error = nil;
+    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
+    
+    // Make sure the application files directory is there
+    NSDictionary *properties = [applicationDocumentsDirectory resourceValuesForKeys:@[NSURLIsDirectoryKey] error:&error];
+    if (properties) {
+        if (![properties[NSURLIsDirectoryKey] boolValue]) {
+            failureReason = [NSString stringWithFormat:@"Expected a folder to store application data, found a file (%@).", [applicationDocumentsDirectory path]];
+            shouldFail = YES;
+        }
+    } else if ([error code] == NSFileReadNoSuchFileError) {
+        error = nil;
+        [fileManager createDirectoryAtPath:[applicationDocumentsDirectory path] withIntermediateDirectories:YES attributes:nil error:&error];
+    }
+    
+    if (!shouldFail && !error) {
+        NSURL *url = [applicationDocumentsDirectory URLByAppendingPathComponent:@"ID3User.xml"];
+        /*-- COREDATA CODE CHANGE --*/
+        [_persistentStoreCoordinator addPersistentStoreWithType:NSXMLStoreType configuration:@"User" URL:url options:nil error:&error];
+    }
+    
+    if (shouldFail || error) {
+        // Report any error we got.
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
+        dict[NSLocalizedFailureReasonErrorKey] = failureReason;
+        if (error) {
+            dict[NSUnderlyingErrorKey] = error;
+        }
+        error = [NSError errorWithDomain:@"com.id3editor" code:9999 userInfo:dict];
+        [[NSApplication sharedApplication] presentError:error];
+    }
+    /*--- COREDATA CODE COPY END ---*/
     
     //
     _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
@@ -177,6 +248,28 @@
     [self.progressWindow orderOut:nil];
     [NSApp endModalSession:session];
 }
+
+-(void) addN2TPattern:(NSString *)pattern {
+    NSEntityDescription * n2tDescription = [[_managedObjectModel entitiesByName] objectForKey:@"N2THistory"];
+    NSManagedObject * n2tHistory = [[NSManagedObject alloc] initWithEntity:n2tDescription insertIntoManagedObjectContext:_managedObjectContext];
+    [n2tHistory setValue:pattern forKey:@"pattern"];
+    [n2tHistory setValue:pattern forKey:@"comment"];
+    [_n2tHistoryController addObject:n2tHistory];
+}
+
+-(void) addT2NPattern:(NSString *)pattern {
+    NSEntityDescription * t2nDescription = [[_managedObjectModel entitiesByName] objectForKey:@"T2NHistory"];
+    NSManagedObject * t2nHistory = [[NSManagedObject alloc] initWithEntity:t2nDescription insertIntoManagedObjectContext:_managedObjectContext];
+    [t2nHistory setValue:pattern forKey:@"pattern"];
+    [t2nHistory setValue:pattern forKey:@"comment"];
+    [_n2tHistoryController addObject:t2nHistory];
+}
+
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
+    [[self managedObjectContext] save:nil];
+    return NSTerminateNow;
+}
+
 
 -(IBAction) openFiles:(id)sender {
     NSOpenPanel * panel = [NSOpenPanel openPanel];
@@ -242,9 +335,7 @@
     }
     
     [self _saveHelp:[_tagArrayController arrangedObjects]];
-    
 }
-
 
 -(IBAction) resetValues:(id)sender {
     for (TagEntity * tag in _tagArrayController.selectedObjects) {

@@ -38,9 +38,11 @@
 
     if ([tabID isEqualToString:@"NAME_TAG"]) {
         NSString * pattern = [self.n2tPattern stringValue];
+        [(AppDelegate *)[NSApp delegate] addN2TPattern:pattern];
         [(AppDelegate *)[NSApp delegate] filenameToTag:pattern];
     } else if ([tabID isEqualTo:@"TAG_NAME"]){
         NSString * pattern = [self.t2nPattern stringValue];
+        [(AppDelegate *)[NSApp delegate] addT2NPattern:pattern];
         [(AppDelegate *)[NSApp delegate] tagToFilename:pattern];
     }
 }

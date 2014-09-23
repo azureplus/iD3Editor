@@ -42,6 +42,7 @@
 
 @property (weak, nonatomic) IBOutlet NSArrayController * tagArrayController;
 @property (weak, nonatomic) IBOutlet NSArrayController * encodingArrayController;
+@property (weak, nonatomic) IBOutlet NSArrayController * n2tHistoryController;
 
 @property (readonly, nonatomic) NSMutableArray * supportedFileTypes;
 
@@ -60,4 +61,8 @@
 ///
 -(void) removeTagEntity: (TagEntity *) tagEntity;
 -(void) removeSelectedTags;
+
+///
+-(void) addN2TPattern:(NSString *)pattern;
+-(void) addT2NPattern:(NSString *)pattern;
 @end
