@@ -255,19 +255,15 @@ static TagWriterXIPH * tagWriterXIPH;
         TagLib::Ogg::Speex::File * file = dynamic_cast<TagLib::Ogg::Speex::File *>(fileRef.file());
         
         if (file && file->isValid()) {
-            return;
+            [tagWriterXIPH write:tag toTaglib:file->tag()];
         }
-        
-        [tagWriterXIPH write:tag toTaglib:file->tag()];
     } else if ([extension isEqualToString:@"WAV"]) {
         TagLib::RIFF::WAV::File * file = dynamic_cast<TagLib::RIFF::WAV::File *>(fileRef.file());
         
         if (file && file->isValid()) {
-            return;
+            [tagWriterID3V2 write:tag toTaglib:file->ID3v2Tag()];
+            [tagWriterInfo write:tag toTaglib:file->InfoTag()];
         }
-        
-        [tagWriterID3V2 write:tag toTaglib:file->ID3v2Tag()];
-        [tagWriterInfo write:tag toTaglib:file->InfoTag()];
     }
     
     fileRef.save();
