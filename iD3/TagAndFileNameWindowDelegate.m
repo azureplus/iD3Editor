@@ -47,6 +47,14 @@
     }
 }
 
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification {
+    if ([notification object] == _n2tPattern) {
+        [self _n2tPatternUpdated: YES];
+    } else if ([notification object] == _t2nPattern){
+        [self _t2nPatternUpdated: YES];
+    }
+}
+
 - (IBAction) filenameOnlyClicked: (id)sender {
     NSButton * filenameOnlyCheckBox = sender;
     if (filenameOnlyCheckBox.state == NSOnState) {
@@ -54,13 +62,17 @@
     } else {
         [(AppDelegate *)[NSApp delegate] setPathDepth:1];
     }
-    [self _n2tPatternUpdated];
+    [self _n2tPatternUpdated:NO];
 }
 
--(void) _n2tPatternUpdated {
+-(void) _n2tPatternUpdated :(BOOL) bySelection {
     [self _clearN2TFields];
     NSString * filename = [_n2tFilename stringValue];
     NSString * pattern = [_n2tPattern stringValue];
+    
+    if (bySelection) {
+        pattern = [_n2tPattern itemObjectValueAtIndex:[_n2tPattern indexOfSelectedItem]];
+    }
     
     NSDictionary * tagFrames = [filename parse:pattern];
     for (NSString * key in tagFrames) {
@@ -85,8 +97,12 @@
     }
 }
 
--(void) _t2nPatternUpdated {
+-(void) _t2nPatternUpdated: (BOOL) bySelection {
     NSString * pattern = [_t2nPattern stringValue];
+    
+    if (bySelection) {
+        pattern = [_t2nPattern itemObjectValueAtIndex:[_t2nPattern indexOfSelectedItem]];
+    }
     
     NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:7];
     frames[@"artist"] = [_t2nArtist stringValue];
@@ -104,9 +120,9 @@
 - (void) controlTextDidChange: (NSNotification *)notice {
     NSComboBox * textField = [notice object];
     if (textField == _n2tPattern) {
-        [self _n2tPatternUpdated];
+        [self _n2tPatternUpdated: NO];
     } else if (textField == _t2nPattern) {
-        [self _t2nPatternUpdated];
+        [self _t2nPatternUpdated: NO];
     }
 }
 

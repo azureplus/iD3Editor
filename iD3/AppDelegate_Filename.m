@@ -77,20 +77,29 @@
     }
 }
 
-// Tag to filename rename file
--(void) tagToFilename: (NSString *)pattern {
-    if ([pattern length] == 0) {
-        return;
-    }
+-(void)_filerenameHelp:(NSString *)pattern {
+    self.progressWindow.title = @"Renaming Files";
+    [self.progressIndicator startAnimation:nil];
+    [self.filenameField setStringValue:@"renaming files..."];
+    
+    NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
 
     for (TagEntity * tagEntity in self.tagArrayController.selectedObjects) {
+        if ([NSApp runModalSession:session] != NSModalResponseContinue) {
+            break;
+        }
+
         NSString * oldFilename = tagEntity.filename;
         
         NSMutableArray * components = [NSMutableArray arrayWithArray:[oldFilename pathComponents]];
         NSUInteger trackSize = [self _getTrackSize: tagEntity];
         NSString * newFilename = [NSString fromTag:tagEntity withPattern:pattern andTrackSize:trackSize];
+        newFilename = [newFilename stringByReplacingOccurrencesOfString:@"/" withString:@":"];        
         components[components.count - 1] = [newFilename stringByAppendingPathExtension:[oldFilename pathExtension]];
         newFilename = [NSString pathWithComponents:components];
+
+        [self.filenameField setStringValue:[NSString stringWithFormat:@"Renaming %@ to %@", oldFilename, newFilename]];
+        [NSThread sleepForTimeInterval:0.3];
         
         NSFileManager * fm = [[NSFileManager alloc] init];
         BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
@@ -99,6 +108,20 @@
             tagEntity.filename = newFilename;
         }
     }
+    
+    [NSApp stopModal];
+    [self.progressIndicator startAnimation:nil];
+    [self.progressWindow orderOut:nil];
+    [NSApp endModalSession:session];
+}
+
+// Tag to filename rename file
+-(void) tagToFilename: (NSString *)pattern {
+    if ([pattern length] == 0) {
+        return;
+    }
+
+    [self _filerenameHelp:pattern];
 }
 
 @end
