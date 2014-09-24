@@ -256,11 +256,14 @@
 
 
 -(void)_addHistory:(NSString *)historyEntity toController:(NSArrayController *)controller withPattern:(NSString *)pattern {
-    NSArray * items = [NSArray arrayWithArray:[controller arrangedObjects]];
-    for(NSManagedObject * item in items) {
-        if ([[item valueForKey:@"pattern"] isEqualToString:pattern]) {
-            return;
-        }
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:historyEntity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pattern == %@", pattern];
+    [request setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:request error:nil];
+    for (NSManagedObject * item in result) {
+        [controller removeObject:item];
+        [self.managedObjectContext deleteObject:item]; //delete pre-existing ones
     }
     
     NSEntityDescription * description = [[_managedObjectModel entitiesByName] objectForKey:historyEntity];
@@ -271,7 +274,8 @@
     [controller addObject:history];
 
     static int historyLen = 20;
-    
+
+    NSArray * items = [NSArray arrayWithArray:[controller arrangedObjects]];
     if (items.count > historyLen) {
         for (NSUInteger i = items.count - 1; i >= historyLen; i--) {
             [controller removeObject:items[i]];

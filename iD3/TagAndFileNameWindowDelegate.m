@@ -71,7 +71,11 @@
     NSString * pattern = [_n2tPattern stringValue];
     
     if (bySelection) {
-        pattern = [_n2tPattern itemObjectValueAtIndex:[_n2tPattern indexOfSelectedItem]];
+        NSInteger index = [_n2tPattern indexOfSelectedItem];
+        // if index == -1, use stringValue
+        if (index >= 0) {
+            pattern = [_n2tPattern itemObjectValueAtIndex:[_n2tPattern indexOfSelectedItem]];
+        }
     }
     
     NSDictionary * tagFrames = [filename parse:pattern];
@@ -101,7 +105,11 @@
     NSString * pattern = [_t2nPattern stringValue];
     
     if (bySelection) {
-        pattern = [_t2nPattern itemObjectValueAtIndex:[_t2nPattern indexOfSelectedItem]];
+        NSInteger index = [_n2tPattern indexOfSelectedItem];
+        // if index == -1, use stringValue        
+        if (index >= 0) {
+            pattern = [_t2nPattern itemObjectValueAtIndex:[_t2nPattern indexOfSelectedItem]];
+        }
     }
     
     NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:7];
