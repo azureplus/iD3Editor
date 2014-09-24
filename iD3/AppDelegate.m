@@ -256,6 +256,10 @@
 
 
 -(void)_addHistory:(NSString *)historyEntity toController:(NSArrayController *)controller withPattern:(NSString *)pattern {
+    if([pattern length] == 0) {
+        return;
+    }
+    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:historyEntity];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pattern == %@", pattern];
     [request setPredicate:predicate];

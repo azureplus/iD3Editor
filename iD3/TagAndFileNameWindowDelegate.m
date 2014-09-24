@@ -74,7 +74,7 @@
         NSInteger index = [_n2tPattern indexOfSelectedItem];
         // if index == -1, use stringValue
         if (index >= 0) {
-            pattern = [_n2tPattern itemObjectValueAtIndex:[_n2tPattern indexOfSelectedItem]];
+            pattern = [_n2tPattern itemObjectValueAtIndex:index];
         }
     }
     
@@ -105,10 +105,10 @@
     NSString * pattern = [_t2nPattern stringValue];
     
     if (bySelection) {
-        NSInteger index = [_n2tPattern indexOfSelectedItem];
+        NSInteger index = [_t2nPattern indexOfSelectedItem];
         // if index == -1, use stringValue        
         if (index >= 0) {
-            pattern = [_t2nPattern itemObjectValueAtIndex:[_t2nPattern indexOfSelectedItem]];
+            pattern = [_t2nPattern itemObjectValueAtIndex:index];
         }
     }
     
