@@ -21,7 +21,7 @@ Button "To All" allows you to apply an existing tag value to all music files, wh
 Tags of many music files are not properly encoded. The result is those tags are not readable in music players. To fix those incorrectly encoded tags,
 
 1. Highlight music files to be fixed in the main window of **iD3 Editor**;
-1. Click the toobar button "Fix Tags";
+1. Click the toobar button "Tag Fix";
 1. In the new popup window, select the correct encoding used by those tags;
 
 ![encoding](encoding.png)
