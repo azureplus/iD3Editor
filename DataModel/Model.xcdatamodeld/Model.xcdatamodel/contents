@@ -5,10 +5,12 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="N2THistory" syncable="YES">
+        <attribute name="access" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="comment" attributeType="String" syncable="YES"/>
         <attribute name="pattern" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="T2NHistory" syncable="YES">
+        <attribute name="access" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="comment" attributeType="String" syncable="YES"/>
         <attribute name="pattern" attributeType="String" syncable="YES"/>
     </entity>
@@ -34,8 +36,8 @@
     </configuration>
     <elements>
         <element name="Encoding" positionX="-63" positionY="54" width="128" height="75"/>
-        <element name="N2THistory" positionX="-45" positionY="72" width="128" height="73"/>
+        <element name="N2THistory" positionX="-45" positionY="72" width="128" height="88"/>
         <element name="Tag" positionX="-63" positionY="-18" width="128" height="195"/>
-        <element name="T2NHistory" positionX="-45" positionY="63" width="128" height="75"/>
+        <element name="T2NHistory" positionX="-45" positionY="63" width="128" height="88"/>
     </elements>
 </model>

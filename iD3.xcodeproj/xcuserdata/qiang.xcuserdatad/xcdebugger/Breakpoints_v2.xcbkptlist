@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iD3/AppDelegate.m"
-            timestampString = "433143748.533504"
+            timestampString = "433176538.26904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "-_afterFileOpenPanelClose:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1184,12 +1184,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iD3/AppDelegate.m"
-            timestampString = "433143748.533504"
+            timestampString = "433218861.221283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "-addN2TPattern:"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "-applicationShouldTerminate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1200,12 +1200,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iD3/AppDelegate.m"
-            timestampString = "433143748.533504"
+            timestampString = "433218861.221283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "-applicationShouldTerminate:"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "-_addHistory:toController:withPattern:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -24,6 +24,11 @@
     [self _initSupportedEncodings];
     [self _initSupportedFileTypes];
     
+    // set the sort descriptor of array controller
+    NSSortDescriptor * accessSort = [[NSSortDescriptor alloc] initWithKey:@"access" ascending:NO];
+    [self.t2nHistoryController setSortDescriptors:@[accessSort]];
+    [self.n2tHistoryController setSortDescriptors:@[accessSort]];
+    
     // observes char encoding changes
     [_encodingArrayController addObserver:self forKeyPath:@"selection" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)  context:nil];
     
@@ -249,20 +254,39 @@
     [NSApp endModalSession:session];
 }
 
+
+-(void)_addHistory:(NSString *)historyEntity toController:(NSArrayController *)controller withPattern:(NSString *)pattern {
+    NSArray * items = [NSArray arrayWithArray:[controller arrangedObjects]];
+    for(NSManagedObject * item in items) {
+        if ([[item valueForKey:@"pattern"] isEqualToString:pattern]) {
+            return;
+        }
+    }
+    
+    NSEntityDescription * description = [[_managedObjectModel entitiesByName] objectForKey:historyEntity];
+    NSManagedObject * history = [[NSManagedObject alloc] initWithEntity:description insertIntoManagedObjectContext:self.managedObjectContext];
+    [history setValue:pattern forKey:@"pattern"];
+    [history setValue:pattern forKey:@"comment"];
+    [history setValue:[NSNumber numberWithInt:(int)[NSDate timeIntervalSinceReferenceDate]] forKey:@"access"];
+    [controller addObject:history];
+
+    static int historyLen = 20;
+    
+    if (items.count > historyLen) {
+        for (NSUInteger i = items.count - 1; i >= historyLen; i--) {
+            [controller removeObject:items[i]];
+            [self.managedObjectContext deleteObject:items[i]];
+        }
+    }
+}
+
+
 -(void) addN2TPattern:(NSString *)pattern {
-    NSEntityDescription * n2tDescription = [[_managedObjectModel entitiesByName] objectForKey:@"N2THistory"];
-    NSManagedObject * n2tHistory = [[NSManagedObject alloc] initWithEntity:n2tDescription insertIntoManagedObjectContext:_managedObjectContext];
-    [n2tHistory setValue:pattern forKey:@"pattern"];
-    [n2tHistory setValue:pattern forKey:@"comment"];
-    [_n2tHistoryController addObject:n2tHistory];
+    [self _addHistory:@"N2THistory" toController:_n2tHistoryController withPattern:pattern];
 }
 
 -(void) addT2NPattern:(NSString *)pattern {
-    NSEntityDescription * t2nDescription = [[_managedObjectModel entitiesByName] objectForKey:@"T2NHistory"];
-    NSManagedObject * t2nHistory = [[NSManagedObject alloc] initWithEntity:t2nDescription insertIntoManagedObjectContext:_managedObjectContext];
-    [t2nHistory setValue:pattern forKey:@"pattern"];
-    [t2nHistory setValue:pattern forKey:@"comment"];
-    [_n2tHistoryController addObject:t2nHistory];
+    [self _addHistory:@"T2NHistory" toController:_t2nHistoryController withPattern:pattern];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {

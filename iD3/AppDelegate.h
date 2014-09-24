@@ -43,6 +43,7 @@
 @property (weak, nonatomic) IBOutlet NSArrayController * tagArrayController;
 @property (weak, nonatomic) IBOutlet NSArrayController * encodingArrayController;
 @property (weak, nonatomic) IBOutlet NSArrayController * n2tHistoryController;
+@property (weak, nonatomic) IBOutlet NSArrayController * t2nHistoryController;
 
 @property (readonly, nonatomic) NSMutableArray * supportedFileTypes;
 
