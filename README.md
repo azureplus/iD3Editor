@@ -5,5 +5,5 @@ iD3 Editor is an open source project that helps music lovers to easily update ta
 
 iD3 editor supports popular music file types such as mp3, ape, flac, ogg, oga, spx and wav.
 
-A compiled version of iD3Editor can be purchased from Apple Store:
-![Apple Store](https://itunes.apple.com/us/app/id3-editor/id910408628?ls=1&mt=12)
+A compiled version of iD3Editor can be purchased from [Apple Store](https://itunes.apple.com/us/app/id3-editor/id910408628?ls=1&mt=12)
+
