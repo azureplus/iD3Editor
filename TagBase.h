@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "TagProtocol.h"
+#import "taglib/tag.h"
 
-# include "taglib/tag.h"
+#define COVER_ART "COVER_ART"
 
 @interface TagBase : NSObject<TagProtocol>
 -(id) initWithTag: (TagLib::Tag *) tag;
@@ -37,6 +38,10 @@
 @property (nonatomic, strong) NSString * copyright;
 @property (nonatomic, strong) NSNumber * year;
 @property (nonatomic, strong) NSNumber * track;
+
+// non-standard frames
+@property (nonatomic, readonly) NSMutableDictionary * pictureTL;
+@property (nonatomic, readonly) NSMutableDictionary * picture;
 
 // assigned encoding
 @property (nonatomic, assign) unsigned int charEncoding;

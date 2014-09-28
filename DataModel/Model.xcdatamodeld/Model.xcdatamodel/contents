@@ -20,6 +20,7 @@
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="composer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="copyright" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coverArt" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,7 +38,7 @@
     <elements>
         <element name="Encoding" positionX="-63" positionY="54" width="128" height="75"/>
         <element name="N2THistory" positionX="-45" positionY="72" width="128" height="88"/>
-        <element name="Tag" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="T2NHistory" positionX="-45" positionY="63" width="128" height="88"/>
+        <element name="Tag" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */; };
+		F746193719D79B6200EA3D33 /* TagIOBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746193619D79B6200EA3D33 /* TagIOBase.mm */; };
+		F746193A19D79BEA00EA3D33 /* TagIOApe.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746193919D79BEA00EA3D33 /* TagIOApe.mm */; };
+		F746193D19D79DAA00EA3D33 /* TagIOInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746193C19D79DAA00EA3D33 /* TagIOInfo.mm */; };
+		F746194019D79EC000EA3D33 /* TagIOID3V1.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746193F19D79EC000EA3D33 /* TagIOID3V1.mm */; };
+		F746194319D79EF300EA3D33 /* TagIOID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746194219D79EF300EA3D33 /* TagIOID3V2.mm */; };
+		F746194619D79F6900EA3D33 /* TagIOXIPH.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746194519D79F6900EA3D33 /* TagIOXIPH.mm */; };
 		F760220A1999CFED002DFE01 /* TableViewActionOutlet.m in Sources */ = {isa = PBXBuildFile; fileRef = F76022091999CFED002DFE01 /* TableViewActionOutlet.m */; };
 		F76022101999DB22002DFE01 /* TagTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F760220F1999DB22002DFE01 /* TagTableView.m */; };
 		F76D68931986166700DB2E41 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76D68921986166700DB2E41 /* libz.dylib */; };
@@ -21,18 +27,6 @@
 		F79BCE44198FBFBC00CC5F02 /* FilenameValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */; };
 		F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */; };
 		F7E33CAF19C63238003BE071 /* TagBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CAE19C63238003BE071 /* TagBase.mm */; };
-		F7E33CCF19C8855D003BE071 /* TagReaderBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CCE19C8855D003BE071 /* TagReaderBase.mm */; };
-		F7E33CD319C93296003BE071 /* TagReaderApe.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CD219C93296003BE071 /* TagReaderApe.mm */; };
-		F7E33CD619C934AF003BE071 /* TagReaderInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CD519C934AF003BE071 /* TagReaderInfo.mm */; };
-		F7E33CD919C93585003BE071 /* TagReaderID3V1.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CD819C93585003BE071 /* TagReaderID3V1.mm */; };
-		F7E33CDC19C935AF003BE071 /* TagReaderID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CDB19C935AF003BE071 /* TagReaderID3V2.mm */; };
-		F7E33CDF19C93663003BE071 /* TagReaderXIPH.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CDE19C93663003BE071 /* TagReaderXIPH.mm */; };
-		F7E33CE219C937BE003BE071 /* TagWriterBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CE119C937BE003BE071 /* TagWriterBase.mm */; };
-		F7E33CE519C93FB8003BE071 /* TagWriterApe.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CE419C93FB8003BE071 /* TagWriterApe.mm */; };
-		F7E33CE819C94087003BE071 /* TagWriterInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CE719C94087003BE071 /* TagWriterInfo.mm */; };
-		F7E33CEB19C940FC003BE071 /* TagWriterID3V1.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CEA19C940FC003BE071 /* TagWriterID3V1.mm */; };
-		F7E33CEE19C94117003BE071 /* TagWriterID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CED19C94117003BE071 /* TagWriterID3V2.mm */; };
-		F7E33CF119C94189003BE071 /* tagWriterXIPH.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF019C94189003BE071 /* tagWriterXIPH.mm */; };
 		F7E33CF519C94306003BE071 /* TagReaderWriterFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF419C94306003BE071 /* TagReaderWriterFactory.mm */; };
 		F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF719C94E3A003BE071 /* TagGroup.mm */; };
 		F7E33CFB19CA9A97003BE071 /* FileResolver.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CFA19CA9A97003BE071 /* FileResolver.mm */; };
@@ -74,6 +68,18 @@
 
 /* Begin PBXFileReference section */
 		F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
+		F746193519D79B6200EA3D33 /* TagIOBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOBase.h; sourceTree = "<group>"; };
+		F746193619D79B6200EA3D33 /* TagIOBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOBase.mm; sourceTree = "<group>"; };
+		F746193819D79BEA00EA3D33 /* TagIOApe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOApe.h; sourceTree = "<group>"; };
+		F746193919D79BEA00EA3D33 /* TagIOApe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOApe.mm; sourceTree = "<group>"; };
+		F746193B19D79DAA00EA3D33 /* TagIOInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOInfo.h; sourceTree = "<group>"; };
+		F746193C19D79DAA00EA3D33 /* TagIOInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOInfo.mm; sourceTree = "<group>"; };
+		F746193E19D79EC000EA3D33 /* TagIOID3V1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOID3V1.h; sourceTree = "<group>"; };
+		F746193F19D79EC000EA3D33 /* TagIOID3V1.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOID3V1.mm; sourceTree = "<group>"; };
+		F746194119D79EF300EA3D33 /* TagIOID3V2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOID3V2.h; sourceTree = "<group>"; };
+		F746194219D79EF300EA3D33 /* TagIOID3V2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOID3V2.mm; sourceTree = "<group>"; };
+		F746194419D79F6900EA3D33 /* TagIOXIPH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOXIPH.h; sourceTree = "<group>"; };
+		F746194519D79F6900EA3D33 /* TagIOXIPH.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOXIPH.mm; sourceTree = "<group>"; };
 		F76022081999CFED002DFE01 /* TableViewActionOutlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewActionOutlet.h; sourceTree = "<group>"; };
 		F76022091999CFED002DFE01 /* TableViewActionOutlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewActionOutlet.m; sourceTree = "<group>"; };
 		F760220E1999DB22002DFE01 /* TagTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagTableView.h; sourceTree = "<group>"; };
@@ -102,30 +108,6 @@
 		F7E33CAE19C63238003BE071 /* TagBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagBase.mm; sourceTree = "<group>"; };
 		F7E33CCB19C88446003BE071 /* TagReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagReader.h; sourceTree = "<group>"; };
 		F7E33CCC19C8849A003BE071 /* TagWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagWriter.h; sourceTree = "<group>"; };
-		F7E33CCD19C8855D003BE071 /* TagReaderBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagReaderBase.h; sourceTree = "<group>"; };
-		F7E33CCE19C8855D003BE071 /* TagReaderBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagReaderBase.mm; sourceTree = "<group>"; };
-		F7E33CD119C93296003BE071 /* TagReaderApe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagReaderApe.h; sourceTree = "<group>"; };
-		F7E33CD219C93296003BE071 /* TagReaderApe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagReaderApe.mm; sourceTree = "<group>"; };
-		F7E33CD419C934AF003BE071 /* TagReaderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagReaderInfo.h; sourceTree = "<group>"; };
-		F7E33CD519C934AF003BE071 /* TagReaderInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagReaderInfo.mm; sourceTree = "<group>"; };
-		F7E33CD719C93585003BE071 /* TagReaderID3V1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagReaderID3V1.h; sourceTree = "<group>"; };
-		F7E33CD819C93585003BE071 /* TagReaderID3V1.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagReaderID3V1.mm; sourceTree = "<group>"; };
-		F7E33CDA19C935AF003BE071 /* TagReaderID3V2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagReaderID3V2.h; sourceTree = "<group>"; };
-		F7E33CDB19C935AF003BE071 /* TagReaderID3V2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagReaderID3V2.mm; sourceTree = "<group>"; };
-		F7E33CDD19C93663003BE071 /* TagReaderXIPH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagReaderXIPH.h; sourceTree = "<group>"; };
-		F7E33CDE19C93663003BE071 /* TagReaderXIPH.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagReaderXIPH.mm; sourceTree = "<group>"; };
-		F7E33CE019C937BE003BE071 /* TagWriterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagWriterBase.h; sourceTree = "<group>"; };
-		F7E33CE119C937BE003BE071 /* TagWriterBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagWriterBase.mm; sourceTree = "<group>"; };
-		F7E33CE319C93FB8003BE071 /* TagWriterApe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagWriterApe.h; sourceTree = "<group>"; };
-		F7E33CE419C93FB8003BE071 /* TagWriterApe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagWriterApe.mm; sourceTree = "<group>"; };
-		F7E33CE619C94087003BE071 /* TagWriterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagWriterInfo.h; sourceTree = "<group>"; };
-		F7E33CE719C94087003BE071 /* TagWriterInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagWriterInfo.mm; sourceTree = "<group>"; };
-		F7E33CE919C940FC003BE071 /* TagWriterID3V1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagWriterID3V1.h; sourceTree = "<group>"; };
-		F7E33CEA19C940FC003BE071 /* TagWriterID3V1.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagWriterID3V1.mm; sourceTree = "<group>"; };
-		F7E33CEC19C94117003BE071 /* TagWriterID3V2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagWriterID3V2.h; sourceTree = "<group>"; };
-		F7E33CED19C94117003BE071 /* TagWriterID3V2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagWriterID3V2.mm; sourceTree = "<group>"; };
-		F7E33CEF19C94189003BE071 /* tagWriterXIPH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagWriterXIPH.h; sourceTree = "<group>"; };
-		F7E33CF019C94189003BE071 /* tagWriterXIPH.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = tagWriterXIPH.mm; sourceTree = "<group>"; };
 		F7E33CF319C94306003BE071 /* TagReaderWriterFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagReaderWriterFactory.h; sourceTree = "<group>"; };
 		F7E33CF419C94306003BE071 /* TagReaderWriterFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagReaderWriterFactory.mm; sourceTree = "<group>"; };
 		F7E33CF619C94E3A003BE071 /* TagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagGroup.h; sourceTree = "<group>"; };
@@ -276,30 +258,18 @@
 		F7E33CF219C9422B003BE071 /* ReaderWriterImpl */ = {
 			isa = PBXGroup;
 			children = (
-				F7E33CCD19C8855D003BE071 /* TagReaderBase.h */,
-				F7E33CCE19C8855D003BE071 /* TagReaderBase.mm */,
-				F7E33CE019C937BE003BE071 /* TagWriterBase.h */,
-				F7E33CE119C937BE003BE071 /* TagWriterBase.mm */,
-				F7E33CD119C93296003BE071 /* TagReaderApe.h */,
-				F7E33CD219C93296003BE071 /* TagReaderApe.mm */,
-				F7E33CE319C93FB8003BE071 /* TagWriterApe.h */,
-				F7E33CE419C93FB8003BE071 /* TagWriterApe.mm */,
-				F7E33CD419C934AF003BE071 /* TagReaderInfo.h */,
-				F7E33CD519C934AF003BE071 /* TagReaderInfo.mm */,
-				F7E33CE619C94087003BE071 /* TagWriterInfo.h */,
-				F7E33CE719C94087003BE071 /* TagWriterInfo.mm */,
-				F7E33CD719C93585003BE071 /* TagReaderID3V1.h */,
-				F7E33CD819C93585003BE071 /* TagReaderID3V1.mm */,
-				F7E33CE919C940FC003BE071 /* TagWriterID3V1.h */,
-				F7E33CEA19C940FC003BE071 /* TagWriterID3V1.mm */,
-				F7E33CDA19C935AF003BE071 /* TagReaderID3V2.h */,
-				F7E33CDB19C935AF003BE071 /* TagReaderID3V2.mm */,
-				F7E33CEC19C94117003BE071 /* TagWriterID3V2.h */,
-				F7E33CED19C94117003BE071 /* TagWriterID3V2.mm */,
-				F7E33CDD19C93663003BE071 /* TagReaderXIPH.h */,
-				F7E33CDE19C93663003BE071 /* TagReaderXIPH.mm */,
-				F7E33CEF19C94189003BE071 /* tagWriterXIPH.h */,
-				F7E33CF019C94189003BE071 /* tagWriterXIPH.mm */,
+				F746193519D79B6200EA3D33 /* TagIOBase.h */,
+				F746193619D79B6200EA3D33 /* TagIOBase.mm */,
+				F746193819D79BEA00EA3D33 /* TagIOApe.h */,
+				F746193919D79BEA00EA3D33 /* TagIOApe.mm */,
+				F746193B19D79DAA00EA3D33 /* TagIOInfo.h */,
+				F746193C19D79DAA00EA3D33 /* TagIOInfo.mm */,
+				F746193E19D79EC000EA3D33 /* TagIOID3V1.h */,
+				F746193F19D79EC000EA3D33 /* TagIOID3V1.mm */,
+				F746194119D79EF300EA3D33 /* TagIOID3V2.h */,
+				F746194219D79EF300EA3D33 /* TagIOID3V2.mm */,
+				F746194419D79F6900EA3D33 /* TagIOXIPH.h */,
+				F746194519D79F6900EA3D33 /* TagIOXIPH.mm */,
 			);
 			name = ReaderWriterImpl;
 			sourceTree = "<group>";
@@ -547,35 +517,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				F760220A1999CFED002DFE01 /* TableViewActionOutlet.m in Sources */,
-				F7E33CE519C93FB8003BE071 /* TagWriterApe.mm in Sources */,
 				F7E9952A198593D300DDE9B4 /* NSString_TLString.mm in Sources */,
-				F7E33CE219C937BE003BE071 /* TagWriterBase.mm in Sources */,
-				F7E33CDF19C93663003BE071 /* TagReaderXIPH.mm in Sources */,
 				F7E33CF519C94306003BE071 /* TagReaderWriterFactory.mm in Sources */,
-				F7E33CD919C93585003BE071 /* TagReaderID3V1.mm in Sources */,
-				F7E33CDC19C935AF003BE071 /* TagReaderID3V2.mm in Sources */,
-				F7E33CD619C934AF003BE071 /* TagReaderInfo.mm in Sources */,
-				F7E33CF119C94189003BE071 /* tagWriterXIPH.mm in Sources */,
+				F746194619D79F6900EA3D33 /* TagIOXIPH.mm in Sources */,
+				F746193A19D79BEA00EA3D33 /* TagIOApe.mm in Sources */,
 				F7E994FA1983418000DDE9B4 /* AppDelegate.m in Sources */,
+				F746193D19D79DAA00EA3D33 /* TagIOInfo.mm in Sources */,
 				F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */,
-				F7E33CEE19C94117003BE071 /* TagWriterID3V2.mm in Sources */,
 				F7E33D0319CD33C0003BE071 /* AppDelegate_Filename.m in Sources */,
 				F7E33CFF19CD281A003BE071 /* FilenameValueTransform2.m in Sources */,
 				F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */,
+				F746194019D79EC000EA3D33 /* TagIOID3V1.mm in Sources */,
 				F76022101999DB22002DFE01 /* TagTableView.m in Sources */,
+				F746194319D79EF300EA3D33 /* TagIOID3V2.mm in Sources */,
 				F79BCE20198A7F5F00CC5F02 /* EncodingEntity.m in Sources */,
 				F79BCE24198A865900CC5F02 /* NSString_Filename.m in Sources */,
 				F7FB46C11992742400C72AFF /* NullValueTransform.m in Sources */,
 				F7E33CFB19CA9A97003BE071 /* FileResolver.mm in Sources */,
+				F746193719D79B6200EA3D33 /* TagIOBase.mm in Sources */,
 				F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */,
-				F7E33CD319C93296003BE071 /* TagReaderApe.mm in Sources */,
-				F7E33CE819C94087003BE071 /* TagWriterInfo.mm in Sources */,
 				F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */,
 				F7E994F31983418000DDE9B4 /* main.m in Sources */,
 				F79BCE2E198DF84200CC5F02 /* EncodingWindowDelegate.m in Sources */,
 				F7E33CAF19C63238003BE071 /* TagBase.mm in Sources */,
-				F7E33CEB19C940FC003BE071 /* TagWriterID3V1.mm in Sources */,
-				F7E33CCF19C8855D003BE071 /* TagReaderBase.mm in Sources */,
 				F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */,
 				F79BCE44198FBFBC00CC5F02 /* FilenameValueTransform.m in Sources */,
 			);

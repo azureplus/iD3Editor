@@ -1,20 +1,25 @@
 //
-//  TagWriterBase.m
+//  TagIOBase.m
 //  iD3
 //
-//  Created by Qiang Yu on 9/16/14.
+//  Created by Qiang Yu on 9/27/14.
 //  Copyright (c) 2014 xbox.com. All rights reserved.
 //
 
-#import "TagWriterBase.h"
+#import "TagIOBase.h"
 #import "NSString_TLString.h"
+#import "TagBase.h"
 
-@implementation TagWriterBase
+@implementation TagIOBase
+-(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib {
+    return [[TagBase alloc] initWithTag:taglib];;
+}
+
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {
     if (taglib == nil) {
         return;
     }
-        
+    
     taglib->setArtist([NSString TLStringFromString:tag.artist]);
     taglib->setAlbum([NSString TLStringFromString:tag.album]);
     taglib->setTitle([NSString TLStringFromString:tag.title]);

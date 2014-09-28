@@ -25,27 +25,27 @@
 #import "taglib/id3v2tag.h"
 #import "taglib/xiphcomment.h"
 
-#import "TagWriterApe.h"
-#import "TagWriterInfo.h"
-#import "TagWriterID3V1.h"
-#import "TagWriterID3V2.h"
-#import "TagWriterXIPH.h"
+#import "TagIOApe.h"
+#import "TagIOInfo.h"
+#import "TagIOID3V1.h"
+#import "TagIOID3V2.h"
+#import "TagIOXIPH.h"
 
-static TagWriterApe * tagWriterApe;
-static TagWriterInfo * tagWriterInfo;
-static TagWriterID3V1 * tagWriterID3V1;
-static TagWriterID3V2 * tagWriterID3V2;
-static TagWriterXIPH * tagWriterXIPH;
+static TagIOApe * tagWriterApe;
+static TagIOInfo * tagWriterInfo;
+static TagIOID3V1 * tagWriterID3V1;
+static TagIOID3V2 * tagWriterID3V2;
+static TagIOXIPH * tagWriterXIPH;
 
 @implementation FileResolver
 
 +(void) initialize {
     if (self == [FileResolver class]) {
-        tagWriterApe = [[TagWriterApe alloc] init];
-        tagWriterInfo = [[TagWriterInfo alloc] init];
-        tagWriterID3V1 = [[TagWriterID3V1 alloc] init];
-        tagWriterID3V2 = [[TagWriterID3V2 alloc] init];
-        tagWriterXIPH = [[TagWriterXIPH alloc] init];
+        tagWriterApe = [[TagIOApe alloc] init];
+        tagWriterInfo = [[TagIOInfo alloc] init];
+        tagWriterID3V1 = [[TagIOID3V1 alloc] init];
+        tagWriterID3V2 = [[TagIOID3V2 alloc] init];
+        tagWriterXIPH = [[TagIOXIPH alloc] init];
     }
 }
 

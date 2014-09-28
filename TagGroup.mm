@@ -78,6 +78,17 @@ DECL_GETTER_1(copyright);
     return [selected track];
 }
 
+-(NSImage *) coverArt {
+    NSImage * image = nil;
+    for (id<TagProtocol> tag : _tags) {
+        image = [tag coverArt];
+        if (image) {
+            break;
+        }
+    }    
+    return image;
+}
+
 DECL_SETTER_1(Artist);
 DECL_SETTER_1(Album);
 DECL_SETTER_1(Title);

@@ -11,17 +11,11 @@
 #import "TagWriter.h"
 #import "TagReader.h"
 
-#import "TagReaderApe.h"
-#import "TagReaderInfo.h"
-#import "TagReaderID3V1.h"
-#import "TagReaderID3V2.h"
-#import "TagReaderXIPH.h"
-
-#import "TagWriterApe.h"
-#import "TagWriterInfo.h"
-#import "TagWriterID3V1.h"
-#import "TagWriterID3V2.h"
-#import "TagWriterXIPH.h"
+#import "TagIOApe.h"
+#import "TagIOInfo.h"
+#import "TagIOID3V1.h"
+#import "TagIOID3V2.h"
+#import "TagIOXIPH.h"
 
 #import "taglib/tag.h"
 #import "taglib/apetag.h"
@@ -42,17 +36,17 @@ static NSArray * writers = nil;
 @implementation TagReaderWriterFactory
 +(void) initialize {
     if (self == [TagReaderWriterFactory class]) {
-        readers = @[[[TagReaderApe alloc] init],
-                    [[TagReaderInfo alloc] init],
-                    [[TagReaderID3V1 alloc] init],
-                    [[TagReaderID3V2 alloc] init],
-                    [[TagReaderXIPH alloc] init]];
+        readers = @[[[TagIOApe alloc] init],
+                    [[TagIOInfo alloc] init],
+                    [[TagIOID3V1 alloc] init],
+                    [[TagIOID3V2 alloc] init],
+                    [[TagIOXIPH alloc] init]];
 
-        writers = @[[[TagWriterApe alloc] init],
-                    [[TagWriterInfo alloc] init],
-                    [[TagWriterID3V1 alloc] init],
-                    [[TagWriterID3V2 alloc] init],
-                    [[TagWriterXIPH alloc] init]];
+        writers = @[[[TagIOApe alloc] init],
+                    [[TagIOInfo alloc] init],
+                    [[TagIOID3V1 alloc] init],
+                    [[TagIOID3V2 alloc] init],
+                    [[TagIOXIPH alloc] init]];
     }
 }
 

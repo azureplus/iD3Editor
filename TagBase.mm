@@ -42,6 +42,9 @@ if (_##FRAME) { \
         
         self.copyrightTL = TagLib::String::null;
         self.composerTL = TagLib::String::null;
+        
+        _picture = [NSMutableDictionary dictionaryWithCapacity:2];
+        _pictureTL = [NSMutableDictionary dictionaryWithCapacity:2];        
     }
 
     return self;
@@ -74,13 +77,15 @@ DECL_GETTER(composer)
 -(BOOL)updated {
     return _charEncoding != DEFAULT_ENCODING ||
            _artist || _album || _title || _composer || _comment ||
-           _genre || _copyright || _track || _year;
+           _genre || _copyright || _track || _year || ([_picture count] != 0);
 }
 
 -(void)discardChanges {
     _artist = _album = _title = _composer = _comment = _genre = _copyright = nil;
     _track = _year = nil;
     _charEncoding = DEFAULT_ENCODING;
+    
+    [_picture removeAllObjects];
 }
 
 -(void) savedChanges {
@@ -101,6 +106,14 @@ DECL_GETTER(composer)
     }
     
     [self discardChanges];
+}
+
+-(NSImage *)coverArt {
+    NSImage * pic = self.picture[@COVER_ART];
+    if (!pic) {
+        pic = self.pictureTL[@COVER_ART];
+    }
+    return pic;
 }
 
 -(NSString *) description {

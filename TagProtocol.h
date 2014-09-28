@@ -25,6 +25,7 @@
 -(NSString *) copyright;
 -(NSNumber *) year;
 -(NSNumber *) track;
+-(NSImage *) coverArt;
 
 -(void)setArtist:(NSString *)value;
 -(void)setAlbum:(NSString *)value;

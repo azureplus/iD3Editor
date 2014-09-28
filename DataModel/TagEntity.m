@@ -41,7 +41,7 @@
 @dynamic track;
 @dynamic year;
 @dynamic copyright;
-
+@dynamic coverArt;
 @synthesize tag = _tag;
 
 -(void) resetValue {
@@ -79,6 +79,10 @@ DECL_GETTER_1(copyright);
     } else {
         return [[self.tag track] stringValue];
     }
+}
+
+-(id) coverArt {
+    return [self.tag coverArt];
 }
 
 DECL_SETTER_1(Artist);
