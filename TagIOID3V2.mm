@@ -11,6 +11,7 @@
 #import "taglib/attachedpictureframe.h"
 #import "TagBase.h"
 #import "NSString_TLString.h"
+#import "NSImage_NSData.h"
 
 @implementation TagIOID3V2
 -(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib {
@@ -38,10 +39,7 @@
 // currently only supports front cover (the first one found)
 -(void) _readPicturesFrom:(TagLib::ID3v2::Tag *) taglib to:(TagBase *) tag {
     TagLib::ID3v2::FrameList picFrames = taglib->frameList("APIC");
-    if (picFrames.isEmpty()) {
-        return;
-    }
-    
+
     for (std::list<TagLib::ID3v2::Frame *>::iterator it = picFrames.begin(); it != picFrames.end(); it++) {
         TagLib::ID3v2::AttachedPictureFrame * pic = dynamic_cast<TagLib::ID3v2::AttachedPictureFrame *>(*it);
         if (!pic || pic->type() != TagLib::ID3v2::AttachedPictureFrame::Type::FrontCover) {
@@ -64,9 +62,40 @@
     
     TagLib::ID3v2::Tag * id3Tag = dynamic_cast<TagLib::ID3v2::Tag *>(taglib);
     
-    if (id3Tag != nil) {
-        id3Tag->setTextFrame("TCOM", [NSString TLStringFromString:tag.composer]);
-        id3Tag->setTextFrame("TCOP", [NSString TLStringFromString:tag.copyright]);
+    if (id3Tag == nil) {
+        return;
     }
+
+    id3Tag->setTextFrame("TCOM", [NSString TLStringFromString:tag.composer]);
+    id3Tag->setTextFrame("TCOP", [NSString TLStringFromString:tag.copyright]);
+
+    // currenlty only supports front cover
+    [self _writePic:[tag coverArt] to:id3Tag withType:TagLib::ID3v2::AttachedPictureFrame::Type::FrontCover];
+}
+
+
+-(void) _writePic:(NSImage *) pic to:(TagLib::ID3v2::Tag *) taglib withType:(TagLib::ID3v2::AttachedPictureFrame::Type) type {
+    TagLib::ID3v2::FrameList picFrames = taglib->frameList("APIC");
+    TagLib::ID3v2::AttachedPictureFrame * frameFound = nil;
+    
+    for (std::list<TagLib::ID3v2::Frame *>::iterator it = picFrames.begin(); it != picFrames.end(); it++) {
+        TagLib::ID3v2::AttachedPictureFrame * pic = dynamic_cast<TagLib::ID3v2::AttachedPictureFrame *>(*it);
+        if (pic && pic->type() == type) {
+            frameFound = pic;
+            break;
+        }
+    }
+    
+    if (!frameFound) {
+        frameFound = new TagLib::ID3v2::AttachedPictureFrame();
+        taglib->addFrame(frameFound);
+    }
+    
+    NSData * picData = [pic toData];
+    TagLib::ByteVector bv((const char *)[picData bytes], (uint)[picData length]);
+    
+    frameFound->setType(type);
+    frameFound->setMimeType("image/png");
+    frameFound->setPicture(bv);
 }
 @end

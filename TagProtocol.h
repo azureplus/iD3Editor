@@ -36,6 +36,7 @@
 -(void)setCopyright:(NSString *)value;
 -(void)setYear:(NSNumber *)value;
 -(void)setTrack:(NSNumber *)value;
+-(void)setCoverArt:(NSImage*)coverArt;
 
 -(void) setCharEncoding: (unsigned int) encoding;
 -(BOOL) updated;

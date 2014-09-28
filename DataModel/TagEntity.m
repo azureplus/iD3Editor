@@ -105,6 +105,12 @@ DECL_SETTER_1(Copyright);
     [self didChangeValueForKey:@"track"];
 }
 
+-(void)setCoverArt:(id)coverArt {
+    [self willChangeValueForKey:@"coverArt"];
+    [self.tag setCoverArt:coverArt];
+    [self didChangeValueForKey:@"coverArt"];
+}
+
 -(void) setCharEncoding: (unsigned int) charEncoding {
     NSArray * frames = @[@"artist", @"album", @"title",
                          @"genre", @"comment", @"composer",

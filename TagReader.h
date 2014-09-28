@@ -10,5 +10,7 @@
 #import "TagProtocol.h"
 
 @protocol TagReader <NSObject>
+#ifdef __cplusplus 
 -(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib;
+#endif
 @end

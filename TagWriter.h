@@ -10,5 +10,7 @@
 #import "TagProtocol.h"
 
 @protocol TagWriter <NSObject>
+#ifdef __cplusplus
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib;
+#endif
 @end

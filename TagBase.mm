@@ -66,6 +66,14 @@ if (_##FRAME) { \
     }
 }
 
+-(NSImage *)coverArt {
+    NSImage * pic = self.picture[@COVER_ART];
+    if (!pic) {
+        pic = self.pictureTL[@COVER_ART];
+    }
+    return pic;
+}
+
 DECL_GETTER(artist)
 DECL_GETTER(album)
 DECL_GETTER(title)
@@ -88,6 +96,7 @@ DECL_GETTER(composer)
     [_picture removeAllObjects];
 }
 
+// called after changes have been written
 -(void) savedChanges {
     SAVE_FRAME(artist);
     SAVE_FRAME(album);
@@ -105,15 +114,14 @@ DECL_GETTER(composer)
         _trackTL = [_track unsignedIntegerValue];
     }
     
+    [_pictureTL addEntriesFromDictionary:_picture];
     [self discardChanges];
 }
 
--(NSImage *)coverArt {
-    NSImage * pic = self.picture[@COVER_ART];
-    if (!pic) {
-        pic = self.pictureTL[@COVER_ART];
+-(void)setCoverArt:(NSImage *)coverArt {
+    if (coverArt) {
+        [_picture setObject:coverArt forKey:@COVER_ART];
     }
-    return pic;
 }
 
 -(NSString *) description {

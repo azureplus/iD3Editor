@@ -66,4 +66,7 @@
 ///
 -(void) addN2TPattern:(NSString *)pattern;
 -(void) addT2NPattern:(NSString *)pattern;
+
+///
+-(IBAction)test:(id)sender;
 @end

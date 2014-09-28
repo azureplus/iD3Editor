@@ -109,6 +109,12 @@ DECL_SETTER_1(Copyright);
     }
 }
 
+-(void)setCoverArt:(NSImage *)value {
+    for (id<TagProtocol> tag : _tags) {
+        [tag setCoverArt:value];
+    }
+}
+
 -(void) setCharEncoding: (unsigned int) encoding {
     for (id<TagProtocol> tag : _tags) {
         [tag setCharEncoding:encoding];

@@ -14,6 +14,8 @@
 		F746194019D79EC000EA3D33 /* TagIOID3V1.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746193F19D79EC000EA3D33 /* TagIOID3V1.mm */; };
 		F746194319D79EF300EA3D33 /* TagIOID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746194219D79EF300EA3D33 /* TagIOID3V2.mm */; };
 		F746194619D79F6900EA3D33 /* TagIOXIPH.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746194519D79F6900EA3D33 /* TagIOXIPH.mm */; };
+		F746194B19D7B9FC00EA3D33 /* NSImage_NSData.m in Sources */ = {isa = PBXBuildFile; fileRef = F746194A19D7B9FC00EA3D33 /* NSImage_NSData.m */; };
+		F746194E19D7C32700EA3D33 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = F746194D19D7C32700EA3D33 /* test.png */; };
 		F760220A1999CFED002DFE01 /* TableViewActionOutlet.m in Sources */ = {isa = PBXBuildFile; fileRef = F76022091999CFED002DFE01 /* TableViewActionOutlet.m */; };
 		F76022101999DB22002DFE01 /* TagTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F760220F1999DB22002DFE01 /* TagTableView.m */; };
 		F76D68931986166700DB2E41 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76D68921986166700DB2E41 /* libz.dylib */; };
@@ -80,6 +82,9 @@
 		F746194219D79EF300EA3D33 /* TagIOID3V2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOID3V2.mm; sourceTree = "<group>"; };
 		F746194419D79F6900EA3D33 /* TagIOXIPH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOXIPH.h; sourceTree = "<group>"; };
 		F746194519D79F6900EA3D33 /* TagIOXIPH.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOXIPH.mm; sourceTree = "<group>"; };
+		F746194919D7B9FC00EA3D33 /* NSImage_NSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSImage_NSData.h; sourceTree = "<group>"; };
+		F746194A19D7B9FC00EA3D33 /* NSImage_NSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSImage_NSData.m; sourceTree = "<group>"; };
+		F746194D19D7C32700EA3D33 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		F76022081999CFED002DFE01 /* TableViewActionOutlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewActionOutlet.h; sourceTree = "<group>"; };
 		F76022091999CFED002DFE01 /* TableViewActionOutlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewActionOutlet.m; sourceTree = "<group>"; };
 		F760220E1999DB22002DFE01 /* TagTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagTableView.h; sourceTree = "<group>"; };
@@ -175,6 +180,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F746194719D7B9B100EA3D33 /* NSImage */ = {
+			isa = PBXGroup;
+			children = (
+				F746194919D7B9FC00EA3D33 /* NSImage_NSData.h */,
+				F746194A19D7B9FC00EA3D33 /* NSImage_NSData.m */,
+			);
+			name = NSImage;
+			sourceTree = "<group>";
+		};
+		F746194819D7B9C100EA3D33 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F746194C19D7BB3900EA3D33 /* NSArray */,
+				F79BCE18198928A500CC5F02 /* NSString */,
+				F746194719D7B9B100EA3D33 /* NSImage */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		F746194C19D7BB3900EA3D33 /* NSArray */ = {
+			isa = PBXGroup;
+			children = (
+				F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */,
+				F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */,
+			);
+			name = NSArray;
+			sourceTree = "<group>";
+		};
 		F77F88EA1987D47A00B1B3CC /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,15 +242,6 @@
 				F76022091999CFED002DFE01 /* TableViewActionOutlet.m */,
 			);
 			name = "Window Delegates";
-			sourceTree = "<group>";
-		};
-		F79BCE4519907A7400CC5F02 /* NSExtension */ = {
-			isa = PBXGroup;
-			children = (
-				F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */,
-				F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */,
-			);
-			name = NSExtension;
 			sourceTree = "<group>";
 		};
 		F7E33CAB19C60525003BE071 /* TagLibWrapper */ = {
@@ -290,11 +314,10 @@
 		F7E994DA1983418000DDE9B4 = {
 			isa = PBXGroup;
 			children = (
+				F746194819D7B9C100EA3D33 /* Category */,
 				F7E33CAB19C60525003BE071 /* TagLibWrapper */,
 				F79CDF2519AADD4D0002FC59 /* iD3 Editor.entitlements */,
 				F7FB46C21993309100C72AFF /* Resources */,
-				F79BCE4519907A7400CC5F02 /* NSExtension */,
-				F79BCE18198928A500CC5F02 /* NSString */,
 				F77F88EA1987D47A00B1B3CC /* DataModel */,
 				F7E33CFC19CD2772003BE071 /* ValueTransformers */,
 				F7E994EC1983418000DDE9B4 /* iD3 */,
@@ -338,6 +361,7 @@
 		F7E994EC1983418000DDE9B4 /* iD3 */ = {
 			isa = PBXGroup;
 			children = (
+				F746194D19D7C32700EA3D33 /* test.png */,
 				F79BCE32198DF89100CC5F02 /* Window Delegates */,
 				F77F88A11987433900B1B3CC /* iD3.entitlements */,
 				F79BCE191989FD5900CC5F02 /* iD3.plist */,
@@ -495,6 +519,7 @@
 				F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */,
 				F7E33D1419CE94E6003BE071 /* Save.pdf in Resources */,
 				F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */,
+				F746194E19D7C32700EA3D33 /* test.png in Resources */,
 				F7E994FF1983418000DDE9B4 /* Images.xcassets in Resources */,
 				F7E994F71983418000DDE9B4 /* Credits.rtf in Resources */,
 				F7E994FD1983418000DDE9B4 /* MainMenu.xib in Resources */,
@@ -533,6 +558,7 @@
 				F79BCE20198A7F5F00CC5F02 /* EncodingEntity.m in Sources */,
 				F79BCE24198A865900CC5F02 /* NSString_Filename.m in Sources */,
 				F7FB46C11992742400C72AFF /* NullValueTransform.m in Sources */,
+				F746194B19D7B9FC00EA3D33 /* NSImage_NSData.m in Sources */,
 				F7E33CFB19CA9A97003BE071 /* FileResolver.mm in Sources */,
 				F746193719D79B6200EA3D33 /* TagIOBase.mm in Sources */,
 				F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */,
