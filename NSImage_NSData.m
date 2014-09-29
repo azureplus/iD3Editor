@@ -15,7 +15,7 @@
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
     NSNumber *compressionFactor = [NSNumber numberWithFloat:0.9];
     NSDictionary *imageProps = [NSDictionary dictionaryWithObject:compressionFactor forKey:NSImageCompressionFactor];
-    imageData = [imageRep representationUsingType:NSPNGFileType properties:imageProps];
+    imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
     return imageData;
 }
 @end

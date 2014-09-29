@@ -35,7 +35,6 @@
     return tag;
 }
 
-
 // currently only supports front cover (the first one found)
 -(void) _readPicturesFrom:(TagLib::ID3v2::Tag *) taglib to:(TagBase *) tag {
     TagLib::ID3v2::FrameList picFrames = taglib->frameList("APIC");
@@ -49,7 +48,9 @@
         const TagLib::ByteVector & bv = pic->picture();
         NSData * picData = [NSData dataWithBytes:bv.data() length:bv.size()];
         NSImage * image = [[NSImage alloc] initWithData:picData];
-        [tag.pictureTL setObject:image forKey:@COVER_ART];
+        if (image) {
+            [tag.pictureTL setObject:image forKey:@COVER_ART];
+        }
     }
 }
 
@@ -76,7 +77,7 @@
 
 -(void) _writePic:(NSImage *) pic to:(TagLib::ID3v2::Tag *) taglib withType:(TagLib::ID3v2::AttachedPictureFrame::Type) type {
     TagLib::ID3v2::FrameList picFrames = taglib->frameList("APIC");
-    TagLib::ID3v2::AttachedPictureFrame * frameFound = nil;
+    TagLib::ID3v2::AttachedPictureFrame * frameFound = nil;    
     
     for (std::list<TagLib::ID3v2::Frame *>::iterator it = picFrames.begin(); it != picFrames.end(); it++) {
         TagLib::ID3v2::AttachedPictureFrame * pic = dynamic_cast<TagLib::ID3v2::AttachedPictureFrame *>(*it);
@@ -95,7 +96,7 @@
     TagLib::ByteVector bv((const char *)[picData bytes], (uint)[picData length]);
     
     frameFound->setType(type);
-    frameFound->setMimeType("image/png");
+    frameFound->setMimeType("image/jpeg");
     frameFound->setPicture(bv);
 }
 @end

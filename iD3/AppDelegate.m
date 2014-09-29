@@ -471,7 +471,7 @@
 }
 
 -(IBAction)test:(id)sender {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"png"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"];
     NSImage * image = [[NSImage alloc] initWithContentsOfFile:filePath];
     for (TagEntity * tag in _tagArrayController.arrangedObjects) {
         [tag setCoverArt:image];

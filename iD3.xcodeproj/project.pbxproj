@@ -15,7 +15,7 @@
 		F746194319D79EF300EA3D33 /* TagIOID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746194219D79EF300EA3D33 /* TagIOID3V2.mm */; };
 		F746194619D79F6900EA3D33 /* TagIOXIPH.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746194519D79F6900EA3D33 /* TagIOXIPH.mm */; };
 		F746194B19D7B9FC00EA3D33 /* NSImage_NSData.m in Sources */ = {isa = PBXBuildFile; fileRef = F746194A19D7B9FC00EA3D33 /* NSImage_NSData.m */; };
-		F746194E19D7C32700EA3D33 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = F746194D19D7C32700EA3D33 /* test.png */; };
+		F746195019D8E13400EA3D33 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F746194F19D8E13400EA3D33 /* test.jpg */; };
 		F760220A1999CFED002DFE01 /* TableViewActionOutlet.m in Sources */ = {isa = PBXBuildFile; fileRef = F76022091999CFED002DFE01 /* TableViewActionOutlet.m */; };
 		F76022101999DB22002DFE01 /* TagTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F760220F1999DB22002DFE01 /* TagTableView.m */; };
 		F76D68931986166700DB2E41 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76D68921986166700DB2E41 /* libz.dylib */; };
@@ -84,7 +84,7 @@
 		F746194519D79F6900EA3D33 /* TagIOXIPH.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOXIPH.mm; sourceTree = "<group>"; };
 		F746194919D7B9FC00EA3D33 /* NSImage_NSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSImage_NSData.h; sourceTree = "<group>"; };
 		F746194A19D7B9FC00EA3D33 /* NSImage_NSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSImage_NSData.m; sourceTree = "<group>"; };
-		F746194D19D7C32700EA3D33 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		F746194F19D8E13400EA3D33 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		F76022081999CFED002DFE01 /* TableViewActionOutlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewActionOutlet.h; sourceTree = "<group>"; };
 		F76022091999CFED002DFE01 /* TableViewActionOutlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewActionOutlet.m; sourceTree = "<group>"; };
 		F760220E1999DB22002DFE01 /* TagTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagTableView.h; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 		F7E994EC1983418000DDE9B4 /* iD3 */ = {
 			isa = PBXGroup;
 			children = (
-				F746194D19D7C32700EA3D33 /* test.png */,
+				F746194F19D8E13400EA3D33 /* test.jpg */,
 				F79BCE32198DF89100CC5F02 /* Window Delegates */,
 				F77F88A11987433900B1B3CC /* iD3.entitlements */,
 				F79BCE191989FD5900CC5F02 /* iD3.plist */,
@@ -509,6 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7E33D0A19CE8DA1003BE071 /* Clear.pdf in Resources */,
+				F746195019D8E13400EA3D33 /* test.jpg in Resources */,
 				F7E33D1C19CF3797003BE071 /* Encoding.pdf in Resources */,
 				F7FB46E01993C11A00C72AFF /* iD3Help in Resources */,
 				F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */,
@@ -519,7 +520,6 @@
 				F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */,
 				F7E33D1419CE94E6003BE071 /* Save.pdf in Resources */,
 				F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */,
-				F746194E19D7C32700EA3D33 /* test.png in Resources */,
 				F7E994FF1983418000DDE9B4 /* Images.xcassets in Resources */,
 				F7E994F71983418000DDE9B4 /* Credits.rtf in Resources */,
 				F7E994FD1983418000DDE9B4 /* MainMenu.xib in Resources */,
