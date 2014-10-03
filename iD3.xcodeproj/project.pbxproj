@@ -28,6 +28,7 @@
 		F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE30198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m */; };
 		F79BCE44198FBFBC00CC5F02 /* FilenameValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE43198FBFBC00CC5F02 /* FilenameValueTransform.m */; };
 		F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */; };
+		F7A6D97119DBC4E200CE3A14 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A6D97019DBC4E200CE3A14 /* CoreFoundation.framework */; };
 		F7E33CAF19C63238003BE071 /* TagBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CAE19C63238003BE071 /* TagBase.mm */; };
 		F7E33CF519C94306003BE071 /* TagReaderWriterFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF419C94306003BE071 /* TagReaderWriterFactory.mm */; };
 		F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF719C94E3A003BE071 /* TagGroup.mm */; };
@@ -108,6 +109,7 @@
 		F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArray_KVO.h; path = Taglib/NSArray_KVO.h; sourceTree = "<group>"; };
 		F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArray_KVO.m; path = Taglib/NSArray_KVO.m; sourceTree = "<group>"; };
 		F79CDF2519AADD4D0002FC59 /* iD3 Editor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "iD3 Editor.entitlements"; sourceTree = "<group>"; };
+		F7A6D97019DBC4E200CE3A14 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		F7E33CAC19C6077A003BE071 /* TagProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagProtocol.h; sourceTree = "<group>"; };
 		F7E33CAD19C63238003BE071 /* TagBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagBase.h; sourceTree = "<group>"; };
 		F7E33CAE19C63238003BE071 /* TagBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagBase.mm; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7A6D97119DBC4E200CE3A14 /* CoreFoundation.framework in Frameworks */,
 				F76D68931986166700DB2E41 /* libz.dylib in Frameworks */,
 				F7E9951C19853C6300DDE9B4 /* libtag.a in Frameworks */,
 				F7E994E71983418000DDE9B4 /* Cocoa.framework in Frameworks */,
@@ -339,6 +342,7 @@
 		F7E994E51983418000DDE9B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7A6D97019DBC4E200CE3A14 /* CoreFoundation.framework */,
 				F76D68921986166700DB2E41 /* libz.dylib */,
 				F7E9951B19853C6300DDE9B4 /* libtag.a */,
 				F7E994E61983418000DDE9B4 /* Cocoa.framework */,

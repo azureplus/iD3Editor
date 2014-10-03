@@ -36,7 +36,7 @@
 
 //
 // currently only supports front cover (the first one found)
-// https://mailman.videolan.org/pipermail/vlc-commits/2014-July/026155.html
+// see the implementation in VLC taglib.cpp
 //
 -(void) _readPicturesFrom:(TagLib::APE::Tag *) taglib to:(TagBase *) tag {
     TagLib::APE::Item item = taglib->itemListMap()["COVER ART (FRONT)"];
@@ -44,25 +44,6 @@
         return;
     }
 
-    const TagLib::ByteVector picture = item.value();
-    const char *p_data = picture.data();
-    unsigned i_data = picture.size();
-    
-    size_t desc_len = strnlen(p_data, i_data);
-    if (desc_len < i_data) {
-//        const char *psz_name = p_data;
-        p_data += desc_len + 1; /* '\0' */
-        i_data -= desc_len + 1;
-
-        NSData * picData = [NSData dataWithBytes:p_data length:i_data];
-        NSImage * image = [[NSImage alloc] initWithData:picData];
-
-        if (image) {
-            [tag.pictureTL setObject:image forKey:@COVER_ART];
-        }
-    }
-    
-    /*
     const TagLib::ByteVector & bv = item.binaryData();
     const char *  pData = bv.data();
     unsigned iData = bv.size();
@@ -77,7 +58,6 @@
             [tag.pictureTL setObject:image forKey:@COVER_ART];
         }
     }
-     */
 }
 
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {

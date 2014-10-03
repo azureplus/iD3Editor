@@ -16,7 +16,10 @@
 #import "taglib/vorbisfile.h"
 #import "taglib/speexfile.h"
 #import "taglib/opusfile.h"
+#import "taglib/rifffile.h"
 #import "taglib/wavfile.h"
+#import "taglib/aifffile.h"
+#import "taglib/oggflacfile.h"
 
 #import "taglib/tag.h"
 #import "taglib/apetag.h"
@@ -50,15 +53,12 @@ static TagIOXIPH * tagWriterXIPH;
 }
 
 +(id<TagProtocol>) read:(NSString *)filename {
-    NSString * extension = [[filename pathExtension] uppercaseString];
     TagLib::FileRef fileRef = TagLib::FileRef([filename UTF8String]);
 
     TagGroup * tagGroup = [[TagGroup alloc] init];
     
-    if ([extension isEqualToString:@"APE"]) {
-        TagLib::APE::File * file = dynamic_cast<TagLib::APE::File *>(fileRef.file());
-        
-        if (file && file->isValid()) {
+    if (TagLib::APE::File * file = dynamic_cast<TagLib::APE::File *>(fileRef.file())) {
+        if (file->isValid()) {
             if (file->hasAPETag()) {
                 TagLib::APE::Tag * tag = file->APETag();
                 [tagGroup addTagLib:tag];
@@ -69,17 +69,8 @@ static TagIOXIPH * tagWriterXIPH;
                 [tagGroup addTagLib:tag];
             }
         }
-    } else if ([extension isEqualToString:@"OGG"]) {
-        TagLib::Ogg::Vorbis::File * file = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
-        
-        if (file && file->isValid()) {
-            TagLib::Ogg::XiphComment * tag = file->tag();
-            [tagGroup addTagLib:tag];
-        }
-    } else if ([extension isEqualToString:@"FLAC"]) {
-        TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());
-        
-        if (file && file->isValid()) {
+    } else if (TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file())){
+        if (file->isValid()) {
             if (file->hasXiphComment()) {
                 TagLib::Ogg::XiphComment * tag = file->xiphComment();
                 [tagGroup addTagLib:tag];
@@ -95,10 +86,8 @@ static TagIOXIPH * tagWriterXIPH;
                 [tagGroup addTagLib:tag];
             }
         }
-    } else if ([extension isEqualToString:@"MP3"]) {
-        TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file());
-        
-        if (file && file->isValid()) {
+    } else if (TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file())) {
+        if (file->isValid()) {
             if (file->hasAPETag()) {
                 TagLib::APE::Tag * tag = file->APETag();
                 [tagGroup addTagLib:tag];
@@ -116,50 +105,29 @@ static TagIOXIPH * tagWriterXIPH;
             }
          
         }
-    } else if ([extension isEqualToString:@"OGA"]) {
-        TagLib::Ogg::Vorbis::File  * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
-        TagLib::FLAC::File * flac = dynamic_cast<TagLib::FLAC::File *>(fileRef.file());
+    } else if (dynamic_cast<TagLib::Ogg::File*>(fileRef.file())) {
+        TagLib::Ogg::FLAC::File * flac = dynamic_cast<TagLib::Ogg::FLAC::File *>(fileRef.file());
+        TagLib::Ogg::Speex::File * speex = dynamic_cast<TagLib::Ogg::Speex::File *>(fileRef.file());
+        TagLib::Ogg::Vorbis::File * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         
-        TagLib::Ogg::XiphComment * tag = nil;
-        
-        if (vorbis && vorbis->isValid()) {
-            tag = vorbis->tag();
-            [tagGroup addTagLib:tag];
-        } else if (flac && flac->isValid()) {
-            if (flac->hasXiphComment()) {
-                TagLib::Ogg::XiphComment * tag = flac->xiphComment();
-                [tagGroup addTagLib:tag];
-            }
-
-            if (flac->hasID3v2Tag()) {
-                TagLib::ID3v2::Tag * tag = flac->ID3v2Tag();
-                [tagGroup addTagLib:tag];
-            }
-            
-            if (flac->hasID3v1Tag()) {
-                TagLib::ID3v1::Tag * tag = flac->ID3v1Tag();
-                [tagGroup addTagLib:tag];
-            }
+        if (flac->isValid()) {
+            [tagGroup addTagLib:flac->tag()];
+        } else if (speex->isValid()) {
+            [tagGroup addTagLib:speex->tag()];
+        } else if (vorbis->isValid()) { //vorbis
+            [tagGroup addTagLib:vorbis->tag()];
         }
-    } else if ([extension isEqualToString:@"SPX"]) {
-        TagLib::Ogg::Speex::File * file = dynamic_cast<TagLib::Ogg::Speex::File *>(fileRef.file());
+    } else if (dynamic_cast<TagLib::RIFF::File *>(fileRef.file())) {
+        TagLib::RIFF::AIFF::File* aiff = dynamic_cast<TagLib::RIFF::AIFF::File*>(fileRef.file());
+        TagLib::RIFF::WAV::File * wav = dynamic_cast<TagLib::RIFF::WAV::File*>(fileRef.file());
         
-        if (file && file->isValid()) {
-            TagLib::Ogg::XiphComment * tag = file->tag();
-            [tagGroup addTagLib:tag];
-        }
-    } else if ([extension isEqualToString:@"WAV"]) {
-        TagLib::RIFF::WAV::File * file = dynamic_cast<TagLib::RIFF::WAV::File *>(fileRef.file());
-        
-        if (file && file->isValid()) {
-            if (file->hasInfoTag()) {
-                TagLib::RIFF::Info::Tag * tag = file->InfoTag();
-                [tagGroup addTagLib:tag];
-            }
-
-            if (file->hasID3v2Tag()) {
-                TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
-                [tagGroup addTagLib:tag];
+        if (aiff->isValid()) {
+            [tagGroup addTagLib:aiff->tag()];
+        } else if (wav->isValid()) {
+            if (wav->hasInfoTag()) {
+                [tagGroup addTagLib:wav->InfoTag()];
+            } else if (wav->hasID3v2Tag()) {
+                [tagGroup addTagLib:wav->ID3v2Tag()];
             }
         }
     }
