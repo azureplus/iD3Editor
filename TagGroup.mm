@@ -41,9 +41,11 @@
     return self;
 }
 
--(void)addTagLib: (TagLib::Tag *) tag {
+-(id<TagProtocol>)addTagLib: (TagLib::Tag *) tag {
     id<TagReader> tagReader = [TagReaderWriterFactory getReader:tag];
-    [_tags addObject:[tagReader readTaglib:tag]];
+    id<TagProtocol> newTag = [tagReader readTaglib:tag];
+    [_tags addObject:newTag];
+    return newTag;
 }
 
 DECL_GETTER_1(artist);

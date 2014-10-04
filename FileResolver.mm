@@ -73,7 +73,12 @@ static TagIOXIPH * tagWriterXIPH;
         if (file->isValid()) {
             if (file->hasXiphComment()) {
                 TagLib::Ogg::XiphComment * tag = file->xiphComment();
-                [tagGroup addTagLib:tag];
+                TagBase * newTag = [tagGroup addTagLib:tag];
+                
+                //
+                // flac picture should be handled differently
+                //
+                [FileResolver _readFlacPictures:newTag from:file];
             }
             
             if (file->hasID3v2Tag()) {
@@ -92,7 +97,6 @@ static TagIOXIPH * tagWriterXIPH;
                 TagLib::APE::Tag * tag = file->APETag();
                 [tagGroup addTagLib:tag];
             }
-
          
             if (file->hasID3v2Tag()) {
                 TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
@@ -102,8 +106,7 @@ static TagIOXIPH * tagWriterXIPH;
             if (file->hasID3v1Tag()) {
                 TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
                 [tagGroup addTagLib:tag];
-            }
-         
+            }         
         }
     } else if (dynamic_cast<TagLib::Ogg::File*>(fileRef.file())) {
         TagLib::Ogg::FLAC::File * flac = dynamic_cast<TagLib::Ogg::FLAC::File *>(fileRef.file());
@@ -133,6 +136,20 @@ static TagIOXIPH * tagWriterXIPH;
     }
     
     return tagGroup;
+}
+
++(void) _readFlacPictures:(TagBase *)tag from:(TagLib::FLAC::File *)file {
+    TagLib::List<TagLib::FLAC::Picture *> pictureList = file->pictureList();
+    for (TagLib::List<TagLib::FLAC::Picture *>::Iterator it = pictureList.begin(); it != pictureList.end(); it++) {
+        if((*it)->FrontCover == (*it)->type()) {
+            const TagLib::ByteVector & bv = (*it)->data();
+            NSData * picData = [NSData dataWithBytes:bv.data() length:bv.size()];
+            NSImage * image = [[NSImage alloc] initWithData:picData];
+            if (image) {
+                [tag.pictureTL setObject:image forKey:@COVER_ART];
+            }
+        }
+    }
 }
 
 +(void)writeTag:(id<TagProtocol>)tag to:(NSString *)filename {

@@ -16,7 +16,6 @@
 @implementation TagIOXIPH
 -(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib {
     TagBase * tag = [super readTaglib:taglib];
-    
     TagLib::Ogg::XiphComment * xiphTag = dynamic_cast<TagLib::Ogg::XiphComment *>(taglib);
     if (xiphTag) {
         const TagLib::Ogg::FieldListMap & fieldMap = xiphTag->fieldListMap();
@@ -27,13 +26,12 @@
         if (!fieldMap[COPYRIGHT_FRAME].isEmpty()) {
             tag.copyrightTL = fieldMap[COPYRIGHT_FRAME].front();
         }
-        
-        [self _readPicturesFrom:xiphTag to:tag];
     }
     
     return tag;
 }
 
+/*
 // currently only supports front cover (the first one found)
 -(void) _readPicturesFrom:(TagLib::Ogg::XiphComment *) taglib to:(TagBase *) tag {
     const TagLib::Ogg::FieldListMap & fieldMap = taglib->fieldListMap();
@@ -98,7 +96,7 @@
         }
     }
 }
-
+*/
 
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {
     if (taglib == nil) {                return;
