@@ -1120,11 +1120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FileResolver.mm"
-            timestampString = "434432141.237349"
+            timestampString = "434433071.420622"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "+writeTag:to:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1398,6 +1398,22 @@
             startingLineNumber = "60"
             endingLineNumber = "60"
             landmarkName = "+read:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iD3/PictureView.m"
+            timestampString = "434434368.088081"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "-performDragOperation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
