@@ -15,10 +15,10 @@
 		F746194319D79EF300EA3D33 /* TagIOID3V2.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746194219D79EF300EA3D33 /* TagIOID3V2.mm */; };
 		F746194619D79F6900EA3D33 /* TagIOXIPH.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746194519D79F6900EA3D33 /* TagIOXIPH.mm */; };
 		F746194B19D7B9FC00EA3D33 /* NSImage_NSData.m in Sources */ = {isa = PBXBuildFile; fileRef = F746194A19D7B9FC00EA3D33 /* NSImage_NSData.m */; };
-		F746195019D8E13400EA3D33 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F746194F19D8E13400EA3D33 /* test.jpg */; };
 		F760220A1999CFED002DFE01 /* TableViewActionOutlet.m in Sources */ = {isa = PBXBuildFile; fileRef = F76022091999CFED002DFE01 /* TableViewActionOutlet.m */; };
 		F76022101999DB22002DFE01 /* TagTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F760220F1999DB22002DFE01 /* TagTableView.m */; };
 		F76D68931986166700DB2E41 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76D68921986166700DB2E41 /* libz.dylib */; };
+		F7757FB919E4E88700AABDB7 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7757FB819E4E88700AABDB7 /* test.jpg */; };
 		F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */; };
 		F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE1619889BB500CC5F02 /* TagEntity.m */; };
 		F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F79BCE191989FD5900CC5F02 /* iD3.plist */; };
@@ -85,12 +85,12 @@
 		F746194519D79F6900EA3D33 /* TagIOXIPH.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOXIPH.mm; sourceTree = "<group>"; };
 		F746194919D7B9FC00EA3D33 /* NSImage_NSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSImage_NSData.h; sourceTree = "<group>"; };
 		F746194A19D7B9FC00EA3D33 /* NSImage_NSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSImage_NSData.m; sourceTree = "<group>"; };
-		F746194F19D8E13400EA3D33 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		F76022081999CFED002DFE01 /* TableViewActionOutlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewActionOutlet.h; sourceTree = "<group>"; };
 		F76022091999CFED002DFE01 /* TableViewActionOutlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewActionOutlet.m; sourceTree = "<group>"; };
 		F760220E1999DB22002DFE01 /* TagTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagTableView.h; sourceTree = "<group>"; };
 		F760220F1999DB22002DFE01 /* TagTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagTableView.m; sourceTree = "<group>"; };
 		F76D68921986166700DB2E41 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		F7757FB819E4E88700AABDB7 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		F77F88A11987433900B1B3CC /* iD3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iD3.entitlements; sourceTree = "<group>"; };
 		F77F88EC1987D49C00B1B3CC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F79BCE1519889BB500CC5F02 /* TagEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagEntity.h; path = DataModel/TagEntity.h; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 		F7E994EC1983418000DDE9B4 /* iD3 */ = {
 			isa = PBXGroup;
 			children = (
-				F746194F19D8E13400EA3D33 /* test.jpg */,
+				F7757FB819E4E88700AABDB7 /* test.jpg */,
 				F79BCE32198DF89100CC5F02 /* Window Delegates */,
 				F77F88A11987433900B1B3CC /* iD3.entitlements */,
 				F79BCE191989FD5900CC5F02 /* iD3.plist */,
@@ -513,7 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7E33D0A19CE8DA1003BE071 /* Clear.pdf in Resources */,
-				F746195019D8E13400EA3D33 /* test.jpg in Resources */,
+				F7757FB919E4E88700AABDB7 /* test.jpg in Resources */,
 				F7E33D1C19CF3797003BE071 /* Encoding.pdf in Resources */,
 				F7FB46E01993C11A00C72AFF /* iD3Help in Resources */,
 				F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */,
