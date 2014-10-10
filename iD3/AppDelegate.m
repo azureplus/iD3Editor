@@ -225,7 +225,7 @@
     } else if (object == _tagArrayController && [keyPath isEqualTo:@"selection"]) {
         NSArray * selectedTags = _tagArrayController.selectedObjects;
         if (selectedTags.count > 1) {
-            NSImage * imageToDisplay = [NSImage placeholderImage];
+            NSImage * imageToDisplay = [NSImage nullPlaceholderImage];
             for (TagEntity * tag in selectedTags) {
                 if (tag.coverArt != nil && tag.coverArt != [NSImage nullImage]) {
                     imageToDisplay = [NSImage multiplePlaceholderImage];
@@ -234,7 +234,7 @@
             }
             [_coverArtView setImage:imageToDisplay];
         } else if (selectedTags.count == 0) {
-            [_coverArtView setImage:[NSImage placeholderImage]];
+            [_coverArtView setImage:[NSImage nullPlaceholderImage]];
         }
     }
 }
@@ -251,7 +251,7 @@
         NSArray * files = [fileManager contentsOfDirectoryAtURL:url includingPropertiesForKeys:@[NSURLIsWritableKey] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
         BOOL isDirectory = NO;
         for(NSURL * file in files) {
-            if ([_supportedFileTypes containsObject:[file pathExtension]]) {
+            if ([_supportedFileTypes containsObject:[[file pathExtension] lowercaseString]]) {
                 BOOL fileExists = [fileManager fileExistsAtPath:[file path]  isDirectory:&isDirectory];
                 if (fileExists && !isDirectory) {
                     [_filenameField setStringValue:[file path]];

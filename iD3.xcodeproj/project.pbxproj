@@ -21,7 +21,7 @@
 		F7757FBC19E4EE9400AABDB7 /* PictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7757FBB19E4EE9400AABDB7 /* PictureView.m */; };
 		F7757FBF19E7962200AABDB7 /* ImageValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F7757FBE19E7962200AABDB7 /* ImageValueTransform.m */; };
 		F7757FCE19E7ADB400AABDB7 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = F7757FCC19E7ADB400AABDB7 /* mic.png */; };
-		F7757FCF19E7ADB400AABDB7 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F7757FCD19E7ADB400AABDB7 /* placeholder.png */; };
+		F7757FD119E7B2BB00AABDB7 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F7757FD019E7B2BB00AABDB7 /* placeholder.png */; };
 		F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */; };
 		F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE1619889BB500CC5F02 /* TagEntity.m */; };
 		F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F79BCE191989FD5900CC5F02 /* iD3.plist */; };
@@ -98,7 +98,7 @@
 		F7757FBD19E7962200AABDB7 /* ImageValueTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageValueTransform.h; sourceTree = "<group>"; };
 		F7757FBE19E7962200AABDB7 /* ImageValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageValueTransform.m; sourceTree = "<group>"; };
 		F7757FCC19E7ADB400AABDB7 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
-		F7757FCD19E7ADB400AABDB7 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		F7757FD019E7B2BB00AABDB7 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		F77F88A11987433900B1B3CC /* iD3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iD3.entitlements; sourceTree = "<group>"; };
 		F77F88EC1987D49C00B1B3CC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F79BCE1519889BB500CC5F02 /* TagEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagEntity.h; path = DataModel/TagEntity.h; sourceTree = "<group>"; };
@@ -427,8 +427,8 @@
 		F7FB46C21993309100C72AFF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F7757FD019E7B2BB00AABDB7 /* placeholder.png */,
 				F7757FCC19E7ADB400AABDB7 /* mic.png */,
-				F7757FCD19E7ADB400AABDB7 /* placeholder.png */,
 				F7FB46DF1993C11A00C72AFF /* iD3Help */,
 				F7E33D1B19CF3797003BE071 /* Encoding.pdf */,
 				F7E33D1D19CF3827003BE071 /* AddFile.pdf */,
@@ -530,7 +530,7 @@
 				F7FB46E01993C11A00C72AFF /* iD3Help in Resources */,
 				F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */,
 				F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */,
-				F7757FCF19E7ADB400AABDB7 /* placeholder.png in Resources */,
+				F7757FD119E7B2BB00AABDB7 /* placeholder.png in Resources */,
 				F7E33D1019CE925E003BE071 /* Reset.pdf in Resources */,
 				F7757FCE19E7ADB400AABDB7 /* mic.png in Resources */,
 				F7E33D1E19CF3827003BE071 /* AddFile.pdf in Resources */,

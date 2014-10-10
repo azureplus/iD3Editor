@@ -11,6 +11,6 @@
 @interface NSImage(NSData)
 -(NSData *)toData;
 +(NSImage *) nullImage;
-+(NSImage *) placeholderImage;
++(NSImage *) nullPlaceholderImage;
 +(NSImage *) multiplePlaceholderImage;
 @end

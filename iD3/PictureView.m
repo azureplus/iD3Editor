@@ -8,12 +8,13 @@
 
 #import "PictureView.h"
 #import "AppDelegate.h"
+#import "NSImage_NSData.h"
 
 @implementation PictureView
 -(void) mouseEntered:(NSEvent *)theEvent {
     AppDelegate * delegate = [NSApp delegate];
     if ([[[delegate tagArrayController] selectedObjects] count]) {
-        [self.deleteButton setHidden:NO];
+        [self.deleteButton setHidden:self.image == [NSImage nullPlaceholderImage]];
     }
 }
 

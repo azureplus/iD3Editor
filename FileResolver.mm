@@ -112,20 +112,20 @@ static TagIOXIPH * tagWriterXIPH;
         TagLib::Ogg::Speex::File * speex = dynamic_cast<TagLib::Ogg::Speex::File *>(fileRef.file());
         TagLib::Ogg::Vorbis::File * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         
-        if (flac->isValid()) {
+        if (flac && flac->isValid()) {
             [tagGroup addTagLib:flac->tag()];
-        } else if (speex->isValid()) {
+        } else if (speex && speex->isValid()) {
             [tagGroup addTagLib:speex->tag()];
-        } else if (vorbis->isValid()) { //vorbis
+        } else if (vorbis && vorbis->isValid()) { //vorbis
             [tagGroup addTagLib:vorbis->tag()];
         }
     } else if (dynamic_cast<TagLib::RIFF::File *>(fileRef.file())) {
         TagLib::RIFF::AIFF::File* aiff = dynamic_cast<TagLib::RIFF::AIFF::File*>(fileRef.file());
         TagLib::RIFF::WAV::File * wav = dynamic_cast<TagLib::RIFF::WAV::File*>(fileRef.file());
         
-        if (aiff->isValid()) {
+        if (aiff && aiff->isValid()) {
             [tagGroup addTagLib:aiff->tag()];
-        } else if (wav->isValid()) {
+        } else if (wav && wav->isValid()) {
             if (wav->hasInfoTag()) {
                 [tagGroup addTagLib:wav->InfoTag()];
             } else if (wav->hasID3v2Tag()) {
@@ -187,7 +187,7 @@ static TagIOXIPH * tagWriterXIPH;
             }
         }
     } else if (TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file())) {
-        if (file && file->isValid()) {
+        if (file->isValid()) {
             if (file->hasAPETag()) {
                 [tagWriterApe write:tag toTaglib:file->APETag()];
             }
@@ -203,20 +203,20 @@ static TagIOXIPH * tagWriterXIPH;
         TagLib::Ogg::Speex::File * speex = dynamic_cast<TagLib::Ogg::Speex::File *>(fileRef.file());
         TagLib::Ogg::Vorbis::File * vorbis = dynamic_cast<TagLib::Ogg::Vorbis::File *>(fileRef.file());
         
-        if (flac->isValid()) {
+        if (flac && flac->isValid()) {
             [tagWriterXIPH write:tag toTaglib:flac->tag()];
-        } else if (speex->isValid()) {
+        } else if (speex && speex->isValid()) {
             [tagWriterXIPH write:tag toTaglib:speex->tag()];
-        } else if (vorbis->isValid()) {
+        } else if (vorbis && vorbis->isValid()) {
             [tagWriterXIPH write:tag toTaglib:vorbis->tag()];
         }
     } else if (dynamic_cast<TagLib::RIFF::File *>(fileRef.file())) {
         TagLib::RIFF::AIFF::File* aiff = dynamic_cast<TagLib::RIFF::AIFF::File*>(fileRef.file());
         TagLib::RIFF::WAV::File * wav = dynamic_cast<TagLib::RIFF::WAV::File*>(fileRef.file());
         
-        if (aiff->isValid()) {
+        if (aiff && aiff->isValid()) {
             [tagWriterID3V2 write:tag toTaglib:aiff->tag()];
-        } else if (wav->isValid()) {
+        } else if (wav && wav->isValid()) {
             [tagWriterID3V2 write:tag toTaglib:wav->ID3v2Tag()];
             [tagWriterInfo write:tag toTaglib:wav->InfoTag()];
         }

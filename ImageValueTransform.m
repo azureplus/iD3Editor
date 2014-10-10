@@ -20,7 +20,7 @@
 
 - (id)transformedValue:(id) value {
     if (value == nil || value == [NSImage nullImage]) {
-        value = [NSImage placeholderImage];
+        value = [NSImage nullPlaceholderImage];
     }
     
     return value;

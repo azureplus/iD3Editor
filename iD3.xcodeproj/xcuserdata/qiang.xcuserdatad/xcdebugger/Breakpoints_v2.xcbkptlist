@@ -1376,11 +1376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iD3/PictureView.m"
-            timestampString = "434440561.19215"
+            timestampString = "434614655.133403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-performDragOperation:"
             landmarkType = "5">
          </BreakpointContent>

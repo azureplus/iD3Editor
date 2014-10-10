@@ -32,7 +32,7 @@ static NSImage * multiplePlaceholderImage;
     return nullImage;
 }
 
-+(NSImage *) placeholderImage {
++(NSImage *) nullPlaceholderImage {
     if (!placeholderImage) {
         placeholderImage = [NSImage imageNamed:@"placeholder.png"];
     }
