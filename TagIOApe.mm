@@ -77,14 +77,18 @@
 }
 
 -(void) _writePic:(NSImage *) pic to:(TagLib::APE::Tag *) taglib withType:(std::string) type {
-    NSData * name = [@"coverart.jpg" dataUsingEncoding:NSUTF8StringEncoding];
+    if (pic == [NSImage nullImage]) {
+        taglib->removeItem(type);
+    } else {
+        NSData * name = [@"coverart.jpg" dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSMutableData * picData = [NSMutableData dataWithData:name];
-    Byte zero = 0;
-    [picData appendBytes:&zero length:1];
-    [picData appendData:[pic toData]];
+        NSMutableData * picData = [NSMutableData dataWithData:name];
+        Byte zero = 0;
+        [picData appendBytes:&zero length:1];
+        [picData appendData:[pic toData]];
     
-    TagLib::ByteVector bv((const char *)[picData bytes], (uint)[picData length]);
-    taglib->setData(type, bv);
+        TagLib::ByteVector bv((const char *)[picData bytes], (uint)[picData length]);
+        taglib->setData(type, bv);
+    }
 }
 @end

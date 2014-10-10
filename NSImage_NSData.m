@@ -8,6 +8,8 @@
 
 #import "NSImage_NSData.h"
 
+static NSImage * nullImage;
+
 @implementation NSImage(NSData)
 // NSImage to PNG data
 -(NSData *)toData {
@@ -17,5 +19,14 @@
     NSDictionary *imageProps = [NSDictionary dictionaryWithObject:compressionFactor forKey:NSImageCompressionFactor];
     imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
     return imageData;
+}
+
++(NSImage *) nullImage {
+    if (!nullImage) {
+        nullImage = [[NSImage alloc] initWithSize:NSMakeSize(1, 1)];
+        [nullImage setBackgroundColor:[NSColor clearColor]];
+    }
+    
+    return nullImage;
 }
 @end

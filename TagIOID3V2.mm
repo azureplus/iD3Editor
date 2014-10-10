@@ -87,6 +87,13 @@
         }
     }
     
+    if (pic == [NSImage nullImage]) {
+        if (frameFound) {
+            taglib->removeFrame(frameFound);
+        }
+        return;
+    }
+    
     if (!frameFound) {
         frameFound = new TagLib::ID3v2::AttachedPictureFrame();
         taglib->addFrame(frameFound);

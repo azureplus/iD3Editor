@@ -10,4 +10,5 @@
 
 @interface NSImage(NSData)
 -(NSData *)toData;
++(NSImage *) nullImage;
 @end

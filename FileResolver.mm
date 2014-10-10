@@ -239,6 +239,13 @@ static TagIOXIPH * tagWriterXIPH;
         }
     }
     
+    if (image == [NSImage nullImage]) {
+        if (picture) {
+            file->removePicture(picture);
+        }
+        return;
+    }
+        
     BOOL found = true;
     
     if (!picture) {

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TagEntity.h"
 #import "FileResolver.h"
+#import "NSImage_NSData.h"
 
 // tag encodings
 #import "EncodingEntity.h"
@@ -470,11 +471,9 @@
     }
 }
 
--(IBAction)test:(id)sender {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"];
-    NSImage * image = [[NSImage alloc] initWithContentsOfFile:filePath];
-    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
-        [tag setCoverArt:image];
+-(IBAction) deleteCoverArt:(id)sender {
+    for (TagEntity * tag in _tagArrayController.selectedObjects) {
+        [tag setCoverArt:[NSImage nullImage]];
     }
 }
 @end

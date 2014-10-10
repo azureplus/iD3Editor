@@ -58,6 +58,7 @@
 -(IBAction) setArtistToAll:(id)sender;
 -(IBAction) setGenreToAll:(id)sender;
 -(IBAction) formatTags:(id)sender;
+-(IBAction) deleteCoverArt:(id)sender;
 
 ///
 -(void) removeTagEntity: (TagEntity *) tagEntity;
@@ -67,6 +68,4 @@
 -(void) addN2TPattern:(NSString *)pattern;
 -(void) addT2NPattern:(NSString *)pattern;
 
-///
--(IBAction)test:(id)sender;
 @end

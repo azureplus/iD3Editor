@@ -7,38 +7,58 @@
 //
 
 #import "PictureView.h"
+#import "AppDelegate.h"
 
 @implementation PictureView
+-(void) mouseEntered:(NSEvent *)theEvent {
+    AppDelegate * delegate = [NSApp delegate];
+    if ([[[delegate tagArrayController] selectedObjects] count]) {
+        [self.deleteButton setHidden:NO];
+    }
+}
+
+-(void) mouseExited:(NSEvent *)theEvent {
+    [self.deleteButton setHidden:YES];
+}
+
+-(void)updateTrackingAreas {
+    if(_trackingArea != nil) {
+        [self removeTrackingArea:_trackingArea];
+    }
+    
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
+    _trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+                                                 options:opts
+                                                   owner:self
+                                                userInfo:nil];
+    [self addTrackingArea:_trackingArea];
+}
+
 -(NSDragOperation) draggingEntered:(id<NSDraggingInfo>)sender {
-    DEBUGLOG(@"dragging entered");
+    AppDelegate * delegate = [NSApp delegate];
+    if (![[[delegate tagArrayController] selectedObjects] count]) {
+        return NSDragOperationNone;
+    }
+    
     if ((NSDragOperationGeneric & [sender draggingSourceOperationMask]) == NSDragOperationGeneric) {
-        //this means that the sender is offering the type of operation we want
-        //return that we want the NSDragOperationGeneric operation that they
-        //are offering
         return NSDragOperationGeneric;
     } else {
-        //since they aren't offering the type of operation we want, we have
-        //to tell them we aren't interested
         return NSDragOperationNone;
     }
 }
 
 -(void) draggingExited:(id<NSDraggingInfo>)sender {
-    DEBUGLOG(@"dragging exited");
 }
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
     NSPasteboard *paste = [sender draggingPasteboard];
     
-    NSArray *types = [NSArray arrayWithObjects:NSTIFFPboardType,
-                      NSFilenamesPboardType, nil];
+    NSArray *types = [NSArray arrayWithObjects:NSTIFFPboardType, NSFilenamesPboardType, nil];
 
     NSString *desiredType = [paste availableTypeFromArray:types];
     NSData *carriedData = [paste dataForType:desiredType];
     
     if (nil == carriedData) {
-        NSRunAlertPanel(@"Paste Error", @"Sorry, but the past operation failed",
-                        nil, nil, nil);
         return NO;
     } else {
         if ([desiredType isEqualToString:NSTIFFPboardType]) {
@@ -55,7 +75,7 @@
             }
         }
     }
-    [self setNeedsDisplay:YES];    //redraw us with the new image
+    [self setNeedsDisplay:YES];
     return YES;
 }
 

@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PictureView : NSImageView
+@interface PictureView : NSImageView {
+@private
+    NSTrackingArea * _trackingArea;
+}
 
+@property (assign, nonatomic) IBOutlet NSButton * deleteButton;
 @end

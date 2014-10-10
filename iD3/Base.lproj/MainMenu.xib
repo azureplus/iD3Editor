@@ -387,7 +387,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.055555555555555552" horizontal="YES" id="fWv-rP-J80">
+                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="fWv-rP-J80">
                                             <rect key="frame" x="1" y="763" width="700" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -699,12 +699,23 @@ IA
                                         </connections>
                                     </button>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qN5-sG-jS9" customClass="PictureView">
-                                        <rect key="frame" x="24" y="29" width="283" height="245"/>
+                                        <rect key="frame" x="34" y="17" width="256" height="256"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="klF-E5-MlM"/>
                                         <connections>
                                             <binding destination="j1s-e0-8eb" name="value" keyPath="selection.coverArt" id="sXY-Nu-ZJW"/>
+                                            <outlet property="deleteButton" destination="wAQ-6d-gsK" id="OMN-Kk-tYj"/>
                                         </connections>
                                     </imageView>
+                                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wAQ-6d-gsK">
+                                        <rect key="frame" x="116" y="137" width="85" height="17"/>
+                                        <buttonCell key="cell" type="inline" title="delete" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="8tW-gk-jlQ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystemBold"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="deleteCoverArt:" target="Voe-Tx-rLC" id="s8H-WY-0Um"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="770" id="QKO-5M-ad2"/>

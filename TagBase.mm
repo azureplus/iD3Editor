@@ -8,6 +8,7 @@
 
 #import "TagBase.h"
 #import "NSString_TLString.h"
+#import "NSImage_NSData.h"
 
 #define DECL_GETTER(FRAME)\
 -(NSString *) FRAME { \
