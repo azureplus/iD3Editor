@@ -24,6 +24,7 @@
                 <outlet property="chkCopyright" destination="GG6-OU-HP0" id="M57-RZ-zBi"/>
                 <outlet property="chkGenre" destination="Vv0-1e-YTi" id="SdL-2k-Ysn"/>
                 <outlet property="chkTitle" destination="TNw-0l-Sfs" id="Bs7-mO-uli"/>
+                <outlet property="coverArtView" destination="qN5-sG-jS9" id="J1U-2H-tZS"/>
                 <outlet property="encodingArrayController" destination="su6-ab-bjG" id="Poh-pf-sZi"/>
                 <outlet property="encodingWindow" destination="9rE-sh-TII" id="8uJ-np-Rcl"/>
                 <outlet property="fileBeingSaved" destination="uBz-eT-SdY" id="uSO-Ep-OMJ"/>
@@ -387,7 +388,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="fWv-rP-J80">
+                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.1111111111111111" horizontal="YES" id="fWv-rP-J80">
                                             <rect key="frame" x="1" y="763" width="700" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -702,7 +703,11 @@ IA
                                         <rect key="frame" x="34" y="17" width="256" height="256"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="klF-E5-MlM"/>
                                         <connections>
-                                            <binding destination="j1s-e0-8eb" name="value" keyPath="selection.coverArt" id="sXY-Nu-ZJW"/>
+                                            <binding destination="j1s-e0-8eb" name="value" keyPath="selection.coverArt" id="nzb-PU-bAy">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">ImageValueTransform</string>
+                                                </dictionary>
+                                            </binding>
                                             <outlet property="deleteButton" destination="wAQ-6d-gsK" id="OMN-Kk-tYj"/>
                                         </connections>
                                     </imageView>

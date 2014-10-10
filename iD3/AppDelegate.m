@@ -32,6 +32,7 @@
     
     // observes char encoding changes
     [_encodingArrayController addObserver:self forKeyPath:@"selection" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)  context:nil];
+    [_tagArrayController addObserver:self forKeyPath:@"selection" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)  context:nil];
     
     // register default preferences
     [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"DefaultPreferences" ofType:@"plist"]]];
@@ -220,6 +221,20 @@
             for (TagEntity * tag in selectedTags) {
                 [tag setCharEncoding:[encodignEntity.code unsignedIntValue]];
             }
+        }
+    } else if (object == _tagArrayController && [keyPath isEqualTo:@"selection"]) {
+        NSArray * selectedTags = _tagArrayController.selectedObjects;
+        if (selectedTags.count > 1) {
+            NSImage * imageToDisplay = [NSImage placeholderImage];
+            for (TagEntity * tag in selectedTags) {
+                if (tag.coverArt != nil && tag.coverArt != [NSImage nullImage]) {
+                    imageToDisplay = [NSImage multiplePlaceholderImage];
+                    break;
+                }
+            }
+            [_coverArtView setImage:imageToDisplay];
+        } else if (selectedTags.count == 0) {
+            [_coverArtView setImage:[NSImage placeholderImage]];
         }
     }
 }

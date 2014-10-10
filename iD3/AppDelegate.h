@@ -32,6 +32,8 @@
 @property (assign) IBOutlet NSButton * chkComposer;
 @property (assign) IBOutlet NSButton * chkCopyright;
 
+@property (assign) IBOutlet NSImageView * coverArtView;
+
 // format tag
 @property (assign) IBOutlet NSComboBox * cbFormat;
 

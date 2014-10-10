@@ -19,6 +19,9 @@
 		F76022101999DB22002DFE01 /* TagTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F760220F1999DB22002DFE01 /* TagTableView.m */; };
 		F76D68931986166700DB2E41 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76D68921986166700DB2E41 /* libz.dylib */; };
 		F7757FBC19E4EE9400AABDB7 /* PictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7757FBB19E4EE9400AABDB7 /* PictureView.m */; };
+		F7757FBF19E7962200AABDB7 /* ImageValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F7757FBE19E7962200AABDB7 /* ImageValueTransform.m */; };
+		F7757FCE19E7ADB400AABDB7 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = F7757FCC19E7ADB400AABDB7 /* mic.png */; };
+		F7757FCF19E7ADB400AABDB7 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F7757FCD19E7ADB400AABDB7 /* placeholder.png */; };
 		F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */; };
 		F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE1619889BB500CC5F02 /* TagEntity.m */; };
 		F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F79BCE191989FD5900CC5F02 /* iD3.plist */; };
@@ -92,6 +95,10 @@
 		F76D68921986166700DB2E41 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F7757FBA19E4EE9400AABDB7 /* PictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureView.h; sourceTree = "<group>"; };
 		F7757FBB19E4EE9400AABDB7 /* PictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureView.m; sourceTree = "<group>"; };
+		F7757FBD19E7962200AABDB7 /* ImageValueTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageValueTransform.h; sourceTree = "<group>"; };
+		F7757FBE19E7962200AABDB7 /* ImageValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageValueTransform.m; sourceTree = "<group>"; };
+		F7757FCC19E7ADB400AABDB7 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
+		F7757FCD19E7ADB400AABDB7 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		F77F88A11987433900B1B3CC /* iD3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iD3.entitlements; sourceTree = "<group>"; };
 		F77F88EC1987D49C00B1B3CC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F79BCE1519889BB500CC5F02 /* TagEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagEntity.h; path = DataModel/TagEntity.h; sourceTree = "<group>"; };
@@ -311,6 +318,8 @@
 				F7E33CFE19CD281A003BE071 /* FilenameValueTransform2.m */,
 				F7FB46BF1992742400C72AFF /* NullValueTransform.h */,
 				F7FB46C01992742400C72AFF /* NullValueTransform.m */,
+				F7757FBD19E7962200AABDB7 /* ImageValueTransform.h */,
+				F7757FBE19E7962200AABDB7 /* ImageValueTransform.m */,
 			);
 			name = ValueTransformers;
 			sourceTree = "<group>";
@@ -418,6 +427,8 @@
 		F7FB46C21993309100C72AFF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F7757FCC19E7ADB400AABDB7 /* mic.png */,
+				F7757FCD19E7ADB400AABDB7 /* placeholder.png */,
 				F7FB46DF1993C11A00C72AFF /* iD3Help */,
 				F7E33D1B19CF3797003BE071 /* Encoding.pdf */,
 				F7E33D1D19CF3827003BE071 /* AddFile.pdf */,
@@ -519,7 +530,9 @@
 				F7FB46E01993C11A00C72AFF /* iD3Help in Resources */,
 				F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */,
 				F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */,
+				F7757FCF19E7ADB400AABDB7 /* placeholder.png in Resources */,
 				F7E33D1019CE925E003BE071 /* Reset.pdf in Resources */,
+				F7757FCE19E7ADB400AABDB7 /* mic.png in Resources */,
 				F7E33D1E19CF3827003BE071 /* AddFile.pdf in Resources */,
 				F7FB46C4199330A300C72AFF /* TagFilename.pdf in Resources */,
 				F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */,
@@ -555,6 +568,7 @@
 				F746193D19D79DAA00EA3D33 /* TagIOInfo.mm in Sources */,
 				F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */,
 				F7E33D0319CD33C0003BE071 /* AppDelegate_Filename.m in Sources */,
+				F7757FBF19E7962200AABDB7 /* ImageValueTransform.m in Sources */,
 				F7E33CFF19CD281A003BE071 /* FilenameValueTransform2.m in Sources */,
 				F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */,
 				F746194019D79EC000EA3D33 /* TagIOID3V1.mm in Sources */,

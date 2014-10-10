@@ -9,6 +9,8 @@
 #import "NSImage_NSData.h"
 
 static NSImage * nullImage;
+static NSImage * placeholderImage;
+static NSImage * multiplePlaceholderImage;
 
 @implementation NSImage(NSData)
 // NSImage to PNG data
@@ -28,5 +30,21 @@ static NSImage * nullImage;
     }
     
     return nullImage;
+}
+
++(NSImage *) placeholderImage {
+    if (!placeholderImage) {
+        placeholderImage = [NSImage imageNamed:@"placeholder.png"];
+    }
+    
+    return placeholderImage;
+}
+
++(NSImage *) multiplePlaceholderImage {
+    if (!multiplePlaceholderImage) {
+        multiplePlaceholderImage = [NSImage imageNamed:@"mic.png"];
+    }
+    
+    return multiplePlaceholderImage;
 }
 @end
