@@ -34,6 +34,7 @@
 #import "TagIOID3V2.h"
 #import "TagIOXIPH.h"
 
+#import "NSString_TLString.h"
 #import "NSImage_NSData.h"
 
 static TagIOApe * tagWriterApe;
@@ -128,7 +129,9 @@ static TagIOXIPH * tagWriterXIPH;
         } else if (wav && wav->isValid()) {
             if (wav->hasInfoTag()) {
                 [tagGroup addTagLib:wav->InfoTag()];
-            } else if (wav->hasID3v2Tag()) {
+            }
+            
+            if (wav->hasID3v2Tag()) {
                 [tagGroup addTagLib:wav->ID3v2Tag()];
             }
         }
