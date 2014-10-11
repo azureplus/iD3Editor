@@ -76,8 +76,10 @@
     }
 }
 
--(void) _writePic:(NSImage *) pic to:(TagLib::APE::Tag *) taglib withType:(std::string) type {
-    if (pic == [NSImage nullImage]) {
+-(void) _writePic:(NSImage *) pic to:(TagLib::APE::Tag *) taglib withType:(const std::string &) type {
+    if (!pic) {
+        return;
+    } else if (pic == [NSImage nullImage]) {
         taglib->removeItem(type);
     } else {
         NSData * name = [@"coverart.jpg" dataUsingEncoding:NSUTF8StringEncoding];

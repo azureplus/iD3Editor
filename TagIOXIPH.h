@@ -7,7 +7,11 @@
 //
 
 #import "TagIOBase.h"
+#import "TagIOXIPH.h"
+#import "taglib/xiphcomment.h"
+#import "taglib/attachedpictureframe.h"
+#import "TagBase.h"
+#import "NSString_TLString.h"
 
 @interface TagIOXIPH : TagIOBase
-
 @end

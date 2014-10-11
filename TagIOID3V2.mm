@@ -76,6 +76,10 @@
 
 
 -(void) _writePic:(NSImage *) pic to:(TagLib::ID3v2::Tag *) taglib withType:(TagLib::ID3v2::AttachedPictureFrame::Type) type {
+    if (!pic) {
+        return;
+    }
+    
     TagLib::ID3v2::FrameList picFrames = taglib->frameList("APIC");
     TagLib::ID3v2::AttachedPictureFrame * frameFound = nil;    
     

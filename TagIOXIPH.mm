@@ -32,7 +32,8 @@
 }
 
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {
-    if (taglib == nil) {                return;
+    if (taglib == nil) {
+        return;
     }
     
     [super write:tag toTaglib:taglib];

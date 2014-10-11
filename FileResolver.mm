@@ -20,6 +20,7 @@
 #import "taglib/wavfile.h"
 #import "taglib/aifffile.h"
 #import "taglib/oggflacfile.h"
+#import "taglib/mp4file.h"
 
 #import "taglib/tag.h"
 #import "taglib/apetag.h"
@@ -27,12 +28,14 @@
 #import "taglib/id3v1tag.h"
 #import "taglib/id3v2tag.h"
 #import "taglib/xiphcomment.h"
+#import "taglib/mp4tag.h"
 
 #import "TagIOApe.h"
 #import "TagIOInfo.h"
 #import "TagIOID3V1.h"
 #import "TagIOID3V2.h"
 #import "TagIOXIPH.h"
+#import "TagIOMP4.h"
 
 #import "NSString_TLString.h"
 #import "NSImage_NSData.h"
@@ -42,6 +45,7 @@ static TagIOInfo * tagWriterInfo;
 static TagIOID3V1 * tagWriterID3V1;
 static TagIOID3V2 * tagWriterID3V2;
 static TagIOXIPH * tagWriterXIPH;
+static TagIOMP4 * tagWriterMP4;
 
 @implementation FileResolver
 
@@ -52,6 +56,7 @@ static TagIOXIPH * tagWriterXIPH;
         tagWriterID3V1 = [[TagIOID3V1 alloc] init];
         tagWriterID3V2 = [[TagIOID3V2 alloc] init];
         tagWriterXIPH = [[TagIOXIPH alloc] init];
+        tagWriterMP4 = [[TagIOMP4 alloc] init];
     }
 }
 
@@ -90,6 +95,10 @@ static TagIOXIPH * tagWriterXIPH;
                 TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
                 [tagGroup addTagLib:tag];
             }
+        }
+    } else if (TagLib::MP4::File * file = dynamic_cast<TagLib::MP4::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            [tagGroup addTagLib:file->tag()];
         }
     } else if (TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file())) {
         if (file->isValid()) {
@@ -130,7 +139,6 @@ static TagIOXIPH * tagWriterXIPH;
             if (wav->hasInfoTag()) {
                 [tagGroup addTagLib:wav->InfoTag()];
             }
-            
             if (wav->hasID3v2Tag()) {
                 [tagGroup addTagLib:wav->ID3v2Tag()];
             }
@@ -188,6 +196,10 @@ static TagIOXIPH * tagWriterXIPH;
             if (file->hasID3v1Tag()) {
                 [tagWriterID3V1 write:tag toTaglib:file->ID3v1Tag()];
             }
+        }
+    } else if (TagLib::MP4::File * file = dynamic_cast<TagLib::MP4::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            [tagWriterMP4 write:tag toTaglib:file->tag()];
         }
     } else if (TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file())) {
         if (file->isValid()) {
