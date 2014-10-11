@@ -388,7 +388,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.1111111111111111" horizontal="YES" id="fWv-rP-J80">
+                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="fWv-rP-J80">
                                             <rect key="frame" x="1" y="763" width="700" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -723,8 +723,8 @@ IA
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="770" id="QKO-5M-ad2"/>
-                                    <constraint firstAttribute="width" constant="324" id="oh4-XB-zQd"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="780" id="QKO-5M-ad2"/>
+                                    <constraint firstAttribute="width" constant="325" id="oh4-XB-zQd"/>
                                 </constraints>
                             </customView>
                         </subviews>
