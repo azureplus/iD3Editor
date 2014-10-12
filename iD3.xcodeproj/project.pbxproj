@@ -23,6 +23,7 @@
 		F7757FCE19E7ADB400AABDB7 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = F7757FCC19E7ADB400AABDB7 /* mic.png */; };
 		F7757FD119E7B2BB00AABDB7 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F7757FD019E7B2BB00AABDB7 /* placeholder.png */; };
 		F7757FD419E8C83700AABDB7 /* TagIOMP4.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7757FD319E8C83700AABDB7 /* TagIOMP4.mm */; };
+		F77A73BC19E984900094D7B8 /* TagIOASF.mm in Sources */ = {isa = PBXBuildFile; fileRef = F77A73BB19E984900094D7B8 /* TagIOASF.mm */; };
 		F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */; };
 		F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE1619889BB500CC5F02 /* TagEntity.m */; };
 		F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F79BCE191989FD5900CC5F02 /* iD3.plist */; };
@@ -102,6 +103,8 @@
 		F7757FD019E7B2BB00AABDB7 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		F7757FD219E8C83700AABDB7 /* TagIOMP4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOMP4.h; sourceTree = "<group>"; };
 		F7757FD319E8C83700AABDB7 /* TagIOMP4.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOMP4.mm; sourceTree = "<group>"; };
+		F77A73BA19E984900094D7B8 /* TagIOASF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOASF.h; sourceTree = "<group>"; };
+		F77A73BB19E984900094D7B8 /* TagIOASF.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOASF.mm; sourceTree = "<group>"; };
 		F77F88A11987433900B1B3CC /* iD3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iD3.entitlements; sourceTree = "<group>"; };
 		F77F88EC1987D49C00B1B3CC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F79BCE1519889BB500CC5F02 /* TagEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagEntity.h; path = DataModel/TagEntity.h; sourceTree = "<group>"; };
@@ -310,6 +313,8 @@
 				F746194519D79F6900EA3D33 /* TagIOXIPH.mm */,
 				F7757FD219E8C83700AABDB7 /* TagIOMP4.h */,
 				F7757FD319E8C83700AABDB7 /* TagIOMP4.mm */,
+				F77A73BA19E984900094D7B8 /* TagIOASF.h */,
+				F77A73BB19E984900094D7B8 /* TagIOASF.mm */,
 			);
 			name = ReaderWriterImpl;
 			sourceTree = "<group>";
@@ -591,6 +596,7 @@
 				F7E994F31983418000DDE9B4 /* main.m in Sources */,
 				F7757FBC19E4EE9400AABDB7 /* PictureView.m in Sources */,
 				F79BCE2E198DF84200CC5F02 /* EncodingWindowDelegate.m in Sources */,
+				F77A73BC19E984900094D7B8 /* TagIOASF.mm in Sources */,
 				F7E33CAF19C63238003BE071 /* TagBase.mm in Sources */,
 				F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */,
 				F79BCE44198FBFBC00CC5F02 /* FilenameValueTransform.m in Sources */,

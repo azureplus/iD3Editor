@@ -21,6 +21,7 @@
 #import "taglib/aifffile.h"
 #import "taglib/oggflacfile.h"
 #import "taglib/mp4file.h"
+#import "taglib/asffile.h"
 
 #import "taglib/tag.h"
 #import "taglib/apetag.h"
@@ -29,6 +30,7 @@
 #import "taglib/id3v2tag.h"
 #import "taglib/xiphcomment.h"
 #import "taglib/mp4tag.h"
+#import "taglib/asftag.h"
 
 #import "TagIOApe.h"
 #import "TagIOInfo.h"
@@ -36,6 +38,7 @@
 #import "TagIOID3V2.h"
 #import "TagIOXIPH.h"
 #import "TagIOMP4.h"
+#import "TagIOASF.h"
 
 #import "NSString_TLString.h"
 #import "NSImage_NSData.h"
@@ -46,6 +49,7 @@ static TagIOID3V1 * tagWriterID3V1;
 static TagIOID3V2 * tagWriterID3V2;
 static TagIOXIPH * tagWriterXIPH;
 static TagIOMP4 * tagWriterMP4;
+static TagIOASF * tagWriterASF;
 
 @implementation FileResolver
 
@@ -57,6 +61,7 @@ static TagIOMP4 * tagWriterMP4;
         tagWriterID3V2 = [[TagIOID3V2 alloc] init];
         tagWriterXIPH = [[TagIOXIPH alloc] init];
         tagWriterMP4 = [[TagIOMP4 alloc] init];
+        tagWriterASF = [[TagIOASF alloc] init];
     }
 }
 
@@ -77,6 +82,11 @@ static TagIOMP4 * tagWriterMP4;
                 [tagGroup addTagLib:tag];
             }
         }
+    } else if (TagLib::ASF::File * file = dynamic_cast<TagLib::ASF::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            TagLib::ASF::Tag * tag = file->tag();
+            [tagGroup addTagLib:tag];
+        }    
     } else if (TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file())){
         if (file->isValid()) {
             if (file->hasXiphComment()) {
@@ -173,6 +183,11 @@ static TagIOMP4 * tagWriterMP4;
             if (file->hasID3v1Tag()) {
                 [tagWriterID3V1 write:tag toTaglib:file->ID3v1Tag()];
             }
+        }
+    } else if (TagLib::ASF::File * file = dynamic_cast<TagLib::ASF::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            TagLib::ASF::Tag * asfTag = file->tag();
+            [tagWriterASF write:tag toTaglib:asfTag];
         }
     } else if (TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file())) {
         if (file->isValid()) {

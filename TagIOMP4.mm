@@ -14,10 +14,10 @@
 #import "NSString_TLString.h"
 #import "NSImage_NSData.h"
 
-#define COMPOSER "\251wrt"
-#define COPYRIGHT "cprt"
-#define COVERART "covr"
-#define STRINGLIST_DELIMITER ", "
+#define MP4_COMPOSER "\251wrt"
+#define MP4_COPYRIGHT "cprt"
+#define MP4_COVER_ART "covr"
+#define MP4_STRINGLIST_DELIMITER ", "
 
 @implementation TagIOMP4
 -(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib {
@@ -26,12 +26,12 @@
     TagLib::MP4::Tag * mp4Tag = dynamic_cast<TagLib::MP4::Tag *>(taglib);
     if (mp4Tag) {
         const TagLib::MP4::ItemListMap & itemListMap = mp4Tag->itemListMap();
-        if (itemListMap.contains(COMPOSER)) {
-            tag.composerTL = itemListMap[COMPOSER].toStringList().toString(STRINGLIST_DELIMITER);
+        if (itemListMap.contains(MP4_COMPOSER)) {
+            tag.composerTL = itemListMap[MP4_COMPOSER].toStringList().toString(MP4_STRINGLIST_DELIMITER);
         }
         
-        if (itemListMap.contains(COPYRIGHT)) {
-            tag.copyrightTL = itemListMap[COPYRIGHT].toStringList().toString(STRINGLIST_DELIMITER);
+        if (itemListMap.contains(MP4_COPYRIGHT)) {
+            tag.copyrightTL = itemListMap[MP4_COPYRIGHT].toStringList().toString(MP4_STRINGLIST_DELIMITER);
         }
         
         [self _readPicturesFrom:mp4Tag to:tag];
@@ -41,7 +41,7 @@
 }
 
 -(void) _readPicturesFrom:(TagLib::MP4::Tag *) taglib to:(TagBase *) tag {
-    TagLib::MP4::CoverArtList picFrames = taglib->itemListMap()[COVERART].toCoverArtList();
+    TagLib::MP4::CoverArtList picFrames = taglib->itemListMap()[MP4_COVER_ART].toCoverArtList();
     if (!picFrames.size()) {
         return;
     }
@@ -68,10 +68,10 @@
     }
     
     TagLib::MP4::ItemListMap & itemListMap = mp4Tag->itemListMap();
-    itemListMap[COMPOSER] = TagLib::StringList([NSString TLStringFromString:tag.composer]);
-    itemListMap[COPYRIGHT] = TagLib::StringList([NSString TLStringFromString:tag.copyright]);
+    itemListMap[MP4_COMPOSER] = TagLib::StringList([NSString TLStringFromString:tag.composer]);
+    itemListMap[MP4_COPYRIGHT] = TagLib::StringList([NSString TLStringFromString:tag.copyright]);
     
-    [self _writePic:[tag coverArt] to:mp4Tag withType:COVERART];
+    [self _writePic:[tag coverArt] to:mp4Tag withType:MP4_COVER_ART];
 }
 
 -(void) _writePic:(NSImage *) pic to:(TagLib::MP4::Tag *) mp4Tag withType:(const std::string &) type {
