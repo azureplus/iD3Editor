@@ -22,6 +22,9 @@
 #import "taglib/oggflacfile.h"
 #import "taglib/mp4file.h"
 #import "taglib/asffile.h"
+#import "taglib/mpcfile.h"
+#import "taglib/trueaudiofile.h"
+#import "taglib/wavpackfile.h"
 
 #import "taglib/tag.h"
 #import "taglib/apetag.h"
@@ -110,7 +113,19 @@ static TagIOASF * tagWriterASF;
         if (file->isValid()) {
             [tagGroup addTagLib:file->tag()];
         }
-    } else if (TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file())) {
+    } else if(TagLib::MPC::File * file = dynamic_cast<TagLib::MPC::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            if (file->hasAPETag()) {
+                TagLib::APE::Tag * tag = file->APETag();
+                [tagGroup addTagLib:tag];
+            }
+            
+            if (file->hasID3v1Tag()) {
+                TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
+                [tagGroup addTagLib:tag];
+            }
+        }
+    }else if (TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file())) {
         if (file->isValid()) {
             if (file->hasAPETag()) {
                 TagLib::APE::Tag * tag = file->APETag();
@@ -151,6 +166,26 @@ static TagIOASF * tagWriterASF;
             }
             if (wav->hasID3v2Tag()) {
                 [tagGroup addTagLib:wav->ID3v2Tag()];
+            }
+        }
+    } else if (TagLib::TrueAudio::File * file = dynamic_cast<TagLib::TrueAudio::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            if (file->hasID3v2Tag()) {
+                [tagGroup addTagLib:file->ID3v2Tag()];
+            }
+            
+            if (file->hasID3v1Tag()) {
+                [tagGroup addTagLib:file->ID3v1Tag()];
+            }
+        }
+    } else if (TagLib::WavPack::File * file = dynamic_cast<TagLib::WavPack::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            if (file->hasAPETag()) {
+                [tagGroup addTagLib:file->APETag()];
+            }
+            
+            if (file->hasID3v1Tag()) {
+                [tagGroup addTagLib:file->ID3v1Tag()];
             }
         }
     }
@@ -216,6 +251,14 @@ static TagIOASF * tagWriterASF;
         if (file->isValid()) {
             [tagWriterMP4 write:tag toTaglib:file->tag()];
         }
+    } else if (TagLib::MPC::File * file = dynamic_cast<TagLib::MPC::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            [tagWriterApe write:tag toTaglib:file->APETag(true)];
+            
+            if (file->hasID3v1Tag()) {
+                [tagWriterID3V1 write:tag toTaglib:file->ID3v1Tag()];
+            }
+        }
     } else if (TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file())) {
         if (file->isValid()) {
             if (file->hasAPETag()) {
@@ -249,6 +292,22 @@ static TagIOASF * tagWriterASF;
         } else if (wav && wav->isValid()) {
             [tagWriterID3V2 write:tag toTaglib:wav->ID3v2Tag()];
             [tagWriterInfo write:tag toTaglib:wav->InfoTag()];
+        }
+    } else if (TagLib::TrueAudio::File * file = dynamic_cast<TagLib::TrueAudio::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            [tagWriterID3V2 write:tag toTaglib:file->ID3v2Tag(true)];
+            
+            if (file->hasID3v1Tag()) {
+                [tagWriterID3V1 write:tag toTaglib:file->ID3v1Tag()];
+            }
+        }
+    } else if (TagLib::WavPack::File * file = dynamic_cast<TagLib::WavPack::File *>(fileRef.file())) {
+        if (file->isValid()) {
+            [tagWriterApe write:tag toTaglib:file->APETag(true)];
+            
+            if (file->hasID3v1Tag()) {
+                [tagWriterID3V1 write:tag toTaglib:file->ID3v1Tag()];
+            }
         }
     }
     
