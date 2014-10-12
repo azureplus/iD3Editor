@@ -188,6 +188,8 @@ static TagIOASF * tagWriterASF;
                 [tagGroup addTagLib:file->ID3v1Tag()];
             }
         }
+    } else {
+        tagGroup.valid = NO;
     }
     
     return tagGroup;

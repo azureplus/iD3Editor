@@ -11,5 +11,6 @@
 #import "TagBase.h"
 
 @interface TagGroup : NSObject<TagProtocol>
+@property(assign, nonatomic) BOOL valid;
 -(id<TagProtocol>)addTagLib: (TagLib::Tag *) tag;
 @end

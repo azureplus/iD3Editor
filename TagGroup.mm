@@ -37,6 +37,7 @@
 -(id)init {
     if (self = [super init]) {
         self.tags = [NSMutableArray arrayWithCapacity:3];
+        self.valid = YES;
     }
     return self;
 }

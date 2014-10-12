@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TagGroup.mm"
-            timestampString = "434092802.395706"
+            timestampString = "434829466.098498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-track"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TagGroup.mm"
-            timestampString = "434092802.395706"
+            timestampString = "434829466.098498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-track"
             landmarkType = "5">
          </BreakpointContent>
@@ -617,12 +617,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iD3/AppDelegate.m"
-            timestampString = "434613898.934929"
+            filePath = "iD3/AppDelegate.mm"
+            timestampString = "434831380.242962"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "-_afterFileOpenPanelClose:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1074,11 +1074,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TagGroup.mm"
-            timestampString = "434092802.395706"
+            timestampString = "434829466.098498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "DECL_GETTER_1(artist)"
             landmarkType = "6">
             <Locations>
@@ -1120,11 +1120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FileResolver.mm"
-            timestampString = "434762970.939674"
+            timestampString = "434829466.098498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "+writeTag:to:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1135,13 +1135,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iD3/AppDelegate.m"
-            timestampString = "434613898.934929"
+            filePath = "iD3/AppDelegate.mm"
+            timestampString = "434833363.516445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
-            landmarkName = "-applicationShouldTerminate:"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "-addT2NPattern:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1151,13 +1151,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iD3/AppDelegate.m"
-            timestampString = "434613898.934929"
+            filePath = "iD3/AppDelegate.mm"
+            timestampString = "434833363.516445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
-            landmarkName = "-_addHistory:toController:withPattern:"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "-_afterFileOpenPanelClose:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1167,12 +1167,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iD3/AppDelegate.m"
-            timestampString = "434613898.934929"
+            filePath = "iD3/AppDelegate.mm"
+            timestampString = "434833363.516445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "-_addHistory:toController:withPattern:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1200,11 +1200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TagGroup.mm"
-            timestampString = "434092802.395706"
+            timestampString = "434829466.098498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "-year"
             landmarkType = "5">
          </BreakpointContent>
@@ -1461,7 +1461,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
             endingLineNumber = "177"
-            landmarkName = "+writeTag:to:"
+            landmarkName = "+read:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1477,7 +1477,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
             endingLineNumber = "69"
-            landmarkName = "+read:"
+            landmarkName = "+initialize"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1510,6 +1510,22 @@
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "-write:toTaglib:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FileResolver.mm"
+            timestampString = "434822319.698888"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "+read:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

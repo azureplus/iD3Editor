@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TagEntity.h"
 #import "FileResolver.h"
+#import "TagGroup.h"
 #import "NSImage_NSData.h"
 
 // tag encodings
@@ -61,13 +62,19 @@
 
 // add a tag into (managed) tag entity array
 -(TagEntity *)_addTag: (NSString *) filename {
-    NSEntityDescription * tagDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Tag"];
-    TagEntity * tagEntity = [[TagEntity alloc] initWithEntity:tagDescription insertIntoManagedObjectContext:_managedObjectContext];
-    tagEntity.tag = [FileResolver read:filename];
-    tagEntity.filename = filename;
-    [_tagArrayController addObject:tagEntity];
+    TagGroup * tagGroup = [FileResolver read:filename];
     
-    return tagEntity;
+    if (tagGroup.valid) {
+        NSEntityDescription * tagDescription = [[_managedObjectModel entitiesByName] objectForKey:@"Tag"];
+        TagEntity * tagEntity = [[TagEntity alloc] initWithEntity:tagDescription insertIntoManagedObjectContext:_managedObjectContext];
+        tagEntity.tag = [FileResolver read:filename];
+        tagEntity.filename = filename;
+        [_tagArrayController addObject:tagEntity];
+        
+        return tagEntity;
+    } else {
+        return nil;
+    }
 }
 
 // remove a managed tag entity
@@ -241,10 +248,13 @@
 
 
 -(void) _afterFileOpenPanelClose:(NSArray *) urls {
+    NSMutableArray * invalidFiles = [NSMutableArray arrayWithCapacity:8];
+    
     NSFileManager * fileManager = [NSFileManager defaultManager];
     self.progressWindow.title = @"Opening Files";
     [_progressIndicator startAnimation:nil];
     [_filenameField setStringValue:@"opening files..."];
+    
 
     NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
     for (NSURL * url in urls) {
@@ -258,7 +268,9 @@
                     if ([NSApp runModalSession:session] != NSModalResponseContinue)
                         break;
                     [NSThread sleepForTimeInterval:0.3];
-                    [self _addFile:file];
+                    if (![self _addFile:file]) {
+                        [invalidFiles addObject:file];
+                    }
                 }
             }
         }
@@ -268,6 +280,18 @@
     [_progressIndicator startAnimation:nil];
     [self.progressWindow orderOut:nil];
     [NSApp endModalSession:session];
+    
+    if ([invalidFiles count]) {
+        NSMutableString * message = [[NSMutableString alloc] initWithCapacity:2048];
+        for (NSURL * file in invalidFiles) {
+            [message appendFormat:@"\n%@", [file lastPathComponent]];
+        }
+        
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Sorry, not all files can be opened"
+                                     defaultButton:@"OK" alternateButton:nil
+                                       otherButton:nil informativeTextWithFormat:@"Files below cannot be opened:\n%@", message];
+        [alert runModal];
+    }
 }
 
 

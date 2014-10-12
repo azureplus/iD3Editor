@@ -9,7 +9,7 @@
 		<string>ogg</string>
 		<string>flac</string>
 		<string>oga</string>
-		<string>--mpc</string>
+		<string>mpc</string>
 		<string>--wv</string>
 		<string>spx</string>
 		<string>--tta</string>

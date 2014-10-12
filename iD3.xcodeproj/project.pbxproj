@@ -49,7 +49,7 @@
 		F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7E994EF1983418000DDE9B4 /* InfoPlist.strings */; };
 		F7E994F31983418000DDE9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F21983418000DDE9B4 /* main.m */; };
 		F7E994F71983418000DDE9B4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F7E994F51983418000DDE9B4 /* Credits.rtf */; };
-		F7E994FA1983418000DDE9B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F91983418000DDE9B4 /* AppDelegate.m */; };
+		F7E994FA1983418000DDE9B4 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E994F91983418000DDE9B4 /* AppDelegate.mm */; };
 		F7E994FD1983418000DDE9B4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E994FB1983418000DDE9B4 /* MainMenu.xib */; };
 		F7E994FF1983418000DDE9B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7E994FE1983418000DDE9B4 /* Images.xcassets */; };
 		F7E995061983418000DDE9B4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E995051983418000DDE9B4 /* XCTest.framework */; };
@@ -155,7 +155,7 @@
 		F7E994F41983418000DDE9B4 /* iD3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iD3-Prefix.pch"; sourceTree = "<group>"; };
 		F7E994F61983418000DDE9B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		F7E994F81983418000DDE9B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F7E994F91983418000DDE9B4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F7E994F91983418000DDE9B4 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		F7E994FC1983418000DDE9B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F7E994FE1983418000DDE9B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F7E995041983418000DDE9B4 /* iD3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iD3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -391,7 +391,7 @@
 				F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */,
 				F7E994FB1983418000DDE9B4 /* MainMenu.xib */,
 				F7E994F81983418000DDE9B4 /* AppDelegate.h */,
-				F7E994F91983418000DDE9B4 /* AppDelegate.m */,
+				F7E994F91983418000DDE9B4 /* AppDelegate.mm */,
 				F7E33D0119CD33C0003BE071 /* AppDelegate_Filename.h */,
 				F7E33D0219CD33C0003BE071 /* AppDelegate_Filename.m */,
 				F760220E1999DB22002DFE01 /* TagTableView.h */,
@@ -574,7 +574,7 @@
 				F7E33CF519C94306003BE071 /* TagReaderWriterFactory.mm in Sources */,
 				F746194619D79F6900EA3D33 /* TagIOXIPH.mm in Sources */,
 				F746193A19D79BEA00EA3D33 /* TagIOApe.mm in Sources */,
-				F7E994FA1983418000DDE9B4 /* AppDelegate.m in Sources */,
+				F7E994FA1983418000DDE9B4 /* AppDelegate.mm in Sources */,
 				F746193D19D79DAA00EA3D33 /* TagIOInfo.mm in Sources */,
 				F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */,
 				F7757FD419E8C83700AABDB7 /* TagIOMP4.mm in Sources */,
