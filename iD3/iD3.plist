@@ -4,7 +4,7 @@
 <dict>
 	<key>Supported Files</key>
 	<array>
-		<string>aac</string>
+		<string>--aac</string>
 		<string>mp3</string>
 		<string>ogg</string>
 		<string>flac</string>
@@ -20,9 +20,9 @@
 		<string>--3g2</string>
 		<string>mp4</string>
 		<string>wma</string>
-		<string>--asf</string>
-		<string>--aif</string>
-		<string>--aiff</string>
+		<string>asf</string>
+		<string>aif</string>
+		<string>aiff</string>
 		<string>wav</string>
 		<string>ape</string>
 		<string>--mod</string>

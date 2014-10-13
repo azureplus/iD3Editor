@@ -75,21 +75,35 @@ static TagIOASF * tagWriterASF;
     
     if (TagLib::APE::File * file = dynamic_cast<TagLib::APE::File *>(fileRef.file())) {
         if (file->isValid()) {
+            BOOL hasTag = NO;
+            
             if (file->hasAPETag()) {
+                hasTag = YES;
                 TagLib::APE::Tag * tag = file->APETag();
                 [tagGroup addTagLib:tag];
             }
         
             if (file->hasID3v1Tag()) {
+                hasTag = YES;
                 TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
                 [tagGroup addTagLib:tag];
+            }
+            
+            if (!hasTag) {
+                TagLib::APE::Tag tag;
+                [tagGroup addTagLib:&tag];
             }
         }
     } else if (TagLib::ASF::File * file = dynamic_cast<TagLib::ASF::File *>(fileRef.file())) {
         if (file->isValid()) {
             TagLib::ASF::Tag * tag = file->tag();
-            [tagGroup addTagLib:tag];
-        }    
+            if (tag) {
+                [tagGroup addTagLib:tag];
+            } else {
+                TagLib::ASF::Tag emptyTag;
+                [tagGroup addTagLib:&emptyTag];
+            }
+        }
     } else if (TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file())){
         if (file->isValid()) {
             if (file->hasXiphComment()) {
