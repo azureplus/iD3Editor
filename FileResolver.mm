@@ -97,16 +97,12 @@ static TagIOASF * tagWriterASF;
     } else if (TagLib::ASF::File * file = dynamic_cast<TagLib::ASF::File *>(fileRef.file())) {
         if (file->isValid()) {
             TagLib::ASF::Tag * tag = file->tag();
-            if (tag) {
-                [tagGroup addTagLib:tag];
-            } else {
-                TagLib::ASF::Tag emptyTag;
-                [tagGroup addTagLib:&emptyTag];
-            }
+            [tagGroup addTagLib:tag];
         }
     } else if (TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file())){
         if (file->isValid()) {
             BOOL hasTag = NO;
+            
             if (file->hasXiphComment()) {
                 hasTag = YES;
                 TagLib::Ogg::XiphComment * tag = file->xiphComment();
@@ -138,32 +134,51 @@ static TagIOASF * tagWriterASF;
         }
     } else if(TagLib::MPC::File * file = dynamic_cast<TagLib::MPC::File *>(fileRef.file())) {
         if (file->isValid()) {
+            BOOL hasTag = NO;
+            
             if (file->hasAPETag()) {
+                hasTag = YES;
                 TagLib::APE::Tag * tag = file->APETag();
                 [tagGroup addTagLib:tag];
             }
             
             if (file->hasID3v1Tag()) {
+                hasTag = YES;
                 TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
                 [tagGroup addTagLib:tag];
+            }
+            
+            if (!hasTag) {
+                TagLib::APE::Tag tag;
+                [tagGroup addTagLib:&tag];
             }
         }
     }else if (TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file())) {
         if (file->isValid()) {
+            BOOL hasTag = NO;
+
             if (file->hasAPETag()) {
+                hasTag = YES;
                 TagLib::APE::Tag * tag = file->APETag();
                 [tagGroup addTagLib:tag];
             }
          
             if (file->hasID3v2Tag()) {
+                hasTag = YES;
                 TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
                 [tagGroup addTagLib:tag];
             }
          
             if (file->hasID3v1Tag()) {
+                hasTag = YES;
                 TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
                 [tagGroup addTagLib:tag];
-            }         
+            }
+            
+            if (!hasTag) {
+                TagLib::ID3v2::Tag newTag;
+                [tagGroup addTagLib:&newTag];
+            }
         }
     } else if (dynamic_cast<TagLib::Ogg::File*>(fileRef.file())) {
         TagLib::Ogg::FLAC::File * flac = dynamic_cast<TagLib::Ogg::FLAC::File *>(fileRef.file());
@@ -184,32 +199,59 @@ static TagIOASF * tagWriterASF;
         if (aiff && aiff->isValid()) {
             [tagGroup addTagLib:aiff->tag()];
         } else if (wav && wav->isValid()) {
+            BOOL hasTag = NO;
+            
             if (wav->hasInfoTag()) {
+                hasTag = YES;
                 [tagGroup addTagLib:wav->InfoTag()];
             }
             if (wav->hasID3v2Tag()) {
+                hasTag = YES;
                 [tagGroup addTagLib:wav->ID3v2Tag()];
+            }
+            
+            if (!hasTag) {
+                TagLib::ID3v2::Tag newTag;
+                [tagGroup addTagLib:&newTag];
             }
         }
     } else if (TagLib::TrueAudio::File * file = dynamic_cast<TagLib::TrueAudio::File *>(fileRef.file())) {
         if (file->isValid()) {
+            BOOL hasTag = NO;
+            
             if (file->hasID3v2Tag()) {
+                hasTag = YES;
                 [tagGroup addTagLib:file->ID3v2Tag()];
             }
             
             if (file->hasID3v1Tag()) {
+                hasTag = YES;
                 [tagGroup addTagLib:file->ID3v1Tag()];
+            }
+            
+            if (!hasTag) {
+                TagLib::ID3v2::Tag newTag;
+                [tagGroup addTagLib:&newTag];
             }
         }
     } else if (TagLib::WavPack::File * file = dynamic_cast<TagLib::WavPack::File *>(fileRef.file())) {
         if (file->isValid()) {
+            BOOL hasTag = NO;
+            
             if (file->hasAPETag()) {
+                hasTag = YES;
                 [tagGroup addTagLib:file->APETag()];
             }
             
             if (file->hasID3v1Tag()) {
+                hasTag = YES;
                 [tagGroup addTagLib:file->ID3v1Tag()];
             }
+
+            if (!hasTag) {
+                TagLib::APE::Tag tag;
+                [tagGroup addTagLib:&tag];
+            }            
         }
     } else {
         tagGroup.valid = NO;
@@ -263,7 +305,7 @@ static TagIOASF * tagWriterASF;
                 written = YES;
                 [tagWriterID3V2 write:tag toTaglib:file->ID3v2Tag()];
             }
-        
+             
             if (!written) {
                 [tagWriterXIPH write:tag toTaglib:file->xiphComment(true)];
             }
