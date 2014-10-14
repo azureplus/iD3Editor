@@ -106,7 +106,9 @@ static TagIOASF * tagWriterASF;
         }
     } else if (TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file())){
         if (file->isValid()) {
+            BOOL hasTag = NO;
             if (file->hasXiphComment()) {
+                hasTag = YES;
                 TagLib::Ogg::XiphComment * tag = file->xiphComment();
                 TagBase * newTag = [tagGroup addTagLib:tag];                
                 // flac picture
@@ -114,13 +116,20 @@ static TagIOASF * tagWriterASF;
             }
             
             if (file->hasID3v2Tag()) {
+                hasTag = YES;
                 TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
                 [tagGroup addTagLib:tag];
             }
 
             if (file->hasID3v1Tag()) {
+                hasTag = YES;
                 TagLib::ID3v1::Tag * tag = file->ID3v1Tag();
                 [tagGroup addTagLib:tag];
+            }
+            
+            if (!hasTag) {
+                TagLib::Ogg::XiphComment newTag;
+                [tagGroup addTagLib:&newTag];
             }
         }
     } else if (TagLib::MP4::File * file = dynamic_cast<TagLib::MP4::File *>(fileRef.file())) {

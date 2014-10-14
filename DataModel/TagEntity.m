@@ -47,7 +47,7 @@
 -(void) resetValue {
     NSArray * frames = @[@"artist", @"album", @"title",
                          @"genre", @"comment", @"composer",
-                         @"copyright", @"year", @"track"];
+                         @"copyright", @"year", @"track", @"coverArt"];
     for (NSString * frame in frames) {
         [self willChangeValueForKey:frame];
     }
