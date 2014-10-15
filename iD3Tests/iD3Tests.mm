@@ -3,7 +3,7 @@
 //  iD3Tests
 //
 //  Created by Qiang Yu on 7/25/14.
-//  Copyright (c) 2014 xbox.com. All rights reserved.
+//  Copyright (c) 2014 xboxng.com. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
