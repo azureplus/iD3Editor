@@ -60,7 +60,6 @@
 		F7E9952A198593D300DDE9B4 /* NSString_TLString.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E99529198593D300DDE9B4 /* NSString_TLString.mm */; };
 		F7FB46C11992742400C72AFF /* NullValueTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB46C01992742400C72AFF /* NullValueTransform.m */; };
 		F7FB46C4199330A300C72AFF /* TagFilename.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46C3199330A300C72AFF /* TagFilename.pdf */; };
-		F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46DB199335F400C72AFF /* TagFix.pdf */; };
 		F7FB46E01993C11A00C72AFF /* iD3Help in Resources */ = {isa = PBXBuildFile; fileRef = F7FB46DF1993C11A00C72AFF /* iD3Help */; };
 /* End PBXBuildFile section */
 
@@ -169,7 +168,6 @@
 		F7FB46BF1992742400C72AFF /* NullValueTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NullValueTransform.h; path = DataModel/NullValueTransform.h; sourceTree = "<group>"; };
 		F7FB46C01992742400C72AFF /* NullValueTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullValueTransform.m; path = DataModel/NullValueTransform.m; sourceTree = "<group>"; };
 		F7FB46C3199330A300C72AFF /* TagFilename.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TagFilename.pdf; sourceTree = "<group>"; };
-		F7FB46DB199335F400C72AFF /* TagFix.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TagFix.pdf; sourceTree = "<group>"; };
 		F7FB46DF1993C11A00C72AFF /* iD3Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iD3Help; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -445,7 +443,6 @@
 				F7E33D1319CE94E6003BE071 /* Save.pdf */,
 				F7E33D0F19CE925E003BE071 /* Reset.pdf */,
 				F7E33D0919CE8DA1003BE071 /* Clear.pdf */,
-				F7FB46DB199335F400C72AFF /* TagFix.pdf */,
 				F7FB46C3199330A300C72AFF /* TagFilename.pdf */,
 			);
 			name = Resources;
@@ -545,7 +542,6 @@
 				F7757FCE19E7ADB400AABDB7 /* mic.png in Resources */,
 				F7E33D1E19CF3827003BE071 /* AddFile.pdf in Resources */,
 				F7FB46C4199330A300C72AFF /* TagFilename.pdf in Resources */,
-				F7FB46DC199335F400C72AFF /* TagFix.pdf in Resources */,
 				F7E33D1419CE94E6003BE071 /* Save.pdf in Resources */,
 				F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */,
 				F7E994FF1983418000DDE9B4 /* Images.xcassets in Resources */,
@@ -692,7 +688,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = /Volumes/Data/Users/qiang/taglib/include;
+				USER_HEADER_SEARCH_PATHS = /Users/qiang/Data/Library/taglib/include;
 			};
 			name = Debug;
 		};
@@ -725,7 +721,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = /Volumes/Data/Users/qiang/taglib/include;
+				USER_HEADER_SEARCH_PATHS = /Users/qiang/Data/Library/taglib/include;
 			};
 			name = Release;
 		};
@@ -735,17 +731,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_ENTITLEMENTS = "iD3 Editor.entitlements";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iD3/iD3-Prefix.pch";
 				INFOPLIST_FILE = "iD3/iD3-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Volumes/Data/Users/qiang/taglib/lib,
+					/Users/qiang/Data/Library/taglib/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -756,17 +754,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_ENTITLEMENTS = "iD3 Editor.entitlements";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iD3/iD3-Prefix.pch";
 				INFOPLIST_FILE = "iD3/iD3-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Volumes/Data/Users/qiang/taglib/lib,
+					/Users/qiang/Data/Library/taglib/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
