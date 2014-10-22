@@ -93,11 +93,15 @@ static TagIOASF * tagWriterASF;
                 TagLib::APE::Tag tag;
                 [tagGroup addTagLib:&tag];
             }
+        } else {
+            tagGroup.valid = NO;
         }
     } else if (TagLib::ASF::File * file = dynamic_cast<TagLib::ASF::File *>(fileRef.file())) {
         if (file->isValid()) {
             TagLib::ASF::Tag * tag = file->tag();
             [tagGroup addTagLib:tag];
+        } else {
+            tagGroup.valid = NO;
         }
     } else if (TagLib::FLAC::File * file = dynamic_cast<TagLib::FLAC::File *>(fileRef.file())){
         if (file->isValid()) {
@@ -127,10 +131,14 @@ static TagIOASF * tagWriterASF;
                 TagLib::Ogg::XiphComment newTag;
                 [tagGroup addTagLib:&newTag];
             }
+        } else {
+            tagGroup.valid = NO;
         }
     } else if (TagLib::MP4::File * file = dynamic_cast<TagLib::MP4::File *>(fileRef.file())) {
         if (file->isValid()) {
             [tagGroup addTagLib:file->tag()];
+        } else {
+            tagGroup.valid = NO;
         }
     } else if(TagLib::MPC::File * file = dynamic_cast<TagLib::MPC::File *>(fileRef.file())) {
         if (file->isValid()) {
@@ -152,11 +160,13 @@ static TagIOASF * tagWriterASF;
                 TagLib::APE::Tag tag;
                 [tagGroup addTagLib:&tag];
             }
+        } else {
+            tagGroup.valid = NO;
         }
     }else if (TagLib::MPEG::File * file = dynamic_cast<TagLib::MPEG::File *>(fileRef.file())) {
         if (file->isValid()) {
             BOOL hasTag = NO;
-
+            
             if (file->hasAPETag()) {
                 hasTag = YES;
                 TagLib::APE::Tag * tag = file->APETag();
@@ -167,7 +177,7 @@ static TagIOASF * tagWriterASF;
                 hasTag = YES;
                 TagLib::ID3v2::Tag * tag = file->ID3v2Tag();
                 [tagGroup addTagLib:tag];
-            }
+            }            
          
             if (file->hasID3v1Tag()) {
                 hasTag = YES;
@@ -179,6 +189,8 @@ static TagIOASF * tagWriterASF;
                 TagLib::ID3v2::Tag newTag;
                 [tagGroup addTagLib:&newTag];
             }
+        } else {
+            tagGroup.valid = NO;
         }
     } else if (dynamic_cast<TagLib::Ogg::File*>(fileRef.file())) {
         TagLib::Ogg::FLAC::File * flac = dynamic_cast<TagLib::Ogg::FLAC::File *>(fileRef.file());
@@ -191,6 +203,8 @@ static TagIOASF * tagWriterASF;
             [tagGroup addTagLib:speex->tag()];
         } else if (vorbis && vorbis->isValid()) { //vorbis
             [tagGroup addTagLib:vorbis->tag()];
+        } else {
+            tagGroup.valid = NO;
         }
     } else if (dynamic_cast<TagLib::RIFF::File *>(fileRef.file())) {
         TagLib::RIFF::AIFF::File* aiff = dynamic_cast<TagLib::RIFF::AIFF::File*>(fileRef.file());
@@ -214,6 +228,8 @@ static TagIOASF * tagWriterASF;
                 TagLib::ID3v2::Tag newTag;
                 [tagGroup addTagLib:&newTag];
             }
+        } else {
+            tagGroup.valid = NO;
         }
     } else if (TagLib::TrueAudio::File * file = dynamic_cast<TagLib::TrueAudio::File *>(fileRef.file())) {
         if (file->isValid()) {
@@ -233,6 +249,8 @@ static TagIOASF * tagWriterASF;
                 TagLib::ID3v2::Tag newTag;
                 [tagGroup addTagLib:&newTag];
             }
+        } else {
+            tagGroup.valid = NO;
         }
     } else if (TagLib::WavPack::File * file = dynamic_cast<TagLib::WavPack::File *>(fileRef.file())) {
         if (file->isValid()) {
@@ -252,6 +270,8 @@ static TagIOASF * tagWriterASF;
                 TagLib::APE::Tag tag;
                 [tagGroup addTagLib:&tag];
             }            
+        } else {
+            tagGroup.valid = NO;
         }
     } else {
         tagGroup.valid = NO;
