@@ -18,6 +18,7 @@
 
 @interface AppDelegate()
 @property(nonatomic, assign) BOOL readFileRecursively;
+@property(assign)  BOOL closeProgressWindow;
 @end
 
 @implementation AppDelegate
@@ -46,8 +47,10 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
--(void) windowWillClose:(NSNotification *)notification {
-    [self saveChanges:nil];
+-(BOOL) windowShouldClose:(id)sender {
+    BOOL cancelled = NO;
+    [self _saveHelp:[_tagArrayController arrangedObjects] cancelled:&cancelled];
+    return !cancelled;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
@@ -94,9 +97,12 @@
 // remove selected tag entities
 -(void) removeSelectedTags {
     NSArray * selectedTags = [NSArray arrayWithArray:[_tagArrayController selectedObjects]];
-    [self _saveHelp:selectedTags];
-    for (id obj in selectedTags) {
-        [self removeTagEntity:obj];
+    BOOL cancelled = NO;
+    [self _saveHelp:selectedTags cancelled:&cancelled];
+    if (!cancelled) {
+        for (id obj in selectedTags) {
+            [self removeTagEntity:obj];
+        }
     }
 }
 
@@ -252,7 +258,6 @@
     }
 }
 
-
 -(void) _afterFileOpenPanelClose:(NSArray *) urls {
     NSMutableArray * invalidFiles = [NSMutableArray arrayWithCapacity:8];
     
@@ -268,8 +273,9 @@
     NSMutableArray * queue = queue1;
     
     BOOL isDirectory = NO;
+    self.closeProgressWindow = NO;
     
-    while (![queue isEmpty]) {
+    while (![queue isEmpty] && !self.closeProgressWindow) {
         NSURL * url = [queue dequeue];
         BOOL fileExists = [fileManager fileExistsAtPath:[url path] isDirectory:&isDirectory];
         
@@ -300,10 +306,11 @@
             queue = queue == queue1 ? queue2 : queue1;
         }
     }
-
+    
     [NSApp stopModal];
     [_progressIndicator startAnimation:nil];
     [self.progressWindow orderOut:nil];
+    self.closeProgressWindow = NO;
     [NSApp endModalSession:session];
     
     if ([invalidFiles count]) {
@@ -371,6 +378,10 @@
     self.readFileRecursively = !self.readFileRecursively;
 }
 
+-(IBAction) closeProgressWindow:(id)sender {
+    self.closeProgressWindow = YES;
+}
+
 -(IBAction) openFiles:(id)sender {
     NSOpenPanel * panel = [NSOpenPanel openPanel];
     [panel setCanChooseDirectories:YES];
@@ -409,15 +420,33 @@
 }
 
 
--(void)_saveHelp:(NSArray *)tagEntitiesToSave {
+-(void)_saveHelp:(NSArray *)tagEntitiesToSave cancelled: (BOOL *)cancelled {
+    if (cancelled) {
+        *cancelled = NO;
+    }
+    
+    BOOL saveNeeded = NO;
+    for (TagEntity * tag in tagEntitiesToSave) {
+        if ([tag updated]) {
+            saveNeeded = YES;
+            break;
+        }
+    }
+    
+    if (!saveNeeded) {
+        return;
+    }
+    
     self.progressWindow.title = @"Saving Files";
     [_progressIndicator startAnimation:nil];
     [_filenameField setStringValue:@"saving files..."];
     
+    self.closeProgressWindow = NO;
+    
     NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
     
     for (TagEntity * tag in tagEntitiesToSave) {
-        if ([NSApp runModalSession:session] != NSModalResponseContinue)
+        if ([NSApp runModalSession:session] != NSModalResponseContinue || self.closeProgressWindow)
             break;
         if ([tag updated]) {
             [_filenameField setStringValue:tag.filename];
@@ -430,24 +459,19 @@
     [NSApp stopModal];
     [_progressIndicator startAnimation:nil];
     [self.progressWindow orderOut:nil];
+    
+    if (cancelled) {
+        *cancelled = self.closeProgressWindow;
+    }
+    
+    self.closeProgressWindow = NO;
     [NSApp endModalSession:session];
 }
 
 -(IBAction) saveChanges:(id)sender {
-    BOOL saveNeeded = NO;
-    for (TagEntity * tag in _tagArrayController.arrangedObjects) {
-        if ([tag updated]) {
-            saveNeeded = YES;
-            break;
-        }
-    }
-
-    if (!saveNeeded) {
-        return;
-    }
-    
-    [self _saveHelp:[_tagArrayController arrangedObjects]];
+    [self _saveHelp:[_tagArrayController arrangedObjects] cancelled:nil];
 }
+
 
 -(IBAction) resetValues:(id)sender {
     for (TagEntity * tag in _tagArrayController.selectedObjects) {
@@ -456,12 +480,14 @@
 }
 
 -(IBAction) clearFileList:(id)sender {
-    [self saveChanges:nil];
+    BOOL cancelled = NO;
+    [self _saveHelp:[_tagArrayController arrangedObjects] cancelled:&cancelled];
     
-    NSArray * tags = [NSArray arrayWithArray:[_tagArrayController arrangedObjects]];
-    
-    for (TagEntity * tag in tags) {
-        [self removeTagEntity:tag];
+    if (!cancelled) {
+        NSArray * tags = [NSArray arrayWithArray:[_tagArrayController arrangedObjects]];
+        for (TagEntity * tag in tags) {
+            [self removeTagEntity:tag];
+        }
     }
 }
 

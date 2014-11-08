@@ -61,6 +61,7 @@
 -(IBAction) setGenreToAll:(id)sender;
 -(IBAction) formatTags:(id)sender;
 -(IBAction) deleteCoverArt:(id)sender;
+-(IBAction) closeProgressWindow:(id)sender;
 
 ///
 -(void) removeTagEntity: (TagEntity *) tagEntity;

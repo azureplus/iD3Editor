@@ -709,9 +709,9 @@ IA
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <objectValues>
-                                                <string>lowercase</string>
-                                                <string>uppercase</string>
-                                                <string>capitalization</string>
+                                                <string>Lowercase</string>
+                                                <string>Uppercase</string>
+                                                <string>Capitalization</string>
                                             </objectValues>
                                         </comboBoxCell>
                                         <connections>
@@ -785,8 +785,8 @@ IA
                     <toolbarItem reference="gBM-9z-fVN"/>
                     <toolbarItem reference="0nb-Qu-q4c"/>
                     <toolbarItem reference="fLM-oQ-arQ"/>
-                    <toolbarItem reference="vBP-ha-7jt"/>
                     <toolbarItem reference="Z6X-Qd-jHX"/>
+                    <toolbarItem reference="vBP-ha-7jt"/>
                     <toolbarItem reference="ocH-jt-LHv"/>
                 </defaultToolbarItems>
             </toolbar>
@@ -1236,6 +1236,84 @@ DQ
                                     </subviews>
                                 </view>
                             </tabViewItem>
+                            <tabViewItem label="Format File Name" identifier="" id="PcK-qI-MHR">
+                                <view key="view" id="lkN-KI-CCS">
+                                    <rect key="frame" x="10" y="33" width="434" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xik-eg-ZMo">
+                                            <rect key="frame" x="51" y="188" width="134" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Format file name to:" id="JyR-27-eL7">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gaS-Qm-nRh">
+                                            <rect key="frame" x="191" y="184" width="194" height="26"/>
+                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="(Don't format)" placeholderString="" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="WUb-dy-x26">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <objectValues>
+                                                    <string>(Don't format)</string>
+                                                    <string>Lowercase</string>
+                                                    <string>Uppercase</string>
+                                                    <string>Capitalization</string>
+                                                </objectValues>
+                                            </comboBoxCell>
+                                        </comboBox>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fgK-3O-DuT">
+                                            <rect key="frame" x="51" y="252" width="218" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="In selected file names, replace text" id="Qcd-Pc-Rm6">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNa-87-G69">
+                                            <rect key="frame" x="53" y="222" width="148" height="22"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="_" drawsBackground="YES" id="QD8-2H-0GK">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hNL-tO-xje">
+                                            <rect key="frame" x="243" y="222" width="139" height="22"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="-" drawsBackground="YES" id="GbW-Jg-gxg">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-rA-rW3">
+                                            <rect key="frame" x="207" y="228" width="30" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="with" id="e5M-Tm-O1p">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KXL-2t-940">
+                                            <rect key="frame" x="55" y="100" width="327" height="60"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="border" title="Label" id="G80-HR-w9u">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xPI-V9-K1K">
+                                            <rect key="frame" x="55" y="30" width="327" height="60"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="border" title="Label" id="ZWl-7e-MqL">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
                         </tabViewItems>
                     </tabView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCm-RW-D5e">
@@ -1273,25 +1351,36 @@ DQ
         <window title="Saving..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="tbz-y0-fz4">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="283" y="305" width="527" height="122"/>
+            <rect key="contentRect" x="283" y="305" width="527" height="141"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="cmB-2p-eI2">
-                <rect key="frame" x="0.0" y="0.0" width="527" height="122"/>
+                <rect key="frame" x="0.0" y="0.0" width="527" height="141"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <progressIndicator fixedFrame="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Y8g-iH-TQ9">
-                        <rect key="frame" x="20" y="19" width="487" height="20"/>
+                        <rect key="frame" x="20" y="38" width="487" height="20"/>
                     </progressIndicator>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBz-eT-SdY">
-                        <rect key="frame" x="18" y="46" width="491" height="56"/>
+                        <rect key="frame" x="18" y="65" width="491" height="56"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="48R-nu-6O2">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UXi-3G-gzz">
+                        <rect key="frame" x="431" y="8" width="82" height="32"/>
+                        <buttonCell key="cell" type="push" title="Stop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VfT-kQ-xxJ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="closeProgressWindow:" target="Voe-Tx-rLC" id="B9M-by-ogt"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="269.5" y="269.5"/>
         </window>
         <menu id="8I8-p7-AEc">
             <items>
