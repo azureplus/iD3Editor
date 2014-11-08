@@ -254,6 +254,13 @@
             [_coverArtView setImage:imageToDisplay];
         } else if (selectedTags.count == 0) {
             [_coverArtView setImage:[NSImage nullPlaceholderImage]];
+        } else {
+            TagEntity * tag = selectedTags[0];
+            if (tag.coverArt && tag.coverArt != [NSImage nullImage]) {
+                [_coverArtView setImage:tag.coverArt];
+            } else {
+                [_coverArtView setImage:[NSImage nullPlaceholderImage]];
+            }
         }
     }
 }
@@ -456,7 +463,7 @@
         }
     }
     
-    [NSApp stopModal];
+
     [_progressIndicator startAnimation:nil];
     [self.progressWindow orderOut:nil];
     
@@ -465,6 +472,8 @@
     }
     
     self.closeProgressWindow = NO;
+    
+    [NSApp stopModal];
     [NSApp endModalSession:session];
 }
 

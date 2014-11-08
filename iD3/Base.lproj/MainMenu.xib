@@ -684,11 +684,7 @@ IA
                                         <rect key="frame" x="34" y="17" width="256" height="256"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="klF-E5-MlM"/>
                                         <connections>
-                                            <binding destination="j1s-e0-8eb" name="value" keyPath="selection.coverArt" id="nzb-PU-bAy">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">ImageValueTransform</string>
-                                                </dictionary>
-                                            </binding>
+                                            <binding destination="j1s-e0-8eb" name="value" keyPath="selection.coverArt" id="kGM-3E-CsO"/>
                                             <outlet property="deleteButton" destination="wAQ-6d-gsK" id="OMN-Kk-tYj"/>
                                         </connections>
                                     </imageView>
