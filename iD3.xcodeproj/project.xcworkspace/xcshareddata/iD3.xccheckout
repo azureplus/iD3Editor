@@ -11,17 +11,17 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1901300AA52EE7036EB795E81A0456E181551A91</key>
-		<string>https://bitbucket.org/xboxng/id3.git</string>
+		<string>github.com:qiangyu/iD3Editor.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iD3.xcodeproj/project.xcworkspace</string>
+	<string>iD3.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1901300AA52EE7036EB795E81A0456E181551A91</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/xboxng/id3.git</string>
+	<string>github.com:qiangyu/iD3Editor.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>1901300AA52EE7036EB795E81A0456E181551A91</string>
 			<key>IDESourceControlWCCName</key>
-			<string>iD3</string>
+			<string>iD3Editor</string>
 		</dict>
 	</array>
 </dict>
