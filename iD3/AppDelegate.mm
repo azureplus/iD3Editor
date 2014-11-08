@@ -54,7 +54,7 @@
     
     for (TagEntity * tag in [self.tagArrayController arrangedObjects]) {
         if ([[tag filename] isEqualToString:filename])
-            return nil;
+            return tag;
     }
     
     return [self _addTag:filename];
@@ -255,7 +255,6 @@
     [_progressIndicator startAnimation:nil];
     [_filenameField setStringValue:@"opening files..."];
     
-
     NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
     for (NSURL * url in urls) {
         NSArray * files = [fileManager contentsOfDirectoryAtURL:url includingPropertiesForKeys:@[NSURLIsWritableKey] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
