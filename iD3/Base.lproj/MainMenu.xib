@@ -669,24 +669,8 @@ IA
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
-                                    <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGP-mF-qUf">
-                                        <rect key="frame" x="141" y="290" width="166" height="26"/>
-                                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Format selected items" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="pX5-cu-AjS">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <objectValues>
-                                                <string>lowercase</string>
-                                                <string>uppercase</string>
-                                                <string>capitalization</string>
-                                            </objectValues>
-                                        </comboBoxCell>
-                                        <connections>
-                                            <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="mpc-O9-2Cm"/>
-                                        </connections>
-                                    </comboBox>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lTL-pj-EDZ">
-                                        <rect key="frame" x="14" y="284" width="111" height="32"/>
+                                        <rect key="frame" x="16" y="289" width="111" height="32"/>
                                         <buttonCell key="cell" type="push" title="Format Tag" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gdb-6I-BQM">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -718,6 +702,22 @@ IA
                                             <action selector="deleteCoverArt:" target="Voe-Tx-rLC" id="s8H-WY-0Um"/>
                                         </connections>
                                     </button>
+                                    <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGP-mF-qUf">
+                                        <rect key="frame" x="129" y="293" width="178" height="26"/>
+                                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Format selected items" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="pX5-cu-AjS">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <objectValues>
+                                                <string>lowercase</string>
+                                                <string>uppercase</string>
+                                                <string>capitalization</string>
+                                            </objectValues>
+                                        </comboBoxCell>
+                                        <connections>
+                                            <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="mpc-O9-2Cm"/>
+                                        </connections>
+                                    </comboBox>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="780" id="QKO-5M-ad2"/>
@@ -759,7 +759,7 @@ IA
                             <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="2vc-Wq-zr1"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="1B9DE22F-F761-483C-A15B-B8539FFB1EC0" label="Tag Tools" paletteLabel="Tag Tools" tag="-1" image="TagFilename" autovalidates="NO" id="vBP-ha-7jt">
+                    <toolbarItem implicitItemIdentifier="1B9DE22F-F761-483C-A15B-B8539FFB1EC0" label="Tools" paletteLabel="Tools" tag="-1" image="TagFilename" autovalidates="NO" id="vBP-ha-7jt">
                         <connections>
                             <action selector="showFileNameAndTagWindow:" target="Voe-Tx-rLC" id="MGO-aD-tTm"/>
                             <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="liQ-Qu-xFg"/>
@@ -785,8 +785,8 @@ IA
                     <toolbarItem reference="gBM-9z-fVN"/>
                     <toolbarItem reference="0nb-Qu-q4c"/>
                     <toolbarItem reference="fLM-oQ-arQ"/>
-                    <toolbarItem reference="Z6X-Qd-jHX"/>
                     <toolbarItem reference="vBP-ha-7jt"/>
+                    <toolbarItem reference="Z6X-Qd-jHX"/>
                     <toolbarItem reference="ocH-jt-LHv"/>
                 </defaultToolbarItems>
             </toolbar>
