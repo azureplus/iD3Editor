@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -27,7 +27,6 @@
                 <outlet property="coverArtView" destination="qN5-sG-jS9" id="J1U-2H-tZS"/>
                 <outlet property="encodingArrayController" destination="su6-ab-bjG" id="Poh-pf-sZi"/>
                 <outlet property="encodingWindow" destination="9rE-sh-TII" id="8uJ-np-Rcl"/>
-                <outlet property="fileBeingSaved" destination="uBz-eT-SdY" id="uSO-Ep-OMJ"/>
                 <outlet property="filenameField" destination="uBz-eT-SdY" id="4Dc-Hf-lF5"/>
                 <outlet property="filenameWindow" destination="aNU-2N-OHg" id="qk2-KB-Fn1"/>
                 <outlet property="genre" destination="n7u-yb-Kw3" id="I7Z-Ir-4xw"/>
@@ -46,7 +45,6 @@
                 <outlet property="filenameOnly" destination="stw-fD-uoy" id="QXY-8C-xye"/>
                 <outlet property="n2tAlbum" destination="GMm-R5-QN5" id="0Ib-bc-N9k"/>
                 <outlet property="n2tArtist" destination="UPe-ht-pl1" id="Hgb-5j-N57"/>
-                <outlet property="n2tComment" destination="LMw-6t-1xR" id="t1J-qC-UUK"/>
                 <outlet property="n2tComposer" destination="LMw-6t-1xR" id="FNw-em-oEa"/>
                 <outlet property="n2tFilename" destination="DLn-ak-5GI" id="7mD-89-nl9"/>
                 <outlet property="n2tGenre" destination="fXq-dY-Z95" id="1u0-wb-geL"/>
@@ -56,7 +54,6 @@
                 <outlet property="n2tYear" destination="Yg6-d4-FLp" id="kWO-so-kZb"/>
                 <outlet property="t2nAlbum" destination="rPZ-9f-xyM" id="6hb-rb-tNE"/>
                 <outlet property="t2nArtist" destination="eba-ol-E1X" id="FAL-BM-FhL"/>
-                <outlet property="t2nComment" destination="gmW-DM-tqr" id="2gO-S7-nzo"/>
                 <outlet property="t2nComposer" destination="gmW-DM-tqr" id="cGf-nY-BgD"/>
                 <outlet property="t2nFilename" destination="of1-MR-GWo" id="1Us-Y6-faH"/>
                 <outlet property="t2nGenre" destination="Maf-cS-InO" id="EfH-oZ-beK"/>
@@ -255,7 +252,7 @@
         <window title="iD3 Editor" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="837" y="354" width="1027" height="780"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="1027" height="780"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -802,7 +799,7 @@ IA
         <window title="Tag Encoding" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="9rE-sh-TII">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="903" y="305" width="397" height="416"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="W8j-g3-vU6">
                 <rect key="frame" x="0.0" y="0.0" width="397" height="416"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -878,7 +875,7 @@ DQ
         <window title="Tag and File Name" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aNU-2N-OHg">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="283" y="305" width="480" height="403"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="epo-cI-CZM">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="403"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -1277,7 +1274,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="527" height="122"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="cmB-2p-eI2">
                 <rect key="frame" x="0.0" y="0.0" width="527" height="122"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

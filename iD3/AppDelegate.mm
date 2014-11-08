@@ -11,9 +11,14 @@
 #import "FileResolver.h"
 #import "TagGroup.h"
 #import "NSImage_NSData.h"
+#import "NSMutableArray_Queue.h"
 
 // tag encodings
 #import "EncodingEntity.h"
+
+@interface AppDelegate()
+@property(nonatomic, assign) BOOL readFileRecursively;
+@end
 
 @implementation AppDelegate
 
@@ -23,6 +28,7 @@
 
 //
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    self.readFileRecursively = YES;
     [self _initSupportedEncodings];
     [self _initSupportedFileTypes];
     
@@ -256,22 +262,42 @@
     [_filenameField setStringValue:@"opening files..."];
     
     NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
-    for (NSURL * url in urls) {
-        NSArray * files = [fileManager contentsOfDirectoryAtURL:url includingPropertiesForKeys:@[NSURLIsWritableKey] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
-        BOOL isDirectory = NO;
-        for(NSURL * file in files) {
-            if ([_supportedFileTypes containsObject:[[file pathExtension] lowercaseString]]) {
-                BOOL fileExists = [fileManager fileExistsAtPath:[file path]  isDirectory:&isDirectory];
-                if (fileExists && !isDirectory) {
-                    [_filenameField setStringValue:[file path]];
+    
+    NSMutableArray * queue1 = [NSMutableArray arrayWithArray:urls];
+    NSMutableArray * queue2 = [NSMutableArray arrayWithCapacity:32];
+    NSMutableArray * queue = queue1;
+    
+    BOOL isDirectory = NO;
+    
+    while (![queue isEmpty]) {
+        NSURL * url = [queue dequeue];
+        BOOL fileExists = [fileManager fileExistsAtPath:[url path] isDirectory:&isDirectory];
+        
+        if (fileExists) {
+            if (isDirectory) {
+                if (queue == queue1 || self.readFileRecursively) {
+                    NSArray * files = [fileManager contentsOfDirectoryAtURL:url includingPropertiesForKeys:@[NSURLIsWritableKey] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
+                    if (queue == queue1) {
+                        [queue2 enqueueArray:files];
+                    } else {
+                        [queue1 enqueueArray:files];
+                    }
+                }
+            } else {
+                if ([_supportedFileTypes containsObject:[[url pathExtension] lowercaseString]]) {
+                    [_filenameField setStringValue:[url path]];
                     if ([NSApp runModalSession:session] != NSModalResponseContinue)
                         break;
                     [NSThread sleepForTimeInterval:0.3];
-                    if (![self _addFile:file]) {
-                        [invalidFiles addObject:file];
+                    if (![self _addFile:url]) {
+                        [invalidFiles addObject:url];
                     }
                 }
             }
+        }
+        
+        if ([queue isEmpty]) {
+            queue = queue == queue1 ? queue2 : queue1;
         }
     }
 
@@ -341,12 +367,27 @@
     return NSTerminateNow;
 }
 
+-(void)toggleFlagReadFileRescursively:(id)sender {
+    self.readFileRecursively = !self.readFileRecursively;
+}
 
 -(IBAction) openFiles:(id)sender {
     NSOpenPanel * panel = [NSOpenPanel openPanel];
     [panel setCanChooseDirectories:YES];
     [panel setCanChooseFiles:NO];
     [panel setAllowsMultipleSelection:YES];
+    
+    ////
+    NSButton * button = [[NSButton alloc] init];
+    [button setButtonType:NSSwitchButton];
+    button.state = self.readFileRecursively ? NSOnState : NSOffState;
+    button.title = @"Also including files in child folders";
+    button.target = self;
+    button.action = @selector(toggleFlagReadFileRescursively:);
+
+    [button sizeToFit];
+    [panel setAccessoryView:button];
+    ////
     
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {

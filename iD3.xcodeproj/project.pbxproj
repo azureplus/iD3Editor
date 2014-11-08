@@ -25,6 +25,7 @@
 		F7757FD419E8C83700AABDB7 /* TagIOMP4.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7757FD319E8C83700AABDB7 /* TagIOMP4.mm */; };
 		F77A73BC19E984900094D7B8 /* TagIOASF.mm in Sources */ = {isa = PBXBuildFile; fileRef = F77A73BB19E984900094D7B8 /* TagIOASF.mm */; };
 		F77F88ED1987D49C00B1B3CC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77F88EB1987D49C00B1B3CC /* Model.xcdatamodeld */; };
+		F782C82E1A0DE5CC00DEE427 /* NSMutableArray_Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = F782C82D1A0DE5CC00DEE427 /* NSMutableArray_Queue.m */; };
 		F79BCE1719889BB500CC5F02 /* TagEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE1619889BB500CC5F02 /* TagEntity.m */; };
 		F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F79BCE191989FD5900CC5F02 /* iD3.plist */; };
 		F79BCE20198A7F5F00CC5F02 /* EncodingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BCE1F198A7F5F00CC5F02 /* EncodingEntity.m */; };
@@ -106,6 +107,8 @@
 		F77A73BB19E984900094D7B8 /* TagIOASF.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagIOASF.mm; sourceTree = "<group>"; };
 		F77F88A11987433900B1B3CC /* iD3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iD3.entitlements; sourceTree = "<group>"; };
 		F77F88EC1987D49C00B1B3CC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F782C82C1A0DE5CC00DEE427 /* NSMutableArray_Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableArray_Queue.h; sourceTree = "<group>"; };
+		F782C82D1A0DE5CC00DEE427 /* NSMutableArray_Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableArray_Queue.m; sourceTree = "<group>"; };
 		F79BCE1519889BB500CC5F02 /* TagEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagEntity.h; path = DataModel/TagEntity.h; sourceTree = "<group>"; };
 		F79BCE1619889BB500CC5F02 /* TagEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagEntity.m; path = DataModel/TagEntity.m; sourceTree = "<group>"; };
 		F79BCE191989FD5900CC5F02 /* iD3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iD3.plist; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 			children = (
 				F79BCE4619907ABE00CC5F02 /* NSArray_KVO.h */,
 				F79BCE4719907ABE00CC5F02 /* NSArray_KVO.m */,
+				F782C82C1A0DE5CC00DEE427 /* NSMutableArray_Queue.h */,
+				F782C82D1A0DE5CC00DEE427 /* NSMutableArray_Queue.m */,
 			);
 			name = NSArray;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				F760220A1999CFED002DFE01 /* TableViewActionOutlet.m in Sources */,
 				F7E9952A198593D300DDE9B4 /* NSString_TLString.mm in Sources */,
 				F7E33CF519C94306003BE071 /* TagReaderWriterFactory.mm in Sources */,
+				F782C82E1A0DE5CC00DEE427 /* NSMutableArray_Queue.m in Sources */,
 				F746194619D79F6900EA3D33 /* TagIOXIPH.mm in Sources */,
 				F746193A19D79BEA00EA3D33 /* TagIOApe.mm in Sources */,
 				F7E994FA1983418000DDE9B4 /* AppDelegate.mm in Sources */,
