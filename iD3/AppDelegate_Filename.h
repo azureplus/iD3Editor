@@ -18,4 +18,6 @@
 
 /// tag to filename (rename files)
 -(void) tagToFilename: (NSString *)pattern;
+
+-(void) renameFilesByReplacing:(NSString *)replaceFrom with:(NSString *)replaceTo andCapitalization:(NSUInteger)capitalization;
 @end

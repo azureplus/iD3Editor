@@ -18,6 +18,20 @@
 #define TAG_COLON @"::"
 @implementation NSString(FileName)
 
++(NSString *) formatString:(NSString *) str byReplacing:(NSString *) from with:(NSString *) to andCapitalization:(NSUInteger)cap {
+    str = [str stringByReplacingOccurrencesOfString:from withString:to];
+    
+    if (cap == 1) {
+        str =  [str lowercaseStringWithLocale:[NSLocale currentLocale]];
+    } else if (cap == 2) {
+        str = [str uppercaseStringWithLocale:[NSLocale currentLocale]];
+    } else if (cap == 3) {
+        str = [str capitalizedStringWithLocale:[NSLocale currentLocale]];
+    }
+
+    return str;
+}
+
 //
 //:A - album
 //:a - artist

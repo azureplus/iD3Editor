@@ -81,11 +81,12 @@
     self.progressWindow.title = @"Renaming Files";
     [self.progressIndicator startAnimation:nil];
     [self.filenameField setStringValue:@"renaming files..."];
-    
+
+    self.closeProgressWindow = NO;
     NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
 
     for (TagEntity * tagEntity in self.tagArrayController.selectedObjects) {
-        if ([NSApp runModalSession:session] != NSModalResponseContinue) {
+        if ([NSApp runModalSession:session] != NSModalResponseContinue || self.closeProgressWindow) {
             break;
         }
 
@@ -112,6 +113,7 @@
     [NSApp stopModal];
     [self.progressIndicator startAnimation:nil];
     [self.progressWindow orderOut:nil];
+    self.closeProgressWindow = NO;
     [NSApp endModalSession:session];
 }
 
@@ -124,4 +126,42 @@
     [self _filerenameHelp:pattern];
 }
 
+-(void) renameFilesByReplacing:(NSString *)replaceFrom with:(NSString *)replaceTo andCapitalization:(NSUInteger)capitalization {
+    self.progressWindow.title = @"Renaming Files";
+    [self.progressIndicator startAnimation:nil];
+    [self.filenameField setStringValue:@"renaming files..."];
+    
+    self.closeProgressWindow = NO;
+    NSModalSession session = [NSApp beginModalSessionForWindow:self.progressWindow];
+    
+    for (TagEntity * tagEntity in self.tagArrayController.selectedObjects) {
+        if ([NSApp runModalSession:session] != NSModalResponseContinue || self.closeProgressWindow) {
+            break;
+        }
+        
+        NSString * oldFilename = tagEntity.filename;
+        NSString * extension = [oldFilename pathExtension];
+        NSString * newFilename = [oldFilename stringByDeletingPathExtension];
+        
+        newFilename = [NSString formatString:newFilename byReplacing:replaceFrom with:replaceTo andCapitalization:capitalization];
+        newFilename = [newFilename stringByAppendingPathExtension:extension];
+        
+        [self.filenameField setStringValue:[NSString stringWithFormat:@"Renaming %@ to %@", oldFilename, newFilename]];
+        [NSThread sleepForTimeInterval:0.3];
+        
+        NSFileManager * fm = [[NSFileManager alloc] init];
+        BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
+        
+        if (result) {
+            tagEntity.filename = newFilename;
+        }
+    }
+    
+    [NSApp stopModal];
+    [self.progressIndicator startAnimation:nil];
+    [self.progressWindow orderOut:nil];
+    self.closeProgressWindow = NO;    
+    [NSApp endModalSession:session];
+
+}
 @end

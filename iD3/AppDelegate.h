@@ -11,6 +11,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> 
 
+@property(assign)  BOOL closeProgressWindow;
+
 @property (assign) IBOutlet NSWindow * window;
 @property (assign) IBOutlet NSWindow * encodingWindow;
 @property (assign) IBOutlet NSWindow * filenameWindow;

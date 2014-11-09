@@ -18,7 +18,6 @@
 
 @interface AppDelegate()
 @property(nonatomic, assign) BOOL readFileRecursively;
-@property(assign)  BOOL closeProgressWindow;
 @end
 
 @implementation AppDelegate

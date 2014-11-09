@@ -11,6 +11,44 @@
 #import "AppDelegate_Filename.h"
 #import "NSString_Filename.h"
 
+@interface TagAndFileNameWindowDelegate()
+
+// n2t (name to tag) tab
+@property (nonatomic, assign) IBOutlet NSComboBox * n2tPattern;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tFilename;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tArtist;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tAlbum;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tTitle;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tTrack;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tComposer;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tGenre;
+@property (nonatomic, assign) IBOutlet NSTextField * n2tYear;
+
+
+// t2n (tag to name) tab
+@property (nonatomic, assign) IBOutlet NSComboBox * t2nPattern;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nFilename;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nArtist;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nAlbum;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nTitle;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nTrack;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nComposer;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nGenre;
+@property (nonatomic, assign) IBOutlet NSTextField * t2nYear;
+
+@property (nonatomic, assign) IBOutlet NSButton * filenameOnly;
+
+
+// rename tab
+@property (nonatomic, assign) IBOutlet NSComboBox * renameFormat;
+@property (nonatomic, assign) IBOutlet NSTextField * renameReplacementFrom;
+@property (nonatomic, assign) IBOutlet NSTextField * renameReplacementTo;
+@property (nonatomic, assign) IBOutlet NSTextField * renameNew;
+@property (nonatomic, assign) IBOutlet NSTextField * renameOld;
+
+@end
+
+
 @implementation TagAndFileNameWindowDelegate
 -(void) windowWillClose:(NSNotification *)notification {
     [NSApp stopModalWithCode:0];
@@ -19,14 +57,14 @@
 - (void)windowDidBecomeMain:(NSNotification *)notification {
      unsigned int pathDepth = [(AppDelegate *)[NSApp delegate] pathDepth];
     if (pathDepth == 0) {
-        [_filenameOnly setState:NSOnState];
+        [self.filenameOnly setState:NSOnState];
     } else {
-        [_filenameOnly setState:NSOffState];
+        [self.filenameOnly setState:NSOffState];
     }
     
     //
-    [_t2nPattern setToolTip:@":a artist\n:A alnum\n:g genre\n:t Title\n:T track\n:y year"];
-    [_n2tPattern setToolTip:@":a artist\n:A alnum\n:g genre\n:t Title\n:T track\n:y year"];
+    [self.t2nPattern setToolTip:@":a artist\n:A alnum\n:g genre\n:t Title\n:T track\n:y year"];
+    [self.n2tPattern setToolTip:@":a artist\n:A alnum\n:g genre\n:t Title\n:T track\n:y year"];
 }
 
 - (IBAction) close:(id)sender {
@@ -40,18 +78,26 @@
         NSString * pattern = [self.n2tPattern stringValue];
         [(AppDelegate *)[NSApp delegate] addN2TPattern:pattern];
         [(AppDelegate *)[NSApp delegate] filenameToTag:pattern];
-    } else if ([tabID isEqualTo:@"TAG_NAME"]){
+    } else if ([tabID isEqualTo:@"TAG_NAME"]) {
         NSString * pattern = [self.t2nPattern stringValue];
         [(AppDelegate *)[NSApp delegate] addT2NPattern:pattern];
         [(AppDelegate *)[NSApp delegate] tagToFilename:pattern];
+    } else if ([tabID isEqualTo:@"RENAME"]) {
+        NSString * replaceFrom = [self.renameReplacementFrom stringValue];
+        NSString * replaceTo = [self.renameReplacementTo stringValue];
+        NSUInteger capitalization = [self.renameFormat indexOfSelectedItem];
+        
+        [(AppDelegate *)[NSApp delegate] renameFilesByReplacing:replaceFrom with:replaceTo andCapitalization:capitalization];
     }
 }
 
 - (void)comboBoxSelectionDidChange:(NSNotification *)notification {
-    if ([notification object] == _n2tPattern) {
+    if ([notification object] == self.n2tPattern) {
         [self _n2tPatternUpdated: YES];
-    } else if ([notification object] == _t2nPattern){
+    } else if ([notification object] == self.t2nPattern){
         [self _t2nPatternUpdated: YES];
+    } else if ([notification object] == self.renameFormat) {
+        [self _renameFormatUpdated];
     }
 }
 
@@ -67,14 +113,14 @@
 
 -(void) _n2tPatternUpdated :(BOOL) bySelection {
     [self _clearN2TFields];
-    NSString * filename = [_n2tFilename stringValue];
-    NSString * pattern = [_n2tPattern stringValue];
+    NSString * filename = [self.n2tFilename stringValue];
+    NSString * pattern = [self.n2tPattern stringValue];
     
     if (bySelection) {
-        NSInteger index = [_n2tPattern indexOfSelectedItem];
+        NSInteger index = [self.n2tPattern indexOfSelectedItem];
         // if index == -1, use stringValue
         if (index >= 0) {
-            pattern = [_n2tPattern itemObjectValueAtIndex:index];
+            pattern = [self.n2tPattern itemObjectValueAtIndex:index];
         }
     }
     
@@ -82,65 +128,80 @@
     for (NSString * key in tagFrames) {
         NSTextField * field = nil;
         if ([key isEqualToString:@"artist"]) {
-            field = _n2tArtist;
+            field = self.n2tArtist;
         } else if ([key isEqualToString:@"album"]) {
-            field = _n2tAlbum;
+            field = self.n2tAlbum;
         } else if ([key isEqualToString:@"title"]) {
-            field = _n2tTitle;
+            field = self.n2tTitle;
         } else if ([key isEqualToString:@"track"]) {
-            field = _n2tTrack;
+            field = self.n2tTrack;
         } else if ([key isEqualToString:@"composer"]) {
-            field = _n2tComposer;
+            field = self.n2tComposer;
         } else if ([key isEqualToString:@"genre"]) {
-            field = _n2tGenre;
+            field = self.n2tGenre;
         } else if ([key isEqualToString:@"year"]) {
-            field = _n2tYear;
+            field = self.n2tYear;
         }
         
         [field setStringValue:tagFrames[key]];
     }
 }
 
+- (void) _renameFormatUpdated {
+    NSString * replaceFrom = [self.renameReplacementFrom stringValue];
+    NSString * replaceTo = [self.renameReplacementTo stringValue];
+    NSString * fileName = [self.renameOld stringValue];
+    NSString * extension = [fileName pathExtension];
+    fileName = [fileName stringByDeletingPathExtension];
+    
+    fileName = [NSString formatString:fileName byReplacing:replaceFrom with:replaceTo andCapitalization:[self.renameFormat indexOfSelectedItem]];
+    
+    fileName = [fileName stringByAppendingPathExtension:extension];
+    [self.renameNew setStringValue:fileName];
+}
+
 -(void) _t2nPatternUpdated: (BOOL) bySelection {
-    NSString * pattern = [_t2nPattern stringValue];
+    NSString * pattern = [self.t2nPattern stringValue];
     
     if (bySelection) {
-        NSInteger index = [_t2nPattern indexOfSelectedItem];
+        NSInteger index = [self.t2nPattern indexOfSelectedItem];
         // if index == -1, use stringValue        
         if (index >= 0) {
-            pattern = [_t2nPattern itemObjectValueAtIndex:index];
+            pattern = [self.t2nPattern itemObjectValueAtIndex:index];
         }
     }
     
     NSMutableDictionary * frames = [NSMutableDictionary dictionaryWithCapacity:7];
-    frames[@"artist"] = [_t2nArtist stringValue];
-    frames[@"album"] = [_t2nAlbum stringValue];
-    frames[@"title"] = [_t2nTitle stringValue];
-    frames[@"composer"] = [_t2nComposer stringValue];
-    frames[@"genre"] = [_t2nGenre stringValue];
-    frames[@"track"] = [_t2nTrack stringValue];
-    frames[@"year"] = [_t2nYear stringValue];
+    frames[@"artist"] = [self.t2nArtist stringValue];
+    frames[@"album"] = [self.t2nAlbum stringValue];
+    frames[@"title"] = [self.t2nTitle stringValue];
+    frames[@"composer"] = [self.t2nComposer stringValue];
+    frames[@"genre"] = [self.t2nGenre stringValue];
+    frames[@"track"] = [self.t2nTrack stringValue];
+    frames[@"year"] = [self.t2nYear stringValue];
     
-    [_t2nFilename setStringValue:[NSString fromFrames:frames withPattern:pattern andTrackSize:0]];
+    [self.t2nFilename setStringValue:[NSString fromFrames:frames withPattern:pattern andTrackSize:0]];
 }
 
 // instant pattern recognition
 - (void) controlTextDidChange: (NSNotification *)notice {
     NSComboBox * textField = [notice object];
-    if (textField == _n2tPattern) {
+    if (textField == self.n2tPattern) {
         [self _n2tPatternUpdated: NO];
-    } else if (textField == _t2nPattern) {
+    } else if (textField == self.t2nPattern) {
         [self _t2nPatternUpdated: NO];
+    } else if (textField == self.renameReplacementFrom || textField == self.renameReplacementTo) {
+        [self _renameFormatUpdated];
     }
 }
 
 -(void) _clearN2TFields {
-    [_n2tArtist setStringValue:@""];
-    [_n2tAlbum setStringValue:@""];
-    [_n2tTitle setStringValue:@""];
-    [_n2tTrack setStringValue:@""];
-    [_n2tComposer setStringValue:@""];
-    [_n2tYear setStringValue:@""];
-    [_n2tGenre setStringValue:@""];
+    [self.n2tArtist setStringValue:@""];
+    [self.n2tAlbum setStringValue:@""];
+    [self.n2tTitle setStringValue:@""];
+    [self.n2tTrack setStringValue:@""];
+    [self.n2tComposer setStringValue:@""];
+    [self.n2tYear setStringValue:@""];
+    [self.n2tGenre setStringValue:@""];
 }
 @end
