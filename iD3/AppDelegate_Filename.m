@@ -111,7 +111,7 @@
     }
     
     [NSApp stopModal];
-    [self.progressIndicator startAnimation:nil];
+    [self.progressIndicator stopAnimation:nil];
     [self.progressWindow orderOut:nil];
     self.closeProgressWindow = NO;
     [NSApp endModalSession:session];
@@ -158,7 +158,7 @@
     }
     
     [NSApp stopModal];
-    [self.progressIndicator startAnimation:nil];
+    [self.progressIndicator stopAnimation:nil];
     [self.progressWindow orderOut:nil];
     self.closeProgressWindow = NO;    
     [NSApp endModalSession:session];

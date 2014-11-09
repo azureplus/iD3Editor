@@ -1370,17 +1370,17 @@ DQ
         <window title="Saving..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="tbz-y0-fz4">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="283" y="305" width="527" height="141"/>
+            <rect key="contentRect" x="283" y="305" width="527" height="132"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="cmB-2p-eI2">
-                <rect key="frame" x="0.0" y="0.0" width="527" height="141"/>
+                <rect key="frame" x="0.0" y="0.0" width="527" height="132"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <progressIndicator fixedFrame="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Y8g-iH-TQ9">
-                        <rect key="frame" x="20" y="38" width="487" height="20"/>
+                    <progressIndicator fixedFrame="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Y8g-iH-TQ9">
+                        <rect key="frame" x="247" y="43" width="32" height="32"/>
                     </progressIndicator>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBz-eT-SdY">
-                        <rect key="frame" x="18" y="65" width="491" height="56"/>
+                        <rect key="frame" x="20" y="58" width="485" height="54"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="48R-nu-6O2">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1388,7 +1388,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UXi-3G-gzz">
-                        <rect key="frame" x="431" y="8" width="82" height="32"/>
+                        <rect key="frame" x="431" y="10" width="82" height="32"/>
                         <buttonCell key="cell" type="push" title="Stop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VfT-kQ-xxJ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -1399,7 +1399,7 @@ DQ
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="269.5" y="269.5"/>
+            <point key="canvasLocation" x="269.5" y="265"/>
         </window>
         <menu id="8I8-p7-AEc">
             <items>
