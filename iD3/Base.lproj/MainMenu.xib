@@ -739,7 +739,7 @@ IA
                     <constraint firstItem="SA2-Dt-g5c" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="bDb-OC-nQD"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="71F54B90-8D08-42EF-83A8-F3D8172ED3EB" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="small" id="3vU-ek-Yeh">
+            <toolbar key="toolbar" implicitIdentifier="71F54B90-8D08-42EF-83A8-F3D8172ED3EB" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="small" id="3vU-ek-Yeh">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="fLM-oQ-arQ"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="ocH-jt-LHv"/>
