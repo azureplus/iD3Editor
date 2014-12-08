@@ -18,6 +18,7 @@
 @protocol TagProtocol <NSObject>
 -(NSString *) artist;
 -(NSString *) album;
+-(NSString *) albumArtist;
 -(NSString *) genre;
 -(NSString *) title;
 -(NSString *) comment;
@@ -29,6 +30,7 @@
 
 -(void)setArtist:(NSString *)value;
 -(void)setAlbum:(NSString *)value;
+-(void)setAlbumArtist:(NSString *)value;
 -(void)setGenre:(NSString *)value;
 -(void)setTitle:(NSString *)value;
 -(void)setComment:(NSString *)value;

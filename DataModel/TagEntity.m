@@ -33,6 +33,7 @@
 
 @dynamic album;
 @dynamic artist;
+@dynamic albumArtist;
 @dynamic composer;
 @dynamic comment;
 @dynamic filename;
@@ -45,7 +46,7 @@
 @synthesize tag = _tag;
 
 -(void) resetValue {
-    NSArray * frames = @[@"artist", @"album", @"title",
+    NSArray * frames = @[@"artist", @"album", @"albumArtist", @"title",
                          @"genre", @"comment", @"composer",
                          @"copyright", @"year", @"track", @"coverArt"];
     for (NSString * frame in frames) {
@@ -59,6 +60,7 @@
 
 DECL_GETTER_1(artist);
 DECL_GETTER_1(album);
+DECL_GETTER_1(albumArtist);
 DECL_GETTER_1(title);
 DECL_GETTER_1(genre);
 DECL_GETTER_1(comment);
@@ -87,6 +89,7 @@ DECL_GETTER_1(copyright);
 
 DECL_SETTER_1(Artist);
 DECL_SETTER_1(Album);
+DECL_SETTER_1(AlbumArtist);
 DECL_SETTER_1(Title);
 DECL_SETTER_1(Genre);
 DECL_SETTER_1(Comment);
@@ -112,7 +115,7 @@ DECL_SETTER_1(Copyright);
 }
 
 -(void) setCharEncoding: (unsigned int) charEncoding {
-    NSArray * frames = @[@"artist", @"album", @"title",
+    NSArray * frames = @[@"artist", @"album", @"albumArtist", @"title",
                          @"genre", @"comment", @"composer",
                          @"copyright", @"year", @"track"];
     for (NSString * frame in frames) {

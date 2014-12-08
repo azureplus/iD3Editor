@@ -14,6 +14,7 @@
 
 @property (nonatomic, retain) NSString * album;
 @property (nonatomic, retain) NSString * artist;
+@property (nonatomic, retain) NSString * albumArtist;
 @property (nonatomic, retain) NSString * composer;
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSString * filename;
