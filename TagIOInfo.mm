@@ -25,6 +25,8 @@
         if (!fieldMap[COPYRIGHT_FRAME].isEmpty()) {
             tag.copyrightTL = fieldMap[COPYRIGHT_FRAME];
         }
+        
+        
     }
     
     return tag;

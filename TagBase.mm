@@ -28,6 +28,7 @@ if (_##FRAME) { \
 }
 
 @implementation TagBase
+// copy basic tags from TagLib::Tag
 -(id) initWithTag: (TagLib::Tag *) tag {
     if (self = [super init]) {
         _charEncoding = DEFAULT_ENCODING;
@@ -77,6 +78,7 @@ if (_##FRAME) { \
 
 DECL_GETTER(artist)
 DECL_GETTER(album)
+DECL_GETTER(albumArtist);
 DECL_GETTER(title)
 DECL_GETTER(genre)
 DECL_GETTER(comment)
@@ -101,6 +103,7 @@ DECL_GETTER(composer)
 -(void) savedChanges {
     SAVE_FRAME(artist);
     SAVE_FRAME(album);
+    SAVE_FRAME(albumArtist);
     SAVE_FRAME(title);
     SAVE_FRAME(composer);
     SAVE_FRAME(comment);

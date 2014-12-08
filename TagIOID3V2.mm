@@ -29,6 +29,11 @@
             tag.copyrightTL =  tcopFrameList[0]->toString();
         }
         
+        const TagLib::ID3v2::FrameList & tpe2FrameList = id3Tag->frameList("TPE2");
+        if (!tpe2FrameList.isEmpty()) {
+            tag.albumArtistTL = tpe2FrameList[0]->toString();
+        }
+        
         [self _readPicturesFrom:id3Tag to:tag];
     }
     

@@ -18,6 +18,7 @@
 // original tag frame values
 @property (nonatomic, assign) TagLib::String artistTL;
 @property (nonatomic, assign) TagLib::String albumTL;
+@property (nonatomic, assign) TagLib::String albumArtistTL;
 @property (nonatomic, assign) TagLib::String commentTL;
 @property (nonatomic, assign) TagLib::String genreTL;
 @property (nonatomic, assign) TagLib::String titleTL;
@@ -31,6 +32,7 @@
 // new tag frame values
 @property (nonatomic, strong) NSString * artist;
 @property (nonatomic, strong) NSString * album;
+@property (nonatomic, strong) NSString * albumArtist;
 @property (nonatomic, strong) NSString * comment;
 @property (nonatomic, strong) NSString * genre;
 @property (nonatomic, strong) NSString * title;

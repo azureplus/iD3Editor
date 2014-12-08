@@ -12,6 +12,8 @@
 #import "NSString_TLString.h"
 #import "NSImage_NSData.h"
 
+#define APE_ALBUMARTIST_FRAME "ALBUM ARTIST"
+
 @implementation TagIOApe
 -(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib {
     TagBase * tag = [super readTaglib:taglib];
@@ -20,12 +22,16 @@
     if (apeTag) {
         const TagLib::APE::ItemListMap & itemMap = apeTag->itemListMap();
         
-        if (!itemMap[COMPOSER_FRAME].isEmpty()){
+        if (!itemMap[COMPOSER_FRAME].isEmpty()) {
             tag.composerTL = itemMap[COMPOSER_FRAME].toString();
         }
         
-        if (!itemMap[COPYRIGHT_FRAME].isEmpty()){
+        if (!itemMap[COPYRIGHT_FRAME].isEmpty()) {
             tag.copyrightTL = itemMap[COPYRIGHT_FRAME].toString();
+        }
+        
+        if (!itemMap[APE_ALBUMARTIST_FRAME].isEmpty()) {
+            tag.albumArtistTL = itemMap[APE_ALBUMARTIST_FRAME].toString();
         }
         
         [self _readPicturesFrom:apeTag to:tag];
@@ -71,6 +77,7 @@
     if (apeTag) {
         apeTag->addValue(COMPOSER_FRAME, [NSString TLStringFromString:tag.composer], true);
         apeTag->addValue(COPYRIGHT_FRAME, [NSString TLStringFromString:tag.copyright], true);
+        apeTag->addValue(APE_ALBUMARTIST_FRAME, [NSString TLStringFromString:tag.albumArtist], true);
         
         [self _writePic:[tag coverArt] to:apeTag withType:"COVER ART (FRONT)"];
     }

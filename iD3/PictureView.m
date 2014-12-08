@@ -12,7 +12,7 @@
 
 @implementation PictureView
 -(void) mouseEntered:(NSEvent *)theEvent {
-    AppDelegate * delegate = [NSApp delegate];
+    AppDelegate * delegate = [[NSApplication sharedApplication] delegate];
     if ([[[delegate tagArrayController] selectedObjects] count]) {
         [self.deleteButton setHidden:self.image == [NSImage nullPlaceholderImage]];
     }
@@ -36,7 +36,7 @@
 }
 
 -(NSDragOperation) draggingEntered:(id<NSDraggingInfo>)sender {
-    AppDelegate * delegate = [NSApp delegate];
+    AppDelegate * delegate = [[NSApplication sharedApplication] delegate];
     if (![[[delegate tagArrayController] selectedObjects] count]) {
         return NSDragOperationNone;
     }
