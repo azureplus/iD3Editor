@@ -479,8 +479,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
             endingLineNumber = "88"
-            landmarkName = "DECL_SETTER_1()"
-            landmarkType = "6">
+            landmarkName = "-coverArt"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1344,11 +1344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TagIOXIPH.mm"
-            timestampString = "433914372.148016"
+            timestampString = "439799128.109948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "-readTaglib:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1408,11 +1408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TagIOID3V2.mm"
-            timestampString = "434694802.373114"
+            timestampString = "439799128.109948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-_writePic:to:withType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1424,11 +1424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TagIOMP4.mm"
-            timestampString = "434694899.16034"
+            timestampString = "439799128.109948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "-readTaglib:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1440,11 +1440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TagIOMP4.mm"
-            timestampString = "434696736.281608"
+            timestampString = "439799128.109948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-write:toTaglib:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1488,11 +1488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TagIOASF.mm"
-            timestampString = "434773092.565989"
+            timestampString = "439799128.109948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-write:toTaglib:"
             landmarkType = "5">
          </BreakpointContent>

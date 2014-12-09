@@ -269,7 +269,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveColumns="NO" headerView="HOL-yM-LHF" id="Gxo-e1-Vhj" customClass="TagTableView">
-                                    <rect key="frame" x="0.0" y="0.0" width="718" height="19"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="957" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -307,6 +307,22 @@
                                                 <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.artist" id="69Q-qQ-cg1"/>
                                             </connections>
                                         </tableColumn>
+                                        <tableColumn width="100" maxWidth="2048" id="wA4-nI-Ud3">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Album Artist">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="j9P-OP-Ejp">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.albumArtist" id="uLJ-4q-XH0"/>
+                                            </connections>
+                                        </tableColumn>
                                         <tableColumn identifier="artist" width="100" maxWidth="2048" id="LZf-Qu-ZhJ">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Album">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -339,7 +355,7 @@
                                                 <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.track" id="la3-tH-UO3"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="77.07421875" minWidth="10" maxWidth="3.4028234663852886e+38" id="4Xl-2i-8bU">
+                                        <tableColumn width="100" maxWidth="2048" id="4Xl-2i-8bU">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Genre">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -383,7 +399,7 @@
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="fWv-rP-J80">
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="fWv-rP-J80">
                             <rect key="frame" x="1" y="763" width="700" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -644,22 +660,6 @@ IA
                                     <action selector="deleteCoverArt:" target="Voe-Tx-rLC" id="s8H-WY-0Um"/>
                                 </connections>
                             </button>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGP-mF-qUf">
-                                <rect key="frame" x="764" y="16" width="178" height="26"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Format selected items" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="pX5-cu-AjS">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Lowercase</string>
-                                        <string>Uppercase</string>
-                                        <string>Capitalization</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                                <connections>
-                                    <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="mpc-O9-2Cm"/>
-                                </connections>
-                            </comboBox>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZL1-kZ-ue7">
                                 <rect key="frame" x="577" y="173" width="105" height="28"/>
                                 <buttonCell key="cell" type="check" title="Album Artist:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LV1-Xi-V8U">
@@ -674,6 +674,13 @@ IA
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="j1s-e0-8eb" name="value" keyPath="selection.albumArtist" id="AV1-aN-8V1">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvt-s7-NS6" userLabel="TextYear">
                                 <rect key="frame" x="429" y="60" width="111" height="22"/>
@@ -707,6 +714,22 @@ IA
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGP-mF-qUf">
+                                <rect key="frame" x="764" y="16" width="178" height="26"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Format selected items" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="pX5-cu-AjS">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Lowercase</string>
+                                        <string>Uppercase</string>
+                                        <string>Capitalization</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                                <connections>
+                                    <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="mpc-O9-2Cm"/>
+                                </connections>
+                            </comboBox>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="959" id="tji-c1-e49"/>
@@ -785,7 +808,7 @@ IA
         <window title="Tag Encoding" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="9rE-sh-TII">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="903" y="305" width="397" height="416"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="W8j-g3-vU6">
                 <rect key="frame" x="0.0" y="0.0" width="397" height="416"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -861,7 +884,7 @@ DQ
         <window title="Tag and File Name" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aNU-2N-OHg">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="283" y="305" width="480" height="403"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="epo-cI-CZM">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="403"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -1355,7 +1378,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="527" height="132"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="cmB-2p-eI2">
                 <rect key="frame" x="0.0" y="0.0" width="527" height="132"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
