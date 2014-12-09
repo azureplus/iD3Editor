@@ -11,6 +11,8 @@
 #import "TagBase.h"
 #import "NSString_TLString.h"
 
+#define RIFF_ALBUMARTIST "ISBJ"
+
 @implementation TagIOInfo
 -(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib {
     TagBase * tag = [super readTaglib:taglib];
@@ -26,6 +28,9 @@
             tag.copyrightTL = fieldMap[COPYRIGHT_FRAME];
         }
         
+        if (!fieldMap[RIFF_ALBUMARTIST].isEmpty()) {
+            tag.albumArtistTL = fieldMap[RIFF_ALBUMARTIST];
+        }
         
     }
     
@@ -44,6 +49,7 @@
     if (infoTag != nil) {
         infoTag->setFieldText(COMPOSER_FRAME, [NSString TLStringFromString:tag.composer]);
         infoTag->setFieldText(COPYRIGHT_FRAME, [NSString TLStringFromString:tag.copyright]);
+        infoTag->setFieldText(RIFF_ALBUMARTIST, [NSString TLStringFromString:tag.albumArtist]);
     }
 }
 @end

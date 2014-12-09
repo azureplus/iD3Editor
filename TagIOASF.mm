@@ -15,6 +15,7 @@
 
 #define ASF_COMPOSER "WM/Composer"
 #define ASF_PICTURE "WM/Picture"
+#define ASF_ALBUMARTIST "WM/AlbumArtist"
 
 @implementation TagIOASF
 -(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib {
@@ -30,6 +31,14 @@
             if (composers.size() > 0) {
                 TagLib::ASF::Attribute composer = composers.front();
                 tag.composerTL = composer.toString();
+            }
+        }
+        
+        if (attributeListMap.contains(ASF_ALBUMARTIST)) {
+            const TagLib::ASF::AttributeList & albumArtists = attributeListMap[ASF_ALBUMARTIST];
+            if (albumArtists.size() > 0) {
+                TagLib::ASF::Attribute albumArtist = albumArtists.front();
+                tag.albumArtistTL = albumArtist.toString();
             }
         }
         
@@ -66,6 +75,20 @@
     }
 }
 
+-(void) writeTag:(const TagLib::String &) tagName withValue:(NSString *) value ofAttributeListMap:(TagLib::ASF::AttributeListMap &)attributeListMap {
+    TagLib::ASF::AttributeList tagValueList = TagLib::ASF::AttributeList();
+    if (attributeListMap.contains(tagName)) {
+        tagValueList = attributeListMap[tagName];
+        if (tagValueList.size()) {
+            tagValueList.erase(tagValueList.begin());
+        }
+    }
+    
+    TagLib::ASF::Attribute tagValue([NSString TLStringFromString:value]);
+    tagValueList.prepend(tagValue);
+    attributeListMap[tagName] = tagValueList;
+}
+
 -(void) write:(id<TagProtocol>) tag toTaglib:(TagLib::Tag *) taglib {
     if (taglib == nil) {
         return;
@@ -77,19 +100,16 @@
     
     if (asfTag != nil) {
         TagLib::ASF::AttributeListMap & attributeListMap = asfTag->attributeListMap();
-        TagLib::ASF::AttributeList composerList = TagLib::ASF::AttributeList();
-        if (attributeListMap.contains(ASF_COMPOSER)) {
-            composerList = attributeListMap[ASF_COMPOSER];
-            if (composerList.size()) {
-                composerList.erase(composerList.begin());
-            }
-        }
+        // composer
+        [self writeTag:ASF_COMPOSER withValue:tag.composer ofAttributeListMap:attributeListMap];
         
-        TagLib::ASF::Attribute composer([NSString TLStringFromString:tag.composer]);
-        composerList.prepend(composer);
-        attributeListMap[ASF_COMPOSER] = composerList;
+        // albumartist
+        [self writeTag:ASF_ALBUMARTIST withValue:tag.albumArtist ofAttributeListMap:attributeListMap];
         
+        // copyright
         asfTag->setCopyright([NSString TLStringFromString:tag.copyright]);
+        
+        // picture
         [self _writePic:[tag coverArt] to:asfTag withType:TagLib::ASF::Picture::Type::FrontCover];
     }
 }

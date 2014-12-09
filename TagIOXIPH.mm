@@ -13,6 +13,8 @@
 #import "TagBase.h"
 #import "NSString_TLString.h"
 
+#define XIPH_ALBUMARTIST "ALBUMARTIST"
+
 @implementation TagIOXIPH
 -(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib {
     TagBase * tag = [super readTaglib:taglib];
@@ -25,6 +27,10 @@
         
         if (!fieldMap[COPYRIGHT_FRAME].isEmpty()) {
             tag.copyrightTL = fieldMap[COPYRIGHT_FRAME].front();
+        }
+        
+        if (!fieldMap[XIPH_ALBUMARTIST].isEmpty()) {
+            tag.albumArtistTL = fieldMap[XIPH_ALBUMARTIST].front();
         }
     }
     
@@ -43,6 +49,7 @@
     if (xiphTag) {
         xiphTag->addField(COMPOSER_FRAME, [NSString TLStringFromString:tag.composer]);
         xiphTag->addField(COPYRIGHT_FRAME, [NSString TLStringFromString:tag.copyright]);
+        xiphTag->addField(XIPH_ALBUMARTIST, [NSString TLStringFromString:tag.albumArtist]);
     }
 }
 @end

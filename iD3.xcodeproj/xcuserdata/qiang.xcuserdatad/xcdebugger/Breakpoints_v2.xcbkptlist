@@ -1269,7 +1269,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "-write:toTaglib:"
+            landmarkName = "-_readPicturesFrom:to:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1317,7 +1317,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
             endingLineNumber = "40"
-            landmarkName = "-_readPicturesFrom:to:"
+            landmarkName = "-readTaglib:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1478,22 +1478,6 @@
             startingLineNumber = "69"
             endingLineNumber = "69"
             landmarkName = "+initialize"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TagIOASF.mm"
-            timestampString = "434773092.565989"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-write:toTaglib:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

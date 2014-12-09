@@ -74,6 +74,7 @@
 
     id3Tag->setTextFrame("TCOM", [NSString TLStringFromString:tag.composer]);
     id3Tag->setTextFrame("TCOP", [NSString TLStringFromString:tag.copyright]);
+    id3Tag->setTextFrame("TPE2", [NSString TLStringFromString:tag.albumArtist]);
 
     // currenlty only supports front cover
     [self _writePic:[tag coverArt] to:id3Tag withType:TagLib::ID3v2::AttachedPictureFrame::Type::FrontCover];

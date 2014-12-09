@@ -17,6 +17,7 @@
 #define MP4_COMPOSER "\251wrt"
 #define MP4_COPYRIGHT "cprt"
 #define MP4_COVER_ART "covr"
+#define MP4_ALBUMARTIST "aART"
 #define MP4_STRINGLIST_DELIMITER ", "
 
 @implementation TagIOMP4
@@ -32,6 +33,10 @@
         
         if (itemListMap.contains(MP4_COPYRIGHT)) {
             tag.copyrightTL = itemListMap[MP4_COPYRIGHT].toStringList().toString(MP4_STRINGLIST_DELIMITER);
+        }
+        
+        if (itemListMap.contains(MP4_ALBUMARTIST)) {
+            tag.albumArtistTL = itemListMap[MP4_ALBUMARTIST].toStringList().toString(MP4_STRINGLIST_DELIMITER);
         }
         
         [self _readPicturesFrom:mp4Tag to:tag];
@@ -70,6 +75,7 @@
     TagLib::MP4::ItemListMap & itemListMap = mp4Tag->itemListMap();
     itemListMap[MP4_COMPOSER] = TagLib::StringList([NSString TLStringFromString:tag.composer]);
     itemListMap[MP4_COPYRIGHT] = TagLib::StringList([NSString TLStringFromString:tag.copyright]);
+    itemListMap[MP4_ALBUMARTIST] = TagLib::StringList([NSString TLStringFromString:tag.albumArtist]);
     
     [self _writePic:[tag coverArt] to:mp4Tag withType:MP4_COVER_ART];
 }
