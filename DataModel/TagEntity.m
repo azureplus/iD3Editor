@@ -18,12 +18,12 @@
 // The setters change null value to @""
 // as null value in TagBase indicates value not changed
 //
-#define DECL_SETTER_1(FRAME) \
+#define DECL_SETTER_1(FRAME, FRAME1) \
 -(void) set##FRAME:(NSString *)value { \
     if (!value) { \
         value = @""; \
     } \
-    NSString * frame = [@#FRAME lowercaseString]; \
+    NSString * frame = @#FRAME1; \
     [self willChangeValueForKey:frame]; \
     [self.tag set##FRAME:value]; \
     [self didChangeValueForKey:frame]; \
@@ -87,14 +87,14 @@ DECL_GETTER_1(copyright);
     return [self.tag coverArt];
 }
 
-DECL_SETTER_1(Artist);
-DECL_SETTER_1(Album);
-DECL_SETTER_1(AlbumArtist);
-DECL_SETTER_1(Title);
-DECL_SETTER_1(Genre);
-DECL_SETTER_1(Comment);
-DECL_SETTER_1(Composer);
-DECL_SETTER_1(Copyright);
+DECL_SETTER_1(Artist, artist);
+DECL_SETTER_1(Album, album);
+DECL_SETTER_1(AlbumArtist, albumArtist);
+DECL_SETTER_1(Title, title);
+DECL_SETTER_1(Genre, genre);
+DECL_SETTER_1(Comment, comment);
+DECL_SETTER_1(Composer, composer);
+DECL_SETTER_1(Copyright, copyright);
 
 -(void)setYear:(NSString *)value {
     [self willChangeValueForKey:@"year"];
