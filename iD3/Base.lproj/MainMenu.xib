@@ -15,6 +15,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="album" destination="BKe-yu-hqw" id="y27-wd-LBr"/>
+                <outlet property="albumArtist" destination="5X9-46-Xyn" id="0Vt-ey-Tqd"/>
                 <outlet property="artist" destination="OyI-dW-Tli" id="gXG-VA-VRg"/>
                 <outlet property="cbFormat" destination="CGP-mF-qUf" id="Xd7-Qs-hqT"/>
                 <outlet property="chkAlbum" destination="Oly-sg-iac" id="0MG-FU-pJn"/>
@@ -304,7 +305,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.artist" id="69Q-qQ-cg1"/>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.artist" id="QEi-JZ-nO3"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="100" maxWidth="2048" id="wA4-nI-Ud3">
@@ -320,7 +321,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.albumArtist" id="uLJ-4q-XH0"/>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.albumArtist" id="n4s-4L-VFR"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn identifier="artist" width="100" maxWidth="2048" id="LZf-Qu-ZhJ">
@@ -660,6 +661,22 @@ IA
                                     <action selector="deleteCoverArt:" target="Voe-Tx-rLC" id="s8H-WY-0Um"/>
                                 </connections>
                             </button>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGP-mF-qUf">
+                                <rect key="frame" x="764" y="16" width="178" height="26"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Format selected items" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="pX5-cu-AjS">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Lowercase</string>
+                                        <string>Uppercase</string>
+                                        <string>Capitalization</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                                <connections>
+                                    <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="mpc-O9-2Cm"/>
+                                </connections>
+                            </comboBox>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZL1-kZ-ue7">
                                 <rect key="frame" x="577" y="173" width="105" height="28"/>
                                 <buttonCell key="cell" type="check" title="Album Artist:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LV1-Xi-V8U">
@@ -667,21 +684,6 @@ IA
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pj-ek-LWc" userLabel="TextAlbumArtist">
-                                <rect key="frame" x="683" y="176" width="256" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="oYT-Ci-HeG">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="j1s-e0-8eb" name="value" keyPath="selection.albumArtist" id="AV1-aN-8V1">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvt-s7-NS6" userLabel="TextYear">
                                 <rect key="frame" x="429" y="60" width="111" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="WUY-mN-WKe">
@@ -714,22 +716,24 @@ IA
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGP-mF-qUf">
-                                <rect key="frame" x="764" y="16" width="178" height="26"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Format selected items" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="pX5-cu-AjS">
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-46-Xyn" userLabel="TextAlbumArtist">
+                                <rect key="frame" x="683" y="175" width="256" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="fV0-Tu-JfC">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Lowercase</string>
-                                        <string>Uppercase</string>
-                                        <string>Capitalization</string>
-                                    </objectValues>
-                                </comboBoxCell>
+                                </textFieldCell>
                                 <connections>
-                                    <binding destination="j1s-e0-8eb" name="enabled" keyPath="selectedObjects.@count" id="mpc-O9-2Cm"/>
+                                    <binding destination="j1s-e0-8eb" name="value" keyPath="selection.albumArtist" id="ehE-Xy-s8t">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                            <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
+IA
+</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
-                            </comboBox>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="959" id="tji-c1-e49"/>

@@ -19,6 +19,7 @@
 @property (assign) IBOutlet NSTextField * album;
 @property (assign) IBOutlet NSTextField * artist;
 @property (assign) IBOutlet NSTextField * genre;
+@property (assign) IBOutlet NSTextField * albumArtist;
 
 // saving progress window
 @property (assign) IBOutlet NSWindow * progressWindow;

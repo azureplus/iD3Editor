@@ -44,6 +44,7 @@ if (_##FRAME) { \
         
         self.copyrightTL = TagLib::String::null;
         self.composerTL = TagLib::String::null;
+        self.albumArtistTL = TagLib::String::null;
         
         _picture = [NSMutableDictionary dictionaryWithCapacity:2];
         _pictureTL = [NSMutableDictionary dictionaryWithCapacity:2];        
@@ -87,12 +88,12 @@ DECL_GETTER(composer)
 
 -(BOOL)updated {
     return _charEncoding != DEFAULT_ENCODING ||
-           _artist || _album || _title || _composer || _comment ||
+           _artist || _album || _title || _composer || _comment || _albumArtist ||
            _genre || _copyright || _track || _year || ([_picture count] != 0);
 }
 
 -(void)discardChanges {
-    _artist = _album = _title = _composer = _comment = _genre = _copyright = nil;
+    _artist = _album = _albumArtist = _title = _composer = _comment = _genre = _copyright = nil;
     _track = _year = nil;
     _charEncoding = DEFAULT_ENCODING;
     
@@ -131,13 +132,14 @@ DECL_GETTER(composer)
 -(NSString *) description {
     NSString * description = [NSString stringWithFormat:@"\tTitle: %@ \
                               \n\tArtist: %@ \
+                              \n\tAlbumArtist: %@ \
                               \n\tAlbum: %@ \
                               \n\tGenre: %@ \
                               \n\tYear: %@ \
                               \n\tTrack: %@ \
                               \n\tComposer: %@ \
                               \n\tComment: %@ \
-                              \n\tCopyright: %@", self.title, self.artist, self.album,
+                              \n\tCopyright: %@", self.title, self.artist, self.albumArtist, self.album,
                               self.genre, self.year, self.track, self.composer, self.comment, self.copyright];
     return description;
 }
