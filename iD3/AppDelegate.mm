@@ -548,6 +548,7 @@
     BOOL formatComment = [self.chkComment state] == NSOnState;
     BOOL formatComposer = [self.chkComposer state] == NSOnState;
     BOOL formatCopyright = [self.chkCopyright state] == NSOnState;
+    BOOL formatAlbumArtist = [self.chkAlbumArtist state] == NSOnState;
     
     if (format < 0) {
         return;
@@ -566,6 +567,10 @@
             tag.album = [self _formatString:tag.album withFormat:format];
         }
 
+        if (formatAlbumArtist) {
+            tag.albumArtist = [self _formatString:tag.albumArtist withFormat:format];
+        }
+        
         if (formatGenre) {
             tag.genre = [self _formatString:tag.genre withFormat:format];
         }

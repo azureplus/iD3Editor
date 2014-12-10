@@ -29,11 +29,13 @@
 // frame checkboxs
 @property (assign) IBOutlet NSButton * chkTitle;
 @property (assign) IBOutlet NSButton * chkAlbum;
+@property (assign) IBOutlet NSButton * chkAlbumArtist;
 @property (assign) IBOutlet NSButton * chkArtist;
 @property (assign) IBOutlet NSButton * chkGenre;
 @property (assign) IBOutlet NSButton * chkComment;
 @property (assign) IBOutlet NSButton * chkComposer;
 @property (assign) IBOutlet NSButton * chkCopyright;
+
 
 @property (assign) IBOutlet NSImageView * coverArtView;
 
