@@ -12,7 +12,7 @@
 #import "NSString_TLString.h"
 #import "NSImage_NSData.h"
 
-#define APE_ALBUMARTIST_FRAME "ALBUM ARTIST"
+#define APE_ALBUMARTIST_FRAME "ALBUMARTIST"
 
 @implementation TagIOApe
 -(id<TagProtocol>) readTaglib:(TagLib::Tag *) taglib {
