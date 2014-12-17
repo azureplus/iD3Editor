@@ -139,18 +139,25 @@
             break;
         }
         
-        NSString * oldFilename = tagEntity.filename;
+        NSString * oldFilename = [tagEntity.filename lastPathComponent];
         NSString * extension = [oldFilename pathExtension];
         NSString * newFilename = [oldFilename stringByDeletingPathExtension];
         
         newFilename = [NSString formatString:newFilename byReplacing:replaceFrom with:replaceTo andCapitalization:capitalization];
+        
         newFilename = [newFilename stringByAppendingPathExtension:extension];
+        
+        oldFilename = tagEntity.filename;
+        newFilename = [[oldFilename stringByDeletingLastPathComponent] stringByAppendingPathComponent:newFilename];
         
         [self.filenameField setStringValue:[NSString stringWithFormat:@"Renaming %@ to %@", oldFilename, newFilename]];
         [NSThread sleepForTimeInterval:0.3];
         
         NSFileManager * fm = [[NSFileManager alloc] init];
-        BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:nil];
+        
+        NSError * error;
+        
+        BOOL result = [fm moveItemAtPath:oldFilename toPath:newFilename error:&error];
         
         if (result) {
             tagEntity.filename = newFilename;
