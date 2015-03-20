@@ -42,8 +42,11 @@
 		F7B21B6A1A0F254300D351DF /* Clear.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7B21B641A0F254300D351DF /* Clear.pdf */; };
 		F7B21B6B1A0F254300D351DF /* Reset.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7B21B651A0F254300D351DF /* Reset.pdf */; };
 		F7CC979E1AB943AA00005293 /* ID3V2Facade.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7CC979D1AB943AA00005293 /* ID3V2Facade.mm */; };
-		F7CC97A31AB9466D00005293 /* TagNameMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CC97A21AB9466D00005293 /* TagNameMapping.m */; };
+		F7CC97A31AB9466D00005293 /* FrameNameMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CC97A21AB9466D00005293 /* FrameNameMapping.m */; };
 		F7CC97AB1ABA9A8D00005293 /* FileTags.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7CC97AA1ABA9A8D00005293 /* FileTags.mm */; };
+		F7CC97AD1ABBC11300005293 /* ID3V2FacadeTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7CC97AC1ABBC11300005293 /* ID3V2FacadeTest.mm */; };
+		F7CC97AF1ABBCDDF00005293 /* ID3V2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7CC97AE1ABBCDDF00005293 /* ID3V2.mp3 */; };
+		F7CC97B31ABBE24A00005293 /* FrameNameMapping.json in Resources */ = {isa = PBXBuildFile; fileRef = F7CC97B21ABBE24A00005293 /* FrameNameMapping.json */; };
 		F7E33CAF19C63238003BE071 /* TagBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CAE19C63238003BE071 /* TagBase.mm */; };
 		F7E33CF519C94306003BE071 /* TagReaderWriterFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF419C94306003BE071 /* TagReaderWriterFactory.mm */; };
 		F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF719C94E3A003BE071 /* TagGroup.mm */; };
@@ -138,11 +141,14 @@
 		F7CC979B1AB9427700005293 /* TagFacade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TagFacade.h; path = Facade/TagFacade.h; sourceTree = "<group>"; };
 		F7CC979C1AB943AA00005293 /* ID3V2Facade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ID3V2Facade.h; path = Facade/ID3V2Facade.h; sourceTree = "<group>"; };
 		F7CC979D1AB943AA00005293 /* ID3V2Facade.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ID3V2Facade.mm; path = Facade/ID3V2Facade.mm; sourceTree = "<group>"; };
-		F7CC97A11AB9466D00005293 /* TagNameMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagNameMapping.h; path = Facade/TagNameMapping.h; sourceTree = "<group>"; };
-		F7CC97A21AB9466D00005293 /* TagNameMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagNameMapping.m; path = Facade/TagNameMapping.m; sourceTree = "<group>"; };
+		F7CC97A11AB9466D00005293 /* FrameNameMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameNameMapping.h; path = Facade/FrameNameMapping.h; sourceTree = "<group>"; };
+		F7CC97A21AB9466D00005293 /* FrameNameMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrameNameMapping.m; path = Facade/FrameNameMapping.m; sourceTree = "<group>"; };
 		F7CC97A81ABA8BD000005293 /* TagConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagConstants.h; sourceTree = "<group>"; };
 		F7CC97A91ABA9A8D00005293 /* FileTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTags.h; sourceTree = "<group>"; };
 		F7CC97AA1ABA9A8D00005293 /* FileTags.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FileTags.mm; sourceTree = "<group>"; };
+		F7CC97AC1ABBC11300005293 /* ID3V2FacadeTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ID3V2FacadeTest.mm; sourceTree = "<group>"; };
+		F7CC97AE1ABBCDDF00005293 /* ID3V2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ID3V2.mp3; sourceTree = "<group>"; };
+		F7CC97B21ABBE24A00005293 /* FrameNameMapping.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FrameNameMapping.json; path = Facade/FrameNameMapping.json; sourceTree = "<group>"; };
 		F7E33CAC19C6077A003BE071 /* TagProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagProtocol.h; sourceTree = "<group>"; };
 		F7E33CAD19C63238003BE071 /* TagBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagBase.h; sourceTree = "<group>"; };
 		F7E33CAE19C63238003BE071 /* TagBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagBase.mm; sourceTree = "<group>"; };
@@ -298,8 +304,9 @@
 		F7CC97A01AB9461400005293 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				F7CC97A11AB9466D00005293 /* TagNameMapping.h */,
-				F7CC97A21AB9466D00005293 /* TagNameMapping.m */,
+				F7CC97B21ABBE24A00005293 /* FrameNameMapping.json */,
+				F7CC97A11AB9466D00005293 /* FrameNameMapping.h */,
+				F7CC97A21AB9466D00005293 /* FrameNameMapping.m */,
 			);
 			name = Config;
 			sourceTree = "<group>";
@@ -473,7 +480,9 @@
 		F7E9950A1983418000DDE9B4 /* iD3Tests */ = {
 			isa = PBXGroup;
 			children = (
+				F7CC97AE1ABBCDDF00005293 /* ID3V2.mp3 */,
 				F7E995101983418000DDE9B4 /* iD3Tests.mm */,
+				F7CC97AC1ABBC11300005293 /* ID3V2FacadeTest.mm */,
 				F7E9950B1983418000DDE9B4 /* Supporting Files */,
 			);
 			path = iD3Tests;
@@ -611,6 +620,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7E9950F1983418000DDE9B4 /* InfoPlist.strings in Resources */,
+				F7CC97B31ABBE24A00005293 /* FrameNameMapping.json in Resources */,
+				F7CC97AF1ABBCDDF00005293 /* ID3V2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,7 +642,7 @@
 				F7E994FA1983418000DDE9B4 /* AppDelegate.mm in Sources */,
 				F746193D19D79DAA00EA3D33 /* TagIOInfo.mm in Sources */,
 				F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */,
-				F7CC97A31AB9466D00005293 /* TagNameMapping.m in Sources */,
+				F7CC97A31AB9466D00005293 /* FrameNameMapping.m in Sources */,
 				F7757FD419E8C83700AABDB7 /* TagIOMP4.mm in Sources */,
 				F7E33D0319CD33C0003BE071 /* AppDelegate_Filename.m in Sources */,
 				F7757FBF19E7962200AABDB7 /* ImageValueTransform.m in Sources */,
@@ -663,6 +674,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CC97AD1ABBC11300005293 /* ID3V2FacadeTest.mm in Sources */,
 				F7E995111983418000DDE9B4 /* iD3Tests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 xbox.com. All rights reserved.
 //
 
-#import "TagNameMapping.h"
+#import "FrameNameMapping.h"
 #import "TagConstants.h"
 
-@implementation TagNameMapping
+@implementation FrameNameMapping
 
-+(TagNameMapping *) sharedInstance {
-    static TagNameMapping * sharedInstance = nil;
++(FrameNameMapping *) sharedInstance {
+    static FrameNameMapping * sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];

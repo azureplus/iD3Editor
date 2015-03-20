@@ -12,5 +12,5 @@
 
 @interface FileTags : NSObject
 @property (nonatomic, strong) NSMutableArray * tagFacades;
--(id) initWithFileRef:(NSString *) fileName;
+-(id) initWithFile:(NSString *) fileName;
 @end

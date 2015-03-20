@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TagNameMapping : NSObject
-+(TagNameMapping *) sharedInstance;
+@interface FrameNameMapping : NSObject
++(FrameNameMapping *) sharedInstance;
 -(NSString *) frameNameOfAttribute:(NSString *) attribute withTagType:(NSUInteger)tagType;
 -(NSUInteger) frameTypeOfAttribute:(NSString *) attribute withTagType:(NSUInteger)tagType;
 @end

@@ -1,0 +1,9 @@
+{
+	"type" : 2,
+	"frames" : {
+		"Album" : "TALB",
+		"Album Artist" : "TPE2",
+		"Artist" : "TPE1",
+		""
+	}
+}

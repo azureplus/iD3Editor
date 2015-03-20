@@ -11,7 +11,7 @@
 #import "taglib/attachedpictureframe.h"
 #import "NSString_TLString.h"
 #import "NSImage_NSData.h"
-#import "TagNameMapping.h"
+#import "FrameNameMapping.h"
 
 @interface ID3V2Facade()
 @property(nonatomic, assign) const TagLib::ID3v2::Tag * tag;
@@ -31,9 +31,9 @@
 
 // get value(s) of given tag
 -(NSMutableArray *) getFrame:(NSString *) frameName {
-    frameName = [[TagNameMapping sharedInstance] frameNameOfAttribute:frameName withTagType:[self tagType]];
+    frameName = [[FrameNameMapping sharedInstance] frameNameOfAttribute:frameName withTagType:[self tagType]];
     NSMutableArray * result = [NSMutableArray arrayWithCapacity:4];
-    NSUInteger tagType = [[TagNameMapping sharedInstance] frameTypeOfAttribute:frameName withTagType:[self tagType]];
+    NSUInteger tagType = [[FrameNameMapping sharedInstance] frameTypeOfAttribute:frameName withTagType:[self tagType]];
     
     const TagLib::ID3v2::FrameList & frameList = self.tag->frameList([frameName cStringUsingEncoding:NSUTF8StringEncoding]);
     
