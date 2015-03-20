@@ -41,6 +41,7 @@
 		F7B21B691A0F254300D351DF /* AddFile.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7B21B631A0F254300D351DF /* AddFile.pdf */; };
 		F7B21B6A1A0F254300D351DF /* Clear.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7B21B641A0F254300D351DF /* Clear.pdf */; };
 		F7B21B6B1A0F254300D351DF /* Reset.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F7B21B651A0F254300D351DF /* Reset.pdf */; };
+		F7CC97B91ABBEDE300005293 /* NSString_ToIntegerCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CC97B81ABBEDE300005293 /* NSString_ToIntegerCompare.m */; };
 		F7E33CAF19C63238003BE071 /* TagBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CAE19C63238003BE071 /* TagBase.mm */; };
 		F7E33CF519C94306003BE071 /* TagReaderWriterFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF419C94306003BE071 /* TagReaderWriterFactory.mm */; };
 		F7E33CF819C94E3A003BE071 /* TagGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7E33CF719C94E3A003BE071 /* TagGroup.mm */; };
@@ -132,6 +133,8 @@
 		F7B21B631A0F254300D351DF /* AddFile.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AddFile.pdf; sourceTree = "<group>"; };
 		F7B21B641A0F254300D351DF /* Clear.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Clear.pdf; sourceTree = "<group>"; };
 		F7B21B651A0F254300D351DF /* Reset.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Reset.pdf; sourceTree = "<group>"; };
+		F7CC97B71ABBEDE300005293 /* NSString_ToIntegerCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_ToIntegerCompare.h; sourceTree = "<group>"; };
+		F7CC97B81ABBEDE300005293 /* NSString_ToIntegerCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_ToIntegerCompare.m; sourceTree = "<group>"; };
 		F7E33CAC19C6077A003BE071 /* TagProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagProtocol.h; sourceTree = "<group>"; };
 		F7E33CAD19C63238003BE071 /* TagBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagBase.h; sourceTree = "<group>"; };
 		F7E33CAE19C63238003BE071 /* TagBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TagBase.mm; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 		F79BCE18198928A500CC5F02 /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				F7CC97B71ABBEDE300005293 /* NSString_ToIntegerCompare.h */,
+				F7CC97B81ABBEDE300005293 /* NSString_ToIntegerCompare.m */,
 				F7E99528198593D300DDE9B4 /* NSString_TLString.h */,
 				F7E99529198593D300DDE9B4 /* NSString_TLString.mm */,
 				F79BCE22198A865900CC5F02 /* NSString_Filename.h */,
@@ -594,6 +599,7 @@
 				F7E33CFB19CA9A97003BE071 /* FileResolver.mm in Sources */,
 				F746193719D79B6200EA3D33 /* TagIOBase.mm in Sources */,
 				F79BCE31198DF87F00CC5F02 /* TagAndFileNameWindowDelegate.m in Sources */,
+				F7CC97B91ABBEDE300005293 /* NSString_ToIntegerCompare.m in Sources */,
 				F79BCE4819907ABE00CC5F02 /* NSArray_KVO.m in Sources */,
 				F7E994F31983418000DDE9B4 /* main.m in Sources */,
 				F7757FBC19E4EE9400AABDB7 /* PictureView.m in Sources */,
