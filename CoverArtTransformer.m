@@ -19,7 +19,7 @@
 }
 
 - (id)transformedValue:(id) value {
-    if (value == nil) {
+    if (value == nil || value == [NSImage nullImage]) {
         value = [NSImage coverartNoImage];
     } else {
         value = [NSImage coverartYesImage];

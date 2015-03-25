@@ -66,4 +66,24 @@ static NSImage * coverartNoImage;
     
     return coverartNoImage;
 }
+
+// hack : used by tag table view to sort by the presence of cover art
+-(NSComparisonResult)compare:(NSImage *) image {
+    if (self == [NSImage nullImage]) {
+        if (!image || image == [NSImage nullImage]) {
+            return NSOrderedSame;
+        } else {
+            return NSOrderedAscending;
+        }
+    } else {
+        if (!image || image == [NSImage nullImage]) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }
+    
+}
+
+
 @end

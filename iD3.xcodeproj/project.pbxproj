@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */; };
+		F721E9071AC28A25003255BB /* coverart_cell_no.png in Resources */ = {isa = PBXBuildFile; fileRef = F721E9051AC28A25003255BB /* coverart_cell_no.png */; };
+		F721E90A1AC28A86003255BB /* coverart_cell_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = F721E9091AC28A86003255BB /* coverart_cell_yes.png */; };
 		F727DBC11AC273C600E28038 /* CoverArtTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F727DBC01AC273C600E28038 /* CoverArtTransformer.m */; };
-		F727DBC31AC2745200E28038 /* coverart_cell_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = F727DBC21AC2745200E28038 /* coverart_cell_yes.png */; };
-		F727DBC51AC2746D00E28038 /* coverart_cell_no.png in Resources */ = {isa = PBXBuildFile; fileRef = F727DBC41AC2746D00E28038 /* coverart_cell_no.png */; };
 		F727DBF41AC27EA200E28038 /* TagTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F727DBF31AC27EA200E28038 /* TagTableViewDelegate.m */; };
 		F746193719D79B6200EA3D33 /* TagIOBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746193619D79B6200EA3D33 /* TagIOBase.mm */; };
 		F746193A19D79BEA00EA3D33 /* TagIOApe.mm in Sources */ = {isa = PBXBuildFile; fileRef = F746193919D79BEA00EA3D33 /* TagIOApe.mm */; };
@@ -81,10 +81,10 @@
 
 /* Begin PBXFileReference section */
 		F7005C6A199DBF9D00197432 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
+		F721E9051AC28A25003255BB /* coverart_cell_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverart_cell_no.png; sourceTree = "<group>"; };
+		F721E9091AC28A86003255BB /* coverart_cell_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverart_cell_yes.png; sourceTree = "<group>"; };
 		F727DBBF1AC273C600E28038 /* CoverArtTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverArtTransformer.h; sourceTree = "<group>"; };
 		F727DBC01AC273C600E28038 /* CoverArtTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverArtTransformer.m; sourceTree = "<group>"; };
-		F727DBC21AC2745200E28038 /* coverart_cell_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverart_cell_yes.png; sourceTree = "<group>"; };
-		F727DBC41AC2746D00E28038 /* coverart_cell_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverart_cell_no.png; sourceTree = "<group>"; };
 		F727DBF21AC27EA200E28038 /* TagTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagTableViewDelegate.h; sourceTree = "<group>"; };
 		F727DBF31AC27EA200E28038 /* TagTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagTableViewDelegate.m; sourceTree = "<group>"; };
 		F746193519D79B6200EA3D33 /* TagIOBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIOBase.h; sourceTree = "<group>"; };
@@ -459,8 +459,8 @@
 		F7FB46C21993309100C72AFF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F727DBC41AC2746D00E28038 /* coverart_cell_no.png */,
-				F727DBC21AC2745200E28038 /* coverart_cell_yes.png */,
+				F721E9091AC28A86003255BB /* coverart_cell_yes.png */,
+				F721E9051AC28A25003255BB /* coverart_cell_no.png */,
 				F7B21B601A0F254300D351DF /* TagFilename.pdf */,
 				F7B21B611A0F254300D351DF /* Save.pdf */,
 				F7B21B621A0F254300D351DF /* Encoding.pdf */,
@@ -561,18 +561,18 @@
 				F7B21B661A0F254300D351DF /* TagFilename.pdf in Resources */,
 				F7FB46E01993C11A00C72AFF /* iD3Help in Resources */,
 				F7005C6B199DBF9D00197432 /* DefaultPreferences.plist in Resources */,
-				F727DBC51AC2746D00E28038 /* coverart_cell_no.png in Resources */,
 				F7E994F11983418000DDE9B4 /* InfoPlist.strings in Resources */,
 				F7757FD119E7B2BB00AABDB7 /* placeholder.png in Resources */,
 				F7B21B6B1A0F254300D351DF /* Reset.pdf in Resources */,
 				F7B21B691A0F254300D351DF /* AddFile.pdf in Resources */,
+				F721E90A1AC28A86003255BB /* coverart_cell_yes.png in Resources */,
 				F7757FCE19E7ADB400AABDB7 /* mic.png in Resources */,
 				F79BCE1A1989FD5900CC5F02 /* iD3.plist in Resources */,
 				F7B21B6A1A0F254300D351DF /* Clear.pdf in Resources */,
+				F721E9071AC28A25003255BB /* coverart_cell_no.png in Resources */,
 				F7B21B681A0F254300D351DF /* Encoding.pdf in Resources */,
 				F7E994FF1983418000DDE9B4 /* Images.xcassets in Resources */,
 				F7E994F71983418000DDE9B4 /* Credits.rtf in Resources */,
-				F727DBC31AC2745200E28038 /* coverart_cell_yes.png in Resources */,
 				F7B21B671A0F254300D351DF /* Save.pdf in Resources */,
 				F7E994FD1983418000DDE9B4 /* MainMenu.xib in Resources */,
 			);
