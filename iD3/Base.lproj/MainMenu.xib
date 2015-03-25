@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
@@ -76,6 +76,7 @@
                 <outlet property="tagArrayController" destination="j1s-e0-8eb" id="mx8-Iu-546"/>
             </connections>
         </customObject>
+        <customObject id="hDa-1l-KXo" userLabel="Table View Delegate" customClass="TagTableViewDelegate"/>
         <arrayController objectClassName="TagEntity" id="j1s-e0-8eb" userLabel="Tags">
             <connections>
                 <binding destination="Voe-Tx-rLC" name="managedObjectContext" keyPath="managedObjectContext" id="s3t-Sn-cpc"/>
@@ -374,6 +375,26 @@
                                                 <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.genre" id="i25-OR-T2H"/>
                                             </connections>
                                         </tableColumn>
+                                        <tableColumn identifier="COVER_ART" editable="NO" width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="X3T-kY-lkC">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Cover Art">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Text" id="xt8-zM-c7V">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="j1s-e0-8eb" name="value" keyPath="arrangedObjects.coverArt" id="uzk-bZ-aCx">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">CoverArtTransformer</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </tableColumn>
                                         <tableColumn identifier="track" editable="NO" width="517" maxWidth="2048" id="SUr-Ng-b3O">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="File Name">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -396,6 +417,7 @@
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
+                                        <outlet property="delegate" destination="hDa-1l-KXo" id="k1G-QQ-Zsg"/>
                                         <outlet property="menu" destination="8I8-p7-AEc" id="gec-Ro-sZk"/>
                                     </connections>
                                 </tableView>

@@ -13,4 +13,6 @@
 +(NSImage *) nullImage;
 +(NSImage *) nullPlaceholderImage;
 +(NSImage *) multiplePlaceholderImage;
++(NSImage *) coverartYesImage;
++(NSImage *) coverartNoImage;
 @end
