@@ -50,7 +50,7 @@
 -(void) resetValue {
     NSArray * frames = @[@"artist", @"album", @"albumArtist", @"title",
                          @"genre", @"comment", @"composer",
-                         @"copyright", @"year", @"track", @"coverArt"];
+                         @"copyright", @"year", @"track", @"discNum", @"discTotal", @"coverArt"];
     for (NSString * frame in frames) {
         [self willChangeValueForKey:frame];
     }
@@ -68,8 +68,6 @@ DECL_GETTER_1(genre);
 DECL_GETTER_1(comment);
 DECL_GETTER_1(composer);
 DECL_GETTER_1(copyright);
-DECL_GETTER_1(discNum);
-DECL_GETTER_1(discTotal);
 
 -(NSString *) year {
     if ([[self.tag year] intValue] == 0) {
@@ -87,6 +85,22 @@ DECL_GETTER_1(discTotal);
     }
 }
 
+-(NSString *) discNum {
+    if ([[self.tag discNum] intValue] == 0) {
+        return @"";
+    } else {
+        return [[self.tag discNum] stringValue];
+    }
+}
+
+-(NSString *) discTotal {
+    if ([[self.tag discTotal] intValue] == 0) {
+        return @"";
+    } else {
+        return [[self.tag discTotal] stringValue];
+    }
+}
+
 -(id) coverArt {
     return [self.tag coverArt];
 }
@@ -99,8 +113,6 @@ DECL_SETTER_1(Genre, genre);
 DECL_SETTER_1(Comment, comment);
 DECL_SETTER_1(Composer, composer);
 DECL_SETTER_1(Copyright, copyright);
-DECL_SETTER_1(DiscNum, discNum);
-DECL_SETTER_1(DiscTotal, discTotal);
 
 -(void)setYear:(NSString *)value {
     [self willChangeValueForKey:@"year"];
@@ -112,6 +124,18 @@ DECL_SETTER_1(DiscTotal, discTotal);
     [self willChangeValueForKey:@"track"];
     [self.tag setTrack:[NSNumber numberWithInt:[value intValue]]];
     [self didChangeValueForKey:@"track"];
+}
+
+-(void)setDiscNum:(NSString *)value {
+    [self willChangeValueForKey:@"discNum"];
+    [self.tag setDiscNum:[NSNumber numberWithInt:[value intValue]]];
+    [self didChangeValueForKey:@"discNum"];
+}
+
+-(void)setDiscTotal:(NSString *)value {
+    [self willChangeValueForKey:@"discTotal"];
+    [self.tag setDiscTotal:[NSNumber numberWithInt:[value intValue]]];
+    [self didChangeValueForKey:@"discTotal"];
 }
 
 -(void)setCoverArt:(id)coverArt {

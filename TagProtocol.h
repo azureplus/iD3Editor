@@ -41,8 +41,8 @@
 -(void)setYear:(NSNumber *)value;
 -(void)setTrack:(NSNumber *)value;
 -(void)setCoverArt:(NSImage*)coverArt;
--(void)setDiscNum:(NSString *)discNum;
--(void)setDiscTotal:(NSString *)discTotal;
+-(void)setDiscNum:(NSNumber *)discNum;
+-(void)setDiscTotal:(NSNumber *)discTotal;
 
 -(void) setCharEncoding: (unsigned int) encoding;
 -(BOOL) updated;
