@@ -82,6 +82,30 @@ DECL_GETTER_1(copyright);
     return [selected track];
 }
 
+-(NSNumber *) discNum {
+    id<TagProtocol> selected = nil;
+    for (id<TagProtocol> tag : _tags) {
+        selected = tag;
+        if ([selected discNum] && [[selected discNum] intValue] > 0) {
+            break;
+        }
+    }
+    
+    return [selected discNum];
+}
+
+-(NSNumber *) discTotal {
+    id<TagProtocol> selected = nil;
+    for (id<TagProtocol> tag : _tags) {
+        selected = tag;
+        if ([selected discTotal] && [[selected discTotal] intValue] > 0) {
+            break;
+        }
+    }
+    
+    return [selected discTotal];
+}
+
 -(NSImage *) coverArt {
     NSImage * image = nil;
     for (id<TagProtocol> tag : _tags) {
@@ -111,6 +135,18 @@ DECL_SETTER_1(Copyright);
 -(void)setTrack:(NSNumber *)value {
     for (id<TagProtocol> tag : _tags) {
         [tag setTrack:value];
+    }
+}
+
+-(void)setDiscNum:(NSNumber *)value {
+    for (id<TagProtocol> tag : _tags) {
+        [tag setDiscNum:value];
+    }
+}
+
+-(void)setDiscTotal:(NSNumber *)value {
+    for (id<TagProtocol> tag : _tags) {
+        [tag setDiscTotal:value];
     }
 }
 
