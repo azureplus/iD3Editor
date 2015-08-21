@@ -29,16 +29,41 @@
     [super tearDown];
 }
 
+
+-(void)parseDiscInfo:(NSString *) discInfo toDiscNum:(NSUInteger *)discNum andDiscTotal:(NSUInteger *)discTotal {
+    *discNum = 0;
+    *discTotal = 0;
+    NSArray * components = [discInfo componentsSeparatedByString:@"/"];
+    if ([components count] == 1) {
+        *discNum = [[self parseInt:components[0]] unsignedIntegerValue];
+    } else if ([components count] >= 2) {
+        *discNum = [[self parseInt:components[0]] unsignedIntegerValue];
+        *discTotal = [[self parseInt:components[1]] unsignedIntegerValue];
+    }
+}
+
+-(NSNumber *) parseInt:(NSString *) str {
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    return [f numberFromString:str];
+}
+
+
 - (void)testFileNameMatch {
-    NSString * filename = @"-sS-";
-    NSString * pattern = @"-s:T-";
-    NSDictionary * dict = [filename parse:pattern];
-    NSLog(@"artist--->%@", [dict objectForKey:@"artist"]);
-    NSLog(@"album--->%@", [dict objectForKey:@"album"]);
-    NSLog(@"title--->%@", [dict objectForKey:@"title"]);
-    NSLog(@"comment--->%@", [dict objectForKey:@"comment"]);
-    NSLog(@"genre--->%@", [dict objectForKey:@"genre"]);
-    NSLog(@"track--->%@", [dict objectForKey:@"track"]);
-    NSLog(@"year--->%@", [dict objectForKey:@"year"]);
+//    NSString * filename = @"-sS-";
+//    NSString * pattern = @"-s:T-";
+//    NSDictionary * dict = [filename parse:pattern];
+//    NSLog(@"artist--->%@", [dict objectForKey:@"artist"]);
+//    NSLog(@"album--->%@", [dict objectForKey:@"album"]);
+//    NSLog(@"title--->%@", [dict objectForKey:@"title"]);
+//    NSLog(@"comment--->%@", [dict objectForKey:@"comment"]);
+//    NSLog(@"genre--->%@", [dict objectForKey:@"genre"]);
+//    NSLog(@"track--->%@", [dict objectForKey:@"track"]);
+//    NSLog(@"year--->%@", [dict objectForKey:@"year"]);
+    
+    NSUInteger number, total;
+    [self parseDiscInfo:@"/12" toDiscNum:&number andDiscTotal:&total];
+    NSLog(@"--->%lu", (unsigned long)number);
+    NSLog(@"--->%lu", (unsigned long)total);
 }
 @end

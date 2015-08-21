@@ -29,4 +29,22 @@
     taglib->setYear([tag.year unsignedIntValue]);
     taglib->setTrack([tag.track unsignedIntValue]);
 }
+
+-(void)parseDiscInfo:(NSString *) discInfo toDiscNum:(NSUInteger *)discNum andDiscTotal:(NSUInteger *)discTotal {
+    *discNum = 0;
+    *discTotal = 0;
+    NSArray * components = [discInfo componentsSeparatedByString:@"/"];
+    if ([components count] == 1) {
+        *discNum = [[self parseInt:components[0]] unsignedIntegerValue];
+    } else if ([components count] >= 2) {
+        *discNum = [[self parseInt:components[0]] unsignedIntegerValue];
+        *discTotal = [[self parseInt:components[1]] unsignedIntegerValue];
+    }
+}
+
+-(NSNumber *) parseInt:(NSString *) str {
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    return [f numberFromString:str];
+}
 @end

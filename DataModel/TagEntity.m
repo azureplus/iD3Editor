@@ -43,6 +43,8 @@
 @dynamic year;
 @dynamic copyright;
 @dynamic coverArt;
+@dynamic discNum;
+@dynamic discTotal;
 @synthesize tag = _tag;
 
 -(void) resetValue {
@@ -66,6 +68,8 @@ DECL_GETTER_1(genre);
 DECL_GETTER_1(comment);
 DECL_GETTER_1(composer);
 DECL_GETTER_1(copyright);
+DECL_GETTER_1(discNum);
+DECL_GETTER_1(discTotal);
 
 -(NSString *) year {
     if ([[self.tag year] intValue] == 0) {
@@ -95,6 +99,8 @@ DECL_SETTER_1(Genre, genre);
 DECL_SETTER_1(Comment, comment);
 DECL_SETTER_1(Composer, composer);
 DECL_SETTER_1(Copyright, copyright);
+DECL_SETTER_1(DiscNum, discNum);
+DECL_SETTER_1(DiscTotal, discTotal);
 
 -(void)setYear:(NSString *)value {
     [self willChangeValueForKey:@"year"];
@@ -117,7 +123,7 @@ DECL_SETTER_1(Copyright, copyright);
 -(void) setCharEncoding: (unsigned int) charEncoding {
     NSArray * frames = @[@"artist", @"album", @"albumArtist", @"title",
                          @"genre", @"comment", @"composer",
-                         @"copyright", @"year", @"track"];
+                         @"copyright", @"year", @"track", @"discNum", @"discTotal"];
     for (NSString * frame in frames) {
         [self willChangeValueForKey:frame];
     }

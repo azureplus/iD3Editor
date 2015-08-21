@@ -806,7 +806,7 @@
 		F7E995181983418000DDE9B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iD3.app/Contents/MacOS/iD3";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iD3 Editor.app/Contents/MacOS/iD3 Editor";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -828,7 +828,7 @@
 		F7E995191983418000DDE9B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iD3.app/Contents/MacOS/iD3";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iD3 Editor.app/Contents/MacOS/iD3 Editor";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",

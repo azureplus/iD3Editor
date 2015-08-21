@@ -24,10 +24,11 @@
 @property (nonatomic, assign) TagLib::String titleTL;
 @property (nonatomic, assign) TagLib::String composerTL;
 @property (nonatomic, assign) TagLib::String copyrightTL;
-//
 @property (nonatomic, assign) NSUInteger yearTL;
 @property (nonatomic, assign) NSUInteger trackTL;
-
+//
+@property (nonatomic, assign) NSUInteger discNumTL;
+@property (nonatomic, assign) NSUInteger discTotalTL;
 
 // new tag frame values
 @property (nonatomic, strong) NSString * artist;
@@ -40,6 +41,8 @@
 @property (nonatomic, strong) NSString * copyright;
 @property (nonatomic, strong) NSNumber * year;
 @property (nonatomic, strong) NSNumber * track;
+@property (nonatomic, strong) NSNumber * discNum;
+@property (nonatomic, strong) NSNumber * discTotal;
 
 // non-standard frames
 @property (nonatomic, readonly) NSMutableDictionary * pictureTL;

@@ -11,5 +11,5 @@
 #import "TagWriter.h"
 
 @interface TagIOBase : NSObject<TagReader, TagWriter>
-
+-(void)parseDiscInfo:(NSString *) discInfo toDiscNum:(NSUInteger *)discNum andDiscTotal:(NSUInteger *)discTotal;
 @end
