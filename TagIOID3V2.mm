@@ -34,6 +34,15 @@
             tag.albumArtistTL = tpe2FrameList[0]->toString();
         }
         
+        const TagLib::ID3v2::FrameList & tposFrameList = id3Tag->frameList("TPOS");
+        if (!tposFrameList.isEmpty()) {
+            NSUInteger number, total;
+
+            [self parseDiscInfo:[NSString newStringFromTLString:tposFrameList[0]->toString()] toDiscNum:&number andDiscTotal:&total];
+            tag.discNumTL = number;
+            tag.discTotalTL = total;
+        }
+        
         [self _readPicturesFrom:id3Tag to:tag];
     }
     
@@ -75,6 +84,16 @@
     id3Tag->setTextFrame("TCOM", [NSString TLStringFromString:tag.composer]);
     id3Tag->setTextFrame("TCOP", [NSString TLStringFromString:tag.copyright]);
     id3Tag->setTextFrame("TPE2", [NSString TLStringFromString:tag.albumArtist]);
+
+    NSUInteger discNumber = [tag.discNum unsignedIntegerValue];
+    NSUInteger discTotal = [tag.discTotal unsignedIntegerValue];
+    
+    if (discNumber != 0 || discTotal !=0 ) {
+        if (discTotal == 0) {
+            discTotal = discNumber;
+        }
+        id3Tag->setTextFrame("TPOS", [NSString TLStringFromString:[NSString stringWithFormat:@"%u/%u", (unsigned int)discNumber, (unsigned int)discTotal]]);
+    }
 
     // currenlty only supports front cover
     [self _writePic:[tag coverArt] to:id3Tag withType:TagLib::ID3v2::AttachedPictureFrame::Type::FrontCover];

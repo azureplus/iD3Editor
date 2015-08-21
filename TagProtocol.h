@@ -27,6 +27,8 @@
 -(NSNumber *) year;
 -(NSNumber *) track;
 -(NSImage *) coverArt;
+-(NSNumber *) discNum;
+-(NSNumber *) discTotal;
 
 -(void)setArtist:(NSString *)value;
 -(void)setAlbum:(NSString *)value;
@@ -39,6 +41,8 @@
 -(void)setYear:(NSNumber *)value;
 -(void)setTrack:(NSNumber *)value;
 -(void)setCoverArt:(NSImage*)coverArt;
+-(void)setDiscNum:(NSNumber *)discNum;
+-(void)setDiscTotal:(NSNumber *)discTotal;
 
 -(void) setCharEncoding: (unsigned int) encoding;
 -(BOOL) updated;

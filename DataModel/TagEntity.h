@@ -23,6 +23,8 @@
 @property (nonatomic, retain) NSString * track;
 @property (nonatomic, retain) NSString * year;
 @property (nonatomic, retain) NSString * copyright;
+@property (nonatomic, retain) NSString * discNum;
+@property (nonatomic, retain) NSString * discTotal;
 @property (nonatomic, retain) id coverArt;
 
 @property (nonatomic, strong) id<TagProtocol> tag;

@@ -43,12 +43,14 @@
 @dynamic year;
 @dynamic copyright;
 @dynamic coverArt;
+@dynamic discNum;
+@dynamic discTotal;
 @synthesize tag = _tag;
 
 -(void) resetValue {
     NSArray * frames = @[@"artist", @"album", @"albumArtist", @"title",
                          @"genre", @"comment", @"composer",
-                         @"copyright", @"year", @"track", @"coverArt"];
+                         @"copyright", @"year", @"track", @"discNum", @"discTotal", @"coverArt"];
     for (NSString * frame in frames) {
         [self willChangeValueForKey:frame];
     }
@@ -83,6 +85,22 @@ DECL_GETTER_1(copyright);
     }
 }
 
+-(NSString *) discNum {
+    if ([[self.tag discNum] intValue] == 0) {
+        return @"";
+    } else {
+        return [[self.tag discNum] stringValue];
+    }
+}
+
+-(NSString *) discTotal {
+    if ([[self.tag discTotal] intValue] == 0) {
+        return @"";
+    } else {
+        return [[self.tag discTotal] stringValue];
+    }
+}
+
 -(id) coverArt {
     return [self.tag coverArt];
 }
@@ -108,6 +126,18 @@ DECL_SETTER_1(Copyright, copyright);
     [self didChangeValueForKey:@"track"];
 }
 
+-(void)setDiscNum:(NSString *)value {
+    [self willChangeValueForKey:@"discNum"];
+    [self.tag setDiscNum:[NSNumber numberWithInt:[value intValue]]];
+    [self didChangeValueForKey:@"discNum"];
+}
+
+-(void)setDiscTotal:(NSString *)value {
+    [self willChangeValueForKey:@"discTotal"];
+    [self.tag setDiscTotal:[NSNumber numberWithInt:[value intValue]]];
+    [self didChangeValueForKey:@"discTotal"];
+}
+
 -(void)setCoverArt:(id)coverArt {
     [self willChangeValueForKey:@"coverArt"];
     [self.tag setCoverArt:coverArt];
@@ -117,7 +147,7 @@ DECL_SETTER_1(Copyright, copyright);
 -(void) setCharEncoding: (unsigned int) charEncoding {
     NSArray * frames = @[@"artist", @"album", @"albumArtist", @"title",
                          @"genre", @"comment", @"composer",
-                         @"copyright", @"year", @"track"];
+                         @"copyright", @"year", @"track", @"discNum", @"discTotal"];
     for (NSString * frame in frames) {
         [self willChangeValueForKey:frame];
     }

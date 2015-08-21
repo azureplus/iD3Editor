@@ -45,6 +45,8 @@ if (_##FRAME) { \
         self.copyrightTL = TagLib::String::null;
         self.composerTL = TagLib::String::null;
         self.albumArtistTL = TagLib::String::null;
+        self.discNumTL = 0;
+        self.discTotalTL = 0;
         
         _picture = [NSMutableDictionary dictionaryWithCapacity:2];
         _pictureTL = [NSMutableDictionary dictionaryWithCapacity:2];        
@@ -69,6 +71,22 @@ if (_##FRAME) { \
     }
 }
 
+-(NSNumber *)discTotal {
+    if (_discTotal) {
+        return _discTotal;
+    } else {
+        return [NSNumber numberWithUnsignedInteger:_discTotalTL];
+    }
+}
+
+-(NSNumber *)discNum {
+    if (_discNum) {
+        return _discNum;
+    } else {
+        return [NSNumber numberWithUnsignedInteger:_discNumTL];
+    }
+}
+
 -(NSImage *)coverArt {
     NSImage * pic = self.picture[@COVER_ART];
     if (!pic) {
@@ -89,12 +107,13 @@ DECL_GETTER(composer)
 -(BOOL)updated {
     return _charEncoding != DEFAULT_ENCODING ||
            _artist || _album || _title || _composer || _comment || _albumArtist ||
-           _genre || _copyright || _track || _year || ([_picture count] != 0);
+           _genre || _copyright || _track || _year || _discNum || _discTotal || ([_picture count] != 0);
 }
 
 -(void)discardChanges {
     _artist = _album = _albumArtist = _title = _composer = _comment = _genre = _copyright = nil;
     _track = _year = nil;
+    _discNum = _discTotal = nil;
     _charEncoding = DEFAULT_ENCODING;
     
     [_picture removeAllObjects];
@@ -119,6 +138,14 @@ DECL_GETTER(composer)
         _trackTL = [_track unsignedIntegerValue];
     }
     
+    if (_discTotal) {
+        _discTotalTL = [_discTotal unsignedIntegerValue];
+    }
+    
+    if (_discNum) {
+        _discNumTL = [_discNum unsignedIntegerValue];
+    }
+    
     [_pictureTL addEntriesFromDictionary:_picture];
     [self discardChanges];
 }
@@ -139,8 +166,10 @@ DECL_GETTER(composer)
                               \n\tTrack: %@ \
                               \n\tComposer: %@ \
                               \n\tComment: %@ \
-                              \n\tCopyright: %@", self.title, self.artist, self.albumArtist, self.album,
-                              self.genre, self.year, self.track, self.composer, self.comment, self.copyright];
+                              \n\tCopyright: %@\
+                              \n\tDiscNum: %@\
+                              \n\tDiscTotal: %@", self.title, self.artist, self.albumArtist, self.album,
+                              self.genre, self.year, self.track, self.composer, self.comment, self.copyright, self.discNum, self.discTotal];
     return description;
 }
 @end
