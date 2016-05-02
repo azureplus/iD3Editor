@@ -40,10 +40,10 @@
             tag.albumArtistTL = itemListMap[MP4_ALBUMARTIST].toStringList().toString(MP4_STRINGLIST_DELIMITER);
         }
         
-//        if (itemListMap.contains(MP4_DISCNUM)) {
-//            tag.discNumTL = itemListMap[MP4_DISCNUM].toIntPair().first;
-//            tag.discTotalTL = itemListMap[MP4_DISCNUM].toIntPair().second;
-//        }
+        if (itemListMap.contains(MP4_DISCNUM)) {
+            tag.discNumTL = itemListMap[MP4_DISCNUM].toIntPair().first;
+            tag.discTotalTL = itemListMap[MP4_DISCNUM].toIntPair().second;
+        }
         
         [self _readPicturesFrom:mp4Tag to:tag];
     }
@@ -83,7 +83,7 @@
     itemListMap[MP4_COPYRIGHT] = TagLib::StringList([NSString TLStringFromString:tag.copyright]);
     itemListMap[MP4_ALBUMARTIST] = TagLib::StringList([NSString TLStringFromString:tag.albumArtist]);
     
-//    itemListMap[MP4_DISCNUM] = TagLib::MP4::Item((int)[[tag discNum] integerValue], (int)[[tag discTotal] integerValue]);
+    itemListMap[MP4_DISCNUM] = TagLib::MP4::Item((int)[[tag discNum] integerValue], (int)[[tag discTotal] integerValue]);
     
     [self _writePic:[tag coverArt] to:mp4Tag withType:MP4_COVER_ART];
 }
